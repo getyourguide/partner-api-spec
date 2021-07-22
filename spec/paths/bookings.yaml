@@ -8,6 +8,8 @@ paths:
       summary: Create a new booking.
       tags:
         - Bookings
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/externalReferenceId'
       requestBody:
         required: true
         content:
@@ -29,12 +31,12 @@ paths:
   /bookings/{booking_hash}:
     get:
       operationId: BookingsGetByHash
+      summary: Get information about a booking
       tags:
         - Bookings
       parameters:
         - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
         - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/country'
       responses:
         200:
           description: Successful response

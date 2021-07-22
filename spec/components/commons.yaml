@@ -37,6 +37,7 @@ components:
     externalReferenceId:
       name: external_reference_id
       description: The external reference ID. The reseller can supply a reference number under which this booking is referenced in his system. This field contains that number. Maximum length is 255.
-      required: true
+      required: false
+      in: query
       schema:
         type: string
