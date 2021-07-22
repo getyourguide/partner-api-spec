@@ -1,8 +1,6 @@
-
-openapi: 3.0.2
+openapi: 3.0.0
 info:
   title: Paths for configuration
-  version: 1.0.0
 paths:
   /configuration/{version}:
     get:
@@ -24,7 +22,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: $ref: '../components/configration.yml#/components/schemas/ConfigurationVersion'
+                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationVersion'
         400:
           description: Invalid partner hash format
         404:

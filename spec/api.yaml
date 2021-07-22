@@ -1,5 +1,4 @@
 openapi: 3.0.0
-
 info:
   title: Partner Api
   description: GetYourGuide Partner Api
@@ -7,13 +6,11 @@ info:
   contact:
     name: Partner Tech
     url: https://partner.getyourguide.com.com/
-
 servers:
   - url: https://api.getyourguide.com/
     description: Production
   - url: https://api.testing1.gygtest.com/
     description: Testing
-
 paths:
   /configuration/{version}:
-    $ref: 'paths/confuguration.yml#/paths/~configuration~1{version}'
+    $ref: 'paths/configuration.yaml#/paths/~1configuration~1{version}'
