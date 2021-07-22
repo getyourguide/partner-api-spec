@@ -2,10 +2,10 @@ openapi: 3.0.2
 info:
   title: Common components
   version: 1.0.0
-paths: {}
 components:
-  
+
   parameters:
+
     version:
       name: version
       description: The version of the API of which you want to get the configuration.
@@ -13,6 +13,14 @@ components:
       required: true
       schema:
         type: string
+    bookingHash:
+      name: booking_hash
+      description: Booking hash
+      required: true
+      in: path
+      schema:
+        type: string
+    
     cntLanguage:
       name: cnt_language
       description: ISO 639, Language of the text content.
@@ -41,3 +49,58 @@ components:
       in: query
       schema:
         type: string
+
+  schemas:
+    ShoppingCartId:
+      name: shopping_cart_id
+      description: The ID of the shopping cart.
+      type: number
+      example: 32724458
+    ShoppingCartHash:
+      description: The hash of the shopping cart.
+      type: string
+      example: '0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K'
+    BookingId:
+      description: The id of the booking.
+      type: number
+      example: 13822240
+    BookingHash:
+      description: The hash of the booking. This identifies the booking.
+      type: string
+      example: 'WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M'
+    BookingStatus:
+      description: The status of the booking.
+      type: string
+      enum: [temp, unconfirmed, confirmed, deleted, canceled]
+      example: 'temp'
+    TourId:
+      name: tour_id
+      description: The ID of the tour.
+      type: number
+      example: 50872
+    OptionId:
+      name: option_id
+      description: The ID of the tour option.
+      type: number
+      example: 69232
+    Datetime:
+      name: datetime
+      type: string
+      example: "2017-09-01T00:00:00"
+    DatetimeUTC:
+      name: datetime_utc
+      description: The datetime in UTC of when the activity dates place.
+      type: string
+      example: "2017-09-01T04:00:00Z"
+    DatetimeType:
+      name: datetime_type
+      description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
+      type: string
+      enum: [date, datetime]
+      example: 'date'
+    Price:
+      name: price
+      description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
+      type: number
+      format: double
+      example: 270

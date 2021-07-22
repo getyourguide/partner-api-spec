@@ -29,11 +29,9 @@ components:
                   type: object
                   properties:
                     option_id:
-                      type: number
-                      example: 29879
+                      $ref: './commons.yaml#/components/schemas/OptionId'
                     datetime:
-                      type: string
-                      example: '2020-12-04T11:45:00'
+                      $ref: './commons.yaml#/components/schemas/Datetime'
                     price:
                       type: string
                       example: '170.00'
@@ -70,27 +68,57 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              description: The ID of the shopping cart.
-              type: number
-              example: 32724458
+              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
             shopping_cart_hash:
-              description: The hash of the shopping cart.
-              type: string
-              example: '0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K'
+              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
             booking_id:
-              description: The id of the booking.
-              type: number
-              example: 13822240
+              $ref: './commons.yaml#/components/schemas/BookingId'
             booking_hash:
-              description: The hash of the booking. This identifies the booking.
-              type: string
-              example: 'WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M'
+              $ref: './commons.yaml#/components/schemas/BookingHash'
             booking_status:
-              description: The status of the booking.
-              type: string
-              enum: [temp, unconfirmed, confirmed, deleted, canceled]
-              example: 'temp'
+              $ref: './commons.yaml#/components/schemas/BookingStatus'
             return_code:
               description: The return code of the booking service..
               type: number
               example: 0
+    
+    BookingsGetByHashResponse:
+      type: object
+      properties:
+        bookings:
+          type: object
+          properties:
+            booking_id:
+              $ref: './commons.yaml#/components/schemas/BookingId'
+            booking_hash:
+              $ref: './commons.yaml#/components/schemas/BookingHash'
+            booking_status:
+              $ref: './commons.yaml#/components/schemas/BookingStatus'
+            shopping_cart_id:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+            shopping_cart_hash:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+            bookable:
+              type: object
+              properties:
+                tour_id:
+                  $ref: './commons.yaml#/components/schemas/TourId'
+                option_id:
+                  $ref: './commons.yaml#/components/schemas/OptionId'
+                datetime:
+                  $ref: './commons.yaml#/components/schemas/Datetime'
+                datetime_utc:
+                  $ref: './commons.yaml#/components/schemas/DatetimeUTC'
+                datetime_type:
+                  $ref: './commons.yaml#/components/schemas/DatetimeType'
+            opening_hours:
+              type: array
+              items:
+                type: object
+                properties:
+                  opening_time:
+                    $ref: './commons.yaml#/components/schemas/Datetime'
+                  closing_time:
+                    $ref: './commons.yaml#/components/schemas/Datetime'
+            price:
+              $ref: './commons.yaml#/components/schemas/Price'

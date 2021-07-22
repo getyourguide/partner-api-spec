@@ -35,6 +35,7 @@ paths:
       tags:
         - Bookings
       parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/bookingHash'
         - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
         - $ref: '../components/commons.yaml#/components/parameters/currency'
       responses:
@@ -43,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
+                $ref: '../components/bookings.yaml#/components/schemas/BookingsGetByHashResponse'
         400:
           description: Missing Parameters
         500:
