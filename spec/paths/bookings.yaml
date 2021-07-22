@@ -1,6 +1,7 @@
 openapi: 3.0.0
 info:
   title: Paths for bookings
+  version: 1.0.0
 paths:
   /bookings:
     post:

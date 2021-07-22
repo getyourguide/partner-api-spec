@@ -1,11 +1,10 @@
 openapi: 3.0.2
+paths: {}
 info:
   title: Common components
   version: 1.0.0
 components:
-
   parameters:
-
     version:
       name: version
       description: The version of the API of which you want to get the configuration.
@@ -27,7 +26,6 @@ components:
       in: path
       schema:
         type: string
-    
     cntLanguage:
       name: cnt_language
       description: ISO 639, Language of the text content.
@@ -56,15 +54,37 @@ components:
       in: query
       schema:
         type: string
-
+    categoryId:
+      name: category_id
+      description: The id of the category
+      required: true
+      in: path
+      schema:
+        type: integer
+    limit:
+      name: Limit
+      in: query
+      required: false
+      description: Number of items to retrieve.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 10
+    offset:
+      name: Offset
+      in: query
+      required: false
+      description: Offset the list of returned results by this amount.
+      schema:
+        type: integer
+        default: 0
   schemas:
     ShoppingCartId:
-      name: shopping_cart_id
       description: The ID of the shopping cart.
       type: number
       example: 32724458
     ShoppingCartHash:
-      name: shopping_cart_hash
       description: The hash of the shopping cart.
       type: string
       example: '0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K'
@@ -81,48 +101,44 @@ components:
       type: string
       enum: [temp, unconfirmed, confirmed, deleted, canceled, deleted_by_customer, deleted_by_daemon]
       example: 'temp'
+    CategoryId:
+      description: ID of the category.
+      type: integer
+      example: 33
     ReturnCode:
       description: The return code of the booking service.
       type: number
       example: 0
     TourId:
-      name: tour_id
       description: The ID of the tour.
       type: number
       example: 50872
     OptionId:
-      name: option_id
       description: The ID of the tour option.
       type: number
       example: 69232
     Datetime:
-      name: datetime
       type: string
       example: "2017-09-01T00:00:00"
     DatetimeUTC:
-      name: datetime_utc
       description: The datetime in UTC of when the activity dates place.
       type: string
       example: "2017-09-01T04:00:00Z"
     DatetimeType:
-      name: datetime_type
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
       type: string
       enum: [date, datetime]
       example: 'date'
     Price:
-      name: price
       description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
       type: number
       format: double
       example: 270
     CancellationPolicyText:
-      name: cancellation_policy_text
       description: Cancellation policy
       type: string
       example: Your activity is non-refundable,
     CurrentlyCancellableAtNoFee:
-      name: currently_cancellable_at_no_fee
       description: Indicates whether this booking is currently cancellable at no fee.
       type: boolean
       example: true
@@ -148,3 +164,27 @@ components:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
             example: false
+    Category:
+      description: Tour category
+      type: object
+      properties:
+        category_id:
+          type: integer
+          description: Category ID
+          example: 1
+        name:
+          type: string
+          description: name
+          example: Sightseeing Tours
+        number_of_tours:
+          type: integer
+          description: Number of tours
+          example: 20
+        parent_id:
+          type: integer
+          description: Parent Category ID
+          example: 2
+      required:
+        - category_id
+        - name
+        - number_of_tours
