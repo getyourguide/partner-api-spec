@@ -33,6 +33,21 @@ components:
       required: true
       schema:
         type: string
+        enum:
+          - da
+          - de
+          - en
+          - es
+          - fr
+          - it
+          - nl
+          - no
+          - pl
+          - pt
+          - fi
+          - sv
+          - tr
+          - zh
     currency:
       name: currency
       description: ISO 4217, The currency with which you would like to pay.
@@ -40,6 +55,20 @@ components:
       required: true
       schema:
         type: string
+        enum:
+          - USD
+          - EUR
+          - AUD
+          - GBP
+          - CAD
+          - DKK
+          - NZD
+          - NOK
+          - PLN
+          - SGD
+          - SEK
+          - CHF
+          - AED
     country:
       name: country
       description: ISO 3166-1, The country where to payment originates. Should be the same value as the country_code field of the Billing Address Object.
@@ -57,6 +86,13 @@ components:
     categoryId:
       name: category_id
       description: The id of the category
+      required: true
+      in: path
+      schema:
+        type: integer
+    optionId:
+      name: option_id
+      description: The ID of the option.
       required: true
       in: path
       schema:

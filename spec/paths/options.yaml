@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Paths for options
+  version: 1.0.0
+paths:
+  /options/{option_id}:
+    get:
+      operationId: OptionsGetById
+      summary: Get information about a category
+      tags:
+        - Options
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/optionId'
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/commons.yaml#/components/schemas/Category'
+                example:
+                  - category_id: 2
+                    parent_id: 1
+                    name: Lights tours
+                    number_of_tours: 66
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error

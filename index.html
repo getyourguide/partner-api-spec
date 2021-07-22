@@ -49,7 +49,22 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout"
+        layout: "StandaloneLayout",
+        tryItOutEnabled: true,
+        requestSnippets: {
+          generators: {
+            "curl_bash": {
+              title: "cURL (bash)",
+              syntax: "bash"
+            },
+            "curl_cmd": {
+              title: "cURL (CMD)",
+              syntax: "bash"
+            },
+          },
+          defaultExpanded: true,
+          languagesMask: null, // e.g. only show curl bash = ["curl_bash"]
+        },
       });
       // End Swagger UI call region
 

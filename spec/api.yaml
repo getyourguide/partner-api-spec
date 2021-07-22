@@ -1,4 +1,5 @@
 openapi: 3.0.0
+
 info:
   title: Partner Api
   description: This GetYourGuide Partner API provides access to GetYourGuide’s marketplace for tours and activities. It has a RESTful interface and uses the JSON media format. Access is secured via SSL and an API access token.
@@ -6,11 +7,23 @@ info:
   contact:
     name: Partner Tech
     url: https://partner.getyourguide.com.com/
+
 servers:
   - url: https://api.getyourguide.com/1
     description: Production
   - url: https://api.testing1.gygtest.com/1
     description: Testing
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-ACCESS-TOKEN
+
+security:
+  - ApiKeyAuth: []
+
 paths:
   # Configuration
   /configuration/{version}:
@@ -32,4 +45,6 @@ paths:
     $ref: 'paths/categories.yaml#/paths/~1categories'
   /categories/{category_id}:
     $ref: 'paths/categories.yaml#/paths/~1categories~1{category_id}'
-  
+  # Options
+  /options/{option_id}:
+    $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
