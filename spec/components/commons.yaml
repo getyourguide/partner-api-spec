@@ -1,0 +1,36 @@
+openapi: 3.0.2
+info:
+  title: Common components
+  version: 1.0.0
+paths: {}
+components:
+  
+  parameters:
+    version:
+      name: version
+      description: The version of the API of which you want to get the configuration.
+      in: path
+      required: true
+      schema:
+        type: string
+    cntLanguage:
+      name: cnt_language
+      description: ISO 639, Language of the text content.
+      in: query
+      required: true
+      schema:
+        type: string
+    currency:
+      name: currency
+      description: ISO 4217, The currency with which you would like to pay.
+      in: query
+      required: true
+      schema:
+        type: string
+    country:
+      name: country
+      description: ISO 3166-1, The country where to payment originates. Should be the same value as the country_code field of the Billing Address Object.
+      in: query
+      required: true
+      schema:
+        type: string

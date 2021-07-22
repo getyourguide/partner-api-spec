@@ -17,4 +17,16 @@ components:
         url:
           description: The base URL of the API. Endpoints to be appended at the end
           type: string
+    ConfigurationPayment:
+      type: object
+      properties:
+        api_version:
+          description: The active version of the API
+          type: string
+        status:
+          description: The current status of the API
+          type: string
+        url:
+          description: The base URL of the API. Endpoints to be appended at the end
+          type: string
           

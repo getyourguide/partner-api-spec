@@ -10,12 +10,9 @@ paths:
       tags:
         - Configuration
       parameters:
-        - name: version
-          description: The version of the API of which you want to get the configuration.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '../components/commons.yaml#/components/parameters/version'
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response
@@ -24,8 +21,27 @@ paths:
               schema:
                 $ref: '../components/configuration.yaml#/components/schemas/ConfigurationVersion'
         400:
-          description: Invalid partner hash format
-        404:
-          description: No parameters found for a partner
+          description: Missing Parameters
+        500:
+          description: Server error
+
+  /configuration/payment:
+    get:
+      operationId: configurationPayment
+      tags:
+        - Configuration
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons.yaml#/components/parameters/country'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationPayment'
+        400:
+          description: Missing Parameters
         500:
           description: Server error

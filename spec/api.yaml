@@ -14,3 +14,5 @@ servers:
 paths:
   /configuration/{version}:
     $ref: 'paths/configuration.yaml#/paths/~1configuration~1{version}'
+  /configuration/payment:
+    $ref: 'paths/configuration.yaml#/paths/~1configuration~1payment'
