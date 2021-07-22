@@ -47,19 +47,7 @@ components:
                             type: string
                             example: '5'
                     booking_parameters:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                            example: language
-                          value_1:
-                            type: string
-                            example: language_live
-                          value_2:
-                            type: string
-                            example: en
+                      $ref: './commons.yaml#/components/schemas/BookingParameters'
 
     BookingCreateResponse:
       type: object
@@ -122,3 +110,26 @@ components:
                     $ref: './commons.yaml#/components/schemas/Datetime'
             price:
               $ref: './commons.yaml#/components/schemas/Price'
+            valid_until:
+              $ref: './commons.yaml#/components/schemas/Datetime'
+            cancellation_policy_text:
+              $ref: './commons.yaml#/components/schemas/CancellationPolicyText'
+            currently_cancellable_at_no_fee:
+              $ref: './commons.yaml#/components/schemas/CurrentlyCancellableAtNoFee'
+            categories:
+              type: array
+              description: The price categories used for this booking.
+              items:
+                type: object
+                properties:
+                  category_id:
+                    type: number
+                    example: 302628
+                  name:
+                    type: string
+                    example: Adults
+                  number_of_participants: 
+                    type: number
+                    example: 1
+            booking_parameters:
+              $ref: './commons.yaml#/components/schemas/BookingParameters'
