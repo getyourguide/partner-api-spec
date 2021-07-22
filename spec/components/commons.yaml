@@ -72,8 +72,12 @@ components:
     BookingStatus:
       description: The status of the booking.
       type: string
-      enum: [temp, unconfirmed, confirmed, deleted, canceled]
+      enum: [temp, unconfirmed, confirmed, deleted, canceled, deleted_by_customer, deleted_by_daemon]
       example: 'temp'
+    ReturnCode:
+      description: The return code of the booking service.
+      type: number
+      example: 0
     TourId:
       name: tour_id
       description: The ID of the tour.

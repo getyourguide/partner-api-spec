@@ -66,9 +66,7 @@ components:
             booking_status:
               $ref: './commons.yaml#/components/schemas/BookingStatus'
             return_code:
-              description: The return code of the booking service..
-              type: number
-              example: 0
+              $ref: './commons.yaml#/components/schemas/ReturnCode'
     
     BookingsGetByHashResponse:
       type: object
@@ -133,3 +131,22 @@ components:
                     example: 1
             booking_parameters:
               $ref: './commons.yaml#/components/schemas/BookingParameters'
+
+    BookingDeleteResponse:
+      type: object
+      properties:
+        bookings:
+          type: object
+          properties:
+            shopping_cart_id:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+            shopping_cart_hash:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+            booking_id:
+              $ref: './commons.yaml#/components/schemas/BookingId'
+            booking_hash:
+              $ref: './commons.yaml#/components/schemas/BookingHash'
+            booking_status:
+              $ref: './commons.yaml#/components/schemas/BookingStatus'
+            return_code:
+              $ref: './commons.yaml#/components/schemas/ReturnCode'

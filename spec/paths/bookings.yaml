@@ -51,19 +51,19 @@ paths:
           description: Server error
     delete:
       operationId: bookingsDeleteByHash
+      summary: Delete (Cancel) a booking.
       tags:
         - Bookings
       parameters:
         - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
         - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/country'
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
+                $ref: '../components/bookings.yaml#/components/schemas/BookingDeleteResponse'
         400:
           description: Missing Parameters
         500:
