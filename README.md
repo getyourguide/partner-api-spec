@@ -7,7 +7,7 @@ It has a RESTful interface and uses the JSON media format. Access is secured via
 The base URL for accessing version 1 of the API is: https://api.getyourguide.com/1/. Configuration information, such as compatibility with the current client, can be accessed at: https://api.getyourguide.com/configuration/1.
 
 
-### Two headers are required to be passed with each request:
+#### Two headers are required to be passed with each request:
 
 | Headers        | Description |
 | -------------- |:-----------:|
@@ -16,7 +16,7 @@ The base URL for accessing version 1 of the API is: https://api.getyourguide.com
 
 
 
-### Because the API is stateless, each API GET request should include the following two parameters:
+#### Because the API is stateless, each API GET request should include the following two parameters:
 
 | Headers        | Description |
 | -------------- |:-----------:|
@@ -27,7 +27,9 @@ The base URL for accessing version 1 of the API is: https://api.getyourguide.com
 
 `curl -H "Accept: application/json" -H "X-ACCESS-TOKEN: [YOUR TOKEN]" -X GET "https://api.getyourguide.com/1/tours/62484?cnt_language=en&currency=USD"`
 
-## Openapi generater
+## Openapi generater / Specs
+Preview: https://code.getyourguide.com/partner-api-spec/
+
 Generated clients ...
 
 ## Test System

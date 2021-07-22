@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Paths for carts
+paths:
+  /carts:
+    post:
+      operationId: CartsConfirm
+      summary: Confirm a shopping cart.
+      tags:
+        - Carts
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/externalReferenceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/carts.yaml#/components/schemas/CartsConfirmRequest'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '../components/carts.yaml#/components/schemas/CartsConfirmResponse'
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+  
+  /carts/{shopping_cart_hash}:
+    get:
+      operationId: CartsGetByHash
+      summary: Get information about a shopping cart.
+      tags:
+        - Carts
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/shoppingCartHash'
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/carts.yaml#/components/schemas/CartsConfirmRequest'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '../components/carts.yaml#/components/schemas/CartsConfirmResponse'
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error

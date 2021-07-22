@@ -20,6 +20,13 @@ components:
       in: path
       schema:
         type: string
+    shoppingCartHash:
+      name: shopping_cart_hash
+      description: The hash of the shopping cart.
+      required: true
+      in: path
+      schema:
+        type: string
     
     cntLanguage:
       name: cnt_language

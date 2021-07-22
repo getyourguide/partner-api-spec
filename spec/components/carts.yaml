@@ -1,0 +1,70 @@
+openapi: 3.0.2
+info:
+  title: bookings
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    CartsConfirmRequest:
+      type: object
+      properties:
+        base_data:
+          type: object
+          properties:
+            cnt_language:
+              description: ISO 639, Language of the text content.
+              type: string
+              example: "en"
+            currency:
+              description: ISO 4217, The currency with which you would like to pay.
+              type: string
+              example: "EUR"
+        data:
+          type: object
+          properties:
+            booking:
+              type: object
+              properties:
+                bookable:
+                  type: object
+                  properties:
+                    option_id:
+                      $ref: './commons.yaml#/components/schemas/OptionId'
+                    datetime:
+                      $ref: './commons.yaml#/components/schemas/Datetime'
+                    price:
+                      type: string
+                      example: '170.00'
+                    categories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          category_id:
+                            type: string
+                            example: '2077534'
+                          number_of_participants:
+                            type: string
+                            example: '5'
+                    booking_parameters:
+                      $ref: './commons.yaml#/components/schemas/BookingParameters'
+
+    CartsConfirmResponse:
+      type: object
+      properties:
+        bookings:
+          type: object
+          properties:
+            shopping_cart_id:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+            shopping_cart_hash:
+              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+            booking_id:
+              $ref: './commons.yaml#/components/schemas/BookingId'
+            booking_hash:
+              $ref: './commons.yaml#/components/schemas/BookingHash'
+            booking_status:
+              $ref: './commons.yaml#/components/schemas/BookingStatus'
+            return_code:
+              $ref: './commons.yaml#/components/schemas/ReturnCode'
+    
