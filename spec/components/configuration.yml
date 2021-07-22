@@ -1,0 +1,20 @@
+openapi: 3.0.2
+info:
+  title: Configuration
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    ConfigurationVersion:
+      type: object
+      properties:
+        api_version:
+          description: The active version of the API
+          type: string
+        status:
+          description: The current status of the API
+          type: string
+        url:
+          description: The base URL of the API. Endpoints to be appended at the end
+          type: string
+          

@@ -1,0 +1,20 @@
+openapi: 3.0.0
+
+info:
+  title: Partner Api
+  description: GetYourGuide Partner Api
+  version: 1.0.0
+  contact:
+    name: Partner Tech
+    email: marketplace.search@getyourguide.com
+    url: https://partner.getyourguide.com.com/
+
+servers:
+  - url: https://api.getyourguide.com/
+    description: Production
+  - url: https://api.testing1.gygtest.com/
+    description: Testing
+
+paths:
+  /configuration/{version}:
+    $ref: 'paths/confuguration.yml#/paths/~configuration~1{version}'

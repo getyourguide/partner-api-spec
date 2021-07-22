@@ -1,0 +1,33 @@
+
+openapi: 3.0.2
+info:
+  title: Paths for configuration
+  version: 1.0.0
+paths:
+  /configuration/{version}:
+    get:
+      operationId: configurationVersion
+      summary: Get the configuration for an API version
+      description: This endpoint is not based on the base url as it is version independent.
+      tags:
+        - Configuration
+      parameters:
+        - name: version
+          description: The version of the API of which you want to get the configuration.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: $ref: '../components/configration.yml#/components/schemas/ConfigurationVersion'
+        400:
+          description: Invalid partner hash format
+        404:
+          description: No parameters found for a partner
+        500:
+          description: Server error
