@@ -7,12 +7,18 @@ info:
     name: Partner Tech
     url: https://partner.getyourguide.com.com/
 servers:
-  - url: https://api.getyourguide.com/
+  - url: https://api.getyourguide.com/1
     description: Production
-  - url: https://api.testing1.gygtest.com/
+  - url: https://api.testing1.gygtest.com/1
     description: Testing
 paths:
+  # Configuration
   /configuration/{version}:
     $ref: 'paths/configuration.yaml#/paths/~1configuration~1{version}'
   /configuration/payment:
     $ref: 'paths/configuration.yaml#/paths/~1configuration~1payment'
+  # Bookings
+  /bookings:
+    $ref: 'paths/bookings.yaml#/paths/~1bookings'
+  /bookings/{booking_hash}:
+    $ref: 'paths/bookings.yaml#/paths/~1bookings~1{booking_hash}'

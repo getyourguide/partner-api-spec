@@ -19,7 +19,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationVersion'
+                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationVersionResponse'
         400:
           description: Missing Parameters
         500:
@@ -40,7 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationPayment'
+                $ref: '../components/configuration.yaml#/components/schemas/ConfigurationPaymentResponse'
         400:
           description: Missing Parameters
         500:

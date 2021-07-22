@@ -1,0 +1,96 @@
+openapi: 3.0.2
+info:
+  title: bookings
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    BookingCreateRequest:
+      type: object
+      properties:
+        base_data:
+          type: object
+          properties:
+            cnt_language:
+              description: ISO 639, Language of the text content.
+              type: string
+              example: "en"
+            currency:
+              description: ISO 4217, The currency with which you would like to pay.
+              type: string
+              example: "EUR"
+        data:
+          type: object
+          properties:
+            booking:
+              type: object
+              properties:
+                bookable:
+                  type: object
+                  properties:
+                    option_id:
+                      type: number
+                      example: 29879
+                    datetime:
+                      type: string
+                      example: '2020-12-04T11:45:00'
+                    price:
+                      type: string
+                      example: '170.00'
+                    categories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          category_id:
+                            type: string
+                            example: '2077534'
+                          number_of_participants:
+                            type: string
+                            example: '5'
+                    booking_parameters:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: language
+                          value_1:
+                            type: string
+                            example: language_live
+                          value_2:
+                            type: string
+                            example: en
+
+    BookingCreateResponse:
+      type: object
+      properties:
+        bookings:
+          type: object
+          properties:
+            shopping_cart_id:
+              description: The ID of the shopping cart.
+              type: number
+              example: 32724458
+            shopping_cart_hash:
+              description: The hash of the shopping cart.
+              type: string
+              example: '0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K'
+            booking_id:
+              description: The id of the booking.
+              type: number
+              example: 13822240
+            booking_hash:
+              description: The hash of the booking. This identifies the booking.
+              type: string
+              example: 'WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M'
+            booking_status:
+              description: The status of the booking.
+              type: string
+              enum: [temp, unconfirmed, confirmed, deleted, canceled]
+              example: 'temp'
+            return_code:
+              description: The return code of the booking service..
+              type: number
+              example: 0
