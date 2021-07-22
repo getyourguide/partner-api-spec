@@ -18,15 +18,25 @@ components:
           description: The base URL of the API. Endpoints to be appended at the end
           type: string
     ConfigurationPayment:
-      type: object
-      properties:
-        api_version:
-          description: The active version of the API
-          type: string
-        status:
-          description: The current status of the API
-          type: string
-        url:
-          description: The base URL of the API. Endpoints to be appended at the end
-          type: string
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            description: The name of the payment method.
+            type: string
+          public_key:
+            description: Required parameter by the encryption library to encrypt the users credit card information.
+            type: string
+          brands:
+            description: List of brands available.
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: string
+                name:
+                  description: The name of the brand.
+                  type: string
           
