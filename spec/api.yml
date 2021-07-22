@@ -6,7 +6,6 @@ info:
   version: 1.0.0
   contact:
     name: Partner Tech
-    email: marketplace.search@getyourguide.com
     url: https://partner.getyourguide.com.com/
 
 servers:
