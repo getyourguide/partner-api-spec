@@ -1,9 +1,9 @@
 openapi: 3.0.2
+paths: {}
 info:
   title: Common components
   version: 1.0.0
 components:
-
   parameters:
   # IN PATH 
     version:
@@ -36,6 +36,21 @@ components:
       required: true
       schema:
         type: string
+        enum:
+          - da
+          - de
+          - en
+          - es
+          - fr
+          - it
+          - nl
+          - no
+          - pl
+          - pt
+          - fi
+          - sv
+          - tr
+          - zh
     currency:
       name: currency
       description: ISO 4217, The currency with which you would like to pay.
@@ -43,6 +58,20 @@ components:
       required: true
       schema:
         type: string
+        enum:
+          - USD
+          - EUR
+          - AUD
+          - GBP
+          - CAD
+          - DKK
+          - NZD
+          - NOK
+          - PLN
+          - SGD
+          - SEK
+          - CHF
+          - AED
     country:
       name: country
       description: ISO 3166-1, The country where to payment originates. Should be the same value as the country_code field of the Billing Address Object.
@@ -73,27 +102,69 @@ components:
         type: string
     coordinates:
       name: coordinates
-      description: Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km).
+      description: Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km). 'i.e. &coordinates[]=52.5200&coordinates[]=13.4050&coordinates[]=10'
       required: false
       in: query
       schema:
         type: array
+      style: matrix
+      explode: true
+      examples:
+        multipleIds:
+          summary: Latitude, longitude, radius
+          value: [52.5200, 13.4050, 10]
     date:
       name: date
-      description: Check for tours that are offered on date or between dates. The date and time in the format is `Y-m-d T H:i:s` The first date passed is the beginning of the time range, the second is the ending of the time range. i.e. `&date[]=2017-10-01T00:00:00&date[]=2017-10-01T23:59:59` 
+      description: Check for tours that are offered on date or between dates. The date and time in the format is. 'Y-m-d T H:i:s' The first date passed is the beginning of the time range, the second is the ending of the time range. 'i.e. &date[]=2017-10-01T00:00:00&date[]=2017-10-01T23:59:59'
       required: false
       in: query
       schema:
         type: array
+      style: matrix
+      explode: true
+      examples:
+        multipleIds:
+          summary: Begin, End
+          value: ['2021-05-01T00:00:00', '2021-05-01T23:59:59']
+    categoryId:
+      name: category_id
+      description: The id of the category
+      required: true
+      in: path
+      schema:
+        type: integer
+    optionId:
+      name: option_id
+      description: The ID of the option.
+      required: true
+      in: path
+      schema:
+        type: integer
+    limit:
+      name: Limit
+      in: query
+      required: false
+      description: Number of items to retrieve.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 10
+    offset:
+      name: Offset
+      in: query
+      required: false
+      description: Offset the list of returned results by this amount.
+      schema:
+        type: integer
+        default: 0
 
   schemas:
     ShoppingCartId:
-      name: shopping_cart_id
       description: The ID of the shopping cart.
       type: number
       example: 32724458
     ShoppingCartHash:
-      name: shopping_cart_hash
       description: The hash of the shopping cart.
       type: string
       example: '0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K'
@@ -110,48 +181,44 @@ components:
       type: string
       enum: [temp, unconfirmed, confirmed, deleted, canceled, deleted_by_customer, deleted_by_daemon]
       example: 'temp'
+    CategoryId:
+      description: ID of the category.
+      type: integer
+      example: 33
     ReturnCode:
       description: The return code of the booking service.
       type: number
       example: 0
     TourId:
-      name: tour_id
       description: The ID of the tour.
       type: number
       example: 50872
     OptionId:
-      name: option_id
       description: The ID of the tour option.
       type: number
       example: 69232
     Datetime:
-      name: datetime
       type: string
       example: "2017-09-01T00:00:00"
     DatetimeUTC:
-      name: datetime_utc
       description: The datetime in UTC of when the activity dates place.
       type: string
       example: "2017-09-01T04:00:00Z"
     DatetimeType:
-      name: datetime_type
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
       type: string
       enum: [date, datetime]
       example: 'date'
     Price:
-      name: price
       description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
       type: number
       format: double
       example: 270
     CancellationPolicyText:
-      name: cancellation_policy_text
       description: Cancellation policy
       type: string
       example: Your activity is non-refundable,
     CurrentlyCancellableAtNoFee:
-      name: currently_cancellable_at_no_fee
       description: Indicates whether this booking is currently cancellable at no fee.
       type: boolean
       example: true
@@ -177,3 +244,161 @@ components:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
             example: false
+    Category:
+      description: Tour category
+      type: object
+      properties:
+        category_id:
+          type: integer
+          description: Category ID
+          example: 1
+        name:
+          type: string
+          description: name
+          example: Sightseeing Tours
+        number_of_tours:
+          type: integer
+          description: Number of tours
+          example: 20
+        parent_id:
+          type: integer
+          description: Parent Category ID
+          example: 2
+      required:
+        - category_id
+        - name
+        - number_of_tours
+    TourOption:
+      description:  Tour option
+      type: object
+      properties:
+        option_id:
+          type: integer
+          description: Tour option id (option id).
+        tour_id:
+          type: integer
+          description: Tour id that option belongs to.
+        title:
+          type: string
+          description: Title of the option.
+        description:
+          type: string
+          description: Description of the option.
+        pick_up:
+          type: string
+          description: Information about the hotel pickup possibilities.
+        meeting_point:
+          type: string
+          description: Information about where to meet.
+        drop_off:
+          type: string
+          description: Information about the drop-off (where the tour ends).
+        duration:
+          type: number
+          description: Duration of the tour (to be used in combination with duration unit.
+        duration_unit:
+          type: string
+          description: Unit of the duration field in day, hour or minute.
+        # TODO: Appears twice in the docs :=/
+        # cond_language:
+        #   type: string
+        #   description: Conduction language.
+        # booking_parameter:
+        #   type: array
+        #   description: Information required for the booking API.
+        # services:
+        #   type: array
+        #   description: Tour option services.
+        # coordinates:
+        #   type: number
+        #   description: Coordinates.
+        coordinate_type:
+          type: string
+          description: Information about the type of the coordinates. It defines if the information is exactly enough for the customer to walk / get there. = ['exact', 'approximate'].
+        # price:
+        #   type: array
+        #   description: Tour from price.
+        free_sale:
+          type: boolean
+          description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+        cond_language:
+          type: object
+          properties:
+            language_audio:
+              type: array
+              description: List of languages codes (ISO 639-1) that are available as audio guide.
+            language_booklet:
+              type: array
+              description: List of languages codes (ISO 639-1) that are available as booklet.
+            language_live:
+              type: array
+              description: List of languages codes (ISO 639-1) that are spoken by the guide.
+        booking_parameter:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the property = ['language', 'hotel', 'comment', 'supplier_requested_question'].
+            value_1:
+              type: string
+              description: First / Primary value of the property.
+            value_2:
+              type: string
+              description: Some property require a second value.
+            description:
+              type: string
+              description: Description of the property.
+            mandatory:
+              type: boolean
+              description: Flag if this parameter / property is mandatory for booking.
+        services:
+          type: object
+          properties:
+            prt:
+              type: boolean
+              description: If true, the option is closed after on booking. The customer will be on the tour without any other guests expect those included in the same booking.
+            stl:
+              type: boolean
+              description: If true, the customer does not need to wait in line.
+            wlc:
+              type: boolean
+              description: If true, there is wheel chair access.
+        coordinates:
+          type: object
+          properties:
+            lat:
+              type: number
+              description: Latitude.
+            long:
+              type: number
+              description: Longitude.
+        price:
+          type: object
+          properties:
+            values:
+              type: array
+              description: Value of the price.
+            description:
+              type: string
+              description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
+        values:
+          type: object
+          properties:
+            amount:
+              type: number
+              description: Price for the adult fare of the cheapest option in the requested currency.
+            special:
+              type: array
+              description: Special offer.
+        special:
+          type: object
+          properties:
+            original_price:
+              type: number
+              description: Original price (without the special offer).
+            savings:
+              type: number
+              description: The discount in percent.
+            apps_only:
+              type: boolean
+              description: Flag if the special offer is only available for the GYG internal mobile apps.

@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Paths for options
+  version: 1.0.0
+paths:
+  /options/{option_id}:
+    get:
+      operationId: OptionsGetById
+      description: Find a Tour Option by ID. The result will be an array of tour options. But the array will only contain one single tour option.
+      tags:
+        - Options
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/optionId'
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tour_options:
+                    type: array
+                    items:
+                      $ref: '../components/commons.yaml#/components/schemas/TourOption'
+                    example:
+                      - option_id: 69232
+                        tour_id: 50872
+                        title: "2-Day Ticket: One Park Per Day"
+                        description: "A 2-day Base ticket allows entry to 1 of the Walt Disney World Theme parks per day. This ticket is not valid for citizens of the United Kingdom and Ireland. If you purchase the wrong package, you will not be eligible for a refund"
+                        meeting_point: "Exchange your Will Call Certificate at Will Call at any of the 4 Walt Disney World Theme Park box offices: Magic Kingdom: 3111 World Drive, Lake Buena Vista, Florida 32830 Epcot: 1200 Epcot Resort Boulevard, Lake Buena Vista, Florida 32830 Hollywood Studio: 351 South Studio Drive, Lake Buena Vista, Florida 32830 Animal Kingdom: Osceola Parkway, Lake Buena Vista, Florida 32830"
+                        duration: 2
+                        duration_unit: "day"
+                        cond_language: XXX,
+                        booking_parameter:
+                          - name: supplier_requested_question
+                            description: "Please indicate yes in this field to acknowlege that you are not a citizen of the United Kingdom and Ireland. All purchases are non-refundable"
+                            mandatory: true
+                        services:
+                          prt: false
+                          stl: false
+                          wlc: false
+                        coordinate_type: approximate
+                        coordinates:
+                          lat: 28.4164563
+                          long: -81.5812004
+                        price:
+                          values:
+                            amount: 236
+                          description: individual
+                        free_sale: false
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
