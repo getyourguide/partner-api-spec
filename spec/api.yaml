@@ -27,3 +27,6 @@ paths:
     $ref: 'paths/carts.yaml#/paths/~1carts'
   /carts/{shopping_cart_hash}:
     $ref: 'paths/carts.yaml#/paths/~1carts~1{shopping_cart_hash}'
+  # Tours
+  /tours:
+    $ref: 'paths/tours.yaml#/paths/~1tours'

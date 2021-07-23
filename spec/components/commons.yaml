@@ -5,7 +5,7 @@ info:
 components:
 
   parameters:
-
+  # IN PATH 
     version:
       name: version
       description: The version of the API of which you want to get the configuration.
@@ -27,7 +27,8 @@ components:
       in: path
       schema:
         type: string
-    
+  
+  # IN QUERY
     cntLanguage:
       name: cnt_language
       description: ISO 639, Language of the text content.
@@ -56,6 +57,34 @@ components:
       in: query
       schema:
         type: string
+    preformatted:
+      name: preformatted
+      description: The amount of content to deliver with the search results.
+      required: false
+      in: query
+      schema:
+        type: string
+    q:
+      name: q
+      description: Query string, can be location name or IATA code.
+      required: false
+      in: query
+      schema:
+        type: string
+    coordinates:
+      name: coordinates
+      description: Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km).
+      required: false
+      in: query
+      schema:
+        type: array
+    date:
+      name: date
+      description: Check for tours that are offered on date or between dates. The date and time in the format is `Y-m-d T H:i:s` The first date passed is the beginning of the time range, the second is the ending of the time range. i.e. `&date[]=2017-10-01T00:00:00&date[]=2017-10-01T23:59:59` 
+      required: false
+      in: query
+      schema:
+        type: array
 
   schemas:
     ShoppingCartId:
