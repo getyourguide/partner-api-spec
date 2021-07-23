@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Paths for bulk
+  version: 1.0.0
+  description: In cases where the API can't be queried in real-time, GetYourGuide provides tour data for download in bulk. GetYourGuide saves all tour and availability data into files on a daily basis. These files are requested from the Partner API and are saved in the same JSON format with one separate file per tour and per availability. New files generally become available by 07:00 CET each day.
+paths:
+  /bulk_tours:
+    get:
+      operationId: BulkTours
+      tags:
+        - Bulk
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+      responses:
+        200:
+          description: Successful response
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+  /bulk_availabilities:
+    get:
+      operationId: BulkAvailabilities
+      tags:
+        - Bulk
+      responses:
+        200:
+          description: Successful response
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error

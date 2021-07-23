@@ -4,7 +4,9 @@ info:
   title: Common components
   version: 1.0.0
 components:
+  
   parameters:
+  # IN PATH 
     version:
       name: version
       description: The version of the API of which you want to get the configuration.
@@ -26,6 +28,8 @@ components:
       in: path
       schema:
         type: string
+  
+  # IN QUERY
     cntLanguage:
       name: cnt_language
       description: ISO 639, Language of the text content.
@@ -83,6 +87,153 @@ components:
       in: query
       schema:
         type: string
+    preformatted:
+      name: preformatted
+      description: The amount of content to deliver with the search results.
+      required: false
+      in: query
+      schema:
+        type: string
+    
+    # SEARCH PARAMETERS
+    q:
+      name: q
+      description: Query string, can be location name or IATA code.
+      required: false
+      in: query
+      schema:
+        type: string
+    coordinates:
+      name: coordinates
+      description: Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km). 'i.e. &coordinates[]=52.5200&coordinates[]=13.4050&coordinates[]=10'
+      required: false
+      in: query
+      schema:
+        type: array
+      style: matrix
+      explode: true
+      examples:
+        multipleIds:
+          summary: Latitude, longitude, radius
+          value: [52.5200, 13.4050, 10]
+    date:
+      name: date
+      description: Check for tours that are offered on date or between dates. The date and time in the format is. 'Y-m-d T H:i:s' The first date passed is the beginning of the time range, the second is the ending of the time range. 'i.e. &date[]=2017-10-01T00:00:00&date[]=2017-10-01T23:59:59'
+      required: false
+      in: query
+      schema:
+        type: array
+      style: matrix
+      explode: true
+      examples:
+        multipleIds:
+          summary: Begin, End
+          value: ['2021-05-01T00:00:00', '2021-05-01T23:59:59']
+    condLanguage:
+      name: cond_language
+      description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
+      required: false
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a single language
+          value: [en]
+        multipleIds:
+          summary: Example of a multiple languages
+          value: [de, en]
+    price:
+      name: price
+      description: Filter for price in the query. A single value identicates the maximum price. Otherwise, it's interpreted as [min, max].
+      required: false
+      in: query
+      schema:
+        type: array
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a max price
+          value: [200]
+        multipleIds:
+          summary: Example of a min / max
+          value: [100, 200]
+    categories:
+      name: categories
+      description: Filter for categories. Comma separated list of integer.
+      required: false
+      in: query
+      schema:
+        type: array
+        items:
+          type: integer
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a single category
+          value: [55]
+        multipleIds:
+          summary: Example of multiple categories
+          value: [55, 56]
+    rating:
+      name: rating
+      description: Filter for Tours with the given ratings.
+      required: false
+      in: query
+      schema:
+        type: array
+        items:
+          type: integer
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a single rating
+          value: [4]
+        multipleIds:
+          summary: Example of multiple ratings
+          value: [5, 4]
+    duration:
+      name: duration
+      description: Filter for min and/or max duration in minutes. Single Value max. duration. Otherwise [min, max].
+      required: false
+      in: query
+      schema:
+        type: array
+        items:
+          type: integer
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a max duration
+          value: [3]
+        multipleIds:
+          summary: Example of a min / max
+          value: [1, 3]
+    flags:
+      name: flags
+      description: Various flags about properties of the tour (multiple selection allowed).
+      required: false
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [private, wheelchair, skip-line, pick-up, special, free-sale-only, mobile-voucher-only]
+      style: matrix
+      explode: true
+      examples:
+        oneId:
+          summary: Example of a private tour
+          value: [private]
+
     categoryId:
       name: category_id
       description: The id of the category
@@ -97,6 +248,24 @@ components:
       in: path
       schema:
         type: integer
+  
+    # SORTING AND PAGINATION
+    sortfield:
+      name: sortfield
+      in: query
+      required: false
+      description: Defines the sort field.
+      schema:
+        type: string
+        enum: [popularity, price, rating, duration]
+    sortdirection:
+      name: sortdirection
+      in: query
+      required: false
+      description: Defines the sort order.
+      schema:
+        type: string
+        enum: [DESC, ASC]
     limit:
       name: Limit
       in: query
@@ -115,6 +284,9 @@ components:
       schema:
         type: integer
         default: 0
+
+
+ # TODO MOVE SCHEMAS TO SEPERATE FILE
   schemas:
     ShoppingCartId:
       description: The ID of the shopping cart.

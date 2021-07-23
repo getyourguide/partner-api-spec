@@ -50,3 +50,11 @@ paths:
     $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
   /options/{option_id}/pricings:
     $ref: 'paths/options.yaml#/paths/~1options~1{option_id}~1pricings'
+  # Tours
+  /tours:
+    $ref: 'paths/tours.yaml#/paths/~1tours'
+  # Bulk Downloads
+  /bulk_tours:
+    $ref: 'paths/bulk.yaml#/paths/~1bulk_tours'
+  /bulk_availabilities:
+    $ref: 'paths/bulk.yaml#/paths/~1bulk_availabilities'
