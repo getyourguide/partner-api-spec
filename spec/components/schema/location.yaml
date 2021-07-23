@@ -1,0 +1,44 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Location Schema
+  version: 1.0.0
+components:
+  schemas:
+    
+    Location:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: Location ID
+          example: 3850
+        type:
+          type: string
+          enum: [AREA, CITY, POI]
+          description: Location type
+          example: POI
+        name:
+          type: string
+          description: Name of the location.
+          example: Epcot Theme Park
+        english_name:
+          type: string
+          description: English fallback
+          example: Epcot Theme Park
+        city:
+          type: string
+          description: The city name if location type is POI or CITY.
+          example: Orlando
+        country:
+          type: string
+          description: ISO code of the country of the location (ISO 3166-1).
+          example: US
+        coordinates:
+          $ref: './coordinates.yaml#/components/schemas/Coordinates'
+        parent_id:
+          type: number
+          description: The location if of the parent location. For POI this could be a CITY or an AREA, for CITY this could be an AREA.
+          example: 191
+        viewport:
+          $ref: './viewport.yaml#/components/schemas/Viewport'

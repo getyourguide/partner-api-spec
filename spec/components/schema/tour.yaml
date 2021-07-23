@@ -83,3 +83,11 @@ components:
           $ref: './coordinates.yaml#/components/schemas/Coordinates'
         price:
           $ref: './price.yaml#/components/schemas/Price'
+        categories:
+          type: array
+          items:
+            $ref: './category.yaml#/components/schemas/Category'
+        locations:
+          type: array
+          items:
+            $ref: './location.yaml#/components/schemas/Location'
