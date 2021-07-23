@@ -358,3 +358,60 @@ components:
             apps_only:
               type: boolean
               description: Flag if the special offer is only available for the GYG internal mobile apps.
+    TourOptionPricing:
+      description: Pricings for a tour option
+      type: object
+      properties:
+        pricing_id:
+          type: integer
+          description: Pricing ID
+        total_minimum_participants:
+          type: integer
+          description: Minimal participants needed for every booking.
+        total_maximum_participants:
+          type: integer
+          description: Maximum participants allowed to be booked.
+        categories:
+          type: object
+          description: The categories of which this pricing consists of
+          properties:
+            id:
+              type: integer
+              description: The Pricing category ID
+            name:
+              type: string
+              description: Translated name of the category. Example values are 'Adult', 'Child' or 'Infant'
+            min_age:
+              type: integer
+              description: The minimum age of a participant such that this price applies
+            max_age:
+              type: integer
+              description: The maximum age of a participant such that this price applies
+            stand_alone:
+              type: boolean
+              description: Can this category be booked autonomously? For example an 'Infant' category can most of the times not be booked without another person joining the tour. So the 'Infant' category would have set standAlone to false.
+            addon:
+              type: boolean
+              description: Is this category an addon? An addon is something that can be booked additionally to the tour such as Lunch on a city tour an additional transfer to the meeting point or a child seat for an airport transfer.
+            scale:
+              type: object
+              description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+              properties:
+                min_participants:
+                  type: integer
+                  description: The minimal number of participants needed to apply this scale.
+                max_participants:
+                  type: integer
+                  description: The maximum number of participants needed to apply this scale.
+                retail_price:
+                  type: number
+                  description: The price for which the tour option is sold to the customer.
+                net_price:
+                  type: number
+                  description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                type:
+                  type: string
+                  description: The type of the scale
+                  enum:
+                   - pax
+                   - flat

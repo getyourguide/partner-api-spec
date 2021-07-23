@@ -48,3 +48,5 @@ paths:
   # Options
   /options/{option_id}:
     $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
+  /options/{option_id}/pricings:
+    $ref: 'paths/options.yaml#/paths/~1options~1{option_id}~1pricings'
