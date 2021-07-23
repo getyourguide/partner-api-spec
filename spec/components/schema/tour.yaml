@@ -80,14 +80,57 @@ components:
           items:
             $ref: './picture.yaml#/components/schemas/Picture'
         coordinates:
+          description: Coordinates of the primary location (first entry in the locations array) attributed to the tour. This is usually an area/city the tour is located in and not the actual meeting point. The meeting point for each tour option can be retrieved from /tours/[tour_id]/options.
           $ref: './coordinates.yaml#/components/schemas/Coordinates'
         price:
+          description: Starting price. Should be read as e.g. "from XX.YY USD".
           $ref: './price.yaml#/components/schemas/Price'
         categories:
+          description: List of categories ordered according to importance.
           type: array
           items:
             $ref: './category.yaml#/components/schemas/Category'
         locations:
+          description: List of locations ordered according to importance.
           type: array
           items:
             $ref: './location.yaml#/components/schemas/Location'
+        url: 
+          type: string
+          description: URL of the tour on the GetYourGuide website.
+          example:  https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
+        translations: 
+          type: string
+          description: Available translations of the content of this tour. List of ISO language codes (ISO 639-1).
+          enum:
+            - da
+            - de
+            - en
+            - es
+            - fr
+            - it
+            - nl
+            - no
+            - pl
+            - pt
+            - fi
+            - sv
+            - tr
+            - zh
+        free_sale: 
+          type: string
+          description: Indicates whether there exists at least one tour option of which the booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+        mobile_voucher: 
+          type: boolean
+          description: If the tour accepts mobile voucher.
+          example: true
+        supplier_id: 
+          type: number
+          description: The supplier is
+          example: 24066
+        durations:
+          type: array
+          items:
+            $ref: './duration.yaml#/components/schemas/Duration'
+        cancellation_policy_text: 
+          $ref: '../commons.yaml#/components/schemas/CancellationPolicyText'
