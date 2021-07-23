@@ -75,11 +75,11 @@ components:
           type: string
           description: What's not included in the tour.
           example:  Parking
-        pictures:
-          type: array
-          items:
-            $ref: './picture.yaml#/components/schemas/Picture'
-        coordinates:
-          $ref: './coordinates.yaml#/components/schemas/Coordinates'
-        price:
-          $ref: './price.yaml#/components/schemas/Price'
+        # pictures:
+        #   type: array
+        #   items:
+        #     $ref: './picture.yaml#/components/schemas/Picture'
+        # coordinates:
+        #   $ref: './coordinates.yaml#/components/schemas/Coordinates'
+        # price:
+        #   $ref: './price.yaml#/components/schemas/Price'
