@@ -1,0 +1,22 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Price Schema
+  version: 1.0.0
+components:
+  schemas:
+    
+    Price:
+      type: object
+      properties:
+        values:
+          type: object
+          description: Value of the price.
+          properties:
+            amount:
+              type: number
+              example: 213.36
+        description:
+          type: string
+          description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
+          example: individual

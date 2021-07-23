@@ -1,0 +1,85 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Tour Schema
+  version: 1.0.0
+components:
+  schemas:
+    
+    Tour:
+      description:  Tour option
+      type: object
+      properties:
+        tour_id:
+          type: integer
+          description: Tour ID.
+          example: 66317
+        tour_code:
+          type: string
+          description: Tour reference code.
+          example: 2-Day
+        cond_language:
+          type: array
+          description: Available conduction languages. List of ISO language codes (ISO 639-1).
+          example: [en]
+        title:
+          type: string
+          description: Title of the option.
+          example: 2-Park 2-Day Universal Orlando™ Theme Park Tickets
+        abstract:
+          type: string
+          description: Short description of the tour.
+          example: Universal Orlando Resort is an entire universe of action and thrills with two jaw-dropping theme parks, exceptional shopping and incredible entere unforgettable experiences together. You can have the ultimate adventure, enjoy fun with your kids, rejuvenatainment
+        description:
+          type: string
+          description: Long description of the tour.
+          example: At both Universal Studios Florida and Universal's Islands of Adventure ... The ticket must be used by the first use date printed on the ticket. The ticket will expire in full on the expiration date printed on ticket. Unused days shall be forfeited. These tickets are not valid for residents of the UK and Ireland
+        is_auto_translation:
+          type: boolean
+          description: Flag if the title, abstract, description, … are auto-translated.
+          example: false
+        is_english_fallback:
+          type: boolean
+          description: Flag if the title, abstract, description, … are English since we don't have the translation yet.
+          example: false
+        additional_information:
+          type: string
+          description: Additional information for the customer.
+          example: Tickets must be used by the same person on all days...you must present the actual Universal Orlando ticket to receive entry to the parks.
+        bestseller:
+          type: boolean
+          description: Flag if the tour is a bestseller.
+          example: false
+        certified: 
+          type: boolean
+          description: Flag if the tour is a certified tour.
+          example: true
+        overall_rating: 
+          type: number
+          description: Overall rating of the tour (across all tour options).
+          example: 4.96
+        number_of_ratings: 
+          type: number
+          description: Number of rating of the tour.
+          example: 25
+        highlights: 
+          type: array
+          description: List of highlights of that tour.
+          items:
+            type: string
+        inclusions: 
+          type: string
+          description: What's included in the tour.
+          example: • Entry to both Universal Studios Florida and Universal’s Islands of Adventure for 2-days
+        exclusions: 
+          type: string
+          description: What's not included in the tour.
+          example:  Parking
+        pictures:
+          type: array
+          items:
+            $ref: './picture.yaml#/components/schemas/Picture'
+        coordinates:
+          $ref: './coordinates.yaml#/components/schemas/Coordinates'
+        price:
+          $ref: './price.yaml#/components/schemas/Price'

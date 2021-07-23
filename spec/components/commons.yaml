@@ -336,12 +336,7 @@ components:
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
       type: string
       enum: [date, datetime]
-      example: 'date'
-    Price:
-      description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
-      type: number
-      format: double
-      example: 270
+      example: 'date'      
     CancellationPolicyText:
       description: Cancellation policy
       type: string
@@ -350,6 +345,7 @@ components:
       description: Indicates whether this booking is currently cancellable at no fee.
       type: boolean
       example: true
+
     BookingParameters:
       type: array
       items:
@@ -372,6 +368,7 @@ components:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
             example: false
+
     Category:
       description: Tour category
       type: object
@@ -396,6 +393,7 @@ components:
         - category_id
         - name
         - number_of_tours
+
     TourOption:
       description:  Tour option
       type: object
@@ -492,23 +490,9 @@ components:
               type: boolean
               description: If true, there is wheel chair access.
         coordinates:
-          type: object
-          properties:
-            lat:
-              type: number
-              description: Latitude.
-            long:
-              type: number
-              description: Longitude.
+          $ref: './schema/coordinates.yaml#/components/schemas/Coordinates'
         price:
-          type: object
-          properties:
-            values:
-              type: array
-              description: Value of the price.
-            description:
-              type: string
-              description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
+          $ref: './schema/price.yaml#/components/schemas/Price'
         values:
           type: object
           properties:
@@ -530,3 +514,7 @@ components:
             apps_only:
               type: boolean
               description: Flag if the special offer is only available for the GYG internal mobile apps.
+
+
+
+            

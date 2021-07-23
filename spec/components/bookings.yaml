@@ -107,7 +107,10 @@ components:
                   closing_time:
                     $ref: './commons.yaml#/components/schemas/Datetime'
             price:
-              $ref: './commons.yaml#/components/schemas/Price'
+              description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
+              type: number
+              format: double
+              example: 270
             valid_until:
               $ref: './commons.yaml#/components/schemas/Datetime'
             cancellation_policy_text:

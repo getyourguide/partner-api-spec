@@ -25,19 +25,13 @@ paths:
         - $ref: '../components/commons.yaml#/components/parameters/sortdirection'
         - $ref: '../components/commons.yaml#/components/parameters/limit'
         - $ref: '../components/commons.yaml#/components/parameters/offset'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '../components/bookings.yaml#/components/schemas/BookingCreateRequest'
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
+                $ref: '../components/tours.yaml#/components/schemas/ToursQueryResponse'
         400:
           description: Missing Parameters
         500:
