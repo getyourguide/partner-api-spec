@@ -587,3 +587,23 @@ components:
                   enum:
                    - pax
                    - flat
+    TourOptionAvailability:
+      type: object
+      properties:
+        start_time:
+          type: string
+          description: Start Time and Date in local time.
+          example: 2017-09-01T09:00:00
+        end_time:
+          type: string
+          description: Optional response parameter. End Time of a Tour - only given in case of opening hours.
+          example: 2017-09-01T09:00:00
+        pricing_id:
+          type: integer
+          description: The price id for this particular availability
+        vacancies:
+          type: integer
+          description: Number of seats that are available.
+        discount:
+          type: integer
+          description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.
