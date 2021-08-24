@@ -10,7 +10,7 @@ info:
 
 externalDocs:
   description: API Wiki
-  url: https://github.com/getyourguide/partner-api-spec/wiki
+  url: https://github.com/getyourguide/partner-api-spec/wiki/General-Information
 
 servers:
   - url: https://api.getyourguide.com/1
