@@ -5,9 +5,8 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Tour:
-      description:  Tour option
+      description: Tour option
       type: object
       properties:
         tour_id:
@@ -50,56 +49,56 @@ components:
           type: boolean
           description: Flag if the tour is a bestseller.
           example: false
-        certified: 
+        certified:
           type: boolean
           description: Flag if the tour is a certified tour.
           example: true
-        overall_rating: 
+        overall_rating:
           type: number
           description: Overall rating of the tour (across all tour options).
           example: 4.96
-        number_of_ratings: 
+        number_of_ratings:
           type: number
           description: Number of rating of the tour.
           example: 25
-        highlights: 
+        highlights:
           type: array
           description: List of highlights of that tour.
           items:
             type: string
-        inclusions: 
+        inclusions:
           type: string
           description: What's included in the tour.
           example: • Entry to both Universal Studios Florida and Universal’s Islands of Adventure for 2-days
-        exclusions: 
+        exclusions:
           type: string
           description: What's not included in the tour.
-          example:  Parking
+          example: Parking
         pictures:
           type: array
           items:
-            $ref: './picture.yaml#/components/schemas/Picture'
+            $ref: "./picture.yaml#/components/schemas/Picture"
         coordinates:
           description: Coordinates of the primary location (first entry in the locations array) attributed to the tour. This is usually an area/city the tour is located in and not the actual meeting point. The meeting point for each tour option can be retrieved from /tours/[tour_id]/options.
-          $ref: './coordinates.yaml#/components/schemas/Coordinates'
+          $ref: "./coordinates.yaml#/components/schemas/Coordinates"
         price:
           description: Starting price. Should be read as e.g. "from XX.YY USD".
-          $ref: './price.yaml#/components/schemas/Price'
+          $ref: "./price.yaml#/components/schemas/Price"
         categories:
           description: List of categories ordered according to importance.
           type: array
           items:
-            $ref: './category.yaml#/components/schemas/Category'
+            $ref: "./category.yaml#/components/schemas/Category"
         locations:
           description: List of locations ordered according to importance.
           type: array
           items:
-            $ref: './location.yaml#/components/schemas/Location'
-        url: 
+            $ref: "./location.yaml#/components/schemas/Location"
+        url:
           type: string
           description: URL of the tour on the GetYourGuide website.
-          example:  https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
-        translations: 
+          example: https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
+        translations:
           type: string
           description: Available translations of the content of this tour. List of ISO language codes (ISO 639-1).
           enum:
@@ -117,20 +116,204 @@ components:
             - sv
             - tr
             - zh
-        free_sale: 
+        free_sale:
           type: string
           description: Indicates whether there exists at least one tour option of which the booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
-        mobile_voucher: 
+        mobile_voucher:
           type: boolean
           description: If the tour accepts mobile voucher.
           example: true
-        supplier_id: 
+        supplier_id:
           type: number
           description: The supplier is
           example: 24066
         durations:
           type: array
           items:
-            $ref: './duration.yaml#/components/schemas/Duration'
-        cancellation_policy_text: 
-          $ref: '../commons.yaml#/components/schemas/CancellationPolicyText'
+            $ref: "./duration.yaml#/components/schemas/Duration"
+        cancellation_policy_text:
+          $ref: "../commons.yaml#/components/schemas/CancellationPolicyText"
+
+    TourOption:
+      description: Tour option
+      type: object
+      properties:
+        option_id:
+          type: integer
+          description: Tour option id (option id).
+        tour_id:
+          type: integer
+          description: Tour id that option belongs to.
+        title:
+          type: string
+          description: Title of the option.
+        description:
+          type: string
+          description: Description of the option.
+        pick_up:
+          type: string
+          description: Information about the hotel pickup possibilities.
+        meeting_point:
+          type: string
+          description: Information about where to meet.
+        drop_off:
+          type: string
+          description: Information about the drop-off (where the tour ends).
+        duration:
+          type: number
+          description: Duration of the tour (to be used in combination with duration unit.
+        duration_unit:
+          type: string
+          description: Unit of the duration field in day, hour or minute.
+        coordinate_type:
+          type: string
+          description: Information about the type of the coordinates. It defines if the information is exactly enough for the customer to walk / get there. = ['exact', 'approximate'].
+        free_sale:
+          type: boolean
+          description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+        cond_language:
+          type: object
+          properties:
+            language_audio:
+              type: object
+              description: List of languages codes (ISO 639-1) that are available as audio guide
+            language_booklet:
+              type: object
+              description: List of languages codes (ISO 639-1) that are available as booklet
+            language_live:
+              type: object
+              description: List of languages codes (ISO 639-1) that are spoken by the guide
+        booking_parameter:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the property = ['language', 'hotel', 'comment', 'supplier_requested_question'].
+            value_1:
+              type: string
+              description: First / Primary value of the property.
+            value_2:
+              type: string
+              description: Some property require a second value.
+            description:
+              type: string
+              description: Description of the property.
+            mandatory:
+              type: boolean
+              description: Flag if this parameter / property is mandatory for booking.
+        services:
+          type: object
+          properties:
+            prt:
+              type: boolean
+              description: If true, the option is closed after on booking. The customer will be on the tour without any other guests expect those included in the same booking.
+            stl:
+              type: boolean
+              description: If true, the customer does not need to wait in line.
+            wlc:
+              type: boolean
+              description: If true, there is wheel chair access.
+        coordinates:
+          $ref: "./coordinates.yaml#/components/schemas/Coordinates"
+        price:
+          $ref: "./price.yaml#/components/schemas/Price"
+          values:
+            type: object
+            properties:
+              amount:
+                type: number
+                description: Price for the adult fare of the cheapest option in the requested currency.
+              special:
+                type: array
+                description: Special offer.
+        special:
+          type: object
+          properties:
+            original_price:
+              type: number
+              description: Original price (without the special offer).
+            savings:
+              type: number
+              description: The discount in percent.
+            apps_only:
+              type: boolean
+              description: Flag if the special offer is only available for the GYG internal mobile apps.
+
+    TourOptionPricing:
+      description: Pricings for a tour option
+      type: object
+      properties:
+        pricing_id:
+          type: integer
+          description: Pricing ID
+        total_minimum_participants:
+          type: integer
+          description: Minimal participants needed for every booking.
+        total_maximum_participants:
+          type: integer
+          description: Maximum participants allowed to be booked.
+        categories:
+          type: object
+          description: The categories of which this pricing consists of
+          properties:
+            id:
+              type: integer
+              description: The Pricing category ID
+            name:
+              type: string
+              description: Translated name of the category. Example values are 'Adult', 'Child' or 'Infant'
+            min_age:
+              type: integer
+              description: The minimum age of a participant such that this price applies
+            max_age:
+              type: integer
+              description: The maximum age of a participant such that this price applies
+            stand_alone:
+              type: boolean
+              description: Can this category be booked autonomously? For example an 'Infant' category can most of the times not be booked without another person joining the tour. So the 'Infant' category would have set standAlone to false.
+            addon:
+              type: boolean
+              description: Is this category an addon? An addon is something that can be booked additionally to the tour such as Lunch on a city tour an additional transfer to the meeting point or a child seat for an airport transfer.
+            scale:
+              type: object
+              description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+              properties:
+                min_participants:
+                  type: integer
+                  description: The minimal number of participants needed to apply this scale.
+                max_participants:
+                  type: integer
+                  description: The maximum number of participants needed to apply this scale.
+                retail_price:
+                  type: number
+                  description: The price for which the tour option is sold to the customer.
+                net_price:
+                  type: number
+                  description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                type:
+                  type: string
+                  description: The type of the scale
+                  enum:
+                    - pax
+                    - flat
+
+    TourOptionAvailability:
+      type: object
+      properties:
+        start_time:
+          type: string
+          description: Start Time and Date in local time.
+          example: 2017-09-01T09:00:00
+        end_time:
+          type: string
+          description: Optional response parameter. End Time of a Tour - only given in case of opening hours.
+          example: 2017-09-01T09:00:00
+        pricing_id:
+          type: integer
+          description: The price id for this particular availability
+        vacancies:
+          type: integer
+          description: Number of seats that are available.
+        discount:
+          type: integer
+          description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.

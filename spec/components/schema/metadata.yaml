@@ -1,0 +1,45 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Metadata Schema
+  version: 1.0.0
+components:
+  schemas:
+    
+    MetaData:
+      description: Metadata returned with each request
+      type: object
+      properties:
+        descriptor:
+          type: string
+          example: GetYourGuide AG
+        query:
+          type: string
+          description: URL parameters used for the request sent
+          example: cnt_language=en&currency=eur&q=paris&preformatted=full&date[]=2017-09-01T00:00:00&date[]=2017-09-01T23:59:59
+        availableLanguages:
+          type: array
+          description: Available conduction languages aggregated across all tours
+          example: [en, es, fr]
+        exchange:
+          type: object
+          description: Deprecated! Please do not use to calculate prices, but pass a different currency parameter in the request URL.
+          properties:
+            rate:
+              type: integer
+              example: 1
+            currency:
+              type: string
+              example: eur
+        totalCount:
+          type: integer
+          description: Total amount of tours that match the search query
+          example: 127
+        limit:
+          type: integer
+          description: Amount of tours returned in the response.
+          example: 10
+        offset:
+          type: integer
+          description: Offset of the tours returned in the response.
+          example: 0
