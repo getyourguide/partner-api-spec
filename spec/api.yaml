@@ -6,7 +6,11 @@ info:
   version: 1.0.0
   contact:
     name: Partner Tech
-    url: https://partner.getyourguide.com.com/
+    url: https://partner.getyourguide.com/
+
+externalDocs:
+  description: API Wiki
+  url: https://github.com/getyourguide/partner-api-spec/wiki
 
 servers:
   - url: https://api.getyourguide.com/1
