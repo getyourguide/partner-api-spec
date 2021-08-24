@@ -55,6 +55,9 @@ paths:
   # Reviews
   /reviews/tour/{tour_id}:
     $ref: 'paths/reviews.yaml#/paths/~1reviews~1tour~1{tour_id}'
+  # Suppliers
+  /suppliers/{supplier_id}:
+    $ref: 'paths/suppliers.yaml#/paths/~1suppliers~1{supplier_id}'
   # Tours
   /tours:
     $ref: 'paths/tours.yaml#/paths/~1tours'

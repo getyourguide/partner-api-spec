@@ -35,6 +35,13 @@ components:
       in: path
       schema:
         type: integer
+    supplierId:
+      name: supplier_id
+      description: The supplier id
+      required: true
+      in: path
+      schema:
+        type: integer
   
   # IN QUERY
     cntLanguage:
