@@ -55,6 +55,12 @@ paths:
   # Tours
   /tours:
     $ref: 'paths/tours.yaml#/paths/~1tours'
+  /tours/{tour_id}:
+    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}'
+  /tours/{tour_id}/availabilities:
+    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1availabilities'
+  /tours/{tour_id}/options:
+    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1options'
   # Bulk Downloads
   /bulk_tours:
     $ref: 'paths/bulk.yaml#/paths/~1bulk_tours'

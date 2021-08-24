@@ -24,37 +24,12 @@ paths:
                   tour_options:
                     type: array
                     items:
-                      $ref: '../components/commons.yaml#/components/schemas/TourOption'
-                    example:
-                      - option_id: 69232
-                        tour_id: 50872
-                        title: "2-Day Ticket: One Park Per Day"
-                        description: "A 2-day Base ticket allows entry to 1 of the Walt Disney World Theme parks per day. This ticket is not valid for citizens of the United Kingdom and Ireland. If you purchase the wrong package, you will not be eligible for a refund"
-                        meeting_point: "Exchange your Will Call Certificate at Will Call at any of the 4 Walt Disney World Theme Park box offices: Magic Kingdom: 3111 World Drive, Lake Buena Vista, Florida 32830 Epcot: 1200 Epcot Resort Boulevard, Lake Buena Vista, Florida 32830 Hollywood Studio: 351 South Studio Drive, Lake Buena Vista, Florida 32830 Animal Kingdom: Osceola Parkway, Lake Buena Vista, Florida 32830"
-                        duration: 2
-                        duration_unit: "day"
-                        cond_language: XXX,
-                        booking_parameter:
-                          - name: supplier_requested_question
-                            description: "Please indicate yes in this field to acknowlege that you are not a citizen of the United Kingdom and Ireland. All purchases are non-refundable"
-                            mandatory: true
-                        services:
-                          prt: false
-                          stl: false
-                          wlc: false
-                        coordinate_type: approximate
-                        coordinates:
-                          lat: 28.4164563
-                          long: -81.5812004
-                        price:
-                          values:
-                            amount: 236
-                          description: individual
-                        free_sale: false
+                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
         400:
           description: Missing Parameters
         500:
           description: Server error
+
   /options/{option_id}/pricings:
     get:
       operationId: OptionsGetPricing
@@ -76,34 +51,7 @@ paths:
                   pricing:
                     type: array
                     items:
-                      $ref: '../components/commons.yaml#/components/schemas/TourOptionPricing'
-                    example:
-                      - pricing_id: 163320
-                        total_minimum_participants: 1
-                        categories:
-                          - id: 302628
-                            name: Adults
-                            min_age: 10
-                            stand_alone: true
-                            addon: false
-                            scale:
-                             - min_participants: 1
-                               max_participants: 100
-                               retail_price: 210.04
-                               net_price: 210.04
-                               type: pax
-                      - id: 302631
-                        name: Children
-                        min_age: 3
-                        max_age: 9
-                        stand_alone: false
-                        addon: false
-                        scale:
-                          - min_participants: 1
-                            max_participants: 100
-                            retail_price: 200.25
-                            net_price: 200.25
-                            type: pax
+                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionPricing'
         400:
           description: Missing Parameters
         500:
@@ -130,12 +78,7 @@ paths:
                   availabilities:
                     type: array
                     items:
-                      $ref: '../components/commons.yaml#/components/schemas/TourOptionAvailability'
-                    example:
-                      - start_time: "2017-09-01T09:00:00"
-                        pricing_id: 163320
-                        vacancies: 99
-                        end_time: "2017-09-01T20:00:00"
+                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionAvailability'
         400:
           description: Missing Parameters
         500:
