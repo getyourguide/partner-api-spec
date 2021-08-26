@@ -52,21 +52,23 @@ components:
     CartsConfirmResponse:
       type: object
       properties:
+        shopping_cart_id:
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+        shopping_cart_hash:
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+        billing:
+          $ref: '#/components/schemas/Billing'
+        traveler:
+          $ref: '#/components/schemas/Traveler'
+        status:
+          type: string
+          description: The status of the shopping cart.
+          enum: ['invalid', 'open', 'in_payment', 'completed']
+          example: completed
         bookings:
-          type: object
-          properties:
-            shopping_cart_id:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
-            shopping_cart_hash:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
-            booking_id:
-              $ref: '../commons.yaml#/components/schemas/BookingId'
-            booking_hash:
-              $ref: '../commons.yaml#/components/schemas/BookingHash'
-            booking_status:
-              $ref: '../commons.yaml#/components/schemas/BookingStatus'
-            return_code:
-              $ref: '../commons.yaml#/components/schemas/ReturnCode'
+          $ref: '../bookings.yaml#/components/schemas/Bookings'
+        payment_info:
+          $ref: '#/components/schemas/PaymentInfo'
 
     PaymentInfo:
       type: object
@@ -96,4 +98,91 @@ components:
           type: string
           description: The invoice reference number.
           example: GCI-0032724458
+    
+    Billing:
+      type: object
+      properties:
+        salutation_code:
+          type: string
+          description: Salutation code. m=Mr. f=Mrs. c=empty
+          enum: [m, f, c]
+          example: m
+        first_name:
+          type: string
+          description: The first name
+          example: Test
+        last_name: 
+          type: string
+          description: The last name
+          example: Booking
+        email:
+          type: string
+          description: Correspondence email.
+          example: abc@efgh.com
+        is_company: 
+          type: boolean
+          description: Is the payee a company.
+          example: false
+        company_name: 
+          type: string
+          description: Name of the company.
+          example: Company Name
+        invoice:
+          type: boolean
+          description: Correspondence email.
+          example: false
+        address_line_1:
+          type: string
+          description: Address line 1.
+          example: Address line 1.
+        address_line_2: 
+          type: string
+          description: Address line 2.
+          example: Address line 2.
+        city: 
+          type: string
+          description: The city.
+          example: Berlin
+        postal_code: 
+          type: string
+          description: Postal code.
+          example: '12345'
+        state: 
+          type: string
+          description: State
+          example: NYC
+        country_code:
+          type: string
+          description: Country code.
+          example: DE
+        phone_number: 
+          type: string
+          description: Phone number.
+          example: 0049 123456789
+
+    Traveler:
+      type: object
+      properties:
+        salutation_code:
+          type: string
+          description: Salutation code. m=Mr. f=Mrs. c=empty
+          enum: [m, f, c]
+          example: m
+        first_name:
+          type: string
+          description: The first name
+          example: Test
+        last_name: 
+          type: string
+          description: The last name
+          example: Booking
+        email:
+          type: string
+          description: Correspondence email.
+          example: abc@efgh.com
+        phone_number: 
+          type: string
+          description: Phone number.
+          example: 0049 123456789
+
     
