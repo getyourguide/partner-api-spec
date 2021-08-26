@@ -21,10 +21,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  tour_options:
-                    type: array
-                    items:
-                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      tour_options:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
+
         400:
           description: Missing Parameters
         500:
@@ -48,10 +54,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  pricing:
-                    type: array
-                    items:
-                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionPricing'
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      pricing:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionPricing'
+
         400:
           description: Missing Parameters
         500:
@@ -75,10 +87,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  availabilities:
-                    type: array
-                    items:
-                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionAvailability'
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      availabilities:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionAvailability'
+
         400:
           description: Missing Parameters
         500:

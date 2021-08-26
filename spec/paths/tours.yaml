@@ -36,8 +36,13 @@ paths:
                 properties:
                   _metadata:
                     $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
-                  data:  
-                    $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
+                  data:
+                    type: object
+                    properties:
+                      tours:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
         400:
           description: Missing Parameters
         500:
@@ -60,7 +65,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      tours:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
                     
         400:
           description: Missing Parameters
@@ -86,9 +101,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  availabilities:
-                    $ref: '../components/schema/availabilities.yaml#/components/schemas/Availabilities'
-                    
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      availabilities:
+                        type: array
+                        items:
+                          $ref: '../components/schema/availabilities.yaml#/components/schemas/Availabilities'
+
         400:
           description: Missing Parameters
         500:
@@ -112,11 +134,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  tour_options:
-                    type: array
-                    items:
-                      $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
-                    
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      tour_options:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
+
         400:
           description: Missing Parameters
         500:

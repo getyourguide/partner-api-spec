@@ -20,17 +20,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '../components/commons.yaml#/components/schemas/Category'
-                example:
-                  - category_id: 1
-                    name: Tours
-                    number_of_tours: 900
-                  - category_id: 2
-                    parent_id: 1
-                    name: Lights tours
-                    number_of_tours: 66
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      categories:
+                        type: array
+                        items:
+                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
+
         400:
           description: Missing Parameters
         500:
@@ -51,14 +52,17 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '../components/commons.yaml#/components/schemas/Category'
-                example:
-                  - category_id: 2
-                    parent_id: 1
-                    name: Lights tours
-                    number_of_tours: 66
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      categories:
+                        type: array
+                        items:
+                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
         400:
           description: Missing Parameters
         500:

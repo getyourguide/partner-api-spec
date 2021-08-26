@@ -16,14 +16,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../components/carts.yaml#/components/schemas/CartsConfirmRequest'
+              $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmRequest'
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/carts.yaml#/components/schemas/CartsConfirmResponse'
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      shopping_cart:
+                        $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
         400:
           description: Missing Parameters
         500:
@@ -44,14 +52,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../components/carts.yaml#/components/schemas/CartsConfirmRequest'
+              $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmRequest'
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/carts.yaml#/components/schemas/CartsConfirmResponse'
+                $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
         400:
           description: Missing Parameters
         500:

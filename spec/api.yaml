@@ -34,6 +34,8 @@ paths:
     $ref: 'paths/configuration.yaml#/paths/~1configuration~1{version}'
   /configuration/payment:
     $ref: 'paths/configuration.yaml#/paths/~1configuration~1payment'
+  /configuration/privileges:
+    $ref: 'paths/configuration.yaml#/paths/~1configuration~1privileges'
   # Bookings
   /bookings:
     $ref: 'paths/bookings.yaml#/paths/~1bookings'

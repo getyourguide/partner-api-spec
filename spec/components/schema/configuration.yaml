@@ -20,6 +20,7 @@ components:
             url:
               description: The base URL of the API. Endpoints to be appended at the end
               type: string
+
     ConfigurationPaymentResponse:
       type: object
       properties:
@@ -45,4 +46,17 @@ components:
                     name:
                       description: The name of the brand.
                       type: string
-          
+
+    ConfigurationPrivilegeResponse:
+      type: object
+      properties:
+        privileges:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Privileges
+                enum: [LIMITED_READ, READ, BOOKING, BOOKING_CANCEL]
+                example: LIMITED_READ

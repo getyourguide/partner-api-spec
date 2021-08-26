@@ -395,28 +395,3 @@ components:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
             example: false
-
-    Category:
-      description: Tour category
-      type: object
-      properties:
-        category_id:
-          type: integer
-          description: Category ID
-          example: 1
-        name:
-          type: string
-          description: name
-          example: Sightseeing Tours
-        number_of_tours:
-          type: integer
-          description: Number of tours
-          example: 20
-        parent_id:
-          type: integer
-          description: Parent Category ID
-          example: 2
-      required:
-        - category_id
-        - name
-        - number_of_tours
