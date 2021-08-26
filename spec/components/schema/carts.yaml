@@ -29,9 +29,9 @@ components:
                   type: object
                   properties:
                     option_id:
-                      $ref: './commons.yaml#/components/schemas/OptionId'
+                      $ref: '../commons.yaml#/components/schemas/OptionId'
                     datetime:
-                      $ref: './commons.yaml#/components/schemas/Datetime'
+                      $ref: '../commons.yaml#/components/schemas/Datetime'
                     price:
                       type: string
                       example: '170.00'
@@ -47,7 +47,7 @@ components:
                             type: string
                             example: '5'
                     booking_parameters:
-                      $ref: './commons.yaml#/components/schemas/BookingParameters'
+                      $ref: '../commons.yaml#/components/schemas/BookingParameters'
 
     CartsConfirmResponse:
       type: object
@@ -56,15 +56,44 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
             shopping_cart_hash:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
             booking_id:
-              $ref: './commons.yaml#/components/schemas/BookingId'
+              $ref: '../commons.yaml#/components/schemas/BookingId'
             booking_hash:
-              $ref: './commons.yaml#/components/schemas/BookingHash'
+              $ref: '../commons.yaml#/components/schemas/BookingHash'
             booking_status:
-              $ref: './commons.yaml#/components/schemas/BookingStatus'
+              $ref: '../commons.yaml#/components/schemas/BookingStatus'
             return_code:
-              $ref: './commons.yaml#/components/schemas/ReturnCode'
+              $ref: '../commons.yaml#/components/schemas/ReturnCode'
+
+    PaymentInfo:
+      type: object
+      properties:
+        payment_currency:
+          type: string
+          description: The currency in which the payment has been processed.
+          example: ERU
+        total_price:
+          type: number
+          description: The total price of the shopping cart.
+          example: 209.78
+        precoupon_price:
+          type: number
+          description: The price of the shopping cart before coupons have been applied.
+          example: 209.78
+        payment_method:
+          type: string
+          description: The payment method used to pay.
+          enum: ['cc', 'pp', 'dd', 'co', 'mb', 'mx', 'n/a']
+          example: cc
+        coupon_info:
+          type: string
+          description: The code of the coupon if one was used.
+          example: test
+        invoice_reference:
+          type: string
+          description: The invoice reference number.
+          example: GCI-0032724458
     

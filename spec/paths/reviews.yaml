@@ -25,13 +25,19 @@ paths:
               schema:
                 type: object
                 properties:
-                  reviews:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
                     type: object
                     properties:
-                      outline:
-                        $ref: '../components/schema/reviews.yaml#/components/schemas/Outline'
-                      review_items:
-                        $ref: '../components/schema/reviews.yaml#/components/schemas/ReviewItems'
+                      reviews:
+                        type: object
+                        properties:
+                          outline:
+                            $ref: '../components/schema/reviews.yaml#/components/schemas/Outline'
+                          review_items:
+                            $ref: '../components/schema/reviews.yaml#/components/schemas/ReviewItems'
+
         400:
           description: Missing Parameters
         500:

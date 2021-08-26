@@ -21,8 +21,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  supplier:
-                    $ref: '../components/schema/supplier.yaml#/components/schemas/Supplier'
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      supplier:
+                        type: array
+                        items:
+                          $ref: '../components/schema/supplier.yaml#/components/schemas/Supplier'
+
         400:
           description: Missing Parameters
         500:
