@@ -1,0 +1,21 @@
+# Changelog
+
+
+
+1. Booking via coupon - Add parameter
+
+2. Add extra description per endpoint (DONE)
+
+3. Link to PDF for booking flow
+
+4. Remove bulk completely (DONE)
+
+5. Add locations
+
+6. Move to api.getyourguide.com
+
+7. Authorize should find the appropritate privilege and show/hide endpoints 
+
+8. Changelog / releases on master - update README.md
+
+9. 400 / 500 errors

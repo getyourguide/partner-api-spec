@@ -5,7 +5,7 @@ info:
 paths: {}
 components:
   schemas:
-    BookingCreateRequest:
+    BookingCreateActivity:
       type: object
       properties:
         base_data:
@@ -25,6 +25,12 @@ components:
             booking:
               type: object
               properties:
+                coupon:
+                  type: object
+                  properties:
+                    coupon_code:
+                      type: string
+                      example: 123ABC
                 bookable:
                   type: object
                   properties:
@@ -48,6 +54,34 @@ components:
                             example: '5'
                     booking_parameters:
                       $ref: './commons.yaml#/components/schemas/BookingParameters'
+
+
+    BookingCreateCoupon:
+      type: object
+      properties:
+        base_data:
+          type: object
+          properties:
+            cnt_language:
+              description: ISO 639, Language of the text content.
+              type: string
+              example: "en"
+            currency:
+              description: ISO 4217, The currency with which you would like to pay.
+              type: string
+              example: "EUR"
+        data:
+          type: object
+          properties:
+            booking:
+              type: object
+              properties:
+                coupon:
+                  type: object
+                  properties:
+                    coupon_code:
+                      type: string
+                      example: 123ABC
 
     BookingCreateResponse:
       type: object
