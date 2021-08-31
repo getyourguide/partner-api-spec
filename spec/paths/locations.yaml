@@ -7,6 +7,7 @@ paths:
   /locations:
     get:
       operationId: Locations
+      summary: List all
       tags:
         - Locations
       parameters:
@@ -14,7 +15,7 @@ paths:
         - $ref: '../components/commons.yaml#/components/parameters/currency'
         - $ref: '../components/commons.yaml#/components/parameters/sortfield'
         - $ref: '../components/commons.yaml#/components/parameters/offset'
-        - $ref: '../components/commons.yaml#/components/parameters/preformatted'
+        - $ref: '../components/schema/location.yaml#/components/parameters/preformatted'
       responses:
         200:
           description: Successful response
@@ -28,13 +29,112 @@ paths:
                   data:
                     type: object
                     properties:
-                      reviews:
-                        type: object
-                        properties:
-                          outline:
-                            $ref: '../components/schema/reviews.yaml#/components/schemas/Outline'
-                          review_items:
-                            $ref: '../components/schema/reviews.yaml#/components/schemas/ReviewItems'
+                      locations:
+                        type: array
+                        items:
+                          $ref: '../components/schema/location.yaml#/components/schemas/Location'
+
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+
+  /locations/{location_id}:
+    get:
+      operationId: Locations
+      tags:
+        - Locations
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons.yaml#/components/parameters/sortfield'
+        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: '../components/schema/location.yaml#/components/parameters/preformatted'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      locations:
+                        type: array
+                        items:
+                          $ref: '../components/schema/location.yaml#/components/schemas/Location'
+
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+  /locations/{location_id}/tours:
+    get:
+      operationId: Locations
+      summary: Get tours by location id
+      tags:
+        - Locations
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons.yaml#/components/parameters/sortfield'
+        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: '../components/schema/location.yaml#/components/parameters/preformatted'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      tours:
+                        type: array
+                        items:
+                          $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
+
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+
+  /locations/{iata}:
+    get:
+      operationId: Locations
+      tags:
+        - Locations
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons.yaml#/components/parameters/sortfield'
+        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: '../components/schema/location.yaml#/components/parameters/preformatted'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      locations:
+                        type: array
+                        items:
+                          $ref: '../components/schema/location.yaml#/components/schemas/Location'
 
         400:
           description: Missing Parameters

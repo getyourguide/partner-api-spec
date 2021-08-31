@@ -4,6 +4,19 @@ info:
   title: Location Schema
   version: 1.0.0
 components:
+  parameters:
+    preformatted:
+      name: preformatted
+      description: The amount of content to deliver with the search results.
+      required: true
+      in: query
+      schema:
+        type: string
+      examples:
+        curated_list:
+          summary: Include a curated list
+          value: curatedList
+
   schemas:
     
     Location:
@@ -42,3 +55,12 @@ components:
           example: 191
         viewport:
           $ref: './viewport.yaml#/components/schemas/Viewport'
+        picture: 
+          type: string
+          example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
+        picture_ssh: 
+          type: string
+          example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
+        num_tours: 
+          type: number
+          example: 386

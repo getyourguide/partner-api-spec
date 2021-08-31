@@ -54,6 +54,12 @@ paths:
   # Locations
   /locations:
     $ref: 'paths/locations.yaml#/paths/~1locations'
+  /locations/{location_id}:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}'
+  /locations/{location_id}/tours:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}~1tours'
+  /locations/{iata}:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{iata}'
   # Options
   /options/{option_id}:
     $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
