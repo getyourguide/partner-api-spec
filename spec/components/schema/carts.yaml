@@ -25,29 +25,19 @@ components:
             booking:
               type: object
               properties:
-                bookable:
+                shopping_cart:
                   type: object
                   properties:
-                    option_id:
-                      $ref: '../commons.yaml#/components/schemas/OptionId'
-                    datetime:
-                      $ref: '../commons.yaml#/components/schemas/Datetime'
-                    price:
-                      type: string
-                      example: '170.00'
-                    categories:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          category_id:
-                            type: string
-                            example: '2077534'
-                          number_of_participants:
-                            type: string
-                            example: '5'
-                    booking_parameters:
-                      $ref: '../commons.yaml#/components/schemas/BookingParameters'
+                    shopping_cart_id:
+                      $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+                    billing:
+                      $ref: '#/components/schemas/Billing'
+                    traveler:
+                      $ref: '#/components/schemas/Traveler'
+                    payment:
+                      oneOf:
+                        - $ref: './payment.yaml#/components/schemas/Paypal'
+                        - $ref: './payment.yaml#/components/schemas/EncryptedCreditCard'
 
     CartsConfirmResponse:
       type: object
@@ -184,5 +174,4 @@ components:
           type: string
           description: Phone number.
           example: 0049 123456789
-
     

@@ -6,6 +6,7 @@ paths:
   /bookings:
     post:
       operationId: BookingsCreate
+      description: A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable should be sent in the body of the request
       summary: Create a new booking.
       tags:
         - Bookings
@@ -16,14 +17,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../components/bookings.yaml#/components/schemas/BookingCreateRequest'
+              oneOf:
+                - $ref: '../components/bookings.yaml#/components/schemas/BookingCreateActivity'
+                - $ref: '../components/bookings.yaml#/components/schemas/BookingCreateCoupon'
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      bookings:
+                        $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
         400:
           description: Missing Parameters
         500:

@@ -9,7 +9,7 @@ info:
     url: https://partner.getyourguide.com/
 
 externalDocs:
-  description: API Wiki
+  description: API Documentation and best practices
   url: https://github.com/getyourguide/partner-api-spec/wiki/General-Information
 
 servers:
@@ -51,6 +51,15 @@ paths:
     $ref: 'paths/categories.yaml#/paths/~1categories'
   /categories/{category_id}:
     $ref: 'paths/categories.yaml#/paths/~1categories~1{category_id}'
+  # Locations
+  /locations:
+    $ref: 'paths/locations.yaml#/paths/~1locations'
+  /locations/{location_id}:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}'
+  /locations/{location_id}/tours:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}~1tours'
+  /locations/{iata}:
+    $ref: 'paths/locations.yaml#/paths/~1locations~1{iata}'
   # Options
   /options/{option_id}:
     $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
@@ -73,8 +82,3 @@ paths:
     $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1availabilities'
   /tours/{tour_id}/options:
     $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1options'
-  # Bulk Downloads
-  /bulk_tours:
-    $ref: 'paths/bulk.yaml#/paths/~1bulk_tours'
-  /bulk_availabilities:
-    $ref: 'paths/bulk.yaml#/paths/~1bulk_availabilities'
