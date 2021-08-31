@@ -9,7 +9,7 @@ info:
     url: https://partner.getyourguide.com/
 
 externalDocs:
-  description: API Wiki
+  description: API Documentation and best practices
   url: https://github.com/getyourguide/partner-api-spec/wiki/General-Information
 
 servers:

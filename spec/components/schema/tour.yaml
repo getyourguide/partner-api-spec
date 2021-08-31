@@ -53,6 +53,10 @@ components:
           type: boolean
           description: Flag if the tour is a certified tour.
           example: true
+        has_pick_up:
+          type: boolean
+          description: Indicates if pickup is available for this product
+          example: true
         overall_rating:
           type: number
           description: Overall rating of the tour (across all tour options).
@@ -133,6 +137,26 @@ components:
             $ref: "./duration.yaml#/components/schemas/Duration"
         cancellation_policy_text:
           $ref: "../commons.yaml#/components/schemas/CancellationPolicyText"
+        health_advisory:
+          $ref: "#/components/schemas/HealthAdvisory"
+        health_requirement:
+          $ref: "#/components/schemas/HealthRequirement"
+        guide_type:
+          type: string
+          enum:
+            - none
+            - host_or_greeter
+            - instructor
+            - driver
+            - live_tour_guide
+          description: >
+            Type of guide that is conducting the tour, available are
+              * none: no guide available for this tour.
+              * host_or_greeter: a host or greeter that welcomes the customer.
+              * instructor: an instructor e.g. for diving classes.
+              * driver: a driver for motorized tours.
+              * live_tour_guide: a standard live tour guide.
+
 
     TourOption:
       description: Tour option
@@ -317,3 +341,41 @@ components:
         discount:
           type: integer
           description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.
+
+    HealthAdvisory:
+      type: array
+      items:
+        type: object
+        properties:
+          tag_id:
+            type: number
+            description: Tag Id
+            example: 161578
+          name:
+            type: string
+            description: Tag name
+            example: Frequent_cleaning
+          text:
+            type: string
+            description: Verbose description
+            example: All areas that customers touch are frequently cleaned
+    
+    HealthRequirement:
+      type: array
+      items:
+        type: object
+        properties:
+          tag_id:
+            type: number
+            description: Tag Id
+            example: 161578
+          name:
+            type: string
+            description: Tag name
+            example: Mask_required
+          text:
+            type: string
+            description: Verbose description
+            example: You are required to bring and wear a mask
+        
+        

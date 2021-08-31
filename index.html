@@ -3,10 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Swagger UI</title>
+    <title>GetYourGuide API Reference</title>
     <link rel="stylesheet" type="text/css" href="./docs/swagger-ui.css" />
-    <link rel="icon" type="image/png" href="./docs/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="./docs/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" href="https://cdn.getyourguide.com/tf/assets/static/fav-icon.ico" type="image/x-icon">
     <style>
       html
       {
@@ -54,6 +53,9 @@
       // End Swagger UI call region
 
       window.ui = ui;
+
+      // Update getyourguide logo
+      document.querySelector('.topbar-wrapper img').src = "https://cdn.getyourguide.com/tf/assets/static/logos/gyg-logo.svg"
     };
   </script>
   </body>
