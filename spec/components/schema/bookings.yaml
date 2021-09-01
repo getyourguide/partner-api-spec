@@ -35,9 +35,9 @@ components:
                   type: object
                   properties:
                     option_id:
-                      $ref: './commons.yaml#/components/schemas/OptionId'
+                      $ref: '../commons.yaml#/components/schemas/OptionId'
                     datetime:
-                      $ref: './commons.yaml#/components/schemas/Datetime'
+                      $ref: '../commons.yaml#/components/schemas/Datetime'
                     price:
                       type: string
                       example: '170.00'
@@ -53,7 +53,7 @@ components:
                             type: string
                             example: '5'
                     booking_parameters:
-                      $ref: './commons.yaml#/components/schemas/BookingParameters'
+                      $ref: '../schema/bookings.yaml#/components/schemas/BookingParameters'
 
 
     BookingCreateCoupon:
@@ -90,17 +90,17 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
             shopping_cart_hash:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
             booking_id:
-              $ref: './commons.yaml#/components/schemas/BookingId'
+              $ref: '../commons.yaml#/components/schemas/BookingId'
             booking_hash:
-              $ref: './commons.yaml#/components/schemas/BookingHash'
+              $ref: '../commons.yaml#/components/schemas/BookingHash'
             booking_status:
-              $ref: './commons.yaml#/components/schemas/BookingStatus'
+              $ref: '../commons.yaml#/components/schemas/BookingStatus'
             return_code:
-              $ref: './commons.yaml#/components/schemas/ReturnCode'
+              $ref: '../commons.yaml#/components/schemas/ReturnCode'
     
     BookingsGetByHashResponse:
       type: object
@@ -115,31 +115,31 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
             shopping_cart_hash:
-              $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
             booking_id:
-              $ref: './commons.yaml#/components/schemas/BookingId'
+              $ref: '../commons.yaml#/components/schemas/BookingId'
             booking_hash:
-              $ref: './commons.yaml#/components/schemas/BookingHash'
+              $ref: '../commons.yaml#/components/schemas/BookingHash'
             booking_status:
-              $ref: './commons.yaml#/components/schemas/BookingStatus'
+              $ref: '../commons.yaml#/components/schemas/BookingStatus'
             return_code:
-              $ref: './commons.yaml#/components/schemas/ReturnCode'
+              $ref: '../commons.yaml#/components/schemas/ReturnCode'
     
     Bookings:
       type: object
       properties:
         booking_id:
-          $ref: './commons.yaml#/components/schemas/BookingId'
+          $ref: '../commons.yaml#/components/schemas/BookingId'
         booking_hash:
-          $ref: './commons.yaml#/components/schemas/BookingHash'
+          $ref: '../commons.yaml#/components/schemas/BookingHash'
         booking_status:
-          $ref: './commons.yaml#/components/schemas/BookingStatus'
+          $ref: '../commons.yaml#/components/schemas/BookingStatus'
         shopping_cart_id:
-          $ref: './commons.yaml#/components/schemas/ShoppingCartId'
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
         shopping_cart_hash:
-          $ref: './commons.yaml#/components/schemas/ShoppingCartHash'
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
         bookable:
           $ref: '#/components/schemas/Bookable'
 
@@ -147,35 +147,35 @@ components:
       type: object
       properties:
         tour_id:
-          $ref: './commons.yaml#/components/schemas/TourId'
+          $ref: '../commons.yaml#/components/schemas/TourId'
         option_id:
-          $ref: './commons.yaml#/components/schemas/OptionId'
+          $ref: '../commons.yaml#/components/schemas/OptionId'
         datetime:
-          $ref: './commons.yaml#/components/schemas/Datetime'
+          $ref: '../commons.yaml#/components/schemas/Datetime'
         datetime_utc:
-          $ref: './commons.yaml#/components/schemas/DatetimeUTC'
+          $ref: '../commons.yaml#/components/schemas/DatetimeUTC'
         datetime_type:
-          $ref: './commons.yaml#/components/schemas/DatetimeType'
+          $ref: '../commons.yaml#/components/schemas/DatetimeType'
         opening_hours:
           type: array
           items:
             type: object
             properties:
               opening_time:
-                $ref: './commons.yaml#/components/schemas/Datetime'
+                $ref: '../commons.yaml#/components/schemas/Datetime'
               closing_time:
-                $ref: './commons.yaml#/components/schemas/Datetime'
+                $ref: '../commons.yaml#/components/schemas/Datetime'
         price:
           description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
           type: number
           format: double
           example: 270
         valid_until:
-          $ref: './commons.yaml#/components/schemas/Datetime'
+          $ref: '../commons.yaml#/components/schemas/Datetime'
         cancellation_policy_text:
-          $ref: './commons.yaml#/components/schemas/CancellationPolicyText'
+          $ref: '../commons.yaml#/components/schemas/CancellationPolicyText'
         currently_cancellable_at_no_fee:
-          $ref: './commons.yaml#/components/schemas/CurrentlyCancellableAtNoFee'
+          $ref: '../commons.yaml#/components/schemas/CurrentlyCancellableAtNoFee'
         categories:
           type: array
           description: The price categories used for this booking.
@@ -192,4 +192,27 @@ components:
                 type: number
                 example: 1
         booking_parameters:
-          $ref: './commons.yaml#/components/schemas/BookingParameters'
+          $ref: '#/components/schemas/BookingParameters'
+
+    BookingParameters:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the property
+            enum: [language, hotel, comment, supplier_requested_question]
+            example: language
+          value_1:
+            type: string
+            description: First / Primary value of the property
+            example: language_live
+          value_2:
+            type: string
+            description: The language property requires a second value (e.g. value_1 = language_live, value_2 = en).
+            example: en
+          mandatory:
+            type: boolean
+            description: The mandatory booking parameters can be retrieved from the options endpoint
+            example: false

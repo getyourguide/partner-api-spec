@@ -375,26 +375,3 @@ components:
       description: Indicates whether this booking is currently cancellable at no fee.
       type: boolean
       example: true
-
-    BookingParameters:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-            description: Name of the property
-            enum: [language, hotel, comment, supplier_requested_question]
-            example: language
-          value_1:
-            type: string
-            description: First / Primary value of the property
-            example: language_live
-          value_2:
-            type: string
-            description: The language property requires a second value (e.g. value_1 = language_live, value_2 = en).
-            example: en
-          mandatory:
-            type: boolean
-            description: The mandatory booking parameters can be retrieved from the options endpoint
-            example: false
