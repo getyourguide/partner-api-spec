@@ -140,9 +140,9 @@ components:
         shopping_cart_hash:
           $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
         bookable:
-          description: Only present if the booking is confirmed and active.
           $ref: '#/components/schemas/Bookable'
         ticket:
+          description: Only present if the booking is confirmed and active.
           $ref: '#/components/schemas/Ticket'
       required:
         - booking_id
