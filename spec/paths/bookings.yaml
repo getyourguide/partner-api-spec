@@ -18,8 +18,8 @@ paths:
           application/json:
             schema:
               oneOf:
-                - $ref: '../components/bookings.yaml#/components/schemas/BookingCreateActivity'
-                - $ref: '../components/bookings.yaml#/components/schemas/BookingCreateCoupon'
+                - $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity'
+                - $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateCoupon'
       responses:
         200:
           description: Successful response
@@ -34,7 +34,7 @@ paths:
                     type: object
                     properties:
                       bookings:
-                        $ref: '../components/bookings.yaml#/components/schemas/BookingCreateResponse'
+                        $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse'
         400:
           description: Missing Parameters
         500:
@@ -56,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingsGetByHashResponse'
+                $ref: '../components/schema/bookings.yaml#/components/schemas/BookingsGetByHashResponse'
         400:
           description: Missing Parameters
         500:
@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../components/bookings.yaml#/components/schemas/BookingDeleteResponse'
+                $ref: '../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse'
         400:
           description: Missing Parameters
         500:
