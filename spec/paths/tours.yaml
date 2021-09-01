@@ -76,11 +76,10 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
-                    
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
   
   /tours/{tour_id}/availabilities:
     get:
@@ -110,11 +109,10 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/availabilities.yaml#/components/schemas/Availabilities'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
   
   /tours/{tour_id}/options:
     get:
@@ -143,8 +141,7 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'

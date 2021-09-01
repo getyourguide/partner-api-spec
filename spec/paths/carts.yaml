@@ -34,10 +34,10 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
   
   /carts/{shopping_cart_hash}:
     get:
@@ -66,8 +66,7 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'

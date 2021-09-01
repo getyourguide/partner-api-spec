@@ -56,7 +56,7 @@ components:
           enum: ['invalid', 'open', 'in_payment', 'completed']
           example: completed
         bookings:
-          $ref: '../schema/bookings.yaml#/components/schemas/Bookings'
+          $ref: '../schema/bookings.yaml#/components/schemas/Booking'
         payment_info:
           $ref: '#/components/schemas/PaymentInfo'
 

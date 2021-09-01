@@ -14,7 +14,7 @@ components:
         query:
           type: string
           description: URL parameters used for the request sent
-          example: 'cnt_language=en&currency=eur&q=paris&preformatted=full&date[]=2017-09-01T00:00:00&date[]=2017-09-01T23:59:59'
+          example: 'cnt_language=en&currency=eur'
         availableLanguages:
           type: array
           description: Available conduction languages aggregated across all tours

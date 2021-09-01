@@ -25,12 +25,11 @@ paths:
                   _metadata:
                     $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
                   data:
-                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationVersionResponse'
-                        
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationVersionResponse'                 
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
 
   /configuration/payment:
     get:
@@ -53,8 +52,7 @@ paths:
                     $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
                   data:
                     type: object
-                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationPaymentResponse'
-                          
+                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationPaymentResponse'          
         400:
           description: Missing Parameters
         500:
@@ -78,8 +76,7 @@ paths:
                   data:
                     type: object
                     $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationPrivilegeResponse'
-                          
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
