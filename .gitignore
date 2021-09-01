@@ -1,0 +1,6 @@
+# Dotfiles
+.*
+!.githooks
+!.gitignore
+!.github
+
