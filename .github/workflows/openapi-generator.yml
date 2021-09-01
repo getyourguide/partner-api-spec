@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: push
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  generate-angular-client:
+    runs-on: ubuntu-latest
+    name: Example
+    steps:
+
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Generate your openapi document (if you don't write it manually)
+
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Angular Client
+        uses: triaxtec/openapitools-generator-action@v1.0.0
+        with:
+          generator: typescript-node
+#           config-file: angular-generator-config.yml
+
+      # Do something with the generated client (likely publishing it somewhere)
+#       - name: Do something with the client
+#         run: |
+#           cd typescript-angular-client
