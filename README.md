@@ -12,10 +12,8 @@ It has a RESTful interface and uses the JSON media format. Access is secured via
 ## [Generating clients](https://openapi-generator.tech/docs/installation/)
 You can use the openapi generator cli to automatically generate different language clients.
 Some generators include (`go`, `typescript-node`, `ruby`)
+
+Clone the repository and then you can run this command to generate a `typescript-node` client
 ```
-docker run --rm \
-  -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-  -i https://raw.githubusercontent.com/getyourguide/partner-api-spec/main/spec/api.yaml \
-  -g go \
-  -o /local/out/go
+npx @openapitools/openapi-generator-cli generate -i api.yaml -g typescript-node -o /tmp/ts/
 ```

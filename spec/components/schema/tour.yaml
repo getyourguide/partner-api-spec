@@ -1,8 +1,8 @@
-openapi: 3.0.2
-paths: {}
+openapi: 3.0.0
 info:
   title: Tour Schema
   version: 1.0.0
+paths: {}
 components:
   schemas:
     Tour:
@@ -20,7 +20,10 @@ components:
         cond_language:
           type: array
           description: Available conduction languages. List of ISO language codes (ISO 639-1).
-          example: [en]
+          items:
+            type: string
+            enum: [en, es, fr]
+            example: en
         title:
           type: string
           description: Title of the option.

@@ -25,7 +25,6 @@ paths:
                   _metadata:
                     $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
                   data:
-                    type: object
                     $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationVersionResponse'
                         
         400:

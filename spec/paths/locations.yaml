@@ -72,6 +72,7 @@ paths:
           description: Missing Parameters
         500:
           description: Server error
+  
   /locations/{location_id}/tours:
     get:
       operationId: Locations
