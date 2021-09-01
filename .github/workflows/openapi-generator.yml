@@ -9,7 +9,7 @@ on: push
 jobs:
   generate-openapi-client:
     runs-on: ubuntu-latest
-    name: Example
+    name: Openapi Generator
     steps:
 
       # Checkout your code
