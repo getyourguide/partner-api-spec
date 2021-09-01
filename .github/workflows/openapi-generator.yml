@@ -3,7 +3,8 @@
 name: Openapi
 
 # Controls when the workflow will run
-on: push
+on:
+  pull_request
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,7 +21,7 @@ jobs:
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
-      - name: Generate Angular Client
+      - name: Generate Typescript Node Client
         uses: triaxtec/openapitools-generator-action@v1.0.0
         with:
           openapi-file: spec/api.yaml
