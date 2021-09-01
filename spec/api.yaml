@@ -31,54 +31,54 @@ security:
 paths:
   # Configuration
   /configuration/{version}:
-    $ref: 'paths/configuration.yaml#/paths/~1configuration~1{version}'
+    $ref: './paths/configuration.yaml#/paths/~1configuration~1{version}'
   /configuration/payment:
-    $ref: 'paths/configuration.yaml#/paths/~1configuration~1payment'
+    $ref: './paths/configuration.yaml#/paths/~1configuration~1payment'
   /configuration/privileges:
-    $ref: 'paths/configuration.yaml#/paths/~1configuration~1privileges'
+    $ref: './paths/configuration.yaml#/paths/~1configuration~1privileges'
   # Bookings
   /bookings:
-    $ref: 'paths/bookings.yaml#/paths/~1bookings'
+    $ref: './paths/bookings.yaml#/paths/~1bookings'
   /bookings/{booking_hash}:
-    $ref: 'paths/bookings.yaml#/paths/~1bookings~1{booking_hash}'
+    $ref: './paths/bookings.yaml#/paths/~1bookings~1{booking_hash}'
   # Carts
   /carts:
-    $ref: 'paths/carts.yaml#/paths/~1carts'
+    $ref: './paths/carts.yaml#/paths/~1carts'
   /carts/{shopping_cart_hash}:
-    $ref: 'paths/carts.yaml#/paths/~1carts~1{shopping_cart_hash}'
+    $ref: './paths/carts.yaml#/paths/~1carts~1{shopping_cart_hash}'
   # Categories
   /categories:
-    $ref: 'paths/categories.yaml#/paths/~1categories'
+    $ref: './paths/categories.yaml#/paths/~1categories'
   /categories/{category_id}:
-    $ref: 'paths/categories.yaml#/paths/~1categories~1{category_id}'
+    $ref: './paths/categories.yaml#/paths/~1categories~1{category_id}'
   # Locations
   /locations:
-    $ref: 'paths/locations.yaml#/paths/~1locations'
+    $ref: './paths/locations.yaml#/paths/~1locations'
   /locations/{location_id}:
-    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}'
+    $ref: './paths/locations.yaml#/paths/~1locations~1{location_id}'
   /locations/{location_id}/tours:
-    $ref: 'paths/locations.yaml#/paths/~1locations~1{location_id}~1tours'
+    $ref: './paths/locations.yaml#/paths/~1locations~1{location_id}~1tours'
   /locations/{iata}:
-    $ref: 'paths/locations.yaml#/paths/~1locations~1{iata}'
+    $ref: './paths/locations.yaml#/paths/~1locations~1{iata}'
   # Options
   /options/{option_id}:
-    $ref: 'paths/options.yaml#/paths/~1options~1{option_id}'
+    $ref: './paths/options.yaml#/paths/~1options~1{option_id}'
   /options/{option_id}/pricings:
-    $ref: 'paths/options.yaml#/paths/~1options~1{option_id}~1pricings'
+    $ref: './paths/options.yaml#/paths/~1options~1{option_id}~1pricings'
   /options/{option_id}/availabilities:
-    $ref: 'paths/options.yaml#/paths/~1options~1{option_id}~1availabilities'
+    $ref: './paths/options.yaml#/paths/~1options~1{option_id}~1availabilities'
   # Reviews
   /reviews/tour/{tour_id}:
-    $ref: 'paths/reviews.yaml#/paths/~1reviews~1tour~1{tour_id}'
+    $ref: './paths/reviews.yaml#/paths/~1reviews~1tour~1{tour_id}'
   # Suppliers
   /suppliers/{supplier_id}:
-    $ref: 'paths/suppliers.yaml#/paths/~1suppliers~1{supplier_id}'
+    $ref: './paths/suppliers.yaml#/paths/~1suppliers~1{supplier_id}'
   # Tours
   /tours:
-    $ref: 'paths/tours.yaml#/paths/~1tours'
+    $ref: './paths/tours.yaml#/paths/~1tours'
   /tours/{tour_id}:
-    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}'
+    $ref: './paths/tours.yaml#/paths/~1tours~1{tour_id}'
   /tours/{tour_id}/availabilities:
-    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1availabilities'
+    $ref: './paths/tours.yaml#/paths/~1tours~1{tour_id}~1availabilities'
   /tours/{tour_id}/options:
-    $ref: 'paths/tours.yaml#/paths/~1tours~1{tour_id}~1options'
+    $ref: './paths/tours.yaml#/paths/~1tours~1{tour_id}~1options'
