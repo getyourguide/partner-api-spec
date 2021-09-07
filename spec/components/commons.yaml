@@ -314,6 +314,18 @@ components:
       schema:
         type: integer
         default: 0
+    status:
+      name: Status
+      in: query
+      required: false
+      description: Filter bookings based on status.
+      schema:
+        type: string
+        enum:
+          - unconfirmed
+          - confirmed
+          - canceled
+
 
 
  # TODO MOVE SCHEMAS TO SEPERATE FILE
@@ -357,10 +369,12 @@ components:
       example: 69232
     Datetime:
       type: string
+      format: datetime
       example: "2017-09-01T00:00:00"
     DatetimeUTC:
       description: The datetime in UTC of when the activity dates place.
       type: string
+      format: datetime
       example: "2017-09-01T04:00:00Z"
     DatetimeType:
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.

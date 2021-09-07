@@ -55,7 +55,6 @@ components:
                     booking_parameters:
                       $ref: '../schema/bookings.yaml#/components/schemas/BookingParameters'
 
-
     BookingCreateCoupon:
       type: object
       properties:
@@ -97,16 +96,16 @@ components:
               $ref: '../commons.yaml#/components/schemas/BookingId'
             booking_hash:
               $ref: '../commons.yaml#/components/schemas/BookingHash'
-            booking_status:
+            status:
               $ref: '../commons.yaml#/components/schemas/BookingStatus'
             return_code:
               $ref: '../commons.yaml#/components/schemas/ReturnCode'
-    
+
     BookingsGetByHashResponse:
       type: object
       properties:
-        bookings:
-          $ref: '#/components/schemas/Bookings'
+        booking:
+          $ref: '#/components/schemas/Booking'
 
     BookingDeleteResponse:
       type: object
@@ -127,7 +126,7 @@ components:
             return_code:
               $ref: '../commons.yaml#/components/schemas/ReturnCode'
     
-    Bookings:
+    Booking:
       type: object
       properties:
         booking_id:
@@ -142,6 +141,16 @@ components:
           $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
         bookable:
           $ref: '#/components/schemas/Bookable'
+        ticket:
+          description: Only present if the booking is confirmed and active.
+          $ref: '#/components/schemas/Ticket'
+      required:
+        - booking_id
+        - booking_hash
+        - booking_status
+        - shopping_cart_id
+        - shopping_cart_hash
+        - bookable
 
     Bookable:
       type: object
@@ -216,3 +225,48 @@ components:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
             example: false
+
+    Ticket:
+      type: object
+      properties:
+        booking_reference:
+          type: string
+          example: GYG7VMWR9HZ3
+        supplier_booking_codes:
+          $ref: "#/components/schemas/SupplierBookingCodes"
+        emergency_phone_number:
+          type: string
+          example: '+49 30 56839111'
+        emergency_email:
+          type: string
+          format: email
+          example: example@getyourguide.com
+        ticket_url:
+          type: string
+          format: uri
+          description: Download link for ticket PDF
+          example: https://www.getyourguide.com/voucher/7H8N87D3QAH16XVABGPCR311U66XELRG
+        ticket_hash:
+          type: string
+          example: 7H8N87D3QAH16XVABGPCR311U66XELRG
+    
+    SupplierBookingCodes:
+      type: array
+      items:
+        type: object
+        properties:
+          ticket_hash:
+            type: string
+            example: 7H8N87D3QAH16XVABGPCR311U66XELRG
+          label:
+            type: string
+            example: 'Ticket #1 (ADULT)'
+          type:
+            type: string
+            example: qr_code
+          code:
+            type: string
+            example: JRUFX567YOMTSI7RG5K3UL2XC6RECSGQ-E9VNO
+          pricing_category_id:
+            type: number
+            example: 2167696

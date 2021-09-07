@@ -6,7 +6,7 @@ paths:
   /bookings:
     post:
       operationId: BookingsCreate
-      description: A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable should be sent in the body of the request
+      description: A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable must be sent in the body of the request.
       summary: Create a new booking.
       tags:
         - Bookings
@@ -35,10 +35,41 @@ paths:
                     properties:
                       bookings:
                         $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse'
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+
+    get:
+      operationId: BookingsGetAll
+      summary: Get all bookings.
+      tags:
+        - Bookings
+      parameters:
+        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons.yaml#/components/parameters/status'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                  data:
+                    type: object
+                    properties:
+                      bookings:
+                        type: array
+                        items:
+                          $ref: '../components/schema/bookings.yaml#/components/schemas/Booking'
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
 
   /bookings/{booking_hash}:
     get:
@@ -57,10 +88,11 @@ paths:
             application/json:
               schema:
                 $ref: '../components/schema/bookings.yaml#/components/schemas/BookingsGetByHashResponse'
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+
     delete:
       operationId: bookingsDeleteByHash
       summary: Delete (Cancel) a booking.
@@ -76,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse'
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'

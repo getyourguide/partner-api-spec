@@ -67,11 +67,10 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/location.yaml#/components/schemas/Location'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
   
   /locations/{location_id}/tours:
     get:
@@ -102,11 +101,10 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/tour.yaml#/components/schemas/Tour'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'
 
   /locations/{iata}:
     get:
@@ -136,8 +134,7 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/location.yaml#/components/schemas/Location'
-
-        400:
-          description: Missing Parameters
-        500:
-          description: Server error
+        4XX:
+          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+        default:
+          $ref: '../components/schema/errors.yaml#/components/responses/Default'

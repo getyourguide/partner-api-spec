@@ -1,33 +1,67 @@
 openapi: 3.0.2
 paths: {}
 info:
-  title: Errors Schema
+  title: Errors Responses
   version: 1.0.0
 components:
+  responses:
+    4XX:
+      description: HTTP 400, 401, 404 have the same response format.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Default:
+      description: Other HTTP status codes which do not provide additional information are 403, 405, 500.
+
   schemas:
-    
-    Availabilities:
-      type: array
-      items:
+      # Schema for error response body
+      Error:
         type: object
         properties:
-          start_time:
+          descriptor:
             type: string
-            description: Start Time and Date in local time.
-            example: '2017-09-01T09:00:00'
-          pricing_id:
-            type: integer
-            description: The price id for this particular availability
-            example: 163320
-          vacancies:
-            type: integer
-            description: Number of seats that are available.
-            example: 99
-          discount:
-            type: number
-            description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.
-          end_time:
+            example: GetYourGuide AG
+          apiVersion:
             type: string
-            description: Optional response parameter. End Time of a Tour - only given in case of opening hours.
-            example: '2017-09-01T09:00:00'
-          
+            example: '1'
+          method:
+            type: string
+            example: getBookingByHashAction
+          date:
+            type: string
+            format: date-time
+            example: '2021-09-01T11:59:41Z'
+          status:
+            type: string
+            example: ERROR
+          query:
+            type: string
+            example: cnt_language=en&currency=eur
+          errors:
+            type: object
+            properties:
+              errorCode:
+                type: number
+                example: 25
+                description: GetYourGuide internal error code
+              errorMessage:
+                type: string
+                example: Unauthorized. The access token is invalid.
+                description: Verbose description of the error.
+            required:
+              - errorCode
+              - errorMessage
+          helpURL:
+            type: string
+            example: https://api.getyourguide.com/doc
+        required:
+          - descriptor
+          - apiVersion
+          - method
+          - date
+          - status
+          - query
+          - errors
+          - helpURL
+
