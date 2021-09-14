@@ -39,7 +39,7 @@ components:
                         - $ref: './payment.yaml#/components/schemas/Paypal'
                         - $ref: './payment.yaml#/components/schemas/EncryptedCreditCard'
 
-    CartsConfirmResponse:
+    CartsConfirmResponseConfirmed:
       type: object
       properties:
         shopping_cart_id:
@@ -51,127 +51,146 @@ components:
         traveler:
           $ref: '#/components/schemas/Traveler'
         status:
-          type: string
-          description: The status of the shopping cart.
-          enum: ['invalid', 'open', 'in_payment', 'completed']
-          example: completed
+          $ref: '#/components/schemas/Status'
         bookings:
           $ref: '../schema/bookings.yaml#/components/schemas/Booking'
         payment_info:
-          $ref: '#/components/schemas/PaymentInfo'
-
-    PaymentInfo:
+          $ref: './payment.yaml#/components/schemas/PaymentInfoConfirmed'
+            
+    CartsConfirmResponseInPayment:
       type: object
       properties:
-        payment_currency:
-          type: string
-          description: The currency in which the payment has been processed.
-          example: ERU
-        total_price:
-          type: number
-          description: The total price of the shopping cart.
-          example: 209.78
-        precoupon_price:
-          type: number
-          description: The price of the shopping cart before coupons have been applied.
-          example: 209.78
-        payment_method:
-          type: string
-          description: The payment method used to pay.
-          enum: ['cc', 'pp', 'dd', 'co', 'mb', 'mx', 'n/a']
-          example: cc
-        coupon_info:
-          type: string
-          description: The code of the coupon if one was used.
-          example: test
-        invoice_reference:
-          type: string
-          description: The invoice reference number.
-          example: GCI-0032724458
-    
+        shopping_cart_id:
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+        shopping_cart_hash:
+          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+        billing:
+          $ref: '#/components/schemas/Billing'
+        traveler:
+          $ref: '#/components/schemas/Traveler'
+        status:
+          $ref: '#/components/schemas/Status'
+        bookings:
+          $ref: '../schema/bookings.yaml#/components/schemas/Booking'
+        payment_process:
+          $ref: './payment.yaml#/components/schemas/PaymentProcess'
+        payment_info:
+          $ref: './payment.yaml#/components/schemas/PaymentInfoInPayment'
+
+    # Cart Objects
     Billing:
       type: object
       properties:
         salutation_code:
-          type: string
-          description: Salutation code. m=Mr. f=Mrs. c=empty
-          enum: [m, f, c]
-          example: m
+          $ref: '#/components/schemas/SalutationCode'
         first_name:
-          type: string
-          description: The first name
-          example: Test
+          $ref: '#/components/schemas/FirstName'
         last_name: 
-          type: string
-          description: The last name
-          example: Booking
+          $ref: '#/components/schemas/LastName'
         email:
-          type: string
-          description: Correspondence email.
-          example: abc@efgh.com
+          $ref: '#/components/schemas/Email'
         is_company: 
-          type: boolean
-          description: Is the payee a company.
-          example: false
+          $ref: '#/components/schemas/IsCompany'
         company_name: 
-          type: string
-          description: Name of the company.
-          example: Company Name
+          $ref: '#/components/schemas/CompanyName'
         invoice:
-          type: boolean
-          description: Correspondence email.
-          example: false
+          $ref: '#/components/schemas/Invoice'
         address_line_1:
-          type: string
-          description: Address line 1.
-          example: Address line 1.
+          $ref: '#/components/schemas/AddressLine1'
         address_line_2: 
-          type: string
-          description: Address line 2.
-          example: Address line 2.
+          $ref: '#/components/schemas/AddressLine2'
         city: 
-          type: string
-          description: The city.
-          example: Berlin
+          $ref: '#/components/schemas/City'
         postal_code: 
-          type: string
-          description: Postal code.
-          example: '12345'
+          $ref: '#/components/schemas/PostalCode'
         state: 
-          type: string
-          description: State
-          example: NYC
+          $ref: '#/components/schemas/State'
         country_code:
-          type: string
-          description: Country code.
-          example: DE
+          $ref: '#/components/schemas/CountryCode'
         phone_number: 
-          type: string
-          description: Phone number.
-          example: 0049 123456789
+          $ref: '#/components/schemas/PhoneNumber'
 
     Traveler:
       type: object
       properties:
         salutation_code:
-          type: string
-          description: Salutation code. m=Mr. f=Mrs. c=empty
-          enum: [m, f, c]
-          example: m
+          $ref: '#/components/schemas/SalutationCode'
         first_name:
-          type: string
-          description: The first name
-          example: Test
+          $ref: '#/components/schemas/FirstName'
         last_name: 
-          type: string
-          description: The last name
-          example: Booking
+          $ref: '#/components/schemas/LastName'
         email:
-          type: string
-          description: Correspondence email.
-          example: abc@efgh.com
+          $ref: '#/components/schemas/Email'
         phone_number: 
-          type: string
-          description: Phone number.
-          example: 0049 123456789
+          $ref: '#/components/schemas/PhoneNumber'
+
+    # Data fields in carts object:
+    Status:
+      type: string
+      enum: ['completed', 'open', 'in_payment', 'invalid']
+      description: > 
+        The status of the shopping cart:
+          * `open`: the shopping cart is open and needs to be checked out
+          * `completed`: the transaction is completed
+          * `in_payment`: the transaction is ongoing, this status only occurs with 2-step checkout (PayPal or 3DS CC)
+          * `invalid`: the shopping cart is invalid
     
+    # Data fields for billing and traveler info
+    SalutationCode:
+      type: string
+      description: Salutation code. m=Mr. f=Mrs. c=empty
+      enum: [m, f, c]
+      example: m
+    FirstName:
+      type: string
+      description: The first name
+      example: John
+    LastName: 
+      type: string
+      description: The last name
+      example: Doe
+    IsCompany: 
+      type: boolean
+      description: Is the payee a company.
+      example: false
+    CompanyName: 
+      type: string
+      description: Name of the company.
+      example: GetYourGuide
+    Invoice:
+      type: boolean
+      description: Indicates wether an invoice is required for this purchase.
+      example: false
+    Email:
+      type: string
+      format: email
+      description: Correspondence email.
+      example: address@example.com
+    AddressLine1:
+      type: string
+      description: Street and house number.
+      example: 1000 Fulton Avenue
+    AddressLine2:
+      type: string
+      description: Additional information which did not fit in the first row.
+      example: 'c/o Amy Winter'
+    City: 
+      type: string
+      description: Name of the city.
+      example: Berlin
+    PostalCode: 
+      type: string
+      description: Postal/zip code.
+      example: '14050'
+    State:
+      type: string
+      description: State within the country.
+      example: California
+    CountryCode:
+      type: string
+      description: An ISO 3166-1 country code.
+      example: DE
+    PhoneNumber: 
+      type: string
+      description: International phone number, in the ITU E.123 standard.
+      example: '+49123456789'

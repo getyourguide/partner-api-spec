@@ -31,9 +31,9 @@ paths:
                     type: object
                     properties:
                       shopping_cart:
-                        type: array
-                        items:
-                          $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
+                        oneOf:
+                          - $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed'
+                          - $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseInPayment'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
@@ -63,9 +63,7 @@ paths:
                     type: object
                     properties:
                       shopping_cart:
-                        type: array
-                        items:
-                          $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponse'
+                        $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
