@@ -6,6 +6,8 @@ It has a RESTful interface and uses the JSON media format. Access is secured via
 * [General Information](https://github.com/getyourguide/partner-api-spec/wiki/General-Information)
 * [Image Formats](https://github.com/getyourguide/partner-api-spec/wiki/Image-Formats)
 * [Making a booking](https://github.com/getyourguide/partner-api-spec/wiki/Making-a-booking)
+* [Adyen Credit Card Checkout](https://github.com/getyourguide/partner-api-spec/wiki/Adyen-payment)
+* [Additional Resources](https://github.com/getyourguide/partner-api-spec/tree/main/resources)
 
 ## [API Reference](https://code.getyourguide.com/partner-api-spec/)
 
