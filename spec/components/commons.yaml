@@ -122,14 +122,14 @@ components:
     # SEARCH PARAMETERS
     q:
       name: q
-      description: "Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
+      description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
       required: false
       in: query
       schema:
         type: string
     coordinates[]:
       name: coordinates[]
-      description: Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km). 'i.e. &coordinates[]=52.5200&coordinates[]=13.4050&coordinates[]=10'
+      description: Mutually exclusive with 'q' parameter! Latitude, longitude and radius as array. Latitude must be between -90 and 90, longitude must be between -180 and 180, radius must be between 0 and 150 (considered km). 'i.e. &coordinates[]=52.5200&coordinates[]=13.4050&coordinates[]=10'
       required: false
       in: query
       schema:
