@@ -77,7 +77,7 @@ paths:
         - $ref: '../components/commons.yaml#/components/parameters/optionId'
         - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
         - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/date'
+        - $ref: '../components/commons.yaml#/components/parameters/date[]'
       responses:
         200:
           description: Successful response
