@@ -48,7 +48,9 @@
 
     <script src="./docs/swagger-ui-bundle.js" charset="UTF-8"> </script>
     <script src="./docs/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-    <script>
+    <script type="module">
+    import { requestInterceptor } from './resources/request-interceptor.js';
+
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
@@ -62,7 +64,8 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout"
+        layout: "StandaloneLayout",
+        requestInterceptor: requestInterceptor
       });
       // End Swagger UI call region
 
