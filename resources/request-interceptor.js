@@ -12,22 +12,18 @@
 export const requestInterceptor = async (req) => {
 
     if (req.url.endsWith('.yaml')) return req;
-    // Generate Signature
-    async function digestMessage(message) {
-        const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);           // hash the message
-        const hashArray = Array.from(new Uint8Array(hashBuffer));                     // convert buffer to byte array
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
-        return hashHex;
-    }
 
     // We need to generate a signature for each request
-    const timestamp = Date.now() + 60 * 7;
+    const timestamp =  Math.floor(new Date().getTime() / 1000) + 60 * 7;
 
     const path = new URL(req.url).search;
     const token = req.headers['X-ACCESS-TOKEN'];
     const data = `${path}\n${token}\n${timestamp}`;
-    const digestHex = await digestMessage(data);
+    
+    // We import js-sha256 from npm since it computes the same way as php 
+    // (crypto.subtle.digest) - url encodes the data before hashing which creates a different signature
+    // https://www.npmjs.com/package/js-sha256
+    const digestHex = sha256(data);
 
     // We need to remove the x-access-token header
     delete req.headers['X-ACCESS-TOKEN'];
