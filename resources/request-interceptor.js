@@ -16,9 +16,9 @@ export const requestInterceptor = async (req) => {
     // We need to generate a signature for each request
     const timestamp =  Math.floor(new Date().getTime() / 1000) + 60 * 7;
 
-    const path = new URL(req.url).search;
+    const {search, pathname} = new URL(req.url);
     const token = req.headers['X-ACCESS-TOKEN'];
-    const data = `${path}\n${token}\n${timestamp}`;
+    const data = `${pathname}${search}\n${token}\n${timestamp}`;
     
     // We import js-sha256 from npm since it computes the same way as php 
     // (crypto.subtle.digest) - url encodes the data before hashing which creates a different signature
