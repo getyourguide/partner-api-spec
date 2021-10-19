@@ -1,0 +1,157 @@
+openapi: 3.0.2
+info:
+  title: Common data fields
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    BookingHash:
+      description: The hash of the booking. This identifies the booking.
+      example: WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M
+      type: string
+    BookingId:
+      description: The id of the booking.
+      example: 13822240
+      type: integer
+    BookingStatus:
+      description: The status of the booking.
+      enum:
+        - temp
+        - unconfirmed
+        - confirmed
+        - deleted
+        - canceled
+        - deleted_by_customer
+        - deleted_by_daemon
+      example: temp
+      type: string
+    CancellationPolicyText:
+      description: Cancellation policy
+      example: Your activity is non-refundable,
+      type: string
+    CategoryId:
+      description: ID of the category.
+      example: 33
+      type: integer
+    CntLanguage:
+      description: ISO 639, Language of the text content.
+      enum:
+        - da
+        - de
+        - en
+        - es
+        - fr
+        - it
+        - nl
+        - 'no'
+        - pl
+        - pt
+        - fi
+        - sv
+      type: string
+    Country:
+      description: ISO code of the country of the location (ISO 3166-1).
+      example: US
+      type: string
+    Currency:
+      description: ISO 4217, The currency with which you would like to pay.
+      enum:
+        - AED
+        - ARS
+        - AUD
+        - BGN
+        - CAD
+        - CHF
+        - CLP
+        - CNY
+        - COP
+        - CZK
+        - DKK
+        - EGP
+        - EUR
+        - GBP
+        - HKD
+        - HRK
+        - HUF
+        - IDR
+        - ILS
+        - INR
+        - JPY
+        - KRW
+        - MAD
+        - MXN
+        - MYR
+        - NOK
+        - NZD
+        - PHP
+        - PLN
+        - RON
+        - RUB
+        - SEK
+        - SGD
+        - THB
+        - TRY
+        - UAH
+        - USD
+        - UYU
+        - VND
+        - ZAR
+      type: string
+    CurrentlyCancellableAtNoFee:
+      description: Indicates whether this booking is currently cancellable at no fee.
+      example: true
+      type: boolean
+    Datetime:
+      description: The local datetime format `Y-m-d T H:i:s`.
+      example: '2017-09-01T00:00:00'
+      format: datetime
+      type: string
+    DatetimeType:
+      description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
+      enum:
+        - date
+        - datetime
+      example: date
+      type: string
+    DatetimeUTC:
+      description: The datetime in UTC of when the activity dates place.
+      example: '2017-09-01T04:00:00Z'
+      format: datetime
+      type: string
+    Email:
+      description: Correspondence email.
+      example: address@example.com
+      format: email
+      type: string
+    ExternalReferenceId:
+      description: The external reference ID. The reseller can supply a reference number under which this booking is referenced in his system. This field contains that number. Maximum length is 255.
+      example: just_any_string
+      type: string
+    OptionId:
+      description: The ID of the tour option.
+      example: 69232
+      type: number
+    PhoneNumber:
+      description: International phone number, in the ITU E.123 standard.
+      example: '+49123456789'
+      type: string
+    Price:
+      description: The price.
+      example: 15
+      type: number
+    ReturnCode:
+      description: The return code of the booking service.
+      example: 0
+      type: number
+    ShoppingCartHash:
+      description: The hash of the shopping cart.
+      example: 0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K
+      type: string
+    ShoppingCartId:
+      description: The ID of the shopping cart.
+      example: 32724458
+      type: number
+    TourId:
+      description: The ID of the tour.
+      example: 50872
+      type: number

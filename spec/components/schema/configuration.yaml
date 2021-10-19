@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Configuration
   version: 1.0.0
@@ -36,7 +36,7 @@ components:
                 description: Required parameter by the encryption library to encrypt the users credit card information.
                 type: string
               brands:
-                description: List of brands available.
+                description: List of brands available, results vary depending on the country parameter passed.
                 type: array
                 items:
                   type: object

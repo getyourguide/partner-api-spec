@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Tour Schema
   version: 1.0.0
@@ -6,13 +6,11 @@ paths: {}
 components:
   schemas:
     Tour:
-      description: Tour option
+      description: A tour is a product.
       type: object
       properties:
         tour_id:
-          type: integer
-          description: Tour ID.
-          example: 66317
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
         tour_code:
           type: string
           description: Tour reference code.
@@ -139,7 +137,7 @@ components:
           items:
             $ref: "./duration.yaml#/components/schemas/Duration"
         cancellation_policy_text:
-          $ref: "../commons.yaml#/components/schemas/CancellationPolicyText"
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
         health_advisory:
           $ref: "#/components/schemas/HealthAdvisory"
         health_requirement:
@@ -159,7 +157,6 @@ components:
               * `instructor`: an instructor e.g. for diving classes.
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
-
 
     TourOption:
       description: Tour option
@@ -362,7 +359,7 @@ components:
             type: string
             description: Verbose description
             example: All areas that customers touch are frequently cleaned
-    
+
     HealthRequirement:
       type: array
       items:
@@ -380,5 +377,3 @@ components:
             type: string
             description: Verbose description
             example: You are required to bring and wear a mask
-        
-        

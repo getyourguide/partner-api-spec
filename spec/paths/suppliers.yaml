@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Suppliers
   version: 1.0.0
@@ -10,9 +10,9 @@ paths:
       tags:
         - Suppliers
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/supplierId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/path.yaml#/components/parameters/supplierId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response

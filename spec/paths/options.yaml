@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for options
   version: 1.0.0
@@ -10,9 +10,9 @@ paths:
       tags:
         - Options
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/optionId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/path.yaml#/components/parameters/optionId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response
@@ -42,9 +42,9 @@ paths:
       tags:
         - Options
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/optionId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/path.yaml#/components/parameters/optionId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response
@@ -74,10 +74,10 @@ paths:
       tags:
         - Options
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/optionId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/date[]'
+        - $ref: '../components/commons/path.yaml#/components/parameters/optionId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/query.yaml#/components/parameters/date[]'
       responses:
         200:
           description: Successful response
@@ -95,6 +95,21 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionAvailability'
+          links:
+            TimeSlot:
+              description: >
+                The `start_time`value returned in the response from `GET /options/{option_id}/availabilities`
+                is used as the `datetime` parameter in `POST /bookings`.
+              operationId: BookingsCreate
+              requestBody: 
+                datetime: '$response.body#/data/availabilities/0/start_time'
+            PricingId:
+              description: >
+                The `pricing_id` value returned in the response from `GET /options/{option_id}/availabilities` 
+                is used to identify the right pricing structure returned from `GET /options/{option_id}/pricings`.
+              operationId: OptionsGetPricing
+              parameters: 
+                pricing_id: '$response.body#/data/availabilities/0/pricing_id'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:

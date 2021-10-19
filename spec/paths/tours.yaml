@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for tours
   version: 1.0.0
@@ -10,22 +10,22 @@ paths:
       tags:
         - Tours
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/preformatted'
-        - $ref: '../components/commons.yaml#/components/parameters/q'
-        - $ref: '../components/commons.yaml#/components/parameters/coordinates[]'
-        - $ref: '../components/commons.yaml#/components/parameters/date[]'
-        - $ref: '../components/commons.yaml#/components/parameters/condLanguage[]'
-        - $ref: '../components/commons.yaml#/components/parameters/price[]'
-        - $ref: '../components/commons.yaml#/components/parameters/categories[]'
-        - $ref: '../components/commons.yaml#/components/parameters/rating[]'
-        - $ref: '../components/commons.yaml#/components/parameters/duration[]'
-        - $ref: '../components/commons.yaml#/components/parameters/flags[]'
-        - $ref: '../components/commons.yaml#/components/parameters/sortfield'
-        - $ref: '../components/commons.yaml#/components/parameters/sortdirection'
-        - $ref: '../components/commons.yaml#/components/parameters/limit'
-        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/query.yaml#/components/parameters/preformatted'
+        - $ref: '../components/commons/query.yaml#/components/parameters/q'
+        - $ref: '../components/commons/query.yaml#/components/parameters/coordinates[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/date[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/condLanguage[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/price[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/categories[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/rating[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/duration[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/flags[]'
+        - $ref: '../components/commons/query.yaml#/components/parameters/sortfield'
+        - $ref: '../components/commons/query.yaml#/components/parameters/sortdirection'
+        - $ref: '../components/commons/query.yaml#/components/parameters/limit'
+        - $ref: '../components/commons/query.yaml#/components/parameters/offset'
       responses:
         200:
           description: Successful response
@@ -55,10 +55,10 @@ paths:
       tags:
         - Tours
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/tourId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/preformatted'
+        - $ref: '../components/commons/path.yaml#/components/parameters/tourId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/query.yaml#/components/parameters/preformatted'
       responses:
         200:
           description: Successful response
@@ -88,10 +88,10 @@ paths:
       tags:
         - Tours
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/tourId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/date[]'
+        - $ref: '../components/commons/path.yaml#/components/parameters/tourId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/query.yaml#/components/parameters/date[]'
       responses:
         200:
           description: Successful response
@@ -121,9 +121,9 @@ paths:
       tags:
         - Tours
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/tourId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/path.yaml#/components/parameters/tourId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response

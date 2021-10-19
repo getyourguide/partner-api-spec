@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for carts
   version: 1.0.0
@@ -9,8 +9,6 @@ paths:
       summary: Confirm a shopping cart.
       tags:
         - Carts
-      parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/externalReferenceId'
       requestBody:
         required: true
         content:
@@ -46,9 +44,9 @@ paths:
       tags:
         - Carts
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/shoppingCartHash'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/path.yaml#/components/parameters/shoppingCartHash'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
       responses:
         200:
           description: Successful response

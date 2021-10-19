@@ -18,49 +18,51 @@ components:
           value: curatedList
 
   schemas:
-    
     Location:
       type: object
       properties:
         location_id:
-          type: number
           description: Location ID
+          type: number
           example: 3850
         type:
+          description: Location type
           type: string
           enum: [AREA, CITY, POI]
-          description: Location type
           example: POI
         name:
           type: string
           description: Name of the location.
           example: Epcot Theme Park
         english_name:
+          description: DEPRECATED English fallback
           type: string
-          description: English fallback
           example: Epcot Theme Park
         city:
           type: string
           description: The city name if location type is POI or CITY.
           example: Orlando
         country:
-          type: string
           description: ISO code of the country of the location (ISO 3166-1).
+          type: string
           example: US
         coordinates:
-          $ref: './coordinates.yaml#/components/schemas/Coordinates'
+          $ref: "./coordinates.yaml#/components/schemas/Coordinates"
         parent_id:
-          type: number
           description: The location if of the parent location. For POI this could be a CITY or an AREA, for CITY this could be an AREA.
+          type: integer
           example: 191
         viewport:
-          $ref: './viewport.yaml#/components/schemas/Viewport'
-        picture: 
+          $ref: "./viewport.yaml#/components/schemas/Viewport"
+        picture:
           type: string
+          format: uri
           example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        picture_ssh: 
+        picture_ssh:
           type: string
+          format: uri
           example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        num_tours: 
+        num_tours:
           type: number
+          format: integer
           example: 386

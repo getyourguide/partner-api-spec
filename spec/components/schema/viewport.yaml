@@ -5,23 +5,22 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Viewport:
       type: object
       properties:
         sw_lat:
           type: number
-          description: South-West Latitude of map frame
+          description: South-West Latitude of map frame.
           example: 28.3701884
         sw_long:
           type: number
-          description: South-West Longitude of map frame
+          description: South-West Longitude of map frame.
           example: -81.5545306
         ne_lat:
           type: number
-          description: North-Est Latitude of map frame
+          description: North-Est Latitude of map frame.
           example: 28.3791816
         ne_long:
           type: number
-          description: North-Est Longitude of map frame
+          description: North-Est Longitude of map frame.
           example: -81.5443094

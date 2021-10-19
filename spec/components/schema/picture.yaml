@@ -5,9 +5,8 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Picture:
-      description:  Picture
+      description: Picture
       type: object
       properties:
         id:

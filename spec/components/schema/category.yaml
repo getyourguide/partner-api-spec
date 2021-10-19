@@ -5,21 +5,18 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Category:
       type: object
       properties:
         category_id:
-          type: number
-          description: Latitude.
-          example: 131
+          $ref: ../commons/fields.yaml#/components/schemas/CategoryId
         name:
           type: string
           description: Name of the category.
           example: Theme Parks & Amusement Parks
         parent_id:
           type: number
-          description: Id of the parent category (if there is any)
+          description: Id of the parent category (if there is any).
           example: 123
         number_of_tours:
           type: number

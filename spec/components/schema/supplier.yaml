@@ -5,7 +5,6 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Supplier:
       type: object
       properties:
@@ -44,9 +43,7 @@ components:
             type: object
             properties:
               category_id:
-                type: integer
-                description: Category Id
-                example: 207
+                $ref: ../commons/fields.yaml#/components/schemas/CategoryId
               name:
                 type: string
                 description: Name of the category.
@@ -59,7 +56,7 @@ components:
                 type: integer
                 description: Number of available tours in the category.
                 example: 1
-          
+
         logo_url:
           type: string
           description: URL to the logo of the supplier.

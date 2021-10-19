@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Reviews
   version: 1.0.0
@@ -10,13 +10,13 @@ paths:
       tags:
         - Reviews
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/tourId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/sortfield'
-        - $ref: '../components/commons.yaml#/components/parameters/sortdirection'
-        - $ref: '../components/commons.yaml#/components/parameters/limit'
-        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: '../components/commons/path.yaml#/components/parameters/tourId'
+        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
+        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: '../components/commons/query.yaml#/components/parameters/sortfield'
+        - $ref: '../components/commons/query.yaml#/components/parameters/sortdirection'
+        - $ref: '../components/commons/query.yaml#/components/parameters/limit'
+        - $ref: '../components/commons/query.yaml#/components/parameters/offset'
       responses:
         200:
           description: Successful response
