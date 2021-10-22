@@ -131,7 +131,7 @@ components:
       type: string
     Duration:
       type: number
-      description: Duration of the tour (to be used in combination with duration unit.
+      description: Duration of the tour (to be used in combination with duration unit).
       example: 2.5
     DurationUnit:
       type: string
@@ -148,6 +148,17 @@ components:
       maxLength: 255
       example: just_any_string
       type: string
+    Flags:
+      description: Various flags about properties of the tour (multiple selection allowed).
+      type: string
+      enum:
+            - private
+            - wheelchair
+            - skip-line
+            - pick-up
+            - special
+            - free-sale-only
+            - mobile-voucher-only
     FreeSale:
       type: boolean
       description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).

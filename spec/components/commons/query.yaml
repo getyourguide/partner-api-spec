@@ -144,25 +144,22 @@ components:
       allowReserved: true
       description: Various flags about properties of the tour (multiple selection allowed).
       examples:
-        oneId:
+        oneFlag:
           summary: Filter for private tours only.
           value:
             - private
+        multipleFlags:
+          summary: Filter for private tours with pick-up only.
+          value:
+            - private
+            - pick-up
       explode: true
       in: query
       name: flags[]
       required: false
       schema:
         items:
-          enum:
-            - private
-            - wheelchair
-            - skip-line
-            - pick-up
-            - special
-            - free-sale-only
-            - mobile-voucher-only
-          type: string
+          $ref: ./fields.yaml#/components/schemas/Flags
         type: array
       style: matrix
     limit:
@@ -232,15 +229,15 @@ components:
         type: string
     rating[]:
       allowReserved: true
-      description: Filter for Tours with the given ratings.
+      description: Filter for Tours with the given ratings. Single value min rating. Otherwise [min, max].
       examples:
-        multipleIds:
-          summary: Example of multiple ratings
+        multipleRating:
+          summary: Example of min/max rating.
           value:
+            - 2
             - 5
-            - 4
-        oneId:
-          summary: Example of a single rating
+        singleRating:
+          summary: Example of a min rating.
           value:
             - 4
       explode: true
