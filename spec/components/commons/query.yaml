@@ -26,7 +26,6 @@ components:
         items:
           $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
         type: array
-      style: matrix
     categoryId:
       in: query
       name: category_id
@@ -60,7 +59,6 @@ components:
         items:
           $ref: ../commons/fields.yaml#/components/schemas/Language
         type: array
-      style: matrix
     coordinates[]:
       allowReserved: true
       description: Mutually exclusive with 'q' parameter! Search by latitude, longitude and radius passed as URL array.'
@@ -79,7 +77,6 @@ components:
         items:
           type: number
         type: array
-      style: matrix
     country:
       description: ISO 3166-1, The country where to payment originates. Should be the same value as the country_code field of the Billing Address Object.
       in: query
@@ -95,7 +92,7 @@ components:
       example: USD
       required: true
       schema:
-        $ref: ../commons/fields.yaml#/components/schemas/Currency
+        $ref: "../commons/fields.yaml#/components/schemas/Currency"
     date[]:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.
@@ -115,10 +112,8 @@ components:
       required: false
       schema:
         items:
-          schema:
-            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         type: array
-      style: matrix
     duration[]:
       allowReserved: true
       description: Filter for min and/or max duration in minutes. Single Value max. duration. Otherwise [min, max].
@@ -140,7 +135,6 @@ components:
         items:
           type: number
         type: array
-      style: matrix
     flags[]:
       allowReserved: true
       description: Various flags about properties of the tour (multiple selection allowed).
@@ -162,7 +156,6 @@ components:
         items:
           $ref: ../commons/fields.yaml#/components/schemas/Flags
         type: array
-      style: matrix
     limit:
       in: query
       name: limit
@@ -213,7 +206,6 @@ components:
         items:
           $ref: ../commons/fields.yaml#/components/schemas/Price
         type: array
-      style: matrix
     q:
       description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
       examples:
@@ -249,7 +241,6 @@ components:
         items:
           $ref: ../commons/fields.yaml#/components/schemas/Rating
         type: array
-      style: matrix
     sortdirection:
       description: Defines the sort order.
       in: query
