@@ -55,6 +55,8 @@ components:
         - pt
         - fi
         - sv
+        - ru
+        - ja
       example: en
       type: string
     Country:
