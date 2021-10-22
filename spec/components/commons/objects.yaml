@@ -9,16 +9,16 @@ components:
       type: object
       properties:
         lat:
-          $ref: "./fields.yaml#/components/schemas/Latitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Latitude"
         long:
-          $ref: "./fields.yaml#/components/schemas/Longitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Longitude"
     Durations:
       type: object
       properties:
         duration:
-          $ref: "./fields.yaml#/components/schemas/Duration"
+          $ref: "../commons/fields.yaml#/components/schemas/Duration"
         unit:
-          $ref: "./fields.yaml#/components/schemas/DurationUnit"
+          $ref: "../commons/fields.yaml#/components/schemas/DurationUnit"
     StartingPrice:
       type: object
       description: Starting price. Should be read as e.g. "from XX.YY USD.
@@ -27,7 +27,7 @@ components:
           type: object
           properties:
             amount:
-              $ref: "./fields.yaml#/components/schemas/Price"
+              $ref: "../commons/fields.yaml#/components/schemas/Price"
         description:
           type: string
           description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
@@ -37,19 +37,19 @@ components:
       type: object
       properties:
         sw_lat:
-          $ref: "./fields.yaml#/components/schemas/Latitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Latitude"
           description: Latitude of the lower left (South-West) corner of the map frame.
           example: 48.815573
         sw_long:
-          $ref: "./fields.yaml#/components/schemas/Longitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Longitude"
           description: Longitude of the lower left (South-West) corner of the map frame.
           example: 2.224199
         ne_lat:
-          $ref: "./fields.yaml#/components/schemas/Latitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Latitude"
           description: Latitude of the upper right (North-Est) corner of the map frame.
           example: 48.9021449
         ne_long:
-          $ref: "./fields.yaml#/components/schemas/Longitude"
+          $ref: "../commons/fields.yaml#/components/schemas/Longitude"
           description: Longitude of the upper right (North-Est) corner of the map frame.
           example: 2.4699208
     TourCategory:

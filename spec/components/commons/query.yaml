@@ -24,7 +24,7 @@ components:
       required: false
       schema:
         items:
-          $ref: "./fields.yaml#/components/schemas/CategoryId"
+          $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
         type: array
       style: matrix
     categoryId:
@@ -32,13 +32,13 @@ components:
       name: category_id
       required: false
       schema:
-        $ref: "./fields.yaml#/components/schemas/CategoryId"
+        $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
     cntLanguage:
       in: query
       name: cnt_language
       required: true
       schema:
-        $ref: "./fields.yaml#/components/schemas/CntLanguage"
+        $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
     condLanguage[]:
       allowReserved: true
       description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
@@ -58,7 +58,7 @@ components:
       required: false
       schema:
         items:
-          $ref: ./fields.yaml#/components/schemas/Language
+          $ref: ../commons/fields.yaml#/components/schemas/Language
         type: array
       style: matrix
     coordinates[]:
@@ -87,7 +87,7 @@ components:
       example: US
       required: true
       schema:
-        $ref: "./fields.yaml#/components/schemas/Country"
+        $ref: "../commons/fields.yaml#/components/schemas/Country"
     currency:
       description: ISO 4217, The currency with which you would like to pay.
       in: query
@@ -95,7 +95,7 @@ components:
       example: USD
       required: true
       schema:
-        $ref: ./fields.yaml#/components/schemas/Currency
+        $ref: ../commons/fields.yaml#/components/schemas/Currency
     date[]:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.
@@ -115,7 +115,7 @@ components:
       required: false
       schema:
         items:
-          schema: $ref './fields.yaml#/components/schemas/Datetime'
+          schema: $ref '../commons/fields.yaml#/components/schemas/Datetime'
         type: array
       style: matrix
     duration[]:
@@ -159,7 +159,7 @@ components:
       required: false
       schema:
         items:
-          $ref: ./fields.yaml#/components/schemas/Flags
+          $ref: ../commons/fields.yaml#/components/schemas/Flags
         type: array
       style: matrix
     limit:
@@ -167,13 +167,13 @@ components:
       name: limit
       required: false
       schema:
-        $ref: ./fields.yaml#/components/schemas/Limit
+        $ref: ../commons/fields.yaml#/components/schemas/Limit
     offset:
       in: query
       name: offset
       required: false
       schema:
-        $ref: ./fields.yaml#/components/schemas/Offset
+        $ref: ../commons/fields.yaml#/components/schemas/Offset
     preformatted:
       description: The amount of content to deliver with the search results.
       examples:
@@ -210,7 +210,7 @@ components:
       required: false
       schema:
         items:
-          $ref: ./fields.yaml#/components/schemas/Price
+          $ref: ../commons/fields.yaml#/components/schemas/Price
         type: array
       style: matrix
     q:
@@ -246,7 +246,7 @@ components:
       required: false
       schema:
         items:
-          $ref: ./fields.yaml#/components/schemas/Rating
+          $ref: ../commons/fields.yaml#/components/schemas/Rating
         type: array
       style: matrix
     sortdirection:

@@ -6,7 +6,6 @@ paths: {}
 components:
   schemas:
     MetaData:
-      name: MetaData
       type: object
       properties:
         descriptor:
