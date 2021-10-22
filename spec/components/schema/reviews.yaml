@@ -11,15 +11,14 @@ components:
         type: object
         properties:
           rating:
-            type: integer
-            description: The rating for which this outline is. Usually between 1 and 5.
-            example: 5
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
           number_of_reviews:
             type: integer
             description: The number of reviews for this rating.
-            example: 0
+            example: 20
           share:
             type: number
+            format: percent
             description: The percentage of all reviews that have this rating.
             example: 96
 
@@ -33,17 +32,12 @@ components:
             description: The review ID.
             example: 786101
           tour_id:
-            type: integer
-            description: The tour ID to which this review belongs to.
-            example: 66317
+            $ref: "../commons/fields.yaml#/components/schemas/TourId"
           supplier_id:
-            type: integer
-            description: The ID of the supplier of the tour referenced by tour ID.
-            example: 13587
+            $ref: "../commons/fields.yaml#/components/schemas/SupplierId"
           review_date:
-            type: string
             description: The date and time of when the review was created.
-            example: "2017-05-01T13:42:34Z"
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
           subject:
             type: string
             description: The subject of the review.
@@ -57,22 +51,17 @@ components:
             description: The name of the person who did the review.
             example: Reichenbach – France
           review_rating:
-            type: integer
-            description: The overall rating of the review. A number between 1 and 5 where 1 is lowest and 5 is highest.
-            example: 5
+            description: The overall rating of the review.
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_service:
-            type: integer
-            description: The rating for the service quality. A number between 1 and 5 where 1 is lowest and 5 is highest.
-            example: 5
+            description: The rating for the service quality.
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_orga:
-            type: integer
-            description: The rating for the organization of the activity. A number between 1 and 5 where 1 is lowest and 5 is highest.
-            example: 5
+            description: The rating for the organization of the activity.
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_value:
-            type: integer
-            description: Value for money rating. A number between 1 and 5 where 1 is lowest and 5 is highest.
-            example: 5
+            description: Value for money rating.
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_safety:
-            type: integer
-            description: Rating for safety. A number between 1 and 5 where 1 is lowest and 5 is highest.
-            example: 5
+            description: Rating for safety.
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"

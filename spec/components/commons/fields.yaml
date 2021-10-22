@@ -14,7 +14,6 @@ components:
       example: 13822240
       type: integer
     BookingStatus:
-      description: The status of the booking.
       enum:
         - temp
         - unconfirmed
@@ -25,6 +24,14 @@ components:
         - deleted_by_daemon
       example: temp
       type: string
+      description: The status of the booking. >
+        * `temp` the booking is temporary (added to a cart).
+        * `unconfirmed` the booking is awaiting final confirmation by the supplier. This is only the case for non free-sale products.
+        * `confirmed` the booking is confirmed and active.
+        * `deleted` the booking got deleted from a cart before checkout. Only temporary (non confirmed) bookings can be deleted.
+        * `canceled` a formerly confirmed booking got cancelled. Refunds apply here, if it got canceled within the cxl policy.
+        * `deleted_by_customer` same as deleted with the additional information that a customer deleted the booking from the cart.
+        * `deleted_by_daemon` same as deleted with the additional information that it was automatically deleted from the cart after 60 minutes.
     CancellationPolicyText:
       description: Cancellation policy
       example: Your activity is non-refundable,
@@ -48,6 +55,7 @@ components:
         - pt
         - fi
         - sv
+      example: en
       type: string
     Country:
       description: ISO code of the country of the location (ISO 3166-1).
@@ -96,6 +104,7 @@ components:
         - UYU
         - VND
         - ZAR
+      example: USD
       type: string
     CurrentlyCancellableAtNoFee:
       description: Indicates whether this booking is currently cancellable at no fee.
@@ -111,22 +120,65 @@ components:
       enum:
         - date
         - datetime
-      example: date
+      example: datetime
       type: string
     DatetimeUTC:
       description: The datetime in UTC of when the activity dates place.
       example: '2017-09-01T04:00:00Z'
       format: datetime
       type: string
+    Duration:
+      type: number
+      description: Duration of the tour (to be used in combination with duration unit.
+      example: 2.5
+    DurationUnit:
+      type: string
+      description: Unit of the duration field
+      enum: [day, hour, minute]
+      example: hour
     Email:
       description: Correspondence email.
       example: address@example.com
       format: email
       type: string
     ExternalReferenceId:
-      description: The external reference ID. The reseller can supply a reference number under which this booking is referenced in his system. This field contains that number. Maximum length is 255.
+      description: The external reference ID. The reseller can supply a reference number under which this booking is referenced in his system. This field contains that number.
+      maxLength: 255
       example: just_any_string
       type: string
+    FreeSale:
+      type: boolean
+      description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+      example: true
+    Language:
+      type: string
+      description: ISO 639 formatted language
+      example: en
+    Latitude:
+      description: The latitude in ISO 6709 standard.
+      type: number
+      minimum: -90.0
+      maximum: 90.0
+      example: 28.3701884
+    Longitude:
+      description: The longitude in ISO 6709 standard.
+      type: number
+      minimum: -90.0
+      maximum: 90.0
+      example: -81.5545306
+    Limit:
+      description: Number of items to retrieve.
+      type: integer
+      minimum: 1
+      maximum: 500
+      default: 10
+      example: 10
+    Offset:
+      description: Offset the list of returned results by this amount.
+      type: integer
+      minimum: 0
+      default: 0
+      example: 0
     OptionId:
       description: The ID of the tour option.
       example: 69232
@@ -136,8 +188,14 @@ components:
       example: '+49123456789'
       type: string
     Price:
-      description: The price.
-      example: 15
+      description: The value of the price.
+      example: 15.15
+      type: number
+    Rating:
+      description: The value of the rating.
+      minimum: 0
+      maximum: 5
+      example: 4.5
       type: number
     ReturnCode:
       description: The return code of the booking service.
@@ -151,6 +209,10 @@ components:
       description: The ID of the shopping cart.
       example: 32724458
       type: number
+    SupplierId:
+      description: The supplier id
+      type: integer
+      example: 90545
     TourId:
       description: The ID of the tour.
       example: 50872

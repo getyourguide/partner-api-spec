@@ -140,7 +140,7 @@ paths:
                       tour_options:
                         type: array
                         items:
-                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
+                          $ref: '../components/schema/option.yaml#/components/schemas/TourOption'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:

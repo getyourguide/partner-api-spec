@@ -15,10 +15,12 @@ components:
           example: 66317
         url:
           type: string
-          description: The URL for the image. Important, The [format_id] needs to be replaced by a valid format id.
+          format: uri
+          description: The URL for the image. Important, The [format_id] needs to be replaced by a valid format id. You can find the list of all available IDs in the github wiki.
           example: https://img-getyourguide-com.partner.gygtest.com/img/tour_img-436036-[format_id].jpg
         ssl_url:
           type: string
+          format: uri
           description: https://img-getyourguide-com.partner.gygtest.com/img/tour_img-436036-[format_id].jpg
           example: 66317
         verified:

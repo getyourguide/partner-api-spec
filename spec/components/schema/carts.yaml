@@ -132,48 +132,51 @@ components:
           * `invalid`: the shopping cart is invalid
 
     # Data fields for billing and traveler info
-    SalutationCode:
-      type: string
-      description: Salutation code. m=Mr. f=Mrs. c=empty
-      enum: [m, f, c]
-      example: m
-    FirstName:
-      type: string
-      description: The first name
-      example: John
-    LastName:
-      type: string
-      description: The last name
-      example: Doe
-    IsCompany:
-      type: boolean
-      description: Is the payee a company.
-      example: false
-    CompanyName:
-      type: string
-      description: Name of the company.
-      example: GetYourGuide
-    Invoice:
-      type: boolean
-      description: Indicates wether an invoice is required for this purchase.
-      example: false
     AddressLine1:
-      type: string
       description: Street and house number.
       example: 1000 Fulton Avenue
+      type: string
     AddressLine2:
-      type: string
       description: Additional information which did not fit in the first row.
-      example: "c/o Amy Winter"
-    City:
+      example: c/o Amy Winter
       type: string
+    City:
       description: Name of the city.
       example: Berlin
+      type: string
+    CompanyName:
+      description: Name of the company.
+      example: GetYourGuide
+      type: string
+    FirstName:
+      description: The first name
+      example: John
+      type: string
+    Invoice:
+      description: Indicates wether an invoice is required for this purchase.
+      example: false
+      type: boolean
+    IsCompany:
+      description: Is the payee a company.
+      example: false
+      type: boolean
+    LastName:
+      description: The last name
+      example: Doe
+      type: string
     PostalCode:
-      type: string
       description: Postal/zip code.
-      example: "14050"
-    State:
+      example: '14050'
       type: string
+    SalutationCode:
+      description: Salutation code. m=Mr. f=Mrs. c=empty
+      enum:
+        - m
+        - f
+        - c
+      example: m
+      type: string
+    State:
       description: State within the country.
       example: California
+      type: string

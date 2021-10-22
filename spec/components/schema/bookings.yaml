@@ -40,7 +40,7 @@ components:
                         type: object
                         properties:
                           category_id:
-                            description: This is the id of a given pax type.
+                            description: This is the id of a given pax type, not the same as the pricing_id!
                             $ref: ../commons/fields.yaml#/components/schemas/CategoryId
                           number_of_participants:
                             type: integer
@@ -212,7 +212,7 @@ components:
           mandatory:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
-            example: false
+            example: true
 
     Ticket:
       type: object

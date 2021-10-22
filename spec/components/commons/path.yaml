@@ -30,19 +30,17 @@ components:
       schema:
         $ref: ./fields.yaml#/components/schemas/ShoppingCartHash
     supplierId:
-      description: The supplier id
       in: path
       name: supplier_id
       required: true
       schema:
-        type: integer
+        $ref: ./fields.yaml#/components/schemas/SupplierId
     tourId:
-      description: The tour id
       in: path
       name: tour_id
       required: true
       schema:
-        type: integer
+        $ref: ./fields.yaml#/components/schemas/TourId
     version:
       description: The version of the API of which you want to get the configuration.
       in: path
@@ -50,3 +48,5 @@ components:
       required: true
       schema:
         type: string
+        format: integer
+      example: "1"

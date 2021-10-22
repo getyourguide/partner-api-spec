@@ -19,8 +19,8 @@ components:
           type: array
           description: Available conduction languages aggregated across all tours
           items:
-            type: string
-            enum: [en, es, fr]
+            $ref: "../commons/fields.yaml#/components/schemas/Language"
+          example: [en, es, fr]
         exchange:
           type: object
           description: Deprecated! Please do not use to calculate prices, but pass a different currency parameter in the request URL.
@@ -29,17 +29,15 @@ components:
               type: integer
               example: 1
             currency:
-              type: string
-              example: eur
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
+              example: EUR
         totalCount:
           type: integer
           description: Total amount of tours that match the search query
           example: 127
         limit:
-          type: integer
           description: Amount of tours returned in the response.
-          example: 10
+          $ref: "../commons/fields.yaml#/components/schemas/Limit"
         offset:
-          type: integer
           description: Offset of the tours returned in the response.
-          example: 0
+          $ref: "../commons/fields.yaml#/components/schemas/Offset"

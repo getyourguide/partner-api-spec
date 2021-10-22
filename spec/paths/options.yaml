@@ -29,7 +29,7 @@ paths:
                       tour_options:
                         type: array
                         items:
-                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOption'
+                          $ref: '../components/schema/option.yaml#/components/schemas/TourOption'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
@@ -61,7 +61,7 @@ paths:
                       pricing:
                         type: array
                         items:
-                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionPricing'
+                          $ref: '../components/schema/option.yaml#/components/schemas/TourOptionPricing'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
@@ -94,7 +94,7 @@ paths:
                       availabilities:
                         type: array
                         items:
-                          $ref: '../components/schema/tour.yaml#/components/schemas/TourOptionAvailability'
+                          $ref: '../components/schema/availabilities.yaml#/components/schemas/Availabilities'
           links:
             TimeSlot:
               description: >

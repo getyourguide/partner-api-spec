@@ -30,7 +30,7 @@ paths:
                       categories:
                         type: array
                         items:
-                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
+                          $ref: '../components/commons/objects.yaml#/components/schemas/TourCategory'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
@@ -61,7 +61,7 @@ paths:
                       categories:
                         type: array
                         items:
-                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
+                          $ref: '../components/commons/objects.yaml#/components/schemas/TourCategory'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
