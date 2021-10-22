@@ -50,7 +50,7 @@ components:
         - fr
         - it
         - nl
-        - 'no'
+        - "no"
         - pl
         - pt
         - fi
@@ -114,7 +114,7 @@ components:
       type: boolean
     Datetime:
       description: The local datetime format `Y-m-d T H:i:s`.
-      example: '2017-09-01T00:00:00'
+      example: "2017-09-01T00:00:00"
       format: datetime
       type: string
     DatetimeType:
@@ -126,7 +126,7 @@ components:
       type: string
     DatetimeUTC:
       description: The datetime in UTC of when the activity dates place.
-      example: '2017-09-01T04:00:00Z'
+      example: "2017-09-01T04:00:00Z"
       format: datetime
       type: string
     Duration:
@@ -187,7 +187,7 @@ components:
       type: number
     PhoneNumber:
       description: International phone number, in the ITU E.123 standard.
-      example: '+49123456789'
+      example: "+49123456789"
       type: string
     Price:
       description: The value of the price.

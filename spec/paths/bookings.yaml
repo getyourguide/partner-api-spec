@@ -16,8 +16,8 @@ paths:
           application/json:
             schema:
               oneOf:
-                - $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity'
-                - $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateCoupon'
+                - $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity"
+                - $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateCoupon"
       responses:
         200:
           description: Successful response
@@ -27,16 +27,16 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       bookings:
-                        $ref: '../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse'
+                        $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
     get:
       operationId: BookingsGetAll
@@ -44,9 +44,9 @@ paths:
       tags:
         - Bookings
       parameters:
-        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
-        - $ref: '../components/commons/query.yaml#/components/parameters/status'
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/status"
       responses:
         200:
           description: Successful response
@@ -56,18 +56,18 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       bookings:
                         type: array
                         items:
-                          $ref: '../components/schema/bookings.yaml#/components/schemas/Booking'
+                          $ref: "../components/schema/bookings.yaml#/components/schemas/Booking"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
   /bookings/{booking_hash}:
     get:
@@ -76,20 +76,20 @@ paths:
       tags:
         - Bookings
       parameters:
-        - $ref: '../components/commons/path.yaml#/components/parameters/bookingHash'
-        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/path.yaml#/components/parameters/bookingHash"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/schema/bookings.yaml#/components/schemas/BookingsGetByHashResponse'
+                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingsGetByHashResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
     delete:
       operationId: bookingsDeleteByHash
@@ -97,16 +97,16 @@ paths:
       tags:
         - Bookings
       parameters:
-        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse'
+                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"

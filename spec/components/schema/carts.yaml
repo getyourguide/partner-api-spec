@@ -166,7 +166,7 @@ components:
       type: string
     PostalCode:
       description: Postal/zip code.
-      example: '14050'
+      example: "14050"
       type: string
     SalutationCode:
       description: Salutation code. m=Mr. f=Mrs. c=empty

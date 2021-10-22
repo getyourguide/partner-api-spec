@@ -69,4 +69,3 @@ components:
           type: integer
           description: Number of available tours in the category.
           example: 10
-    

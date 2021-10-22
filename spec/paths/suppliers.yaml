@@ -10,9 +10,9 @@ paths:
       tags:
         - Suppliers
       parameters:
-        - $ref: '../components/commons/path.yaml#/components/parameters/supplierId'
-        - $ref: '../components/commons/query.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons/query.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/path.yaml#/components/parameters/supplierId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
@@ -22,15 +22,15 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       supplier:
                         type: array
                         items:
-                          $ref: '../components/schema/supplier.yaml#/components/schemas/Supplier'
+                          $ref: "../components/schema/supplier.yaml#/components/schemas/Supplier"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
