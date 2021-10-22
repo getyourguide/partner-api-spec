@@ -95,21 +95,6 @@ paths:
                         type: array
                         items:
                           $ref: '../components/schema/availabilities.yaml#/components/schemas/Availabilities'
-          links:
-            TimeSlot:
-              description: >
-                The `start_time`value returned in the response from `GET /options/{option_id}/availabilities`
-                is used as the `datetime` parameter in `POST /bookings`.
-              operationId: BookingsCreate
-              requestBody: 
-                datetime: '$response.body#/data/availabilities/0/start_time'
-            PricingId:
-              description: >
-                The `pricing_id` value returned in the response from `GET /options/{option_id}/availabilities` 
-                is used to identify the right pricing structure returned from `GET /options/{option_id}/pricings`.
-              operationId: OptionsGetPricing
-              parameters: 
-                pricing_id: '$response.body#/data/availabilities/0/pricing_id'
         4XX:
           $ref: '../components/schema/errors.yaml#/components/responses/4XX'
         default:
