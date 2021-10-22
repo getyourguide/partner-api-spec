@@ -115,7 +115,8 @@ components:
       required: false
       schema:
         items:
-          schema: $ref '../commons/fields.yaml#/components/schemas/Datetime'
+          schema:
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         type: array
       style: matrix
     duration[]:

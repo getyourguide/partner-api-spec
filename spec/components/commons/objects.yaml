@@ -33,38 +33,28 @@ components:
           description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
           example: individual
     Viewport:
-      description: Describes a rectangular map frame by defining its lower left and upper right corners.
+      description: Describes a rectangular map frame by defining its lower left (SW) and upper right (NE) corners.
       type: object
       properties:
         sw_lat:
           $ref: "../commons/fields.yaml#/components/schemas/Latitude"
-          description: Latitude of the lower left (South-West) corner of the map frame.
-          example: 48.815573
         sw_long:
           $ref: "../commons/fields.yaml#/components/schemas/Longitude"
-          description: Longitude of the lower left (South-West) corner of the map frame.
-          example: 2.224199
         ne_lat:
           $ref: "../commons/fields.yaml#/components/schemas/Latitude"
-          description: Latitude of the upper right (North-Est) corner of the map frame.
-          example: 48.9021449
         ne_long:
           $ref: "../commons/fields.yaml#/components/schemas/Longitude"
-          description: Longitude of the upper right (North-Est) corner of the map frame.
-          example: 2.4699208
     TourCategory:
       type: object
       properties:
         category_id:
-          $ref: ../commons/fields.yaml#/components/schemas/CategoryId
+          $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
         name:
           type: string
           description: Name of the category.
           example: Theme Parks & Amusement Parks
         parent_id:
-          $ref: ../commons/fields.yaml#/components/schemas/CategoryId
-          description: Id of the parent category (if there is any).
-          example: 123
+          $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
         number_of_tours:
           type: integer
           description: Number of available tours in the category.

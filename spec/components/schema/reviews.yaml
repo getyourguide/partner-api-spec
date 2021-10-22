@@ -36,7 +36,6 @@ components:
           supplier_id:
             $ref: "../commons/fields.yaml#/components/schemas/SupplierId"
           review_date:
-            description: The date and time of when the review was created.
             $ref: "../commons/fields.yaml#/components/schemas/Datetime"
           subject:
             type: string
@@ -51,17 +50,12 @@ components:
             description: The name of the person who did the review.
             example: Reichenbach – France
           review_rating:
-            description: The overall rating of the review.
             $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_service:
-            description: The rating for the service quality.
             $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_orga:
-            description: The rating for the organization of the activity.
             $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_value:
-            description: Value for money rating.
             $ref: "../commons/fields.yaml#/components/schemas/Rating"
           review_rating_safety:
-            description: Rating for safety.
             $ref: "../commons/fields.yaml#/components/schemas/Rating"

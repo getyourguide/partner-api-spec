@@ -30,14 +30,11 @@ components:
               example: 1
             currency:
               $ref: "../commons/fields.yaml#/components/schemas/Currency"
-              example: EUR
         totalCount:
           type: integer
           description: Total amount of tours that match the search query
           example: 127
         limit:
-          description: Amount of tours returned in the response.
           $ref: "../commons/fields.yaml#/components/schemas/Limit"
         offset:
-          description: Offset of the tours returned in the response.
           $ref: "../commons/fields.yaml#/components/schemas/Offset"

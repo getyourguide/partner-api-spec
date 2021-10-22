@@ -102,7 +102,6 @@ components:
           properties:
             original_price:
               $ref: "../commons/fields.yaml#/components/schemas/Price"
-              description: Original price (without the special offer).
             savings:
               type: number
               description: The discount in percent.

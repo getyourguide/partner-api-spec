@@ -32,7 +32,6 @@ components:
                     datetime:
                       $ref: "../commons/fields.yaml#/components/schemas/Datetime"
                     price:
-                      description: The total price for this booking. If the booking has a discount, you will have to calculate the reduced price.
                       $ref: "../commons/fields.yaml#/components/schemas/Price"
                     categories:
                       type: array
@@ -40,7 +39,6 @@ components:
                         type: object
                         properties:
                           category_id:
-                            description: This is the id of a given pax type, not the same as the pricing_id!
                             $ref: ../commons/fields.yaml#/components/schemas/CategoryId
                           number_of_participants:
                             type: integer
@@ -165,7 +163,6 @@ components:
               closing_time:
                 $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         price:
-          description: The total price amount of this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
           $ref: "../commons/fields.yaml#/components/schemas/Price"
         valid_until:
           $ref: "../commons/fields.yaml#/components/schemas/Datetime"

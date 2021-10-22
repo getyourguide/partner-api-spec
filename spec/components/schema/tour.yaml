@@ -20,7 +20,7 @@ components:
           description: Available conduction languages.
           items:
             $ref: "../commons/fields.yaml#/components/schemas/Language"
-            example: [en, de, es]
+          example: [en, de, es]
         title:
           type: string
           description: Title of the option.
@@ -58,7 +58,6 @@ components:
           description: Indicates if pickup is available for this product
           example: true
         overall_rating:
-          description: Overall rating of the tour (across all tour options).
           $ref: "../commons/fields.yaml#/components/schemas/Rating"
         number_of_ratings:
           type: number
@@ -82,7 +81,6 @@ components:
           items:
             $ref: "./picture.yaml#/components/schemas/Picture"
         coordinates:
-          description: Coordinates of the primary location (first entry in the locations array) attributed to the tour. This is usually an area/city the tour is located in and not the actual meeting point. The meeting point for each tour option can be retrieved from /tours/[tour_id]/options.
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
           $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
@@ -102,7 +100,6 @@ components:
           description: URL of the tour on the GetYourGuide website.
           example: https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
         translations:
-          description: Available translations of the content of this tour.
           $ref: "../commons/fields.yaml#/components/schemas/Language"
         free_sale:
           type: boolean

@@ -17,17 +17,14 @@ components:
           description: Name of the supplier
           example: GetYourGuide Tours & Tickets GmbH
         email:
-          description: Email of the supplier
           $ref: "../commons/fields.yaml#/components/schemas/Email"
         phone_number:
-          description: Phone number of the supplier.
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
         description:
           type: string
           description: Description of the supplier
           example: Description of the supplier
         rating:
-          description: The average rating.
           $ref: "../commons/fields.yaml#/components/schemas/Rating"
         number_of_reviews:
           type: integer

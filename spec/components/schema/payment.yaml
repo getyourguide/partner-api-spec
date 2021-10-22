@@ -101,7 +101,6 @@ components:
           * `dd`: direct debit (SEPA, only available in Germany)
       example: cc
     PrecouponPrice:
-      description: The price of the shopping cart before coupons have been applied.
       $ref: "../commons/fields.yaml#/components/schemas/Price"
     ReturnUrl:
       description: Url the customer will be redirected to by the payment provider, after successful completing the transaction.
@@ -109,5 +108,4 @@ components:
       format: uri
       example: "https://success.example"
     TotalPrice:
-      description: The total price of the shopping cart.
       $ref: "../commons/fields.yaml#/components/schemas/Price"

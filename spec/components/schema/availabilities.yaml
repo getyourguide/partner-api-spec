@@ -6,12 +6,12 @@ info:
 components:
   schemas:
     Availabilities:
+      description: A list of availablities. A end time is only provided in case there are opening hours, instead of time slots.
       type: array
       items:
         type: object
         properties:
           start_time:
-            description: The starting time of the activity.
             $ref: "../commons/fields.yaml#/components/schemas/Datetime"
           pricing_id:
             description: The pricing_id for this particular availability
@@ -27,5 +27,4 @@ components:
             format: percent
             example: 20
           end_time:
-            description: Optional response parameter, only given in case of opening hours.
             $ref: "../commons/fields.yaml#/components/schemas/Datetime"
