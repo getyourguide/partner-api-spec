@@ -10,37 +10,37 @@ components:
       name: booking_hash
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/BookingHash"
+        $ref: "#/components/schemas/BookingHash"
     categoryId:
       in: path
       name: category_id
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/CategoryId"
+        $ref: "#/components/schemas/CategoryId"
     optionId:
       in: path
       name: option_id
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/OptionId"
+        $ref: "#/components/schemas/OptionId"
     shoppingCartHash:
       in: path
       name: shopping_cart_hash
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/ShoppingCartHash"
+        $ref: "#/components/schemas/ShoppingCartHash"
     supplierId:
       in: path
       name: supplier_id
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/SupplierId"
+        $ref: "#/components/schemas/SupplierId"
     tourId:
       in: path
       name: tour_id
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/TourId"
+        $ref: "#/components/schemas/TourId"
     version:
       description: The version of the API of which you want to get the configuration.
       in: path
@@ -50,3 +50,19 @@ components:
         type: string
         format: integer
       example: "1"
+
+  schemas:
+    BookingHash:
+      $ref: "fields.yaml#/components/schemas/BookingHash"
+    CategoryId:
+      $ref: "fields.yaml#/components/schemas/CategoryId"
+    OptionId:
+      $ref: "fields.yaml#/components/schemas/OptionId"
+    ShoppingCartHash:
+      $ref: "fields.yaml#/components/schemas/ShoppingCartHash"
+    SupplierId:
+      $ref: "fields.yaml#/components/schemas/SupplierId"
+    TourId:
+      $ref: "fields.yaml#/components/schemas/TourId"
+    
+    

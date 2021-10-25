@@ -24,20 +24,20 @@ components:
       required: false
       schema:
         items:
-          $ref: "fields.yaml#/components/schemas/CategoryId"
+          $ref: "#/components/schemas/CategoryId"
         type: array
     categoryId:
       in: query
       name: category_id
       required: false
       schema:
-        $ref: "fields.yaml#/components/schemas/CategoryId"
+        $ref: "#/components/schemas/CategoryId"
     cntLanguage:
       in: query
       name: cnt_language
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/CntLanguage"
+        $ref: "#/components/schemas/CntLanguage"
     condLanguage[]:
       allowReserved: true
       description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
@@ -57,7 +57,7 @@ components:
       required: false
       schema:
         items:
-          $ref: fields.yaml#/components/schemas/Language
+          $ref: "#/components/schemas/Language"
         type: array
     coordinates[]:
       allowReserved: true
@@ -84,7 +84,7 @@ components:
       example: US
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/Country"
+        $ref: "#/components/schemas/Country"
     currency:
       description: ISO 4217, The currency with which you would like to pay.
       in: query
@@ -92,7 +92,7 @@ components:
       example: USD
       required: true
       schema:
-        $ref: "fields.yaml#/components/schemas/Currency"
+        $ref: "#/components/schemas/Currency"
     date[]:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.
@@ -112,7 +112,7 @@ components:
       required: false
       schema:
         items:
-          $ref: "fields.yaml#/components/schemas/Datetime"
+          $ref: "#/components/schemas/Datetime"
         type: array
     duration[]:
       allowReserved: true
@@ -154,20 +154,20 @@ components:
       required: false
       schema:
         items:
-          $ref: fields.yaml#/components/schemas/Flags
+          $ref: "#/components/schemas/Flags"
         type: array
     limit:
       in: query
       name: limit
       required: false
       schema:
-        $ref: fields.yaml#/components/schemas/Limit
+        $ref: "#/components/schemas/Limit"
     offset:
       in: query
       name: offset
       required: false
       schema:
-        $ref: fields.yaml#/components/schemas/Offset
+        $ref: "#/components/schemas/Offset"
     preformatted:
       description: The amount of content to deliver with the search results.
       examples:
@@ -204,7 +204,7 @@ components:
       required: false
       schema:
         items:
-          $ref: fields.yaml#/components/schemas/Price
+          $ref: "#/components/schemas/Price"
         type: array
     q:
       description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
@@ -239,7 +239,7 @@ components:
       required: false
       schema:
         items:
-          $ref: fields.yaml#/components/schemas/Rating
+          $ref: "#/components/schemas/Rating"
         type: array
     sortdirection:
       description: Defines the sort order.
@@ -274,3 +274,28 @@ components:
           - confirmed
           - canceled
         type: string
+  
+  # Refs to common fields, as direct refs inside the query param schema breaks OpenAPI validation
+  schemas:
+    CategoryId:
+      $ref: "fields.yaml#/components/schemas/CategoryId"
+    CntLanguage:
+      $ref: "fields.yaml#/components/schemas/CntLanguage"
+    Country:
+      $ref: "fields.yaml#/components/schemas/Country"
+    Currency:
+      $ref: "fields.yaml#/components/schemas/Currency"
+    Datetime:
+      $ref: "fields.yaml#/components/schemas/Datetime"
+    Flags:
+      $ref: "fields.yaml#/components/schemas/Flags"
+    Language:
+      $ref: "fields.yaml#/components/schemas/Language"
+    Limit:
+      $ref: "fields.yaml#/components/schemas/Limit"
+    Offset:
+      $ref: "fields.yaml#/components/schemas/Offset"
+    Price:
+      $ref: "fields.yaml#/components/schemas/Price"
+    Rating:
+      $ref: "fields.yaml#/components/schemas/Rating"
