@@ -12,13 +12,9 @@ components:
           type: object
           properties:
             cnt_language:
-              description: ISO 639, Language of the text content.
-              type: string
-              example: "en"
+              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
             currency:
-              description: ISO 4217, The currency with which you would like to pay.
-              type: string
-              example: "EUR"
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
         data:
           type: object
           properties:
@@ -29,168 +25,158 @@ components:
                   type: object
                   properties:
                     shopping_cart_id:
-                      $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+                      $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
                     billing:
-                      $ref: '#/components/schemas/Billing'
+                      $ref: "#/components/schemas/Billing"
                     traveler:
-                      $ref: '#/components/schemas/Traveler'
+                      $ref: "#/components/schemas/Traveler"
                     payment:
                       oneOf:
-                        - $ref: './payment.yaml#/components/schemas/Paypal'
-                        - $ref: './payment.yaml#/components/schemas/EncryptedCreditCard'
+                        - $ref: "./payment.yaml#/components/schemas/Paypal"
+                        - $ref: "./payment.yaml#/components/schemas/EncryptedCreditCard"
 
     CartsConfirmResponseConfirmed:
       type: object
       properties:
         shopping_cart_id:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
         shopping_cart_hash:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
         billing:
-          $ref: '#/components/schemas/Billing'
+          $ref: "#/components/schemas/Billing"
         traveler:
-          $ref: '#/components/schemas/Traveler'
+          $ref: "#/components/schemas/Traveler"
         status:
-          $ref: '#/components/schemas/Status'
+          $ref: "#/components/schemas/Status"
         bookings:
-          $ref: '../schema/bookings.yaml#/components/schemas/Booking'
+          $ref: "../schema/bookings.yaml#/components/schemas/Booking"
         payment_info:
-          $ref: './payment.yaml#/components/schemas/PaymentInfoConfirmed'
-            
+          $ref: "./payment.yaml#/components/schemas/PaymentInfoConfirmed"
+
     CartsConfirmResponseInPayment:
       type: object
       properties:
         shopping_cart_id:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
         shopping_cart_hash:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
         billing:
-          $ref: '#/components/schemas/Billing'
+          $ref: "#/components/schemas/Billing"
         traveler:
-          $ref: '#/components/schemas/Traveler'
+          $ref: "#/components/schemas/Traveler"
         status:
-          $ref: '#/components/schemas/Status'
+          $ref: "#/components/schemas/Status"
         bookings:
-          $ref: '../schema/bookings.yaml#/components/schemas/Booking'
+          $ref: "../schema/bookings.yaml#/components/schemas/Booking"
         payment_process:
-          $ref: './payment.yaml#/components/schemas/PaymentProcess'
+          $ref: "./payment.yaml#/components/schemas/PaymentProcess"
         payment_info:
-          $ref: './payment.yaml#/components/schemas/PaymentInfoInPayment'
+          $ref: "./payment.yaml#/components/schemas/PaymentInfoInPayment"
 
     # Cart Objects
     Billing:
       type: object
       properties:
         salutation_code:
-          $ref: '#/components/schemas/SalutationCode'
+          $ref: "#/components/schemas/SalutationCode"
         first_name:
-          $ref: '#/components/schemas/FirstName'
-        last_name: 
-          $ref: '#/components/schemas/LastName'
+          $ref: "#/components/schemas/FirstName"
+        last_name:
+          $ref: "#/components/schemas/LastName"
         email:
-          $ref: '#/components/schemas/Email'
-        is_company: 
-          $ref: '#/components/schemas/IsCompany'
-        company_name: 
-          $ref: '#/components/schemas/CompanyName'
+          $ref: "../commons/fields.yaml#/components/schemas/Email"
+        is_company:
+          $ref: "#/components/schemas/IsCompany"
+        company_name:
+          $ref: "#/components/schemas/CompanyName"
         invoice:
-          $ref: '#/components/schemas/Invoice'
+          $ref: "#/components/schemas/Invoice"
         address_line_1:
-          $ref: '#/components/schemas/AddressLine1'
-        address_line_2: 
-          $ref: '#/components/schemas/AddressLine2'
-        city: 
-          $ref: '#/components/schemas/City'
-        postal_code: 
-          $ref: '#/components/schemas/PostalCode'
-        state: 
-          $ref: '#/components/schemas/State'
+          $ref: "#/components/schemas/AddressLine1"
+        address_line_2:
+          $ref: "#/components/schemas/AddressLine2"
+        city:
+          $ref: "#/components/schemas/City"
+        postal_code:
+          $ref: "#/components/schemas/PostalCode"
+        state:
+          $ref: "#/components/schemas/State"
         country_code:
-          $ref: '#/components/schemas/CountryCode'
-        phone_number: 
-          $ref: '#/components/schemas/PhoneNumber'
+          $ref: "../commons/fields.yaml#/components/schemas/Country"
+        phone_number:
+          $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
 
     Traveler:
       type: object
       properties:
         salutation_code:
-          $ref: '#/components/schemas/SalutationCode'
+          $ref: "#/components/schemas/SalutationCode"
         first_name:
-          $ref: '#/components/schemas/FirstName'
-        last_name: 
-          $ref: '#/components/schemas/LastName'
+          $ref: "#/components/schemas/FirstName"
+        last_name:
+          $ref: "#/components/schemas/LastName"
         email:
-          $ref: '#/components/schemas/Email'
-        phone_number: 
-          $ref: '#/components/schemas/PhoneNumber'
+          $ref: "../commons/fields.yaml#/components/schemas/Email"
+        phone_number:
+          $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
 
     # Data fields in carts object:
     Status:
       type: string
-      enum: ['completed', 'open', 'in_payment', 'invalid']
-      description: > 
+      enum: ["completed", "open", "in_payment", "invalid"]
+      description: >
         The status of the shopping cart:
           * `open`: the shopping cart is open and needs to be checked out
           * `completed`: the transaction is completed
           * `in_payment`: the transaction is ongoing, this status only occurs with 2-step checkout (PayPal or 3DS CC)
           * `invalid`: the shopping cart is invalid
-    
+
     # Data fields for billing and traveler info
-    SalutationCode:
-      type: string
-      description: Salutation code. m=Mr. f=Mrs. c=empty
-      enum: [m, f, c]
-      example: m
-    FirstName:
-      type: string
-      description: The first name
-      example: John
-    LastName: 
-      type: string
-      description: The last name
-      example: Doe
-    IsCompany: 
-      type: boolean
-      description: Is the payee a company.
-      example: false
-    CompanyName: 
-      type: string
-      description: Name of the company.
-      example: GetYourGuide
-    Invoice:
-      type: boolean
-      description: Indicates wether an invoice is required for this purchase.
-      example: false
-    Email:
-      type: string
-      format: email
-      description: Correspondence email.
-      example: address@example.com
     AddressLine1:
-      type: string
       description: Street and house number.
       example: 1000 Fulton Avenue
+      type: string
     AddressLine2:
-      type: string
       description: Additional information which did not fit in the first row.
-      example: 'c/o Amy Winter'
-    City: 
+      example: c/o Amy Winter
       type: string
+    City:
       description: Name of the city.
       example: Berlin
-    PostalCode: 
       type: string
+    CompanyName:
+      description: Name of the company.
+      example: GetYourGuide
+      type: string
+    FirstName:
+      description: The first name
+      example: John
+      type: string
+    Invoice:
+      description: Indicates wether an invoice is required for this purchase.
+      example: false
+      type: boolean
+    IsCompany:
+      description: Is the payee a company.
+      example: false
+      type: boolean
+    LastName:
+      description: The last name
+      example: Doe
+      type: string
+    PostalCode:
       description: Postal/zip code.
-      example: '14050'
-    State:
+      example: "14050"
       type: string
+    SalutationCode:
+      description: Salutation code. m=Mr. f=Mrs. c=empty
+      enum:
+        - m
+        - f
+        - c
+      example: m
+      type: string
+    State:
       description: State within the country.
       example: California
-    CountryCode:
       type: string
-      description: An ISO 3166-1 country code.
-      example: DE
-    PhoneNumber: 
-      type: string
-      description: International phone number, in the ITU E.123 standard.
-      example: '+49123456789'

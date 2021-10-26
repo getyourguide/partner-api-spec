@@ -5,7 +5,6 @@ info:
   version: 1.0.0
 components:
   schemas:
-    
     Supplier:
       type: object
       properties:
@@ -18,21 +17,15 @@ components:
           description: Name of the supplier
           example: GetYourGuide Tours & Tickets GmbH
         email:
-          type: string
-          description: Email of the supplier
-          example: support@getyourguide.com
+          $ref: "../commons/fields.yaml#/components/schemas/Email"
         phone_number:
-          type: string
-          description: Phone number of the supplier.
-          example: +49 30 5444 5944
+          $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
         description:
           type: string
           description: Description of the supplier
           example: Description of the supplier
         rating:
-          type: number
-          description: The average rating.
-          example: 4.9
+          $ref: "../commons/fields.yaml#/components/schemas/Rating"
         number_of_reviews:
           type: integer
           description: Overal number of reviews/ratings.
@@ -41,26 +34,9 @@ components:
           type: array
           description: List of categories in which the supplier offers tours.
           items:
-            type: object
-            properties:
-              category_id:
-                type: integer
-                description: Category Id
-                example: 207
-              name:
-                type: string
-                description: Name of the category.
-                example: Harry Potter Tours
-              parent_id:
-                type: integer
-                description: Id of the parent category (if there is any).
-                example: 18
-              number_of_tours:
-                type: integer
-                description: Number of available tours in the category.
-                example: 1
-          
+            $ref: "../commons/objects.yaml#/components/schemas/TourCategory"
         logo_url:
           type: string
+          format: uri
           description: URL to the logo of the supplier.
           example: https://img-getyourguide-com.partner.gygtest.com/img/profile_picture-26045-1860042995-[format_id].jpg

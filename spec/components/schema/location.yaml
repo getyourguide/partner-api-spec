@@ -4,63 +4,52 @@ info:
   title: Location Schema
   version: 1.0.0
 components:
-  parameters:
-    preformatted:
-      name: preformatted
-      description: The amount of content to deliver with the search results.
-      required: true
-      in: query
-      schema:
-        type: string
-      examples:
-        curated_list:
-          summary: Include a curated list
-          value: curatedList
-
   schemas:
-    
     Location:
       type: object
       properties:
         location_id:
-          type: number
           description: Location ID
+          type: number
           example: 3850
         type:
-          type: string
-          enum: [AREA, CITY, POI]
           description: Location type
-          example: POI
+          type: string
+          enum: [area, city, poi]
+          example: poi
         name:
           type: string
           description: Name of the location.
           example: Epcot Theme Park
         english_name:
+          description: DEPRECATED, always the same `name`
           type: string
-          description: English fallback
           example: Epcot Theme Park
-        city:
-          type: string
-          description: The city name if location type is POI or CITY.
-          example: Orlando
         country:
-          type: string
-          description: ISO code of the country of the location (ISO 3166-1).
-          example: US
+          $ref: "../commons/fields.yaml#/components/schemas/Country"
         coordinates:
-          $ref: './coordinates.yaml#/components/schemas/Coordinates'
+          $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         parent_id:
-          type: number
-          description: The location if of the parent location. For POI this could be a CITY or an AREA, for CITY this could be an AREA.
+          description: The location id of the parent location, if there is any.
+          type: integer
           example: 191
-        viewport:
-          $ref: './viewport.yaml#/components/schemas/Viewport'
-        picture: 
-          type: string
-          example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        picture_ssh: 
-          type: string
-          example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        num_tours: 
-          type: number
-          example: 386
+
+        # NOT PART OF RESPONSE
+        # city:
+        #   type: string
+        #   description: The city name if location type is POI or CITY.
+        #   example: Orlando
+        # viewport:
+        #   $ref: "../commons/objects.yaml#/components/schemas/Viewport"
+        # picture:
+        #   type: string
+        #   format: uri
+        #   example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
+        # picture_ssh:
+        #   type: string
+        #   format: uri
+        #   example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
+        # num_tours:
+        #   type: number
+        #   format: integer
+        #   example: 386

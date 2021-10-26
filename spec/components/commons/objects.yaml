@@ -1,0 +1,61 @@
+openapi: 3.0.2
+info:
+  title: Common data objects
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          $ref: "fields.yaml#/components/schemas/Latitude"
+        long:
+          $ref: "fields.yaml#/components/schemas/Longitude"
+    Durations:
+      type: object
+      properties:
+        duration:
+          $ref: "fields.yaml#/components/schemas/Duration"
+        unit:
+          $ref: "fields.yaml#/components/schemas/DurationUnit"
+    StartingPrice:
+      type: object
+      description: Starting price. Should be read as e.g. "from XX.YY USD.
+      properties:
+        values:
+          type: object
+          properties:
+            amount:
+              $ref: "fields.yaml#/components/schemas/Price"
+        description:
+          type: string
+          description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
+          example: individual
+    Viewport:
+      description: Describes a rectangular map frame by defining its lower left (SW) and upper right (NE) corners.
+      type: object
+      properties:
+        sw_lat:
+          $ref: "fields.yaml#/components/schemas/Latitude"
+        sw_long:
+          $ref: "fields.yaml#/components/schemas/Longitude"
+        ne_lat:
+          $ref: "fields.yaml#/components/schemas/Latitude"
+        ne_long:
+          $ref: "fields.yaml#/components/schemas/Longitude"
+    TourCategory:
+      type: object
+      properties:
+        category_id:
+          $ref: "fields.yaml#/components/schemas/CategoryId"
+        name:
+          type: string
+          description: Name of the category.
+          example: Theme Parks & Amusement Parks
+        parent_id:
+          $ref: "fields.yaml#/components/schemas/CategoryId"
+        number_of_tours:
+          type: integer
+          description: Number of available tours in the category.
+          example: 10

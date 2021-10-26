@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for categories
   version: 1.0.0
@@ -10,10 +10,10 @@ paths:
       tags:
         - Categories
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/limit'
-        - $ref: '../components/commons.yaml#/components/parameters/offset'
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
+        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
       responses:
         200:
           description: Successful response
@@ -23,18 +23,18 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       categories:
                         type: array
                         items:
-                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
+                          $ref: "../components/commons/objects.yaml#/components/schemas/TourCategory"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
   /categories/{category_id}:
     get:
       operationId: CategoriesGetById
@@ -42,9 +42,9 @@ paths:
       tags:
         - Categories
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/categoryId'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/path.yaml#/components/parameters/categoryId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
@@ -54,15 +54,15 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       categories:
                         type: array
                         items:
-                          $ref: '../components/schema/category.yaml#/components/schemas/Category'
+                          $ref: "../components/commons/objects.yaml#/components/schemas/TourCategory"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for configuration
   version: 1.0.0
@@ -11,9 +11,9 @@ paths:
       tags:
         - Configuration
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/version'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
@@ -23,13 +23,13 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
-                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationVersionResponse'                 
+                    $ref: "../components/schema/configuration.yaml#/components/schemas/ConfigurationVersionResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
   /configuration/payment:
     get:
@@ -37,9 +37,9 @@ paths:
       tags:
         - Configuration
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
-        - $ref: '../components/commons.yaml#/components/parameters/country'
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/country"
       responses:
         200:
           description: Successful response
@@ -49,15 +49,15 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
-                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationPaymentResponse'          
+                    $ref: "../components/schema/configuration.yaml#/components/schemas/ConfigurationPaymentResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
-  
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
   /configuration/privileges:
     get:
       operationId: configurationPrivileges
@@ -72,11 +72,11 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
-                    $ref: '../components/schema/configuration.yaml#/components/schemas/ConfigurationPrivilegeResponse'
+                    $ref: "../components/schema/configuration.yaml#/components/schemas/ConfigurationPrivilegeResponse"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"

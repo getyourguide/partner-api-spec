@@ -1,0 +1,69 @@
+openapi: 3.0.2
+info:
+  title: Common path parameters
+  version: 1.0.0
+paths: {}
+components:
+  parameters:
+    bookingHash:
+      in: path
+      name: booking_hash
+      required: true
+      schema:
+        $ref: "#/components/schemas/BookingHash"
+    categoryId:
+      in: path
+      name: category_id
+      required: true
+      schema:
+        $ref: "#/components/schemas/CategoryId"
+    optionId:
+      in: path
+      name: option_id
+      required: true
+      schema:
+        $ref: "#/components/schemas/OptionId"
+    shoppingCartHash:
+      in: path
+      name: shopping_cart_hash
+      required: true
+      schema:
+        $ref: "#/components/schemas/ShoppingCartHash"
+    supplierId:
+      in: path
+      name: supplier_id
+      required: true
+      schema:
+        $ref: "#/components/schemas/SupplierId"
+    tourId:
+      in: path
+      name: tour_id
+      required: true
+      schema:
+        $ref: "#/components/schemas/TourId"
+    version:
+      description: The version of the API of which you want to get the configuration.
+      in: path
+      name: version
+      required: true
+      schema:
+        type: string
+        format: integer
+      example: "1"
+      
+  # Refs to common fields, as direct refs inside the query param schema breaks OpenAPI validation
+  schemas:
+    BookingHash:
+      $ref: "fields.yaml#/components/schemas/BookingHash"
+    CategoryId:
+      $ref: "fields.yaml#/components/schemas/CategoryId"
+    OptionId:
+      $ref: "fields.yaml#/components/schemas/OptionId"
+    ShoppingCartHash:
+      $ref: "fields.yaml#/components/schemas/ShoppingCartHash"
+    SupplierId:
+      $ref: "fields.yaml#/components/schemas/SupplierId"
+    TourId:
+      $ref: "fields.yaml#/components/schemas/TourId"
+    
+    

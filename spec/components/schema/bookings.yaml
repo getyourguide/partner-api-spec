@@ -1,8 +1,9 @@
 openapi: 3.0.2
 info:
-  title: bookings
+  title: Bookings schema
   version: 1.0.0
 paths: {}
+
 components:
   schemas:
     BookingCreateActivity:
@@ -12,48 +13,46 @@ components:
           type: object
           properties:
             cnt_language:
-              description: ISO 639, Language of the text content.
-              type: string
-              example: "en"
+              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
             currency:
-              description: ISO 4217, The currency with which you would like to pay.
-              type: string
-              example: "EUR"
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
         data:
           type: object
           properties:
             booking:
               type: object
               properties:
-                coupon:
-                  type: object
-                  properties:
-                    coupon_code:
-                      type: string
-                      example: 123ABC
                 bookable:
                   type: object
                   properties:
+                    external_reference_id:
+                      $ref: "../commons/fields.yaml#/components/schemas/ExternalReferenceId"
                     option_id:
-                      $ref: '../commons.yaml#/components/schemas/OptionId'
+                      $ref: "../commons/fields.yaml#/components/schemas/OptionId"
                     datetime:
-                      $ref: '../commons.yaml#/components/schemas/Datetime'
+                      $ref: "../commons/fields.yaml#/components/schemas/Datetime"
                     price:
-                      type: string
-                      example: '170.00'
+                      $ref: "../commons/fields.yaml#/components/schemas/Price"
                     categories:
                       type: array
                       items:
                         type: object
                         properties:
                           category_id:
-                            type: string
-                            example: '2077534'
+                            $ref: ../commons/fields.yaml#/components/schemas/CategoryId
                           number_of_participants:
-                            type: string
-                            example: '5'
+                            type: integer
+                            example: 5
+                        required:
+                          - category_id
+                          - number_of_participants
                     booking_parameters:
-                      $ref: '../schema/bookings.yaml#/components/schemas/BookingParameters'
+                      $ref: "../schema/bookings.yaml#/components/schemas/BookingParameters"
+                  required:
+                    - option_id
+                    - datetime
+                    - price
+                    - categories
 
     BookingCreateCoupon:
       type: object
@@ -62,13 +61,9 @@ components:
           type: object
           properties:
             cnt_language:
-              description: ISO 639, Language of the text content.
-              type: string
-              example: "en"
+              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
             currency:
-              description: ISO 4217, The currency with which you would like to pay.
-              type: string
-              example: "EUR"
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
         data:
           type: object
           properties:
@@ -89,23 +84,23 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
             shopping_cart_hash:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
             booking_id:
-              $ref: '../commons.yaml#/components/schemas/BookingId'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingId"
             booking_hash:
-              $ref: '../commons.yaml#/components/schemas/BookingHash'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
             status:
-              $ref: '../commons.yaml#/components/schemas/BookingStatus'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
             return_code:
-              $ref: '../commons.yaml#/components/schemas/ReturnCode'
+              $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
 
     BookingsGetByHashResponse:
       type: object
       properties:
         booking:
-          $ref: '#/components/schemas/Booking'
+          $ref: "#/components/schemas/Booking"
 
     BookingDeleteResponse:
       type: object
@@ -114,77 +109,67 @@ components:
           type: object
           properties:
             shopping_cart_id:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
             shopping_cart_hash:
-              $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
             booking_id:
-              $ref: '../commons.yaml#/components/schemas/BookingId'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingId"
             booking_hash:
-              $ref: '../commons.yaml#/components/schemas/BookingHash'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
             booking_status:
-              $ref: '../commons.yaml#/components/schemas/BookingStatus'
+              $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
             return_code:
-              $ref: '../commons.yaml#/components/schemas/ReturnCode'
-    
+              $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
+
     Booking:
       type: object
       properties:
         booking_id:
-          $ref: '../commons.yaml#/components/schemas/BookingId'
+          $ref: "../commons/fields.yaml#/components/schemas/BookingId"
         booking_hash:
-          $ref: '../commons.yaml#/components/schemas/BookingHash'
+          $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
         booking_status:
-          $ref: '../commons.yaml#/components/schemas/BookingStatus'
+          $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
         shopping_cart_id:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartId'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
         shopping_cart_hash:
-          $ref: '../commons.yaml#/components/schemas/ShoppingCartHash'
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
         bookable:
-          $ref: '#/components/schemas/Bookable'
+          $ref: "#/components/schemas/Bookable"
         ticket:
           description: Only present if the booking is confirmed and active.
-          $ref: '#/components/schemas/Ticket'
-      required:
-        - booking_id
-        - booking_hash
-        - booking_status
-        - shopping_cart_id
-        - shopping_cart_hash
-        - bookable
+          $ref: "#/components/schemas/Ticket"
 
     Bookable:
       type: object
       properties:
         tour_id:
-          $ref: '../commons.yaml#/components/schemas/TourId'
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
         option_id:
-          $ref: '../commons.yaml#/components/schemas/OptionId'
+          $ref: "../commons/fields.yaml#/components/schemas/OptionId"
         datetime:
-          $ref: '../commons.yaml#/components/schemas/Datetime'
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         datetime_utc:
-          $ref: '../commons.yaml#/components/schemas/DatetimeUTC'
+          $ref: "../commons/fields.yaml#/components/schemas/DatetimeUTC"
         datetime_type:
-          $ref: '../commons.yaml#/components/schemas/DatetimeType'
+          $ref: "../commons/fields.yaml#/components/schemas/DatetimeType"
         opening_hours:
           type: array
           items:
             type: object
             properties:
               opening_time:
-                $ref: '../commons.yaml#/components/schemas/Datetime'
+                $ref: "../commons/fields.yaml#/components/schemas/Datetime"
               closing_time:
-                $ref: '../commons.yaml#/components/schemas/Datetime'
+                $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         price:
-          description: The price of the activity described in this bookable. You will have to calculate reduced prices yourself. The discount as a percentage value, if present, is retrieved from the options/availabilities endpoint.
-          type: number
-          format: double
-          example: 270
+          $ref: "../commons/fields.yaml#/components/schemas/Price"
         valid_until:
-          $ref: '../commons.yaml#/components/schemas/Datetime'
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         cancellation_policy_text:
-          $ref: '../commons.yaml#/components/schemas/CancellationPolicyText'
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
         currently_cancellable_at_no_fee:
-          $ref: '../commons.yaml#/components/schemas/CurrentlyCancellableAtNoFee'
+          $ref: "../commons/fields.yaml#/components/schemas/CurrentlyCancellableAtNoFee"
         categories:
           type: array
           description: The price categories used for this booking.
@@ -192,18 +177,18 @@ components:
             type: object
             properties:
               category_id:
-                type: number
-                example: 302628
+                $ref: ../commons/fields.yaml#/components/schemas/CategoryId
               name:
                 type: string
                 example: Adults
-              number_of_participants: 
-                type: number
+              number_of_participants:
+                type: integer
                 example: 1
         booking_parameters:
-          $ref: '#/components/schemas/BookingParameters'
+          $ref: "#/components/schemas/BookingParameters"
 
     BookingParameters:
+      description: The mandatory booking parameters are specific to a given tour option and can be retrieved from `GET /options/{option_id}`
       type: array
       items:
         type: object
@@ -224,7 +209,7 @@ components:
           mandatory:
             type: boolean
             description: The mandatory booking parameters can be retrieved from the options endpoint
-            example: false
+            example: true
 
     Ticket:
       type: object
@@ -235,12 +220,9 @@ components:
         supplier_booking_codes:
           $ref: "#/components/schemas/SupplierBookingCodes"
         emergency_phone_number:
-          type: string
-          example: '+49 30 56839111'
+          $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
         emergency_email:
-          type: string
-          format: email
-          example: example@getyourguide.com
+          $ref: "../commons/fields.yaml#/components/schemas/Email"
         ticket_url:
           type: string
           format: uri
@@ -249,7 +231,7 @@ components:
         ticket_hash:
           type: string
           example: 7H8N87D3QAH16XVABGPCR311U66XELRG
-    
+
     SupplierBookingCodes:
       type: array
       items:
@@ -260,13 +242,26 @@ components:
             example: 7H8N87D3QAH16XVABGPCR311U66XELRG
           label:
             type: string
-            example: 'Ticket #1 (ADULT)'
+            example: "Ticket #1 (ADULT)"
           type:
+            description: The encoding algorithm used for the bar/qr code.
             type: string
             example: qr_code
+            enum:
+              - text
+              - barcode_code39
+              - barcode_code128
+              - qr_code
+              - data_matrix
+              - ean13
+              - itf
+              - pdf_file
+              - code25interleaved
+              - aztec
           code:
+            description: The sting that will be encoded into the barcode.
             type: string
             example: JRUFX567YOMTSI7RG5K3UL2XC6RECSGQ-E9VNO
           pricing_category_id:
-            type: number
+            type: integer
             example: 2167696

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Paths for carts
   version: 1.0.0
@@ -9,14 +9,12 @@ paths:
       summary: Confirm a shopping cart.
       tags:
         - Carts
-      parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/externalReferenceId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmRequest'
+              $ref: "../components/schema/carts.yaml#/components/schemas/CartsConfirmRequest"
       responses:
         200:
           description: Successful response
@@ -26,19 +24,19 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       shopping_cart:
                         oneOf:
-                          - $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed'
-                          - $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseInPayment'
+                          - $ref: "../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed"
+                          - $ref: "../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseInPayment"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
-  
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
   /carts/{shopping_cart_hash}:
     get:
       operationId: CartsGetByHash
@@ -46,9 +44,9 @@ paths:
       tags:
         - Carts
       parameters:
-        - $ref: '../components/commons.yaml#/components/parameters/shoppingCartHash'
-        - $ref: '../components/commons.yaml#/components/parameters/cntLanguage'
-        - $ref: '../components/commons.yaml#/components/parameters/currency'
+        - $ref: "../components/commons/path.yaml#/components/parameters/shoppingCartHash"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
         200:
           description: Successful response
@@ -58,13 +56,13 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: '../components/schema/metadata.yaml#/components/schemas/MetaData'
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       shopping_cart:
-                        $ref: '../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed'
+                        $ref: "../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed"
         4XX:
-          $ref: '../components/schema/errors.yaml#/components/responses/4XX'
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
-          $ref: '../components/schema/errors.yaml#/components/responses/Default'
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
