@@ -3,10 +3,7 @@ This GetYourGuide Partner API provides access to GetYourGuide’s marketplace fo
 It has a RESTful interface and uses the JSON media format. Access is secured via SSL and an API access token.
 ### Table of contents
 
-* [Getting Started](https://github.com/getyourguide/partner-api-spec/wiki/Getting-started)
-* [Image Formats](https://github.com/getyourguide/partner-api-spec/wiki/Image-Formats)
-* [Making a booking](https://github.com/getyourguide/partner-api-spec/wiki/Making-a-booking)
-* [Adyen Credit Card Checkout](https://github.com/getyourguide/partner-api-spec/wiki/Adyen-payment)
+* [Getting Started - Wiki](https://github.com/getyourguide/partner-api-spec/wiki/Getting-started)
 * [Additional Resources](https://github.com/getyourguide/partner-api-spec/tree/main/resources)
 
 ## [API Reference](https://code.getyourguide.com/partner-api-spec/)
