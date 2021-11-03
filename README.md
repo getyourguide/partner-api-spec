@@ -16,3 +16,12 @@ Clone the repository and then you can run this command to generate a `typescript
 ```
 npx @openapitools/openapi-generator-cli generate -i api.yaml -g typescript-node -o /tmp/ts/
 ```
+## Security
+
+For sensitive security matters please contact [security@getyourguide.com](mailto:security@getyourguide.com).
+
+## Legal
+
+Copyright 2021 GetYourGuide GmbH.
+
+**partner-api-spec** is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.
