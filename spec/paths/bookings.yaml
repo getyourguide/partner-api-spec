@@ -3,13 +3,15 @@ info:
   title: Paths for bookings
   version: 1.0.0
 paths:
-  /bookings:
+  /{version}/bookings:
     post:
       operationId: BookingsCreate
       description: A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable must be sent in the body of the request.
       summary: Create a new booking.
       tags:
         - Bookings
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
       requestBody:
         required: true
         content:
@@ -69,13 +71,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /bookings/{booking_hash}:
+  /{version}/bookings/{booking_hash}:
     get:
       operationId: BookingsGetByHash
       summary: Get information about a booking
       tags:
         - Bookings
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/bookingHash"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"

@@ -3,13 +3,14 @@ info:
   title: Paths for tours
   version: 1.0.0
 paths:
-  /tours:
+  /{version}/tours:
     get:
       operationId: ToursQuery
       summary: Search for tours by different parameters such as a query or geographical coordinates.
       tags:
         - Tours
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
         - $ref: "../components/commons/query.yaml#/components/parameters/preformatted"
@@ -48,13 +49,14 @@ paths:
         500:
           description: Server error
 
-  /tours/{tour_id}:
+  /{version}/tours/{tour_id}:
     get:
       operationId: ToursByIdQuery
       summary: Search for tours by id
       tags:
         - Tours
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
@@ -81,13 +83,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /tours/{tour_id}/availabilities:
+  /{version}/tours/{tour_id}/availabilities:
     get:
       operationId: ToursByIdAvailabilities
       summary: Search for tours by id
       tags:
         - Tours
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
@@ -114,13 +117,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /tours/{tour_id}/options:
+  /{version}/tours/{tour_id}/options:
     get:
       operationId: ToursByIdOptions
       summary: Find all options of a tour.
       tags:
         - Tours
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"

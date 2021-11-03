@@ -3,12 +3,14 @@ info:
   title: Paths for carts
   version: 1.0.0
 paths:
-  /carts:
+  /{version}/carts:
     post:
       operationId: CartsConfirm
       summary: Confirm a shopping cart.
       tags:
         - Carts
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
       requestBody:
         required: true
         content:
@@ -37,13 +39,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /carts/{shopping_cart_hash}:
+  /{version}/carts/{shopping_cart_hash}:
     get:
       operationId: CartsGetByHash
       summary: Get information about a shopping cart.
       tags:
         - Carts
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/shoppingCartHash"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"

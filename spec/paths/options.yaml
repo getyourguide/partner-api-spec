@@ -3,13 +3,14 @@ info:
   title: Paths for options
   version: 1.0.0
 paths:
-  /options/{option_id}:
+  /{version}/options/{option_id}:
     get:
       operationId: OptionsGetById
       description: Find a Tour Option by ID. The result will be an array of tour options. But the array will only contain one single tour option.
       tags:
         - Options
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
@@ -35,13 +36,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /options/{option_id}/pricings:
+  /{version}/options/{option_id}/pricings:
     get:
       operationId: OptionsGetPricing
       description: Find all the pricings for a tour option.
       tags:
         - Options
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
@@ -67,13 +69,14 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /options/{option_id}/availabilities:
+  /{version}/options/{option_id}/availabilities:
     get:
       operationId: OptionsGetAvailabilities
       description: Find availabilities for a tour option within an optional date range
       tags:
         - Options
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
