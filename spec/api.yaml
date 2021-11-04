@@ -9,15 +9,15 @@ info:
     url: https://partner.getyourguide.com/
 
 externalDocs:
-  description: API Documentation and best practices
-  url: https://github.com/getyourguide/partner-api-spec/wiki/General-Information
+  description: Further Documentation, additional resources and best practices
+  url: https://github.com/getyourguide/partner-api-spec
 
 servers:
-  - url: https://api.getyourguide.com/1
+  - url: https://api.getyourguide.com/
     description: Production
-  - url: https://api.testing1.gygtest.com/1
+  - url: https://api.testing1.gygtest.com/
     description: Testing
-  - url: https://api.gygdev.gygtest.com/1/
+  - url: https://api.gygdev.gygtest.com/
     description: Development
 
 components:
@@ -34,44 +34,44 @@ paths:
   # Configuration
   /configuration/{version}:
     $ref: "./paths/configuration.yaml#/paths/~1configuration~1{version}"
-  /configuration/payment:
-    $ref: "./paths/configuration.yaml#/paths/~1configuration~1payment"
-  /configuration/privileges:
-    $ref: "./paths/configuration.yaml#/paths/~1configuration~1privileges"
+  /{version}/configuration/payment:
+    $ref: "./paths/configuration.yaml#/paths/~1{version}~1configuration~1payment"
+  /{version}/configuration/privileges:
+    $ref: "./paths/configuration.yaml#/paths/~1{version}~1configuration~1privileges"
   # Bookings
-  /bookings:
-    $ref: "./paths/bookings.yaml#/paths/~1bookings"
-  /bookings/{booking_hash}:
-    $ref: "./paths/bookings.yaml#/paths/~1bookings~1{booking_hash}"
+  /{version}/bookings:
+    $ref: "./paths/bookings.yaml#/paths/~1{version}~1bookings"
+  /{version}/bookings/{booking_hash}:
+    $ref: "./paths/bookings.yaml#/paths/~1{version}~1bookings~1{booking_hash}"
   # Carts
-  /carts:
-    $ref: "./paths/carts.yaml#/paths/~1carts"
-  /carts/{shopping_cart_hash}:
-    $ref: "./paths/carts.yaml#/paths/~1carts~1{shopping_cart_hash}"
+  /{version}/carts:
+    $ref: "./paths/carts.yaml#/paths/~1{version}~1carts"
+  /{version}/carts/{shopping_cart_hash}:
+    $ref: "./paths/carts.yaml#/paths/~1{version}~1carts~1{shopping_cart_hash}"
   # Categories
-  /categories:
-    $ref: "./paths/categories.yaml#/paths/~1categories"
-  /categories/{category_id}:
-    $ref: "./paths/categories.yaml#/paths/~1categories~1{category_id}"
+  /{version}/categories:
+    $ref: "./paths/categories.yaml#/paths/~1{version}~1categories"
+  /{version}/categories/{category_id}:
+    $ref: "./paths/categories.yaml#/paths/~1{version}~1categories~1{category_id}"
   # Options
-  /options/{option_id}:
-    $ref: "./paths/options.yaml#/paths/~1options~1{option_id}"
-  /options/{option_id}/pricings:
-    $ref: "./paths/options.yaml#/paths/~1options~1{option_id}~1pricings"
-  /options/{option_id}/availabilities:
-    $ref: "./paths/options.yaml#/paths/~1options~1{option_id}~1availabilities"
+  /{version}/options/{option_id}:
+    $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}"
+  /{version}/options/{option_id}/pricings:
+    $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}~1pricings"
+  /{version}/options/{option_id}/availabilities:
+    $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}~1availabilities"
   # Reviews
-  /reviews/tour/{tour_id}:
-    $ref: "./paths/reviews.yaml#/paths/~1reviews~1tour~1{tour_id}"
+  /{version}/reviews/tour/{tour_id}:
+    $ref: "./paths/reviews.yaml#/paths/~1{version}~1reviews~1tour~1{tour_id}"
   # Suppliers
-  /suppliers/{supplier_id}:
-    $ref: "./paths/suppliers.yaml#/paths/~1suppliers~1{supplier_id}"
+  /{version}/suppliers/{supplier_id}:
+    $ref: "./paths/suppliers.yaml#/paths/~1{version}~1suppliers~1{supplier_id}"
   # Tours
-  /tours:
-    $ref: "./paths/tours.yaml#/paths/~1tours"
-  /tours/{tour_id}:
-    $ref: "./paths/tours.yaml#/paths/~1tours~1{tour_id}"
-  /tours/{tour_id}/availabilities:
-    $ref: "./paths/tours.yaml#/paths/~1tours~1{tour_id}~1availabilities"
-  /tours/{tour_id}/options:
-    $ref: "./paths/tours.yaml#/paths/~1tours~1{tour_id}~1options"
+  /{version}/tours:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours"
+  /{version}/tours/{tour_id}:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}"
+  /{version}/tours/{tour_id}/availabilities:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availabilities"
+  /{version}/tours/{tour_id}/options:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1options"

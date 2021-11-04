@@ -229,4 +229,9 @@ components:
     TourId:
       description: The ID of the tour.
       example: 50872
-      type: number
+      type: integer
+    Version:
+      description: The version of the API, currently only 1 is available.
+      example: "1"
+      type: string
+      format: integer
