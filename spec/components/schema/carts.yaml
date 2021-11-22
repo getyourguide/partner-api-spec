@@ -105,6 +105,19 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Country"
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
+      required:
+        - salutation_code
+        - first_name
+        - last_name
+        - email
+        - is_company
+        - invoice
+        - address_line_1
+        - city
+        - postal_code
+        - state
+        - country_code
+        - phone_number
 
     Traveler:
       type: object
@@ -119,6 +132,12 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Email"
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
+      required:
+        - salutation_code
+        - first_name
+        - last_name
+        - email
+        - phone_number
 
     # Data fields in carts object:
     Status:
