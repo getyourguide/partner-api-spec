@@ -14,8 +14,8 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "#/components/parameters/sortfield"
         - $ref: "#/components/parameters/date"
+        - $ref: "#/components/parameters/sortfield"
         - $ref: "../components/commons/query.yaml#/components/parameters/sortdirection"
         - $ref: "../components/commons/query.yaml#/components/parameters/limit"
         - $ref: "../components/commons/query.yaml#/components/parameters/offset"
@@ -56,7 +56,7 @@ components:
           - date
         type: string
     date:
-      description: Defines the date of the oldest review.
+      description: Defines the date of the oldest review that should be returned.
       in: query
       name: date
       required: false
