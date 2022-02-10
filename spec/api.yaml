@@ -17,8 +17,9 @@ servers:
     description: Production
   - url: https://api.testing1.gygtest.com/
     description: Testing
-  - url: https://api.gygdev.gygtest.com/
-    description: Development
+  # Hidden as it is causing confusion for partner.
+  # - url: https://api.gygdev.gygtest.com/
+  #   description: Development
 
 components:
   securitySchemes:
