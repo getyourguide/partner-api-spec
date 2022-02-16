@@ -18,22 +18,19 @@ components:
         data:
           type: object
           properties:
-            booking:
+            shopping_cart:
               type: object
               properties:
-                shopping_cart:
-                  type: object
-                  properties:
-                    shopping_cart_id:
-                      $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
-                    billing:
-                      $ref: "#/components/schemas/Billing"
-                    traveler:
-                      $ref: "#/components/schemas/Traveler"
-                    payment:
-                      oneOf:
-                        - $ref: "./payment.yaml#/components/schemas/Paypal"
-                        - $ref: "./payment.yaml#/components/schemas/EncryptedCreditCard"
+                shopping_cart_id:
+                  $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+                billing:
+                  $ref: "#/components/schemas/Billing"
+                traveler:
+                  $ref: "#/components/schemas/Traveler"
+                payment:
+                  oneOf:
+                    - $ref: "./payment.yaml#/components/schemas/Paypal"
+                    - $ref: "./payment.yaml#/components/schemas/EncryptedCreditCard"
 
     CartsConfirmResponseConfirmed:
       type: object
