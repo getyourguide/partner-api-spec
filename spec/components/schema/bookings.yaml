@@ -70,15 +70,12 @@ components:
         data:
           type: object
           properties:
-            booking:
+            coupon:
               type: object
               properties:
-                coupon:
-                  type: object
-                  properties:
-                    coupon_code:
-                      type: string
-                      example: 123ABC
+                coupon_code:
+                  type: string
+                  example: 123ABC
 
     BookingCreateResponse:
       type: object

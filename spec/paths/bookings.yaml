@@ -19,7 +19,7 @@ paths:
             schema:
               oneOf:
                 - $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity"
-                - $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateCoupon"
+                - $ref: "../components/schema/bookings.yaml#/components/schemas/RedeemCoupon"
       responses:
         200:
           description: Successful response
