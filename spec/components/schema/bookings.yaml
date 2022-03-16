@@ -56,8 +56,7 @@ components:
                     - datetime
                     - price
                     - categories
-
-    BookingCreateCoupon:
+    RedeemCoupon:
       type: object
       properties:
         base_data:
