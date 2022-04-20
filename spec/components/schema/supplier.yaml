@@ -40,3 +40,5 @@ components:
           format: uri
           description: URL to the logo of the supplier.
           example: https://img-getyourguide-com.partner.gygtest.com/img/profile_picture-26045-1860042995-[format_id].jpg
+        address:
+          $ref: "../commons/objects.yaml#/components/schemas/Address"
