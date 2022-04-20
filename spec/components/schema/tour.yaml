@@ -85,10 +85,10 @@ components:
         price:
           $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
         categories:
-          description: List of categories ordered according to importance.
+          description: List of tour categories tagged to this tour.
           type: array
           items:
-            $ref: "../commons/objects.yaml#/components/schemas/TourCategory"
+            $ref: "#/components/schemas/TourCategoryMinimal"
         locations:
           description: List of locations ordered according to importance.
           type: array
@@ -135,6 +135,17 @@ components:
               * `instructor`: an instructor e.g. for diving classes.
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
+
+    TourCategoryMinimal:
+      description: A minimal representation of a tour category. More information about each category can be retrieved from the `/categories` endpoint.
+      type: object
+      properties:
+        category_id:
+          $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
+        name:
+          type: string
+          description: Name of the category.
+          example: Theme Parks & Amusement Parks
 
     HealthAdvisory:
       type: array
