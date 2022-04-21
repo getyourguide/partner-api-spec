@@ -5,6 +5,20 @@ info:
 paths: {}
 components:
   schemas:
+    Address:
+      type: object
+      description: The structured address of the supplier.
+      properties:
+        street:
+          $ref: "fields.yaml#/components/schemas/Street"
+        zipCode:
+          $ref: "fields.yaml#/components/schemas/ZipCode"
+        country:
+          $ref: "fields.yaml#/components/schemas/CountryVerbose"
+        city:
+          $ref: "fields.yaml#/components/schemas/City"
+        state:
+          $ref: "fields.yaml#/components/schemas/State"
     Coordinates:
       type: object
       properties:

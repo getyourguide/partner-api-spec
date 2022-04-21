@@ -34,12 +34,16 @@ components:
         * `deleted_by_daemon` same as deleted with the additional information that it was automatically deleted from the cart after 60 minutes.
     CancellationPolicyText:
       description: Cancellation policy
-      example: Your activity is non-refundable,
+      example: Your activity is non-refundable
       type: string
     CategoryId:
       description: ID of the category.
       example: 33
       type: integer
+    City:
+      description: The name of the city
+      example: Berlin
+      type: string
     CntLanguage:
       description: ISO 639, Language of the text content.
       enum:
@@ -62,6 +66,10 @@ components:
     Country:
       description: ISO code of the country of the location (ISO 3166-1).
       example: US
+      type: string
+    CountryVerbose:
+      description: The verbose name of the country.
+      example: Germany
       type: string
     Currency:
       description: ISO 4217, The currency with which you would like to pay.
@@ -222,6 +230,14 @@ components:
       description: The ID of the shopping cart.
       example: 32724458
       type: number
+    State:
+      description: The state of the address.
+      example: Berlin
+      type: string
+    Street:
+      description: The street name and house number of the address.
+      example: Sonnenburger Straße 73
+      type: string
     SupplierId:
       description: The supplier id
       type: integer
@@ -235,3 +251,8 @@ components:
       example: "1"
       type: string
       format: integer
+    ZipCode:
+      description: The zip code of the address.
+      example: "14050"
+      type: string
+      
