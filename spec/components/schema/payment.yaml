@@ -38,6 +38,14 @@ components:
               type: string
               description: Encrypted credit card information which is returned from Adyens CSE javascript library. Please see the public github repo `partner-api-spec` wiki for more details.
               example: "adyenjs_0_1_19$WeyFKtrch70Ce+uN+4S4"
+    MasterBill:
+      description: MasterBill payment method, requires MasterBill API access.
+      type: object
+      properties:
+        master_bill:
+          type: boolean
+          description: Needs to be set to "true" for MasterBill checkout.
+          example: true
 
     # Payment objects
     PaymentProcess:
