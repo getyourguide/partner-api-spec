@@ -2,11 +2,14 @@ openapi: 3.0.0
 
 info:
   title: Partner Api
-  description: This GetYourGuide Partner API provides access to GetYourGuide’s marketplace for tours and activities. It has a RESTful interface and uses the JSON media format. Access is secured via SSL and an API access token.
+  description: This GetYourGuide Partner API provides access to GetYourGuide’s marketplace for tours and activities. It has a RESTful interface and uses the JSON media format. Access is secured via SSL and an API access token. Further documentation can be found in the public GitHub repository linked below. Do not forget to also check out the GitHub wiki for some more extensive guides.
   version: 1.0.0
   contact:
     name: Partner Tech
     url: https://partner.getyourguide.com/
+  license:
+    name: Apache License, Version 2.0
+    url: https://github.com/getyourguide/partner-api-spec/blob/main/LICENSE
 
 externalDocs:
   description: Further Documentation, additional resources and best practices
