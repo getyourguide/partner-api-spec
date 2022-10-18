@@ -47,7 +47,9 @@ components:
         status:
           $ref: "#/components/schemas/Status"
         bookings:
-          $ref: "../schema/bookings.yaml#/components/schemas/Booking"
+          type: array
+          items:
+            $ref: "../schema/bookings.yaml#/components/schemas/Booking"
         payment_info:
           $ref: "./payment.yaml#/components/schemas/PaymentInfoConfirmed"
 
