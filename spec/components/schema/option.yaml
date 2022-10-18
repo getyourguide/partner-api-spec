@@ -150,24 +150,26 @@ components:
                 type: boolean
                 description: Is this category an addon? An addon is something that can be booked additionally to the tour such as Lunch on a city tour an additional transfer to the meeting point or a child seat for an airport transfer.
               scale:
-                type: object
-                description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
-                properties:
-                  min_participants:
-                    type: integer
-                    description: The minimal number of participants needed to apply this scale.
-                  max_participants:
-                    type: integer
-                    description: The maximum number of participants needed to apply this scale.
-                  retail_price:
-                    type: number
-                    description: The price for which the tour option is sold to the customer.
-                  net_price:
-                    type: number
-                    description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
-                  type:
-                    type: string
-                    description: The type of the scale
-                    enum:
-                      - pax
-                      - flat
+                type: array
+                items:
+                  type: object
+                  description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+                  properties:
+                    min_participants:
+                      type: integer
+                      description: The minimal number of participants needed to apply this scale.
+                    max_participants:
+                      type: integer
+                      description: The maximum number of participants needed to apply this scale.
+                    retail_price:
+                      type: number
+                      description: The price for which the tour option is sold to the customer.
+                    net_price:
+                      type: number
+                      description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                    type:
+                      type: string
+                      description: The type of the scale
+                      enum:
+                        - pax
+                        - flat
