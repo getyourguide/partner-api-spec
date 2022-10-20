@@ -17,7 +17,7 @@ paths:
         content:
           application/json:
             schema:
-                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity"
+              $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateActivity"
       responses:
         200:
           description: Successful response
@@ -96,6 +96,8 @@ paths:
       tags:
         - Bookings
       parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/bookingHash"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
       responses:
