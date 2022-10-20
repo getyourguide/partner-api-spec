@@ -84,7 +84,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingsGetByHashResponse"
+                $ref: "../components/schema/bookings.yaml#/components/schemas/Booking"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
