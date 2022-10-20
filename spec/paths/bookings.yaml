@@ -114,7 +114,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse"
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    $ref: "../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
