@@ -84,7 +84,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../components/schema/bookings.yaml#/components/schemas/Booking"
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      booking:
+                        $ref: "../components/schema/bookings.yaml#/components/schemas/Booking"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
