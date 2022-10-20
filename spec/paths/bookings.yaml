@@ -29,10 +29,7 @@ paths:
                   _metadata:
                     $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
-                    type: object
-                    properties:
-                      bookings:
-                        $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse"
+                    $ref: "../components/schema/bookings.yaml#/components/schemas/BookingCreateResponse"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
