@@ -96,10 +96,7 @@ components:
               $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
 
     BookingsGetByHashResponse:
-      type: object
-      properties:
-        booking:
-          $ref: "#/components/schemas/Booking"
+      $ref: "#/components/schemas/Booking"
 
     BookingDeleteResponse:
       type: object
