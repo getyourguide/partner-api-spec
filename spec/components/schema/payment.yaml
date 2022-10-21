@@ -101,12 +101,13 @@ components:
       example: EUR
     PaymentMethod:
       type: string
-      enum: ["cc", "pp", "dd"]
+      enum: ["cc", "pp", "dd", "mb"]
       description: >
         The payment method used to pay:
           * `cc`: credit card
           * `pp`: PayPal
           * `dd`: direct debit (SEPA, only available in Germany)
+          * `mb`: master-bill
       example: cc
     PrecouponPrice:
       $ref: "../commons/fields.yaml#/components/schemas/Price"
