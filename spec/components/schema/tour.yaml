@@ -126,14 +126,14 @@ components:
           type: string
           enum:
             - none
-            - host_or_greeter
+            - host_greeter
             - instructor
             - driver
             - live_tour_guide
           description: >
             Type of guide that is conducting the tour, available are
               * `none`: no guide available for this tour.
-              * `host_or_greeter`: a host or greeter that welcomes the customer.
+              * `host_greeter`: a host or greeter that welcomes the customer.
               * `instructor`: an instructor e.g. for diving classes.
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
