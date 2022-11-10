@@ -18,7 +18,7 @@ externalDocs:
 servers:
   - url: https://api.getyourguide.com/
     description: Production
-  - url: https://api.testing1.gygtest.com/
+  - url: https://api.testing20.gygtest.com/
     description: Testing
   # Hidden as it is causing confusion for partner.
   # - url: https://api.gygdev.gygtest.com/
