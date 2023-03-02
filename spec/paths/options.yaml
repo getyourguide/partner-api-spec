@@ -103,3 +103,37 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/options/{option_id}/time-slots:
+    get:
+      operationId: OptionsGetTimeslots
+      description: Find time-slots with pricing information for a tour option within an optional date range
+      tags:
+        - Options
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      availabilities:
+                        type: array
+                        items:
+                          $ref: "../components/schema/timeslots.yaml#/components/schemas/TimeSlots"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
