@@ -152,18 +152,20 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
-  /{version}/tours/{tour_id}/time-slots:
-    get:
-      operationId: ToursByIdTimeSlots
-      summary: Find time-slots with pricing information for a tour within an optional date range
+  /{version}/tours/{tour_id}/day-breakdown:
+    post:
+      operationId: ToursByIdDayBreakdown
+      description: Find pricing information for a tour by day.
       tags:
         - Tours
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
-        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
-        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schema/tour.yaml#/components/schemas/TourBreakdownRequest"
       responses:
         200:
           description: Successful response
@@ -172,15 +174,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  _metadata:
-                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
-                      tour_options:
+                      availabilities:
                         type: array
                         items:
-                          $ref: "../components/schema/timeslots.yaml#/components/schemas/TimeSlots"
+                          $ref: "../components/schema/option.yaml#/components/schemas/TourOptionAvailabilitiesAndPricing"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:

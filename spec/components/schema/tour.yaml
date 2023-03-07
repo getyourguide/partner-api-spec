@@ -182,3 +182,45 @@ components:
             type: string
             description: Verbose description
             example: You are required to bring and wear a mask
+
+    TourBreakdownRequest:
+      type: object
+      required:
+        - base_data
+        - data
+      properties:
+        base_data:
+          type: object
+          required:
+            - cnt_language
+            - currency
+          properties:
+            cnt_language:
+              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
+            currency:
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
+        data:
+          type: object
+          required:
+            - date
+            - participants
+          properties:
+            date:
+              $ref: "../commons/fields.yaml#/components/schemas/Date"
+            participants:
+              type: object
+              additionalProperties:
+                type: integer
+              description: |
+                The key here is a ticket category, and the value is the number of participants. Possible keys:
+                - adult
+                - child
+                - youth
+                - infant
+                - senior
+                - student
+                - eu_citizen
+                - military
+                - eu_citizen_student
+              example:
+                adult: 1

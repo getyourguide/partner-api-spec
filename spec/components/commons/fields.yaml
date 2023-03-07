@@ -125,6 +125,11 @@ components:
       example: "2017-09-01T00:00:00"
       format: datetime
       type: string
+    Date:
+      description: The local date format `Y-m-d`.
+      example: "2023-09-01"
+      format: date
+      type: string
     DatetimeType:
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
       enum:

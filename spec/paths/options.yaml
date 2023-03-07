@@ -105,35 +105,3 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
-
-  /{version}/options/{option_id}/availabilities-and-pricing:
-    get:
-      operationId: OptionsGetTimeslots
-      description: Find time-slots with pricing information for a tour option
-      tags:
-        - Options
-      parameters:
-        - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
-        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
-        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/interval[]"
-      responses:
-        200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      availabilities:
-                        type: array
-                        items:
-                          $ref: "../components/schema/option.yaml#/components/schemas/TourOptionAvailabilitiesAndPricing"
-        4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
-        default:
-          $ref: "../components/schema/errors.yaml#/components/responses/Default"
