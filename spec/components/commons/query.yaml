@@ -93,6 +93,19 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/Currency"
+    date:
+      description: Check for pricing information offered on date.
+      examples:
+        singleDate:
+          summary: Date
+          value:
+            - "2021-05-01T00:00:00"
+      explode: true
+      in: query
+      name: date[]
+      required: true
+      schema:
+        $ref: "#/components/schemas/Datetime"
     date[]:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.
@@ -110,23 +123,6 @@ components:
       in: query
       name: date[]
       required: false
-      schema:
-        items:
-          $ref: "#/components/schemas/Datetime"
-        type: array
-    interval[]:
-      allowReserved: true
-      description: Check for availabilities that are offered between dates.
-      examples:
-        multipleDates:
-          summary: Date from, Date to
-          value:
-            - "2021-05-01T00:00:00"
-            - "2021-05-01T23:59:59"
-      explode: true
-      in: query
-      name: date[]
-      required: true
       schema:
         items:
           $ref: "#/components/schemas/Datetime"
