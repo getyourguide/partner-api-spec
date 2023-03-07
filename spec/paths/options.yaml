@@ -40,7 +40,8 @@ paths:
   /{version}/options/{option_id}/pricings:
     get:
       operationId: OptionsGetPricing
-      description: Find all the pricings for a tour option.
+      deprecated: true
+      description: Deprecated! Please do not use to find pricing for a tour-option, use the new endpoint /{version}/options/{option_id}/availabilities-and-pricing instead.
       tags:
         - Options
       parameters:
@@ -73,7 +74,8 @@ paths:
   /{version}/options/{option_id}/availabilities:
     get:
       operationId: OptionsGetAvailabilities
-      description: Find availabilities for a tour option within an optional date range
+      deprecated: true
+      description: Deprecated! Please do not use to find availabilities for a tour option, use the new endpoint /{version}/options/{option_id}/availabilities-and-pricing instead.
       tags:
         - Options
       parameters:
@@ -104,10 +106,10 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /{version}/options/{option_id}/time-slots:
+  /{version}/options/{option_id}/availabilities-and-pricing:
     get:
       operationId: OptionsGetTimeslots
-      description: Find time-slots with pricing information for a tour option within an optional date range
+      description: Find time-slots with pricing information for a tour option
       tags:
         - Options
       parameters:
@@ -115,7 +117,7 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
+        - $ref: "../components/commons/query.yaml#/components/parameters/interval[]"
       responses:
         200:
           description: Successful response
@@ -124,15 +126,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  _metadata:
-                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
                   data:
                     type: object
                     properties:
                       availabilities:
                         type: array
                         items:
-                          $ref: "../components/schema/timeslots.yaml#/components/schemas/TimeSlots"
+                          $ref: "../components/schema/option.yaml#/components/schemas/TourOptionAvailabilitiesAndPricing"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:

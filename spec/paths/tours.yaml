@@ -85,6 +85,8 @@ paths:
 
   /{version}/tours/{tour_id}/availabilities:
     get:
+      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/options/{option_id}/availabilities-and-pricing instead.
+      deprecated: true
       operationId: ToursByIdAvailabilities
       summary: Search for tours by id
       tags:

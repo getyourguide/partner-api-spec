@@ -109,6 +109,271 @@ components:
               type: boolean
               description: Flag if the special offer is only available for the GYG internal mobile apps.
 
+    TourOptionAvailabilitiesAndPricing:
+      description: A list of time-slots including pricing information.
+      type: array
+      items:
+        type: object
+        properties:
+          tour_id:
+            $ref: "../commons/fields.yaml#/components/schemas/TourId"
+          option_id:
+            $ref: "../commons/fields.yaml#/components/schemas/OptionId"
+          bookable_until:
+            description: The moment (in UTC) when the time slot becomes unbookable (due to it being at the conduction time or because of a cut-off), format `Y-m-d T H:i:s`.
+            example: "2017-09-01T00:00:00"
+            format: datetime
+            type: string
+          timezone:
+            type: string
+            example: "Europe/Lisbon"
+          start_time:
+            description: An ISO 8601 local date-time (assumed to be in the tour option's timezone), format `Y-m-d T H:i:s`
+            example: "2017-09-01T00:00:00"
+            format: datetime
+            type: string
+            required: true
+          end_time:
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+          vacancies:
+            description: Maximum number of individuals or groups that can be booked on a given time slot.
+            type: integer
+            example: 20
+          max_vacancies:
+            description: The highest number of vacancies allowed by the pricing configuration.
+            type: integer
+            example: 50
+          min_participants:
+            type: integer
+            description: Minimal participants needed for every booking.
+            example: 1
+          max_participants:
+            type: integer
+            description: Maximum participants allowed to be booked.
+            example: 20
+          pricing_categories:
+            type: object
+            description: Available categories.
+            properties:
+              individual:
+                type: array
+                items:
+                  type: object
+                  description: The pax categories of which this pricing consists of
+                  properties:
+                    name:
+                      type: string
+                      description: Translated name of the category.
+                      example: Adults
+                    min_age:
+                      type: integer
+                      description: The minimum age of a participant such that this price applies.
+                      example: 21
+                    max_age:
+                      type: integer
+                      description: The maximum age of a participant such that this price applies.
+                      example: 99
+                    stand_alone:
+                      type: boolean
+                      description: Can this category be booked autonomously? For example an 'Infant' category can most of the times not be booked without another person joining the tour. So the 'Infant' category would have set standAlone to false.
+                    prices:
+                      type: array
+                      items:
+                        type: object
+                        description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+                        properties:
+                          min_participants:
+                            type: integer
+                            description: The minimal number of participants needed to apply this scale.
+                          max_participants:
+                            type: integer
+                            description: The maximum number of participants needed to apply this scale.
+                          retail_price:
+                            type: number
+                            example: 40.0
+                            description: The price for which the tour option is sold to the customer.
+                          net_price:
+                            type: number
+                            example: 30.0
+                            description: The price which needs to be paid to GetYourGuide if discounted net price does not exists. The difference between retailPrice and netPrice is the reseller commission.
+                          type:
+                            type: string
+                            description: The type of the scale
+                            enum:
+                              - pax
+                              - flat
+                          deals:
+                            type: array
+                            items:
+                              type: object
+                              description: The possible deals for this pricing category, if any.
+                              properties:
+                                discounted_retail_price:
+                                  type: number
+                                  description: The discounted price for which the tour option is sold to the customer.
+                                discounted_net_price:
+                                  type: number
+                                  description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                                percentage:
+                                  type: number
+                                  description: The percentage of the discount
+                                type:
+                                  type: string
+                                  example: standard
+                                  description: |
+                                    The discount type, possible values:
+                                    - standard
+                                    - early_bird
+                                    - last_minute
+                                vacancy_limit:
+                                  type: integer
+              group:
+                type: array
+                items:
+                  type: object
+                  description: The pax categories of which this pricing consists of
+                  properties:
+                    name:
+                      type: string
+                      description: Translated name of the category.
+                      example: Adults
+                    min_age:
+                      type: integer
+                      description: The minimum age of a participant such that this price applies.
+                      example: 21
+                    max_age:
+                      type: integer
+                      description: The maximum age of a participant such that this price applies.
+                      example: 99
+                    stand_alone:
+                      type: boolean
+                      description: Can this category be booked autonomously? For example an 'Infant' category can most of the times not be booked without another person joining the tour. So the 'Infant' category would have set standAlone to false.
+                    prices:
+                      type: array
+                      items:
+                        type: object
+                        description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+                        properties:
+                          min_participants:
+                            type: integer
+                            description: The minimal number of participants needed to apply this scale.
+                          max_participants:
+                            type: integer
+                            description: The maximum number of participants needed to apply this scale.
+                          retail_price:
+                            type: number
+                            example: 40.0
+                            description: The price for which the tour option is sold to the customer.
+                          net_price:
+                            type: number
+                            example: 30.0
+                            description: The price which needs to be paid to GetYourGuide if discounted net price does not exists. The difference between retailPrice and netPrice is the reseller commission.
+                          type:
+                            type: string
+                            description: The type of the scale
+                            enum:
+                              - pax
+                              - flat
+                          deals:
+                            type: array
+                            items:
+                              type: object
+                              description: The possible deals for this pricing category, if any.
+                              properties:
+                                discounted_retail_price:
+                                  type: number
+                                  description: The discounted price for which the tour option is sold to the customer.
+                                discounted_net_price:
+                                  type: number
+                                  description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                                percentage:
+                                  type: number
+                                  description: The percentage of the discount
+                                type:
+                                  type: string
+                                  example: standard
+                                  description: |
+                                    The discount type, possible values:
+                                    - standard
+                                    - early_bird
+                                    - last_minute
+                                vacancy_limit:
+                                  type: integer
+              addon:
+                type: array
+                items:
+                  type: object
+                  description: The pax categories of which this pricing consists of
+                  properties:
+                    name:
+                      type: string
+                      description: Translated name of the category.
+                      example: Adults
+                    min_age:
+                      type: integer
+                      description: The minimum age of a participant such that this price applies.
+                      example: 21
+                    max_age:
+                      type: integer
+                      description: The maximum age of a participant such that this price applies.
+                      example: 99
+                    stand_alone:
+                      type: boolean
+                      example: false
+                      description: Can this category be booked autonomously? For example an 'Infant' category can most of the times not be booked without another person joining the tour. So the 'Infant' category would have set standAlone to false.
+                    prices:
+                      type: array
+                      items:
+                        type: object
+                        description: The scales for this pricing category. Depending on the number of bookings you are going to do the price changes.
+                        properties:
+                          min_participants:
+                            type: integer
+                            description: The minimal number of participants needed to apply this scale.
+                          max_participants:
+                            type: integer
+                            description: The maximum number of participants needed to apply this scale.
+                          retail_price:
+                            type: number
+                            example: 40.0
+                            description: The price for which the tour option is sold to the customer.
+                          net_price:
+                            type: number
+                            example: 30.0
+                            description: The price which needs to be paid to GetYourGuide if discounted net price does not exists. The difference between retailPrice and netPrice is the reseller commission.
+                          type:
+                            type: string
+                            description: The type of the scale
+                            enum:
+                              - pax
+                              - flat
+                          deals:
+                            type: array
+                            items:
+                              type: object
+                              description: The possible deals for this pricing category, if any.
+                              properties:
+                                discounted_retail_price:
+                                  type: number
+                                  description: The discounted price for which the tour option is sold to the customer.
+                                discounted_net_price:
+                                  type: number
+                                  description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+                                percentage:
+                                  type: number
+                                  description: The percentage of the discount
+                                type:
+                                  type: string
+                                  example: standard
+                                  description: |
+                                    The discount type, possible values:
+                                    - standard
+                                    - early_bird
+                                    - last_minute
+                                vacancy_limit:
+                                  required: false
+                                  type: integer
+
     TourOptionPricing:
       description: Pricings for a tour option
       type: object
