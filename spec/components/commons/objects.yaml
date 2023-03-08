@@ -73,3 +73,26 @@ components:
           type: integer
           description: Number of available tours in the category.
           example: 10
+    IntegerRange:
+      type: object
+      properties:
+        min:
+          type: integer
+          description: Minimum value of the range.
+          example: 10
+        max:
+          type: integer
+          description: Maximum value of the range.
+          example: 20
+    ParticipantCategory:
+      type: object
+      properties:
+        ticket_category:
+          type: string
+        age_range:
+          $ref:  "#/components/schemas/IntegerRange"
+        independently_bookable:
+          type: boolean
+        booking_type:
+          type: string
+
