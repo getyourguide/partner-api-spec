@@ -224,3 +224,25 @@ components:
                 - eu_citizen_student
               example:
                 adult: 1
+
+    AvailableTour:
+      description: A tour which is available to book.
+      type: object
+      properties:
+        tour_id:
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
+        participant_range:
+          $ref: "../commons/objects.yaml#/components/schemas/IntegerRange"
+        categories:
+          description: List of tour categories available to book.
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/ParticipantCategory"
+        available_dates:
+          description: List of available dates to book for this tour.
+          type: array
+          items:
+            type: string
+        update_timestamp:
+          description: The timestamp of the last update to the available entity.
+          type: string

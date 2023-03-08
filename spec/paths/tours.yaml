@@ -152,6 +152,33 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
+  /{version}/tours/{tour_id}/availability:
+    get:
+      operationId: ToursByIdAvailability
+      summary: Find availability of a tour.
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      availability:
+                          $ref: "../components/schema/tour.yaml#/components/schemas/AvailableTour"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
   /{version}/tours/{tour_id}/day-breakdown:
     post:
       operationId: ToursByIdDayBreakdown
