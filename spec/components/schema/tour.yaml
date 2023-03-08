@@ -183,7 +183,7 @@ components:
             description: Verbose description
             example: You are required to bring and wear a mask
 
-    TourBreakdownRequest:
+    DayBreakdownRequest:
       type: object
       required:
         - base_data

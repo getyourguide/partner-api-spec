@@ -186,7 +186,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "../components/schema/tour.yaml#/components/schemas/TourBreakdownRequest"
+              $ref: "../components/schema/tour.yaml#/components/schemas/DayBreakdownRequest"
       responses:
         200:
           description: Successful response
@@ -195,15 +195,10 @@ paths:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: object
-                    required:
-                      - options
-                    properties:
-                      options:
-                        type: array
-                        items:
-                          $ref: '../components/schema/day_breakdowns.yaml#/components/schemas/DayOption'
+                  options:
+                    type: array
+                    items:
+                      $ref: '../components/schema/day_breakdowns.yaml#/components/schemas/Option'
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:

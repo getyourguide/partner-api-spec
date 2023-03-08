@@ -5,27 +5,24 @@ info:
 paths: {}
 components:
   schemas:
-    DayOption:
+    Option:
       type: object
       required:
         - id
         - time_slots
       properties:
-        id:
+        option_id:
           type: integer
           format: int64
-#        next_available_date:
-#          type: string
-#          format: date
         opening_hours:
           type: array
           items:
-            $ref: '#/components/schemas/SlotTime'
+            $ref: '#/components/schemas/OpeningHour'
         time_slots:
           type: array
           items:
-            $ref: '#/components/schemas/OptionSlot'
-    SlotTime:
+            $ref: '#/components/schemas/TimeSlot'
+    OpeningHour:
       type: object
       required:
         - from
@@ -35,7 +32,7 @@ components:
           type: string
         to:
           type: string
-    OptionSlot:
+    TimeSlot:
       type: object
       required:
         - date_time
@@ -190,7 +187,6 @@ components:
             Possible values:
             - standard
             - free
-            - free_no_ticket
         independently_bookable:
           type: boolean
           description: Whether or not the category can be booked on its own
