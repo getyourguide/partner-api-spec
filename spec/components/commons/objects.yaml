@@ -86,13 +86,35 @@ components:
           example: 20
     ParticipantCategory:
       type: object
+      required:
+        - ticket_category
       properties:
         ticket_category:
           type: string
+          example: adult
+          description: |
+            Possible values:
+            - infant
+            - child
+            - youth
+            - student
+            - eu_citizen_student
+            - adult
+            - eu_citizen
+            - military
+            - senior
+            - group
         age_range:
           $ref:  "#/components/schemas/IntegerRange"
         independently_bookable:
+          description: Only relevant for non-group categories
           type: boolean
+          example: true
         booking_type:
           type: string
+          example: standard
+          description: |
+            Only relevant for non-group categories. Possible values:
+            - standard
+            - free
 

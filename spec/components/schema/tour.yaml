@@ -228,10 +228,16 @@ components:
     AvailableTour:
       description: A tour which is available to book.
       type: object
+      required:
+        - tour_id
+        - participants_range
+        - categories
+        - available_dates
+        - update_timestamp
       properties:
         tour_id:
           $ref: "../commons/fields.yaml#/components/schemas/TourId"
-        participant_range:
+        participants_range:
           $ref: "../commons/objects.yaml#/components/schemas/IntegerRange"
         categories:
           description: List of tour categories available to book.
@@ -243,6 +249,9 @@ components:
           type: array
           items:
             type: string
+            format: date
+            example: '2022-01-01'
         update_timestamp:
           description: The timestamp of the last update to the available entity.
           type: string
+          example: '2000-01-23T04:56:07.000+00:00'
