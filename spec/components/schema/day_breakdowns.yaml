@@ -48,6 +48,11 @@ components:
           $ref: '#/components/schemas/UnavailableReason'
         price_breakdown:
           $ref: '#/components/schemas/PriceBreakdown'
+        add-ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Addon'
+
     PriceBreakdown:
       type: object
       required:
@@ -61,10 +66,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupPriceBreakdown'
-        add-ons:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddonPriceBreakdown'
+#        add-ons:
+#          type: array
+#          items:
+#            $ref: '#/components/schemas/AddonPriceBreakdown'
         deal_summary:
           $ref: '#/components/schemas/DealSummary'
         customer_total:
@@ -223,7 +228,7 @@ components:
         end:
           type: string
           format: date
-    AddonPriceBreakdown:
+    Addon:
       type: object
       required:
         - category_id
@@ -241,9 +246,9 @@ components:
         quantity_range:
           $ref: '#/components/schemas/IntegerRange'
         price:
-          $ref: '#/components/schemas/Price'
-        deal_information:
-          $ref: '#/components/schemas/DealInformation'
+          type: number
+          example: 40.0
+          description: The price for which the addon is sold to the customer.
     GroupPriceBreakdown:
       type: object
       properties:

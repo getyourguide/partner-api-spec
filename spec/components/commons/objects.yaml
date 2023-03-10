@@ -88,6 +88,7 @@ components:
       type: object
       required:
         - ticket_category
+        - name
       properties:
         ticket_category:
           type: string
@@ -104,6 +105,8 @@ components:
             - military
             - senior
             - group
+        name:
+          type: string
         age_range:
           $ref:  "#/components/schemas/IntegerRange"
         independently_bookable:
@@ -117,4 +120,16 @@ components:
             Only relevant for non-group categories. Possible values:
             - standard
             - free
+    AvailableAddon:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        quantity_range:
+          $ref: "#/components/schemas/IntegerRange"
 

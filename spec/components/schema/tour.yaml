@@ -225,8 +225,8 @@ components:
               example:
                 adult: 1
 
-    AvailableTour:
-      description: A tour which is available to book.
+    Availability:
+      description: Availability by tour.
       type: object
       required:
         - tour_id
@@ -244,6 +244,11 @@ components:
           type: array
           items:
             $ref: "../commons/objects.yaml#/components/schemas/ParticipantCategory"
+        addons:
+          description: List of addons available to book within a tour (not necessarily present in all the tour-options within a tour).
+          type: array
+          items:
+            $ref: '../commons/objects.yaml#/components/schemas/AvailableAddon'
         available_dates:
           description: List of available dates to book for this tour.
           type: array
