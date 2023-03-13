@@ -79,7 +79,7 @@ components:
         min:
           type: integer
           description: Minimum value of the range.
-          example: 10
+          example: 1
         max:
           type: integer
           description: Maximum value of the range.
@@ -107,6 +107,7 @@ components:
             - group
         name:
           type: string
+          example: Adults
         age_range:
           $ref:  "#/components/schemas/IntegerRange"
         independently_bookable:
@@ -128,8 +129,10 @@ components:
       properties:
         id:
           type: integer
+          example: 1934
         name:
           type: string
+          example: "Free drinks"
         quantity_range:
           $ref: "#/components/schemas/IntegerRange"
 
