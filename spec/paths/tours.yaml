@@ -174,7 +174,7 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /{version}/tours/{tour_id}/day-breakdown:
+  /{version}/tours/{tour_id}/price-breakdown:
     post:
       operationId: ToursByIdDayBreakdown
       description: Find pricing information for a tour by date.
@@ -196,7 +196,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  options:
+                  tour_options:
                     type: array
                     items:
                       $ref: '../components/schema/day_breakdowns.yaml#/components/schemas/Option'

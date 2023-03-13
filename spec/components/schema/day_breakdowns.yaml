@@ -14,6 +14,7 @@ components:
         option_id:
           type: integer
           format: int64
+          example: 1231
         opening_hours:
           type: array
           items:
@@ -30,8 +31,10 @@ components:
       properties:
         from:
           type: string
+          example: "14:00"
         to:
           type: string
+          example: "18:00"
     TimeSlot:
       type: object
       required:
@@ -41,17 +44,14 @@ components:
         date_time:
           type: string
           format: date-time
-          description: Will be midnight of the conduction date if the activity uses opening hours instead of starting times.
+          description: Tour-option conduction date, it will be midnight of the conduction date if the activity uses opening hours.
         vacancies:
           type: integer
+          example: 10
         unavailable_reason:
           $ref: '#/components/schemas/UnavailableReason'
         price_breakdown:
           $ref: '#/components/schemas/PriceBreakdown'
-        add-ons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Addon'
 
     PriceBreakdown:
       type: object
@@ -66,10 +66,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupPriceBreakdown'
-#        add-ons:
-#          type: array
-#          items:
-#            $ref: '#/components/schemas/AddonPriceBreakdown'
+        add-ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddonPriceBreakdown'
         deal_summary:
           $ref: '#/components/schemas/DealSummary'
         customer_total:
@@ -84,25 +84,26 @@ components:
       properties:
         problem:
           type: string
+          example: not_enough_participants
         parameters:
           type: object
           additionalProperties:
             type: string
     MonetaryAmount:
       type: object
-      description: Generic monetary amount object
+      description: Generic monetary amount object.
       required:
         - currency_iso_code
         - amount
       properties:
         currency_iso_code:
           type: string
-          description: ISO code of currency
+          description: ISO code of currency.
           example: USD
         amount:
           type: number
           format: double
-          description: Amount in currency
+          description: Amount in currency.
           example: 19.95
     Price:
       type: object
@@ -112,19 +113,11 @@ components:
         customer_base_price:
           type: number
           example: 45.0
-          description: The price for which the tour option is sold to the customer excluding discounts if any.
-#        customer_retail_price:
-#          $ref: '#/components/schemas/MonetaryAmount'
+          description: The price for which the tour option category is sold to the customer excluding discounts if any.
         retail_price:
           type: number
           example: 40.0
-          description: The price for which the tour option is sold to the customer.
-#        net_price:
-#          $ref: '#/components/schemas/MonetaryAmount'
-#        breakage_price:
-#          $ref: '#/components/schemas/MonetaryAmount'
-#        return_price:
-#          $ref: '#/components/schemas/MonetaryAmount'
+          description: The price for which the tour option category is sold to the customer.
     IntegerRange:
       type: object
       properties:
@@ -137,19 +130,13 @@ components:
       required:
         - quantity
         - price
-#        - commission_rate
       properties:
         quantity:
           type: integer
-          description: Number of individual/group participants, or addon items
+          description: Number of individual/group participants, or addon items.
           example: 5
         price:
           $ref: '#/components/schemas/Price'
-#        commission_rate:
-#          type: number
-#          format: float
-#          description: Commission rate for the current pricing category
-#          example: 16.75
     IndividualCategoryPriceBreakdown:
       allOf:
         - $ref: '#/components/schemas/PriceBreakdownBase'
@@ -162,7 +149,7 @@ components:
         category_id:
           type: integer
           format: int64
-          description: Category identifier
+          description: The value to use when adding the individual participants to the booking.
           example: 1
         ticket_category:
           type: string
@@ -180,11 +167,11 @@ components:
           example: adult
         min_age:
           type: integer
-          description: Minimum age of participant
+          description: Minimum age of participant.
           example: 16
         max_age:
           type: integer
-          description: Maximum age of participant
+          description: Maximum age of participant.
           example: 64
         booking_type:
           type: string
@@ -192,30 +179,25 @@ components:
             Possible values:
             - standard
             - free
+          example: standard
         independently_bookable:
           type: boolean
-          description: Whether or not the category can be booked on its own
+          description: Whether or not the category can be booked on its own.
         deal_information:
           $ref: '#/components/schemas/DealInformation'
     DealInformation:
       type: object
       required:
-#        - deal_id
         - date_range
       properties:
-#        deal_id:
-#          type: integer
-#          format: int64
-#          description: Deal identifier
-#          example: 99228833
         deal_percentage:
           type: number
           format: float
-          description: Percentage of the applied deal
+          description: Percentage of the applied deal.
           example: 20.0
         deal_booked_vacancies:
           type: integer
-          description: Number of seats of the order to which the deal has been applied
+          description: Number of seats of the order to which the deal has been applied.
           example: 5
         date_range:
           $ref: '#/components/schemas/LocalDateRange'
@@ -241,7 +223,7 @@ components:
           format: int64
         name:
           type: string
-          description: Translated name of the addon
+          description: Translated name of the addon.
           example: Unlimited Drinks
         quantity_range:
           $ref: '#/components/schemas/IntegerRange'
@@ -252,6 +234,11 @@ components:
     GroupPriceBreakdown:
       type: object
       properties:
+        category_id:
+          type: integer
+          description: The value to use when adding the group participants to the booking.
+          format: int64
+          example: 1
         group_breakdown:
           $ref: '#/components/schemas/GroupBreakdown'
         additional_pax_breakdown:
@@ -261,50 +248,33 @@ components:
         - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
       required:
-        - group_number
         - max_group_size
-        - category_id
-        - ticket_category
       properties:
-        group_number:
-          type: integer
         max_group_size:
           type: integer
-          description: Maximum number of participants, including additional participants
+          description: Maximum number of participants, including additional participants.
           example: 10
-        category_id:
-          type: integer
-          format: int64
-          description: Category identifier
-          example: 1
-        ticket_category:
-          type: string
-          description: For a GroupBreakdown this value is always 'group'
-          example: group
         deal_information:
           $ref: '#/components/schemas/DealInformation'
     AdditionalPaxBreakdown:
       allOf:
         - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
-      required:
-        - group_number
-        - category_id
-        - ticket_category
       properties:
-        group_number:
-          type: integer
-        category_id:
-          type: integer
-          format: int64
-          description: Category identifier
-          example: 1
-        ticket_category:
-          type: string
-          description: For a AdditionalPaxBreakdown this value is always 'group'
-          example: group
         deal_information:
           $ref: '#/components/schemas/DealInformation'
+    AddonPriceBreakdown:
+      allOf:
+        - $ref: '#/components/schemas/PriceBreakdownBase'
+      type: object
+      required:
+        - category_id
+      properties:
+        category_id:
+          type: integer
+          description: The value to use when adding the addon to the booking.
+          format: int64
+          example: 1241
     DealSummary:
       type: object
       required:
@@ -313,9 +283,12 @@ components:
         - date_range
       properties:
         original_price:
-          $ref: '#/components/schemas/MonetaryAmount'
+          type: number
+          example: 50.0
+          description: The price for which the tour option was sold to the customer (without discount).
         percentage:
           type: number
           format: float
+          example: 20.0
         date_range:
           $ref: '#/components/schemas/LocalDateRange'

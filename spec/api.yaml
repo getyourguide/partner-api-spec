@@ -79,5 +79,5 @@ paths:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availability"
   /{version}/tours/{tour_id}/options:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1options"
-  /{version}/tours/{tour_id}/day-breakdown:
-    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1day-breakdown"
+  /{version}/tours/{tour_id}/price-breakdown:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1price-breakdown"

@@ -192,11 +192,8 @@ components:
         base_data:
           type: object
           required:
-            - cnt_language
             - currency
           properties:
-            cnt_language:
-              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
             currency:
               $ref: "../commons/fields.yaml#/components/schemas/Currency"
         data:
@@ -223,7 +220,23 @@ components:
                 - military
                 - eu_citizen_student
               example:
-                adult: 1
+                adult: 10
+            addons:
+              type: array
+              items:
+                type: object
+                required:
+                  - addon_id
+                  - participants
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 9291
+                  quantity:
+                    type: integer
+                    description: Number of addons to calculate price.
+                    example: 10
 
     Availability:
       description: Availability by tour.
