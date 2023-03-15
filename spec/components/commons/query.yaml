@@ -38,29 +38,12 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/CntLanguage"
-    content-language:
+    cnt-language:
       in: query
-      name: content-language
+      name: cnt-language
       required: true
       schema:
-        description: ISO 639, Language of the text content.
-        enum:
-          - da
-          - de
-          - en
-          - es
-          - fr
-          - it
-          - nl
-          - "no"
-          - pl
-          - pt
-          - fi
-          - sv
-          - ru
-          - ja
-        example: en
-        type: string
+        $ref: "#/components/schemas/CntLanguage"
     condLanguage[]:
       allowReserved: true
       description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
