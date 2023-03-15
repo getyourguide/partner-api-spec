@@ -66,7 +66,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupPriceBreakdown'
-        add-ons:
+        addons:
           type: array
           items:
             $ref: '#/components/schemas/AddonPriceBreakdown'
@@ -79,16 +79,11 @@ components:
     UnavailableReason:
       type: object
       required:
-        - problem
-        - parameters
+        - reason
       properties:
-        problem:
+        reason:
           type: string
           example: not_enough_participants
-        parameters:
-          type: object
-          additionalProperties:
-            type: string
     MonetaryAmount:
       type: object
       description: Generic monetary amount object.
@@ -125,32 +120,26 @@ components:
           type: integer
         max:
           type: integer
-    PriceBreakdownBase:
-      type: object
-      required:
-        - quantity
-        - price
-      properties:
-        quantity:
-          type: integer
-          description: Number of individual/group participants, or addon items.
-          example: 5
-        price:
-          $ref: '#/components/schemas/Price'
     IndividualCategoryPriceBreakdown:
-      allOf:
-        - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
       required:
         - category_id
         - ticket_category
         - booking_type
+        - quantity
+        - price
       properties:
         category_id:
           type: integer
           format: int64
           description: The value to use when adding the individual participants to the booking.
           example: 1
+        quantity:
+          type: integer
+          description: Number of individual/group participants, or addon items.
+          example: 5
+        price:
+          $ref: '#/components/schemas/Price'
         ticket_category:
           type: string
           description: |
@@ -244,12 +233,18 @@ components:
         additional_pax_breakdown:
           $ref: '#/components/schemas/AdditionalPaxBreakdown'
     GroupBreakdown:
-      allOf:
-        - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
       required:
         - max_group_size
+        - quantity
+        - price
       properties:
+        quantity:
+          type: integer
+          description: Number of individual/group participants, or addon items.
+          example: 5
+        price:
+          $ref: '#/components/schemas/Price'
         max_group_size:
           type: integer
           description: Maximum number of participants, including additional participants.
@@ -257,24 +252,38 @@ components:
         deal_information:
           $ref: '#/components/schemas/DealInformation'
     AdditionalPaxBreakdown:
-      allOf:
-        - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
+      required:
+        - max_group_size
+        - quantity
+        - price
       properties:
+        quantity:
+          type: integer
+          description: Number of individual/group participants, or addon items.
+          example: 5
+        price:
+          $ref: '#/components/schemas/Price'
         deal_information:
           $ref: '#/components/schemas/DealInformation'
     AddonPriceBreakdown:
-      allOf:
-        - $ref: '#/components/schemas/PriceBreakdownBase'
       type: object
       required:
         - category_id
+        - quantity
+        - price
       properties:
         category_id:
           type: integer
           description: The value to use when adding the addon to the booking.
           format: int64
           example: 1241
+        quantity:
+          type: integer
+          description: Number of individual/group participants, or addon items.
+          example: 5
+        price:
+          $ref: '#/components/schemas/Price'
     DealSummary:
       type: object
       required:
