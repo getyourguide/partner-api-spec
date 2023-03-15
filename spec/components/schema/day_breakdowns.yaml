@@ -48,8 +48,8 @@ components:
         vacancies:
           type: integer
           example: 10
-        unavailable_reason:
-          $ref: '#/components/schemas/UnavailableReason'
+        unavailability_reason:
+          $ref: '#/components/schemas/UnavailabilityReason'
         price_breakdown:
           $ref: '#/components/schemas/PriceBreakdown'
 
@@ -76,7 +76,7 @@ components:
             type: number
             example: 40.0
             description: The total price for which the tour option is sold to the customer.
-    UnavailableReason:
+    UnavailabilityReason:
       type: object
       required:
         - reason
