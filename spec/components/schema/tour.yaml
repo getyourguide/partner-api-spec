@@ -266,9 +266,13 @@ components:
           description: List of available dates to book for this tour.
           type: array
           items:
-            type: string
-            format: date
-            example: '2022-01-01'
+            type: object
+            required:
+              - date
+            properties:
+              date:
+                type: string
+                format: date
         update_timestamp:
           description: The timestamp of the last update to the available entity.
           type: string
