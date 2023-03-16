@@ -135,4 +135,12 @@ components:
           example: "Free drinks"
         quantity_range:
           $ref: "#/components/schemas/IntegerRange"
+    AvailableDate:
+      type: object
+      required:
+        - date
+      properties:
+        date:
+          type: string
+          format: date
 

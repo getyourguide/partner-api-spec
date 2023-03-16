@@ -266,13 +266,7 @@ components:
           description: List of available dates to book for this tour.
           type: array
           items:
-            type: object
-            required:
-              - date
-            properties:
-              date:
-                type: string
-                format: date
+            $ref: "../commons/objects.yaml#/components/schemas/AvailableDate"
         update_timestamp:
           description: The timestamp of the last update to the available entity.
           type: string
