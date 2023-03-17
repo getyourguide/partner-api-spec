@@ -41,7 +41,7 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/TourId"
-    tourIdLong:
+    tour-id:
       in: path
       name: tour-id
       required: true
