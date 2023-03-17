@@ -15,6 +15,10 @@ components:
           type: integer
           format: int64
           example: 1231
+        next_available_date:
+            type: string
+            format: date
+            description: Next available date for the option.
         opening_hours:
           type: array
           items:
@@ -80,10 +84,14 @@ components:
       type: object
       required:
         - reason
+        - reason_group
       properties:
         reason:
           type: string
-          example: not_enough_participants
+          example: not_enough_vacancies
+        reason_group:
+          type: string
+          example: not_enough_spots
     MonetaryAmount:
       type: object
       description: Generic monetary amount object.
