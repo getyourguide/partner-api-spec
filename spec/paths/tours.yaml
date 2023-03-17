@@ -160,7 +160,7 @@ paths:
         - Tours
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourIdLong"
         - $ref: "../components/commons/query.yaml#/components/parameters/cnt-language"
       responses:
         200:
@@ -220,6 +220,7 @@ paths:
         - Tours
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourIdLong"
       requestBody:
         required: true
         content:
