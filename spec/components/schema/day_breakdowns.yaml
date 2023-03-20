@@ -60,7 +60,7 @@ components:
     PriceBreakdown:
       type: object
       required:
-        - customer_total
+        - total_retail_price
       properties:
         individuals:
           type: array
@@ -76,7 +76,7 @@ components:
             $ref: '#/components/schemas/AddonPriceBreakdown'
         deal_summary:
           $ref: '#/components/schemas/DealSummary'
-        customer_total:
+        total_retail_price:
             type: number
             example: 40.0
             description: The total price for which the tour option is sold to the customer.
