@@ -114,13 +114,6 @@ components:
           description: Only relevant for non-group categories
           type: boolean
           example: true
-        booking_type:
-          type: string
-          example: standard
-          description: |
-            Only relevant for non-group categories. Possible values:
-            - standard
-            - free
     AvailableAddon:
       type: object
       required:

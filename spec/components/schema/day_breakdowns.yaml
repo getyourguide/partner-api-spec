@@ -156,7 +156,6 @@ components:
       required:
         - category_id
         - ticket_category
-        - booking_type
         - quantity
         - price
       properties:
@@ -193,13 +192,6 @@ components:
           type: integer
           description: Maximum age of participant.
           example: 64
-        booking_type:
-          type: string
-          description: |
-            Possible values:
-            - standard
-            - free
-          example: standard
         independently_bookable:
           type: boolean
           description: Whether or not the category can be booked on its own.
