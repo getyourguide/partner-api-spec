@@ -126,8 +126,9 @@ components:
         name:
           type: string
           example: "Free drinks"
-        quantity_range:
-          $ref: "#/components/schemas/IntegerRange"
+        max_quantity:
+          type: integer
+          example: 10
     AvailableDate:
       type: object
       required:
