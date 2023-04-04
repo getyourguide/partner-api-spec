@@ -76,10 +76,8 @@ components:
             $ref: '#/components/schemas/AddonPriceBreakdown'
         deal_summary:
           $ref: '#/components/schemas/DealSummary'
-        total_retail_price:
-            type: number
-            example: 40.0
-            description: The total price for which the tour option is sold to the customer.
+        price_summary:
+          $ref: '#/components/schemas/PriceSummary'
     UnavailabilityReason:
       type: object
       required:
@@ -135,6 +133,7 @@ components:
       type: object
       required:
         - retail_price
+        - currency
       properties:
         customer_base_price:
           type: number
@@ -144,6 +143,15 @@ components:
           type: number
           example: 40.0
           description: The price for which the tour option category is sold to the customer.
+        net_price:
+          type: number
+          example: 35.0
+          description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+        currency:
+          type: string
+          description: ISO 4217, The currency with which you would like to pay.
+          example: USD
+
     IntegerRange:
       type: object
       properties:
@@ -318,9 +326,31 @@ components:
           type: number
           example: 50.0
           description: The price for which the tour option was sold to the customer (without discount).
+        currency:
+          type: string
+          description: ISO 4217, The currency with which you would like to pay.
+          example: USD
         percentage:
           type: number
           format: float
           example: 20.0
         date_range:
           $ref: '#/components/schemas/LocalDateRange'
+    PriceSummary:
+      type: object
+      required:
+        - retail_price
+        - currency
+      properties:
+        retail_price:
+          type: number
+          example: 50.0
+          description: The price for which the tour option was sold to the customer.
+        net_price:
+          type: number
+          example: 45.0
+          description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
+        currency:
+          type: string
+          description: ISO 4217, The currency with which you would like to pay.
+          example: USD
