@@ -81,29 +81,8 @@ components:
     UnavailabilityReason:
       type: object
       required:
-        - reason
         - reason_group
       properties:
-        reason:
-          type: string
-          example: not_enough_vacancies
-          description: |
-            Possible values:
-            - not_independently_bookable
-            - option_not_fully_active
-            - time_slot_blocked
-            - private_option_already_booked
-            - no_vacancies
-            - min_participants_too_high
-            - no_availability
-            - invalid_ticket_category
-            - not_enough_vacancies
-            - not_enough_participants
-            - addon_unavailable
-            - max_participants_exceeded
-            - cut_off_time_exceeded
-            - invalid_request
-            - product_unavailable
         reason_group:
           type: string
           example: not_enough_spots
