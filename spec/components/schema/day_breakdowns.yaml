@@ -232,6 +232,8 @@ components:
           description: The price for which the addon is sold to the customer.
     GroupPriceBreakdown:
       type: object
+      required:
+        - category_id
       properties:
         category_id:
           type: integer
