@@ -230,6 +230,7 @@ components:
       type: object
       required:
         - category_id
+        - group_breakdown
       properties:
         category_id:
           type: integer
