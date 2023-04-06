@@ -8,7 +8,7 @@ components:
     Option:
       type: object
       required:
-        - id
+        - option_id
         - time_slots
       properties:
         option_id:
@@ -92,22 +92,6 @@ components:
             - not_enough_spots
             - invalid_request
             - others
-    MonetaryAmount:
-      type: object
-      description: Generic monetary amount object.
-      required:
-        - currency_iso_code
-        - amount
-      properties:
-        currency_iso_code:
-          type: string
-          description: ISO code of currency.
-          example: USD
-        amount:
-          type: number
-          format: double
-          description: Amount in currency.
-          example: 19.95
     Price:
       type: object
       required:
@@ -297,6 +281,7 @@ components:
       type: object
       required:
         - original_price
+        - currency
         - percentage
         - date_range
       properties:
