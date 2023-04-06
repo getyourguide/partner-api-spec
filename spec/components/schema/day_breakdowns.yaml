@@ -60,7 +60,7 @@ components:
     PriceBreakdown:
       type: object
       required:
-        - total_retail_price
+        - price_summary
       properties:
         individuals:
           type: array
