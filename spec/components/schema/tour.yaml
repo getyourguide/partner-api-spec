@@ -270,5 +270,5 @@ components:
         update_timestamp:
           description: The timestamp of the last update to the available entity (in UTC).
           type: string
-          format: datetime
-          example: '2023-01-23T04:56:07'
+          format: date-time
+          example: '2023-01-23T04:56:07+00:00'
