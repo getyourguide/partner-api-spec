@@ -268,6 +268,6 @@ components:
           items:
             $ref: "../commons/objects.yaml#/components/schemas/AvailableDate"
         update_timestamp:
-          description: The timestamp of the last update to the available entity.
+          description: The timestamp of the last update to the available entity (in UTC).
           type: string
-          example: '2000-01-23T04:56:07.000+00:00'
+          example: '2000-01-23T04:56:07'
