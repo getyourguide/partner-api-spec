@@ -85,6 +85,8 @@ paths:
 
   /{version}/tours/{tour_id}/availabilities:
     get:
+      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/tours/{tour_id}/availability instead (ETA 01.05.2023).
+      deprecated: true
       operationId: ToursByIdAvailabilities
       summary: Search for tours by id
       tags:
@@ -148,5 +150,134 @@ paths:
                           $ref: "../components/schema/option.yaml#/components/schemas/TourOption"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+  /{version}/tours/{tour_id}/availability:
+    get:
+      operationId: tours-by-id-availability
+      summary: Find availability of a tour.
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cnt-language"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "../components/schema/tour.yaml#/components/schemas/Availability"
+        4XX:
+          description: HTTP 400, 401, 404 have the same response format.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  descriptor:
+                    type: string
+                    example: GetYourGuide AG
+                  api_version:
+                    type: string
+                    example: "1"
+                  method:
+                    type: string
+                    example: getBookingByHashAction
+                  datetime:
+                    $ref: "../components/commons/fields.yaml#/components/schemas/Datetime"
+                  status:
+                    type: string
+                    example: ERROR
+                  query:
+                    type: string
+                    example: cnt_language=en&currency=eur
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error_code:
+                          description: GetYourGuide internal error code
+                          type: number
+                          example: 25
+                        error_message:
+                          description: Verbose description of the error.
+                          type: string
+                          example: Unauthorized. The access token is invalid.
+                  help_url:
+                    type: string
+                    example: https://api.getyourguide.com/doc
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/tours/{tour_id}/price-breakdown:
+    post:
+      operationId: tours-by-id-price-breakdown
+      description: Find pricing information for a tour by date.
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schema/tour.yaml#/components/schemas/DayBreakdownRequest"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tour_options:
+                    type: array
+                    items:
+                      $ref: '../components/schema/day_breakdowns.yaml#/components/schemas/Option'
+        4XX:
+          description: HTTP 400, 401, 404 have the same response format.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  descriptor:
+                    type: string
+                    example: GetYourGuide AG
+                  api_version:
+                    type: string
+                    example: "1"
+                  method:
+                    type: string
+                    example: getBookingByHashAction
+                  datetime:
+                    $ref: "../components/commons/fields.yaml#/components/schemas/Datetime"
+                  status:
+                    type: string
+                    example: ERROR
+                  query:
+                    type: string
+                    example: cnt_language=en&currency=eur
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error_code:
+                          description: GetYourGuide internal error code
+                          type: number
+                          example: 25
+                        error_message:
+                          description: Verbose description of the error.
+                          type: string
+                          example: Unauthorized. The access token is invalid.
+                  help_url:
+                    type: string
+                    example: https://api.getyourguide.com/doc
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"

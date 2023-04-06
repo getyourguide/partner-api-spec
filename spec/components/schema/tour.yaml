@@ -182,3 +182,93 @@ components:
             type: string
             description: Verbose description
             example: You are required to bring and wear a mask
+
+    DayBreakdownRequest:
+      type: object
+      required:
+        - base_data
+        - data
+      properties:
+        base_data:
+          type: object
+          required:
+            - currency
+          properties:
+            currency:
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
+        data:
+          type: object
+          required:
+            - date
+            - participants
+          properties:
+            date:
+              $ref: "../commons/fields.yaml#/components/schemas/Date"
+            participants:
+              type: object
+              additionalProperties:
+                type: integer
+              description: |
+                The key here is a ticket category, and the value is the number of participants. Possible keys:
+                - adult
+                - child
+                - youth
+                - infant
+                - senior
+                - student
+                - eu_citizen
+                - military
+                - eu_citizen_student
+              example:
+                adult: 10
+            addons:
+              type: array
+              items:
+                type: object
+                required:
+                  - addon_id
+                  - participants
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 9291
+                  quantity:
+                    type: integer
+                    description: Number of addons to calculate price.
+                    example: 10
+
+    Availability:
+      description: Availability by tour.
+      type: object
+      required:
+        - tour_id
+        - participants_range
+        - categories
+        - available_dates
+        - update_timestamp
+      properties:
+        tour_id:
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
+        participants_range:
+          $ref: "../commons/objects.yaml#/components/schemas/IntegerRange"
+        categories:
+          description: List of tour categories available to book.
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/ParticipantCategory"
+        addons:
+          description: List of addons available to book within a tour (not necessarily present in all the tour-options within a tour).
+          type: array
+          items:
+            $ref: '../commons/objects.yaml#/components/schemas/AvailableAddon'
+        available_dates:
+          description: List of available dates to book for this tour.
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/AvailableDate"
+        update_timestamp:
+          description: The timestamp of the last update to the available entity (in UTC).
+          type: string
+          format: datetime
+          example: '2023-01-23T04:56:07'

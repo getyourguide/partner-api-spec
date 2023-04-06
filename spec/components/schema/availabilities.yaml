@@ -6,7 +6,7 @@ info:
 components:
   schemas:
     Availabilities:
-      description: A list of availablities. A end time is only provided in case there are opening hours, instead of time slots.
+      description: A list of availabilities. A end time is only provided in case there are opening hours, instead of time slots.
       type: array
       items:
         type: object

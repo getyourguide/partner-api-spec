@@ -40,7 +40,8 @@ paths:
   /{version}/options/{option_id}/pricings:
     get:
       operationId: OptionsGetPricing
-      description: Find all the pricings for a tour option.
+      deprecated: true
+      description: Deprecated! Please do not use to find pricing for a tour-option, use the new endpoint /{version}/tours/{tour_id}/price-breakdown instead (ETA 01.05.2023).
       tags:
         - Options
       parameters:
@@ -73,7 +74,8 @@ paths:
   /{version}/options/{option_id}/availabilities:
     get:
       operationId: OptionsGetAvailabilities
-      description: Find availabilities for a tour option within an optional date range
+      deprecated: true
+      description: Deprecated! Please do not use to find availabilities for a tour option, use the new endpoint /{version}/tours/{tour_id}/availability instead (ETA 01.05.2023).
       tags:
         - Options
       parameters:

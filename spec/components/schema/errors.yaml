@@ -37,16 +37,18 @@ components:
           type: string
           example: cnt_language=en&currency=eur
         errors:
-          type: object
-          properties:
-            errorCode:
-              description: GetYourGuide internal error code
-              type: number
-              example: 25
-            errorMessage:
-              description: Verbose description of the error.
-              type: string
-              example: Unauthorized. The access token is invalid.
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                description: GetYourGuide internal error code
+                type: number
+                example: 25
+              errorMessage:
+                description: Verbose description of the error.
+                type: string
+                example: Unauthorized. The access token is invalid.
         helpURL:
           type: string
           example: https://api.getyourguide.com/doc

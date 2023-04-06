@@ -73,3 +73,68 @@ components:
           type: integer
           description: Number of available tours in the category.
           example: 10
+    IntegerRange:
+      type: object
+      properties:
+        min:
+          type: integer
+          description: Minimum value of the range.
+          example: 1
+        max:
+          type: integer
+          description: Maximum value of the range.
+          example: 20
+    ParticipantCategory:
+      type: object
+      required:
+        - ticket_category
+        - name
+      properties:
+        ticket_category:
+          type: string
+          example: adult
+          description: |
+            Possible values:
+            - infant
+            - child
+            - youth
+            - student
+            - eu_citizen_student
+            - adult
+            - eu_citizen
+            - military
+            - senior
+            - group
+        name:
+          type: string
+          example: Adults
+        age_range:
+          $ref:  "#/components/schemas/IntegerRange"
+        independently_bookable:
+          description: Only relevant for non-group categories
+          type: boolean
+          example: true
+    AvailableAddon:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          example: 1934
+        name:
+          type: string
+          example: "Free drinks"
+        max_quantity:
+          type: integer
+          example: 10
+    AvailableDate:
+      type: object
+      required:
+        - date
+      properties:
+        date:
+          type: string
+          format: date
+

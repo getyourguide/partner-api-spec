@@ -38,6 +38,12 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/CntLanguage"
+    cnt-language:
+      in: query
+      name: cnt-language
+      required: true
+      schema:
+        $ref: "#/components/schemas/CntLanguage"
     condLanguage[]:
       allowReserved: true
       description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
@@ -93,6 +99,19 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/Currency"
+    date:
+      description: Check for pricing information offered on date.
+      examples:
+        singleDate:
+          summary: Date
+          value:
+            - "2021-05-01T00:00:00"
+      explode: true
+      in: query
+      name: date[]
+      required: true
+      schema:
+        $ref: "#/components/schemas/Datetime"
     date[]:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.

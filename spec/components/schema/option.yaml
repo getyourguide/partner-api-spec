@@ -108,7 +108,6 @@ components:
             apps_only:
               type: boolean
               description: Flag if the special offer is only available for the GYG internal mobile apps.
-
     TourOptionPricing:
       description: Pricings for a tour option
       type: object
