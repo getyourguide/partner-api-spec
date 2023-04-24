@@ -85,7 +85,7 @@ paths:
 
   /{version}/tours/{tour_id}/availabilities:
     get:
-      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/tours/{tour_id}/availability instead (ETA 01.05.2023).
+      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/tours/{tour_id}/availability instead (ETA 02.05.2023).
       deprecated: true
       operationId: ToursByIdAvailabilities
       summary: Search for tours by id
@@ -174,41 +174,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  descriptor:
-                    type: string
-                    example: GetYourGuide AG
-                  api_version:
-                    type: string
-                    example: "1"
-                  method:
-                    type: string
-                    example: getBookingByHashAction
-                  datetime:
-                    $ref: "../components/commons/fields.yaml#/components/schemas/Datetime"
-                  status:
-                    type: string
-                    example: ERROR
-                  query:
-                    type: string
-                    example: cnt_language=en&currency=eur
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        error_code:
-                          description: GetYourGuide internal error code
-                          type: number
-                          example: 25
-                        error_message:
-                          description: Verbose description of the error.
-                          type: string
-                          example: Unauthorized. The access token is invalid.
-                  help_url:
-                    type: string
-                    example: https://api.getyourguide.com/doc
+                $ref: "../components/schema/errors.yaml#/components/schemas/Error"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
@@ -244,40 +210,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  descriptor:
-                    type: string
-                    example: GetYourGuide AG
-                  api_version:
-                    type: string
-                    example: "1"
-                  method:
-                    type: string
-                    example: getBookingByHashAction
-                  datetime:
-                    $ref: "../components/commons/fields.yaml#/components/schemas/Datetime"
-                  status:
-                    type: string
-                    example: ERROR
-                  query:
-                    type: string
-                    example: cnt_language=en&currency=eur
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        error_code:
-                          description: GetYourGuide internal error code
-                          type: number
-                          example: 25
-                        error_message:
-                          description: Verbose description of the error.
-                          type: string
-                          example: Unauthorized. The access token is invalid.
-                  help_url:
-                    type: string
-                    example: https://api.getyourguide.com/doc
+                $ref: "../components/schema/errors.yaml#/components/schemas/Error"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"

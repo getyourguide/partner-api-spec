@@ -47,8 +47,8 @@ components:
       properties:
         date_time:
           type: string
-          format: date-time
-          description: Tour-option conduction date, it will be midnight of the conduction date if the activity uses opening hours.
+          example: "2023-03-01T00:00:00"
+          description: Tour-option conduction date, it will be midnight of the conduction date if the activity uses opening hours format `Y-m-d T H:i:s`.
         vacancies:
           type: integer
           example: 10
