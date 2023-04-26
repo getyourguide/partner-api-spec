@@ -182,62 +182,6 @@ components:
             type: string
             description: Verbose description
             example: You are required to bring and wear a mask
-
-    DayBreakdownRequest:
-      type: object
-      required:
-        - base_data
-        - data
-      properties:
-        base_data:
-          type: object
-          required:
-            - currency
-          properties:
-            currency:
-              $ref: "../commons/fields.yaml#/components/schemas/Currency"
-        data:
-          type: object
-          required:
-            - date
-            - participants
-          properties:
-            date:
-              $ref: "../commons/fields.yaml#/components/schemas/Date"
-            participants:
-              type: object
-              additionalProperties:
-                type: integer
-              description: |
-                The key here is a ticket category, and the value is the number of participants. Possible keys:
-                - adult
-                - child
-                - youth
-                - infant
-                - senior
-                - student
-                - eu_citizen
-                - military
-                - eu_citizen_student
-              example:
-                adult: 10
-            addons:
-              type: array
-              items:
-                type: object
-                required:
-                  - addon_id
-                  - participants
-                properties:
-                  id:
-                    type: integer
-                    format: int64
-                    example: 9291
-                  quantity:
-                    type: integer
-                    description: Number of addons to calculate price.
-                    example: 10
-
     Availability:
       description: Availability by tour.
       type: object
@@ -272,3 +216,10 @@ components:
           type: string
           format: date-time
           example: '2023-01-23T04:56:07+00:00'
+  responses:
+    AvailabilityResponse:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Availability'
