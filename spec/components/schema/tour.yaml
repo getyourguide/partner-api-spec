@@ -215,7 +215,7 @@ components:
           description: The timestamp of the last update to the available entity (in UTC).
           type: string
           format: date-time
-          example: '2023-01-23T04:56:07+00:00'
+          example: '2023-01-23T04:56:07'
   responses:
     AvailabilityResponse:
       description: Successful response
