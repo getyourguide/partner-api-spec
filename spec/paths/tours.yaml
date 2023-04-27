@@ -164,17 +164,9 @@ paths:
         - $ref: "../components/commons/query.yaml#/components/parameters/cnt-language"
       responses:
         200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "../components/schema/tour.yaml#/components/schemas/Availability"
+         $ref: "../components/schema/tour.yaml#/components/responses/AvailabilityResponse"
         4XX:
-          description: HTTP 400, 401, 404 have the same response format.
-          content:
-            application/json:
-              schema:
-                $ref: "../components/schema/errors.yaml#/components/schemas/Error"
+         $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
@@ -188,28 +180,11 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "../components/schema/tour.yaml#/components/schemas/DayBreakdownRequest"
+       $ref: "../components/schema/day_breakdowns.yaml#/components/requestBodies/DayBreakdownRequestBody"
       responses:
         200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  tour_options:
-                    type: array
-                    items:
-                      $ref: '../components/schema/day_breakdowns.yaml#/components/schemas/Option'
+          $ref: "../components/schema/day_breakdowns.yaml#/components/responses/DayBreakdownResponse"
         4XX:
-          description: HTTP 400, 401, 404 have the same response format.
-          content:
-            application/json:
-              schema:
-                $ref: "../components/schema/errors.yaml#/components/schemas/Error"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
