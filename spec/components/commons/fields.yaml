@@ -217,11 +217,6 @@ components:
       description: The value of the price.
       example: 15.15
       type: number
-    DeprecatedPrice:
-      deprecated: true
-      description: Deprecated! These value is not required anymore for making a booking, we will calculate the best price we can offer based on the current availability.
-      example: 15.15
-      type: number
     Rating:
       description: The value of the rating.
       minimum: 0

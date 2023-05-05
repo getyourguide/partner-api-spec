@@ -35,7 +35,7 @@ components:
                     datetime:
                       $ref: "../commons/fields.yaml#/components/schemas/Datetime"
                     price:
-                      $ref: "../commons/fields.yaml#/components/schemas/DeprecatedPrice"
+                      $ref: "../commons/fields.yaml#/components/schemas/Price"
                     categories:
                       type: array
                       items:
@@ -54,6 +54,7 @@ components:
                   required:
                     - option_id
                     - datetime
+                    - price
                     - categories
     RedeemCoupon:
       type: object
