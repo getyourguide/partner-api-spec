@@ -344,6 +344,8 @@ components:
             - date
             - participants
           properties:
+            date:
+              $ref: "../commons/fields.yaml#/components/schemas/Date"
             participants:
               type: object
               additionalProperties:
@@ -377,8 +379,6 @@ components:
                     type: integer
                     description: Number of addons to calculate price.
                     example: 10
-            date:
-              $ref: "../commons/fields.yaml#/components/schemas/Date"
   requestBodies:
     DayBreakdownRequestBody:
       description: Request body for day breakdown
