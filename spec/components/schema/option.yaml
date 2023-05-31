@@ -101,7 +101,7 @@ components:
           type: object
           properties:
             original_price:
-              $ref: "../commons/fields.yaml#/components/schemas/Price"
+              $ref: "../commons/fields.yaml#/components/schemas/PriceField"
             savings:
               type: number
               description: The discount in percent.

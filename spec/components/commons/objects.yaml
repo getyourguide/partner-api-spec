@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common data objects
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   schemas:
     Address:
@@ -41,7 +41,7 @@ components:
           type: object
           properties:
             amount:
-              $ref: "fields.yaml#/components/schemas/Price"
+              $ref: "fields.yaml#/components/schemas/PriceField"
         description:
           type: string
           description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
@@ -109,7 +109,7 @@ components:
           type: string
           example: Adults
         age_range:
-          $ref:  "#/components/schemas/IntegerRange"
+          $ref: "#/components/schemas/IntegerRange"
         independently_bookable:
           description: Only relevant for non-group categories
           type: boolean
@@ -119,6 +119,7 @@ components:
       required:
         - id
         - name
+        - max_quantity
       properties:
         id:
           type: integer

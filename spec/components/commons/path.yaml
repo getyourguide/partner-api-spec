@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common path parameters
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   parameters:
     bookingHash:

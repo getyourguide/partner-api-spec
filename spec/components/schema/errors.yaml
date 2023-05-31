@@ -1,10 +1,16 @@
 openapi: 3.0.2
-paths: {}
+paths: { }
 info:
   title: Errors Responses
   version: 1.0.0
 components:
   responses:
+    ErrorResponse:
+      description: HTTP 400, 401, 404 have the same response format.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
     4XX:
       description: HTTP 400, 401, 404 have the same response format.
       content:
@@ -28,8 +34,6 @@ components:
         method:
           type: string
           example: getBookingByHashAction
-        date:
-          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         status:
           type: string
           example: ERROR
@@ -43,7 +47,8 @@ components:
             properties:
               errorCode:
                 description: GetYourGuide internal error code
-                type: number
+                type: integer
+                format: int32
                 example: 25
               errorMessage:
                 description: Verbose description of the error.
@@ -52,3 +57,5 @@ components:
         helpURL:
           type: string
           example: https://api.getyourguide.com/doc
+        date:
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
