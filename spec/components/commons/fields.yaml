@@ -213,7 +213,6 @@ components:
       description: International phone number, in the ITU E.123 standard.
       example: "+49123456789"
       type: string
-    Price:
     PriceField:
       description: The value of the price.
       example: 15.15
