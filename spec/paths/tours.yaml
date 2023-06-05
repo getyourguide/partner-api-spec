@@ -15,14 +15,14 @@ paths:
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
         - $ref: "../components/commons/query.yaml#/components/parameters/preformatted"
         - $ref: "../components/commons/query.yaml#/components/parameters/q"
-        - $ref: "../components/commons/query.yaml#/components/parameters/coordinates[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/condLanguage[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/price[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/categories[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/rating[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/duration[]"
-        - $ref: "../components/commons/query.yaml#/components/parameters/flags[]"
+        - $ref: "../components/commons/query.yaml#/components/parameters/coordinates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/condLanguages"
+        - $ref: "../components/commons/query.yaml#/components/parameters/prices"
+        - $ref: "../components/commons/query.yaml#/components/parameters/categories"
+        - $ref: "../components/commons/query.yaml#/components/parameters/ratings"
+        - $ref: "../components/commons/query.yaml#/components/parameters/durations"
+        - $ref: "../components/commons/query.yaml#/components/parameters/flags"
         - $ref: "../components/commons/query.yaml#/components/parameters/sortfield"
         - $ref: "../components/commons/query.yaml#/components/parameters/sortdirection"
         - $ref: "../components/commons/query.yaml#/components/parameters/limit"
@@ -96,7 +96,7 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
       responses:
         200:
           description: Successful response
@@ -130,7 +130,7 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
       responses:
         200:
           description: Successful response
@@ -152,6 +152,7 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
   /{version}/tours/{tour_id}/availability:
     get:
       operationId: tours-by-id-availability
@@ -160,13 +161,13 @@ paths:
         - Tours
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cnt-language"
       responses:
         200:
-         $ref: "../components/schema/tour.yaml#/components/responses/AvailabilityResponse"
+          $ref: "../components/schema/tour.yaml#/components/responses/AvailabilityResponse"
         4XX:
-         $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
@@ -178,9 +179,9 @@ paths:
         - Tours
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/tour-id"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
       requestBody:
-       $ref: "../components/schema/day_breakdowns.yaml#/components/requestBodies/DayBreakdownRequestBody"
+        $ref: "../components/schema/day_breakdowns.yaml#/components/requestBodies/DayBreakdownRequestBody"
       responses:
         200:
           $ref: "../components/schema/day_breakdowns.yaml#/components/responses/DayBreakdownResponse"

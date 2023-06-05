@@ -33,23 +33,3 @@ components:
           description: The location id of the parent location, if there is any.
           type: integer
           example: 191
-
-        # NOT PART OF RESPONSE
-        # city:
-        #   type: string
-        #   description: The city name if location type is POI or CITY.
-        #   example: Orlando
-        # viewport:
-        #   $ref: "../commons/objects.yaml#/components/schemas/Viewport"
-        # picture:
-        #   type: string
-        #   format: uri
-        #   example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        # picture_ssh:
-        #   type: string
-        #   format: uri
-        #   example: https://cdn.getyourguide.com/img/location/5ffeb24865bf8.jpeg/[format_id].jpg
-        # num_tours:
-        #   type: number
-        #   format: integer
-        #   example: 386

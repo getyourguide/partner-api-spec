@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common data fields
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   schemas:
     BookingHash:
@@ -213,7 +213,7 @@ components:
       description: International phone number, in the ITU E.123 standard.
       example: "+49123456789"
       type: string
-    Price:
+    PriceField:
       description: The value of the price.
       example: 15.15
       type: number

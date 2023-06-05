@@ -5,7 +5,7 @@ info:
 paths: {}
 components:
   parameters:
-    categories[]:
+    categories:
       allowReserved: true
       description: Filter for categories for a given query via 'q' or 'coordinates', also works stand-alone as the main query parameter.
       examples:
@@ -44,7 +44,7 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/CntLanguage"
-    condLanguage[]:
+    condLanguages:
       allowReserved: true
       description: The conduction language(s) of a tour. When given, the results contain only tours that are available in the specified language(s).
       examples:
@@ -65,7 +65,7 @@ components:
         items:
           $ref: "#/components/schemas/Language"
         type: array
-    coordinates[]:
+    coordinates:
       allowReserved: true
       description: Mutually exclusive with 'q' parameter! Search by latitude, longitude and radius passed as URL array.'
       examples:
@@ -112,7 +112,7 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/Datetime"
-    date[]:
+    dates:
       allowReserved: true
       description: Check for tours that are offered on date or between dates.
       examples:
@@ -133,7 +133,7 @@ components:
         items:
           $ref: "#/components/schemas/Datetime"
         type: array
-    duration[]:
+    durations:
       allowReserved: true
       description: Filter for min and/or max duration in minutes. Single Value max. duration. Otherwise [min, max].
       examples:
@@ -154,7 +154,7 @@ components:
         items:
           type: number
         type: array
-    flags[]:
+    flags:
       allowReserved: true
       description: Various flags about properties of the tour (multiple selection allowed).
       examples:
@@ -204,7 +204,7 @@ components:
       required: false
       schema:
         type: string
-    price[]:
+    prices:
       allowReserved: true
       description: Filter for price in the query.
       examples:
@@ -239,7 +239,7 @@ components:
       required: false
       schema:
         type: string
-    rating[]:
+    ratings:
       allowReserved: true
       description: Filter for Tours with the given ratings. Single value min rating. Otherwise [min, max].
       examples:
@@ -293,7 +293,7 @@ components:
           - confirmed
           - canceled
         type: string
-  
+
   # Refs to common fields, as direct refs inside the query param schema breaks OpenAPI validation
   schemas:
     CategoryId:
@@ -315,6 +315,6 @@ components:
     Offset:
       $ref: "fields.yaml#/components/schemas/Offset"
     Price:
-      $ref: "fields.yaml#/components/schemas/Price"
+      $ref: "fields.yaml#/components/schemas/PriceField"
     Rating:
       $ref: "fields.yaml#/components/schemas/Rating"

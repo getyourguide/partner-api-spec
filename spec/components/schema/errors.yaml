@@ -1,5 +1,5 @@
 openapi: 3.0.2
-paths: {}
+paths: { }
 info:
   title: Errors Responses
   version: 1.0.0
@@ -43,7 +43,8 @@ components:
             properties:
               errorCode:
                 description: GetYourGuide internal error code
-                type: number
+                type: integer
+                format: int32
                 example: 25
               errorMessage:
                 description: Verbose description of the error.

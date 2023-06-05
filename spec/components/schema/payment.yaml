@@ -109,11 +109,11 @@ components:
           * `dd`: direct debit (SEPA, only available in Germany)
       example: cc
     PrecouponPrice:
-      $ref: "../commons/fields.yaml#/components/schemas/Price"
+      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
     ReturnUrl:
       description: Url the customer will be redirected to by the payment provider, after successful completing the transaction.
       type: string
       format: uri
       example: "https://success.example"
     TotalPrice:
-      $ref: "../commons/fields.yaml#/components/schemas/Price"
+      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
