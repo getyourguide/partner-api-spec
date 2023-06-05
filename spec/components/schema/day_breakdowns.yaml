@@ -106,12 +106,6 @@ components:
           type: number
           example: 40.0
           description: The price for which the tour option category is sold to the customer.
-        # Net price is only introduced in these specs and not in the public ones share to partners in partner-api-spec
-        # As currently, net_price is only expose to MASTER_BILL partners
-        net_price:
-          type: number
-          example: 45.0
-          description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
         currency:
           type: string
           description: ISO 4217, The currency with which you would like to pay.
@@ -315,12 +309,6 @@ components:
           type: number
           example: 50.0
           description: The price for which the tour option was sold to the customer.
-        # Net price is only introduced in these specs and not in the public ones share to partners in partner-api-spec
-        # As currently, net_price is only expose to MASTER_BILL partners
-        net_price:
-          type: number
-          example: 45.0
-          description: The price which needs to be paid to GetYourGuide. The difference between retailPrice and netPrice is the reseller commission.
         currency:
           type: string
           description: ISO 4217, The currency with which you would like to pay.

@@ -167,7 +167,7 @@ paths:
         200:
           $ref: "../components/schema/tour.yaml#/components/responses/AvailabilityResponse"
         4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
@@ -186,6 +186,6 @@ paths:
         200:
           $ref: "../components/schema/day_breakdowns.yaml#/components/responses/DayBreakdownResponse"
         4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"

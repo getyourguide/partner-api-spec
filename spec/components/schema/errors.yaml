@@ -5,12 +5,6 @@ info:
   version: 1.0.0
 components:
   responses:
-    ErrorResponse:
-      description: HTTP 400, 401, 404 have the same response format.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
     4XX:
       description: HTTP 400, 401, 404 have the same response format.
       content:

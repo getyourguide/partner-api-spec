@@ -40,7 +40,7 @@ paths:
                           review_items:
                             $ref: "../components/schema/reviews.yaml#/components/schemas/ReviewItems"
         4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 components:
