@@ -97,17 +97,7 @@ components:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
           $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
-        special:
-          type: object
-          properties:
-            original_price:
-              $ref: "../commons/fields.yaml#/components/schemas/PriceField"
-            savings:
-              type: number
-              description: The discount in percent.
-            apps_only:
-              type: boolean
-              description: Flag if the special offer is only available for the GYG internal mobile apps.
+          $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
     TourOptionPricing:
       description: Pricings for a tour option
       type: object

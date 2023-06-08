@@ -83,7 +83,9 @@ components:
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
-          $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+          oneOf:
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
         categories:
           description: List of tour categories tagged to this tour.
           type: array
