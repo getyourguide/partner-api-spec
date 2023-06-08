@@ -96,8 +96,9 @@ components:
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
-          $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
-          $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
+          oneOf:
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
     TourOptionPricing:
       description: Pricings for a tour option
       type: object
