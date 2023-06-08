@@ -158,7 +158,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
@@ -176,7 +176,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
