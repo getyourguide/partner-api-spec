@@ -10,7 +10,7 @@ components:
       properties:
         location_id:
           description: Location ID
-          type: number
+          type: integer
           example: 3850
         type:
           description: Location type

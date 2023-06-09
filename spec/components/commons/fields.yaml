@@ -223,6 +223,7 @@ components:
       maximum: 5
       example: 4.5
       type: number
+      format: float
     ReturnCode:
       description: The return code of the booking service.
       example: 0

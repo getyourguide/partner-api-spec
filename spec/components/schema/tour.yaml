@@ -60,7 +60,7 @@ components:
         overall_rating:
           $ref: "../commons/fields.yaml#/components/schemas/Rating"
         number_of_ratings:
-          type: number
+          type: integer
           description: Number of rating of the tour.
           example: 25
         highlights:
@@ -119,6 +119,11 @@ components:
           type: array
           items:
             $ref: "../commons/objects.yaml#/components/schemas/Durations"
+        opening_hours:
+          type: array
+          nullable: true
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/OpeningHours"
         cancellation_policy_text:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
         health_advisory:

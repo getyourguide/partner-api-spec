@@ -165,4 +165,12 @@ components:
         date:
           type: string
           format: date
+    OpeningHours:
+      type: object
+      properties:
+        opening_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+        closing_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+
 
