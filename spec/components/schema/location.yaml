@@ -25,6 +25,10 @@ components:
           description: DEPRECATED, always the same `name`
           type: string
           example: Epcot Theme Park
+        city:
+          description: The city name if location type is poi or city.
+          type: string
+          nullable: true
         country:
           $ref: "../commons/fields.yaml#/components/schemas/Country"
         coordinates:
