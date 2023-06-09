@@ -22,7 +22,7 @@ components:
           description: Name of the location.
           example: Epcot Theme Park
         english_name:
-          description: DEPRECATED, always the same `name`
+          description: DEPRECATED, always the same as the `name` field
           type: string
           example: Epcot Theme Park
         city:
