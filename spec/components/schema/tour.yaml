@@ -83,7 +83,9 @@ components:
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
-          $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+          oneOf:
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
         categories:
           description: List of tour categories tagged to this tour.
           type: array
@@ -99,8 +101,11 @@ components:
           format: uri
           description: URL of the tour on the GetYourGuide website.
           example: https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
-        translations:
-          $ref: "../commons/fields.yaml#/components/schemas/Language"
+        translations:  
+          type: array
+          nullable: true
+          items:
+            $ref: "../commons/fields.yaml#/components/schemas/Language"
         free_sale:
           type: boolean
           description: Indicates whether there exists at least one tour option of which the booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
@@ -153,7 +158,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
@@ -171,7 +176,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
