@@ -166,6 +166,7 @@ components:
           type: string
           format: date
     OpeningHours:
+      description: The opening hours of a given attraction or venue in local time.
       type: object
       properties:
         opening_time:

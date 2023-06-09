@@ -120,6 +120,7 @@ components:
           items:
             $ref: "../commons/objects.yaml#/components/schemas/Durations"
         opening_hours:
+          description: A list of opening hours for a given attraction or venue in local time. 
           type: array
           nullable: true
           items:
