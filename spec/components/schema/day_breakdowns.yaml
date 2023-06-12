@@ -18,8 +18,10 @@ components:
         next_available_date:
           type: string
           format: date
-          description: Next available date for the option.
+          description: Next available date for the option, in case no timeslots could be found for a given date and participants.
         opening_hours:
+          description: This field is show if the given product does not offer fixed time slots, but has opening hours for which a ticket will be valid.
+          nullable: true
           type: array
           items:
             $ref: '#/components/schemas/OpeningHour'
