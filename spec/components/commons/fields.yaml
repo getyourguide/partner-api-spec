@@ -123,7 +123,7 @@ components:
     Datetime:
       description: The local datetime format `Y-m-d T H:i:s`.
       example: "2017-09-01T00:00:00"
-      format: datetime
+      format: date-time
       type: string
     Date:
       description: The local date format `Y-m-d`.
@@ -140,7 +140,7 @@ components:
     DatetimeUTC:
       description: The datetime in UTC of when the activity dates place.
       example: "2017-09-01T04:00:00Z"
-      format: datetime
+      format: date-time
       type: string
     Duration:
       type: number
