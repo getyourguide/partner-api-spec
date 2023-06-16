@@ -165,4 +165,13 @@ components:
         date:
           type: string
           format: date
+    OpeningHours:
+      description: The opening hours of a given attraction or venue in local time.
+      type: object
+      properties:
+        opening_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+        closing_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+
 

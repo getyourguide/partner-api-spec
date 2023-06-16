@@ -131,6 +131,7 @@ paths:
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
         - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
       responses:
         200:
           description: Successful response
