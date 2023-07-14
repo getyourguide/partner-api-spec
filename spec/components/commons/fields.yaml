@@ -183,12 +183,14 @@ components:
     Latitude:
       description: The latitude in ISO 6709 standard.
       type: number
+      format: float
       minimum: -90.0
       maximum: 90.0
       example: 28.3701884
     Longitude:
       description: The longitude in ISO 6709 standard.
       type: number
+      format: float
       minimum: -90.0
       maximum: 90.0
       example: -81.5545306
@@ -208,7 +210,7 @@ components:
     OptionId:
       description: The ID of the tour option.
       example: 69232
-      type: number
+      type: integer
     PhoneNumber:
       description: International phone number, in the ITU E.123 standard.
       example: "+49123456789"

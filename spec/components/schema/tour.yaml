@@ -91,6 +91,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/TourCategoryMinimal"
+        health_advisory:
+          $ref: "#/components/schemas/HealthAdvisory"
+        health_requirement:
+          $ref: "#/components/schemas/HealthRequirement"
         locations:
           description: List of locations ordered according to importance.
           type: array
@@ -109,6 +113,21 @@ components:
         free_sale:
           type: boolean
           description: Indicates whether there exists at least one tour option of which the booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+        guide_type:
+          type: string
+          enum:
+            - none
+            - host_greeter
+            - instructor
+            - driver
+            - live_tour_guide
+          description: >
+            Type of guide that is conducting the tour, available are
+              * `none`: no guide available for this tour.
+              * `host_greeter`: a host or greeter that welcomes the customer.
+              * `instructor`: an instructor e.g. for diving classes.
+              * `driver`: a driver for motorized tours.
+              * `live_tour_guide`: a standard live tour guide.
         mobile_voucher:
           type: boolean
           description: If the tour accepts mobile voucher.
@@ -119,6 +138,11 @@ components:
           type: array
           items:
             $ref: "../commons/objects.yaml#/components/schemas/Durations"
+        availabilities:
+          type: array
+          items:
+            type: string
+          example: 1970-01-01T00:00:00
         opening_hours:
           description: A list of opening hours for a given attraction or venue in local time. 
           type: array
@@ -127,26 +151,6 @@ components:
             $ref: "../commons/objects.yaml#/components/schemas/OpeningHours"
         cancellation_policy_text:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
-        health_advisory:
-          $ref: "#/components/schemas/HealthAdvisory"
-        health_requirement:
-          $ref: "#/components/schemas/HealthRequirement"
-        guide_type:
-          type: string
-          enum:
-            - none
-            - host_or_greeter
-            - instructor
-            - driver
-            - live_tour_guide
-          description: >
-            Type of guide that is conducting the tour, available are
-              * `none`: no guide available for this tour.
-              * `host_or_greeter`: a host or greeter that welcomes the customer.
-              * `instructor`: an instructor e.g. for diving classes.
-              * `driver`: a driver for motorized tours.
-              * `live_tour_guide`: a standard live tour guide.
-
     TourCategoryMinimal:
       description: A minimal representation of a tour category. More information about each category can be retrieved from the `/categories` endpoint.
       type: object
