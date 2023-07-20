@@ -138,11 +138,6 @@ components:
           type: array
           items:
             $ref: "../commons/objects.yaml#/components/schemas/Durations"
-        availabilities:
-          type: array
-          items:
-            type: string
-          example: 1970-01-01T00:00:00
         opening_hours:
           description: A list of opening hours for a given attraction or venue in local time. 
           type: array
