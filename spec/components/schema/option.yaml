@@ -20,12 +20,12 @@ components:
         description:
           type: string
           description: Description of the option.
-        meeting_point:
-          type: string
-          description: Information about where to meet.
         pick_up:
           type: string
           description: Information about the hotel pickup possibilities.
+        meeting_point:
+          type: string
+          description: Information about where to meet.
         drop_off:
           type: string
           description: Information about the drop-off (where the tour ends).
@@ -33,12 +33,6 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Duration"
         duration_unit:
           $ref: "../commons/fields.yaml#/components/schemas/DurationUnit"
-        coordinate_type:
-          type: string
-          description: Information about the type of the coordinates. It defines if the information is exactly enough for the customer to walk / get there.
-          enum: [exact, approximate]
-        free_sale:
-          $ref: "../commons/fields.yaml#/components/schemas/FreeSale"
         cond_language:
           type: object
           properties:
@@ -93,12 +87,18 @@ components:
               type: boolean
               description: If true, there is wheel chair access.
               example: true
+        coordinate_type:
+          type: string
+          description: Information about the type of the coordinates. It defines if the information is exactly enough for the customer to walk / get there.
+          enum: [exact, approximate]
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
           oneOf:
             - $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
             - $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
+        free_sale:
+          $ref: "../commons/fields.yaml#/components/schemas/FreeSale"
     TourOptionPricing:
       description: Pricings for a tour option
       type: object

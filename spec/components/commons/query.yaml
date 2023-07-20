@@ -152,7 +152,7 @@ components:
       required: false
       schema:
         items:
-          type: number
+          type: integer
         type: array
     flags:
       allowReserved: true
@@ -223,7 +223,7 @@ components:
       required: false
       schema:
         items:
-          $ref: "#/components/schemas/Price"
+          $ref: "#/components/schemas/PriceField"
         type: array
     q:
       description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
@@ -314,7 +314,7 @@ components:
       $ref: "fields.yaml#/components/schemas/Limit"
     Offset:
       $ref: "fields.yaml#/components/schemas/Offset"
-    Price:
+    PriceField:
       $ref: "fields.yaml#/components/schemas/PriceField"
     Rating:
       $ref: "fields.yaml#/components/schemas/Rating"
