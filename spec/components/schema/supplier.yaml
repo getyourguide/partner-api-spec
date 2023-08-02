@@ -17,7 +17,10 @@ components:
           description: Name of the supplier
           example: GetYourGuide Tours & Tickets GmbH
         email:
-          $ref: "../commons/fields.yaml#/components/schemas/Email"
+          type: string
+          format: email
+          description: Deprecated, customers will receive the supplier contact details with their vouchers.
+          example: deprecated@email.address
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
         description:
