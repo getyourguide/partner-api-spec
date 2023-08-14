@@ -358,8 +358,8 @@ components:
               items:
                 type: object
                 required:
-                  - addon_id
-                  - participants
+                  - id
+                  - quantity
                 properties:
                   id:
                     type: integer
