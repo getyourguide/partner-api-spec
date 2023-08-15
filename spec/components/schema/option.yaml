@@ -55,6 +55,8 @@ components:
               description: List of languages that are spoken by the guide
               example: [de, en]
         booking_parameter:
+          deprecated: true
+          description: DEPRECATED! use questions instead
           type: array
           items:
             type: object
@@ -72,6 +74,89 @@ components:
                 type: boolean
                 description: Flag if this parameter / property is mandatory for booking.
                 example: true
+        questions:
+          type: object
+          properties:
+            booking_questions:
+              type: array
+              items:
+                type: object
+                properties:
+                  question:
+                    type: string
+                    description: Name of the question.
+                    enum: [
+                      booking_child_safety_seat,
+                      booking_cruise_details,
+                      booking_customer_accommodation,
+                      booking_drop_off_address,
+                      booking_flight_details,
+                      booking_medical_conditions,
+                      booking_mobility_issues,
+                      booking_shipping_address,
+                      booking_wheelchair
+                    ]
+                    example: booking_mobility_issues
+                  description:
+                    type: string
+                    description: Description of the question.
+                    example: Please provide the flight details of the booking.
+                  mandatory:
+                    type: boolean
+                    description: Flag if this parameter / property is mandatory for booking.
+                    example: true
+            participant_questions:
+              type: array
+              items:
+                type: object
+                properties:
+                  question:
+                    type: string
+                    description: Name of the question.
+                    enum: [
+                      traveler_dietary_restrictions,
+                      traveler_diving_levels,
+                      traveler_driver_licenses,
+                      traveler_shoe_sizes,
+                      traveler_skill_levels,
+                      traveler_ages,
+                      traveler_children_ages,
+                      traveler_dates_of_birth,
+                      traveler_heights,
+                      traveler_id_details,
+                      traveler_id_numbers,
+                      traveler_names,
+                      traveler_passport_details,
+                      traveler_passport_numbers,
+                      traveler_weights
+                    ]
+                    example: traveler_diving_levels
+                  description:
+                    type: string
+                    description: Description of the question.
+                    example: Please provide the traveler names for each participant in your group.
+                  mandatory:
+                    type: boolean
+                    description: Flag if this parameter / property is mandatory for booking.
+                    example: true
+            conduction_language:
+              type: object
+              properties:
+                mandatory:
+                  type: boolean
+                  description: Flag if this parameter / property is mandatory for booking.
+                  example: true
+            free_text_question:
+              type: object
+              properties:
+                mandatory:
+                  type: boolean
+                  description: Flag if this parameter / property is mandatory for booking.
+                  example: true
+                description:
+                  type: string
+                  description: Description of the free-text-question.
+                  example: Please provide the nationality of everyone in your group.
         services:
           type: object
           properties:

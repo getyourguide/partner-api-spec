@@ -51,6 +51,8 @@ components:
                           - number_of_participants
                     booking_parameters:
                       $ref: "../schema/bookings.yaml#/components/schemas/BookingParameters"
+                    questions:
+                      $ref: "../schema/bookings.yaml#/components/schemas/Questions"
                   required:
                     - option_id
                     - datetime
@@ -185,9 +187,569 @@ components:
                 example: 1
         booking_parameters:
           $ref: "#/components/schemas/BookingParameters"
+        answers:
+          $ref: "../schema/bookings.yaml#/components/schemas/Answers"
+
+    Questions:
+      description: The questions that need to be answered for this booking.
+      type: object
+      properties:
+        booking_questions:
+          type: object
+          properties:
+            booking_customer_accommodation:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking accommodation / hotel value.
+                  example: Hilton Miami Downtown hotel.
+            booking_flight_details:
+              type: object
+              required:
+                - flight_number
+                - time_of_arrival
+              properties:
+                flight_number:
+                  type: string
+                  description: Flight number for the booking.
+                  example: PT1021
+                time_of_arrival:
+                  type: string
+                  description: Time of arrival for the flight.
+                  example: 12:20am
+            booking_child_safety_seat:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking child safety seat value.
+                  example: We would need two safety seats
+            booking_cruise_details:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking cruise details value.
+                  example: Arrival of my cruise is at 12:20am
+            booking_drop_off_address:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking drop-off address value.
+                  example: Drop off address is at the Hilton Miami Downtown hotel
+            booking_medical_conditions:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking medical conditions value.
+                  example: No medical conditions
+            booking_mobility_issues:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking mobility issues value.
+                  example: No mobility issues
+            booking_shipping_address:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking shipping address value.
+                  example: Shipping address is at the Miami St. 123
+            booking_wheelchair:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking wheelchair value.
+                  example: We would require a wheelchair
+        participant_questions:
+          type: array
+          items:
+            type: object
+            required:
+              - category_id
+              - participant_questions
+            properties:
+              category_id:
+                $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
+              participant_questions:
+                type: object
+                properties:
+                  traveler_dietary_restrictions:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant dietary restrictions.
+                        example: Only vegan food.
+                  traveler_diving_level:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant diving level.
+                        example: Advanced diver.
+                  traveler_driver_license:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant driver's license information.
+                        example: Class B driver's license 123456789X.
+                  traveler_shoe_size:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant shoe size amount.
+                        example: 43.
+                      unit:
+                        type: string
+                        description: Participant shoe size unit.
+                        example: EUR.
+                  traveler_skill_level:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant skill level.
+                        example: Intermediate.
+                  traveler_age:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant age.
+                        example: 30
+                  traveler_children_age:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Child/Infant age.
+                        example: 2
+                  traveler_date_of_birth:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's date of birth.
+                        example: 13/08/2000
+                  traveler_height:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant height amount.
+                        example: 180
+                      unit:
+                        type: string
+                        description: Participant height unit.
+                        example: cm
+                  traveler_id_details:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's ID details.
+                        example: ID details
+                  traveler_id_number:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's ID number.
+                        example: ABC123XYZ
+                  traveler_name:
+                    type: object
+                    required:
+                      - first_name
+                      - last_name
+                    properties:
+                      first_name:
+                        type: string
+                        description: Participant's first name.
+                        example: John
+                      last_name:
+                        type: string
+                        description: Participant's last name.
+                        example: Doe
+                  traveler_passport_details:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's passport details.
+                        example: Country USA Expiry 2025-05-20
+                  traveler_passport_number:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's passport number.
+                        example: AB1234567
+                  traveler_weight:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant weight amount.
+                        example: 70
+                      unit:
+                        type: string
+                        description: Participant weight unit.
+                        example: kg
+        conduction_language:
+          type: object
+          required:
+            - type
+            - value
+          properties:
+            type:
+              type: string
+              description: Conduction language type.
+              example: language_live
+            value:
+              type: string
+              description: Conduction language value.
+              example: en
+        free_text_question:
+          type: string
+          description: answer to the free-text-question.
+          example: Everyone in our group is from Germany.
+
+    Answers:
+      description: The questions that need to be answered for this booking.
+      type: object
+      properties:
+        booking_questions:
+          type: object
+          properties:
+            booking_customer_accommodation:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking accommodation / hotel value.
+                  example: Hilton Miami Downtown hotel.
+            booking_flight_details:
+              type: object
+              required:
+                - flight_number
+                - time_of_arrival
+              properties:
+                flight_number:
+                  type: string
+                  description: Flight number for the booking.
+                  example: PT1021
+                time_of_arrival:
+                  type: string
+                  description: Time of arrival for the flight.
+                  example: 12:20am
+            booking_child_safety_seat:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking child safety seat value.
+                  example: We would need two safety seats
+            booking_cruise_details:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking cruise details value.
+                  example: Arrival of my cruise is at 12:20am
+            booking_drop_off_address:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking drop-off address value.
+                  example: Drop off address is at the Hilton Miami Downtown hotel
+            booking_medical_conditions:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking medical conditions value.
+                  example: No medical conditions
+            booking_mobility_issues:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking mobility issues value.
+                  example: No mobility issues
+            booking_shipping_address:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking shipping address value.
+                  example: Shipping address is at the Miami St. 123
+            booking_wheelchair:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: string
+                  description: Booking wheelchair value.
+                  example: We would require a wheelchair
+        participant_questions:
+          type: array
+          items:
+            type: object
+            required:
+              - participant_questions
+            properties:
+              participant_questions:
+                type: object
+                properties:
+                  traveler_dietary_restrictions:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant dietary restrictions.
+                        example: Only vegan food.
+                  traveler_diving_level:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant diving level.
+                        example: Advanced diver.
+                  traveler_driver_license:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant driver's license information.
+                        example: Class B driver's license 123456789X.
+                  traveler_shoe_size:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant shoe size amount.
+                        example: 43.
+                      unit:
+                        type: string
+                        description: Participant shoe size unit.
+                        example: EUR.
+                  traveler_skill_level:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant skill level.
+                        example: Intermediate.
+                  traveler_age:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant age.
+                        example: 30
+                  traveler_children_age:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Child/Infant age.
+                        example: 2
+                  traveler_date_of_birth:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's date of birth.
+                        example: 13/08/2000
+                  traveler_height:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant height amount.
+                        example: 180
+                      unit:
+                        type: string
+                        description: Participant height unit.
+                        example: cm
+                  traveler_id_details:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's ID details.
+                        example: ID details
+                  traveler_id_number:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's ID number.
+                        example: ABC123XYZ
+                  traveler_name:
+                    type: object
+                    required:
+                      - first_name
+                      - last_name
+                    properties:
+                      first_name:
+                        type: string
+                        description: Participant's first name.
+                        example: John
+                      last_name:
+                        type: string
+                        description: Participant's last name.
+                        example: Doe
+                  traveler_passport_details:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's passport details.
+                        example: Country USA Expiry 2025-05-20
+                  traveler_passport_number:
+                    type: object
+                    required:
+                      - value
+                    properties:
+                      value:
+                        type: string
+                        description: Participant's passport number.
+                        example: AB1234567
+                  traveler_weight:
+                    type: object
+                    required:
+                      - amount
+                      - unit
+                    properties:
+                      amount:
+                        type: string
+                        description: Participant weight amount.
+                        example: 70
+                      unit:
+                        type: string
+                        description: Participant weight unit.
+                        example: kg
+        conduction_language:
+          type: object
+          required:
+            - type
+            - value
+          properties:
+            type:
+              type: string
+              description: Conduction language type.
+              example: language_live
+            value:
+              type: string
+              description: Conduction language value.
+              example: en
+        free_text_question:
+          type: string
+          description: answer to the free-text-question.
+          example: Everyone in our group is from Germany.
 
     BookingParameters:
-      description: The mandatory booking parameters are specific to a given tour option and can be retrieved from `GET /options/{option_id}`
+      deprecated: true
+      description: DEPRECATED! use questions/answers instead
       type: array
       items:
         type: object
