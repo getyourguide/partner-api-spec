@@ -14,7 +14,7 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
       responses:
         200:
           description: Successful response
@@ -40,8 +40,7 @@ paths:
   /{version}/options/{option_id}/pricings:
     get:
       operationId: OptionsGetPricing
-      deprecated: true
-      description: Deprecated! Please do not use to find pricing for a tour-option, use the new endpoint /{version}/tours/{tour_id}/price-breakdown instead (ETA 02.05.2023).
+      description: Find all the pricings for a tour option.
       tags:
         - Options
       parameters:
@@ -74,8 +73,7 @@ paths:
   /{version}/options/{option_id}/availabilities:
     get:
       operationId: OptionsGetAvailabilities
-      deprecated: true
-      description: Deprecated! Please do not use to find availabilities for a tour option, use the new endpoint /{version}/tours/{tour_id}/availability instead (ETA 02.05.2023).
+      description: Find availabilities for a tour option within an optional date range
       tags:
         - Options
       parameters:
@@ -83,7 +81,7 @@ paths:
         - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/date[]"
       responses:
         200:
           description: Successful response

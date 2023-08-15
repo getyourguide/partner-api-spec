@@ -35,7 +35,7 @@ components:
                     datetime:
                       $ref: "../commons/fields.yaml#/components/schemas/Datetime"
                     price:
-                      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+                      $ref: "../commons/fields.yaml#/components/schemas/Price"
                     categories:
                       type: array
                       items:
@@ -156,7 +156,7 @@ components:
               closing_time:
                 $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         price:
-          $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+          $ref: "../commons/fields.yaml#/components/schemas/Price"
         valid_until:
           $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         cancellation_policy_text:

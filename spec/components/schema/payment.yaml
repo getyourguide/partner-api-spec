@@ -110,11 +110,11 @@ components:
           * `mb`: master-bill
       example: cc
     PrecouponPrice:
-      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+      $ref: "../commons/fields.yaml#/components/schemas/Price"
     ReturnUrl:
       description: Url the customer will be redirected to by the payment provider, after successful completing the transaction.
       type: string
       format: uri
       example: "https://success.example"
     TotalPrice:
-      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+      $ref: "../commons/fields.yaml#/components/schemas/Price"
