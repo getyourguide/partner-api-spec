@@ -60,7 +60,7 @@ components:
         overall_rating:
           $ref: "../commons/fields.yaml#/components/schemas/Rating"
         number_of_ratings:
-          type: number
+          type: integer
           description: Number of rating of the tour.
           example: 25
         highlights:
@@ -83,12 +83,18 @@ components:
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         price:
-          $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+          oneOf:
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPrice"
+            - $ref: "../commons/objects.yaml#/components/schemas/StartingPriceDiscounted"
         categories:
           description: List of tour categories tagged to this tour.
           type: array
           items:
             $ref: "#/components/schemas/TourCategoryMinimal"
+        health_advisory:
+          $ref: "#/components/schemas/HealthAdvisory"
+        health_requirement:
+          $ref: "#/components/schemas/HealthRequirement"
         locations:
           description: List of locations ordered according to importance.
           type: array
@@ -99,29 +105,14 @@ components:
           format: uri
           description: URL of the tour on the GetYourGuide website.
           example: https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
-        translations:
+        translations:  
           type: array
+          nullable: true
           items:
             $ref: "../commons/fields.yaml#/components/schemas/Language"
         free_sale:
           type: boolean
           description: Indicates whether there exists at least one tour option of which the booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
-        mobile_voucher:
-          type: boolean
-          description: If the tour accepts mobile voucher.
-          example: true
-        supplier_id:
-          $ref: "../commons/fields.yaml#/components/schemas/SupplierId"
-        durations:
-          type: array
-          items:
-            $ref: "../commons/objects.yaml#/components/schemas/Durations"
-        cancellation_policy_text:
-          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
-        health_advisory:
-          $ref: "#/components/schemas/HealthAdvisory"
-        health_requirement:
-          $ref: "#/components/schemas/HealthRequirement"
         guide_type:
           type: string
           enum:
@@ -137,6 +128,24 @@ components:
               * `instructor`: an instructor e.g. for diving classes.
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
+        mobile_voucher:
+          type: boolean
+          description: If the tour accepts mobile voucher.
+          example: true
+        supplier_id:
+          $ref: "../commons/fields.yaml#/components/schemas/SupplierId"
+        durations:
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/Durations"
+        opening_hours:
+          description: A list of opening hours for a given attraction or venue in local time. 
+          type: array
+          nullable: true
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/OpeningHours"
+        cancellation_policy_text:
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
 
     TourCategoryMinimal:
       description: A minimal representation of a tour category. More information about each category can be retrieved from the `/categories` endpoint.
@@ -155,7 +164,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
@@ -173,7 +182,7 @@ components:
         type: object
         properties:
           tag_id:
-            type: number
+            type: integer
             description: Tag Id
             example: 161578
           name:
@@ -184,3 +193,44 @@ components:
             type: string
             description: Verbose description
             example: You are required to bring and wear a mask
+    Availability:
+      description: Availability by tour.
+      type: object
+      required:
+        - tour_id
+        - participants_range
+        - categories
+        - available_dates
+        - update_timestamp
+      properties:
+        tour_id:
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
+        participants_range:
+          $ref: "../commons/objects.yaml#/components/schemas/IntegerRange"
+        categories:
+          description: List of tour categories available to book.
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/ParticipantCategory"
+        addons:
+          description: List of addons available to book within a tour (not necessarily present in all the tour-options within a tour).
+          type: array
+          items:
+            $ref: '../commons/objects.yaml#/components/schemas/AvailableAddon'
+        available_dates:
+          description: List of available dates to book for this tour.
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/AvailableDate"
+        update_timestamp:
+          description: The timestamp of the last update to the available entity (in UTC).
+          type: string
+          format: date-time
+          example: '2023-01-23T04:56:07'
+  responses:
+    AvailabilityResponse:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Availability'

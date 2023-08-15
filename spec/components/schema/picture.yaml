@@ -25,3 +25,8 @@ components:
           type: boolean
           description: Indicates if the image is verified by GetYourGuide
           example: false
+        copyright:
+          type: string
+          description: Information on the copyright of the image
+          example: Copyrights of this image belongs to ACME Inc
+          nullable: true

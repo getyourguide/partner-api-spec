@@ -6,23 +6,25 @@ info:
 components:
   schemas:
     Availabilities:
-      description: A list of availablities. A end time is only provided in case there are opening hours, instead of time slots.
-      type: object
-      properties:
-        start_time:
-          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
-        pricing_id:
-          description: The pricing_id for this particular availability
-          type: integer
-          example: 163320
-        vacancies:
-          description: Number of seats that are available for a given time slot.
-          type: integer
-          example: 99
-        discount:
-          description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.
-          type: integer
-          format: percent
-          example: 20
-        end_time:
-          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+      description: A list of availabilities. A end time is only provided in case there are opening hours, instead of time slots.
+      type: array
+      items:
+        type: object
+        properties:
+          start_time:
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+          pricing_id:
+            description: The pricing_id for this particular availability
+            type: integer
+            example: 163320
+          vacancies:
+            description: Number of seats that are available for a given time slot.
+            type: integer
+            example: 99
+          discount:
+            description: If the starting time is eligible for a deal, specify the discount on the retail_price of the corresponding pricing_id.
+            type: integer
+            format: percent
+            example: 20
+          end_time:
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"

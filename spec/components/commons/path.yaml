@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common path parameters
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   parameters:
     bookingHash:
@@ -41,6 +41,12 @@ components:
       required: true
       schema:
         $ref: "#/components/schemas/TourId"
+    tour-id:
+      in: path
+      name: tour-id
+      required: true
+      schema:
+        $ref: "#/components/schemas/TourIdLong"
     version:
       in: path
       name: version
@@ -62,6 +68,8 @@ components:
       $ref: "fields.yaml#/components/schemas/SupplierId"
     TourId:
       $ref: "fields.yaml#/components/schemas/TourId"
+    TourIdLong:
+      $ref: "fields.yaml#/components/schemas/TourIdLong"
     Version:
       $ref: "fields.yaml#/components/schemas/Version"
     

@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common data fields
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   schemas:
     BookingHash:
@@ -123,7 +123,12 @@ components:
     Datetime:
       description: The local datetime format `Y-m-d T H:i:s`.
       example: "2017-09-01T00:00:00"
-      format: datetime
+      format: date-time
+      type: string
+    Date:
+      description: The local date format `Y-m-d`.
+      example: "2023-09-01"
+      format: date
       type: string
     DatetimeType:
       description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
@@ -135,7 +140,7 @@ components:
     DatetimeUTC:
       description: The datetime in UTC of when the activity dates place.
       example: "2017-09-01T04:00:00Z"
-      format: datetime
+      format: date-time
       type: string
     Duration:
       type: number
@@ -178,12 +183,14 @@ components:
     Latitude:
       description: The latitude in ISO 6709 standard.
       type: number
+      format: float
       minimum: -90.0
       maximum: 90.0
       example: 28.3701884
     Longitude:
       description: The longitude in ISO 6709 standard.
       type: number
+      format: float
       minimum: -90.0
       maximum: 90.0
       example: -81.5545306
@@ -203,12 +210,12 @@ components:
     OptionId:
       description: The ID of the tour option.
       example: 69232
-      type: number
+      type: integer
     PhoneNumber:
       description: International phone number, in the ITU E.123 standard.
       example: "+49123456789"
       type: string
-    Price:
+    PriceField:
       description: The value of the price.
       example: 15.15
       type: number
@@ -218,6 +225,7 @@ components:
       maximum: 5
       example: 4.5
       type: number
+      format: float
     ReturnCode:
       description: The return code of the booking service.
       example: 0
@@ -246,6 +254,11 @@ components:
       description: The ID of the tour.
       example: 50872
       type: integer
+    TourIdLong:
+      description: The ID of the tour.
+      example: 50872
+      type: integer
+      format: int64
     Version:
       description: The version of the API, currently only 1 is available.
       example: "1"

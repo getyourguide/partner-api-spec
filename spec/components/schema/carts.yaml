@@ -155,22 +155,27 @@ components:
       description: Street and house number.
       example: 1000 Fulton Avenue
       type: string
+      maxLength: 44
     AddressLine2:
       description: Additional information which did not fit in the first row.
       example: c/o Amy Winter
       type: string
+      maxLength: 44
     City:
       description: Name of the city.
       example: Berlin
       type: string
+      maxLength: 44
     CompanyName:
       description: Name of the company.
       example: GetYourGuide
       type: string
+      maxLength: 44
     FirstName:
       description: The first name
       example: John
       type: string
+      maxLength: 44
     Invoice:
       description: Indicates wether an invoice is required for this purchase.
       example: false
@@ -183,10 +188,12 @@ components:
       description: The last name
       example: Doe
       type: string
+      maxLength: 44
     PostalCode:
       description: Postal/zip code.
       example: "14050"
       type: string
+      maxLength: 44
     SalutationCode:
       description: Salutation code. m=Mr. f=Mrs. c=empty
       enum:

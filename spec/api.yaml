@@ -16,9 +16,9 @@ externalDocs:
   url: https://github.com/getyourguide/partner-api-spec
 
 servers:
-  - url: https://api.getyourguide.com/
+  - url: https://api.getyourguide.com
     description: Production
-  - url: https://api.testing1.gygtest.com/
+  - url: https://api.testing20.gygtest.com
     description: Testing
   # Hidden as it is causing confusion for partner.
   # - url: https://api.gygdev.gygtest.com/
@@ -40,8 +40,6 @@ paths:
     $ref: "./paths/configuration.yaml#/paths/~1configuration~1{version}"
   /{version}/configuration/payment:
     $ref: "./paths/configuration.yaml#/paths/~1{version}~1configuration~1payment"
-  /{version}/configuration/privileges:
-    $ref: "./paths/configuration.yaml#/paths/~1{version}~1configuration~1privileges"
   # Bookings
   /{version}/bookings:
     $ref: "./paths/bookings.yaml#/paths/~1{version}~1bookings"
@@ -77,5 +75,9 @@ paths:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}"
   /{version}/tours/{tour_id}/availabilities:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availabilities"
+  /{version}/tours/{tour_id}/availability:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availability"
   /{version}/tours/{tour_id}/options:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1options"
+  /{version}/tours/{tour_id}/price-breakdown:
+    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1price-breakdown"

@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Common data objects
   version: 1.0.0
-paths: {}
+paths: { }
 components:
   schemas:
     Address:
@@ -33,6 +33,18 @@ components:
           $ref: "fields.yaml#/components/schemas/Duration"
         unit:
           $ref: "fields.yaml#/components/schemas/DurationUnit"
+    Special:
+      type: object
+      properties:
+        original_price:
+          $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+        savings:
+          type: number
+          description: The maximum possible discount in percent.
+          example: 12.0
+        apps_only:
+          type: boolean
+          description: Flag if the special offer is only available for the GYG internal mobile apps.
     StartingPrice:
       type: object
       description: Starting price. Should be read as e.g. "from XX.YY USD.
@@ -41,7 +53,22 @@ components:
           type: object
           properties:
             amount:
-              $ref: "fields.yaml#/components/schemas/Price"
+              $ref: "fields.yaml#/components/schemas/PriceField"
+        description:
+          type: string
+          description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
+          example: individual
+    StartingPriceDiscounted:
+      type: object
+      description: Starting price and theoretic maximum possible discount. Should be read as e.g. "from XX.YY USD. The discounts are still bound to individual dates.
+      properties:
+        values:
+          type: object
+          properties:
+            amount:
+              $ref: "fields.yaml#/components/schemas/PriceField"
+            special:
+              $ref: "#/components/schemas/Special"
         description:
           type: string
           description: Additional information about the pricing. E.g. 'per group' or 'per person' or 'per Group up to 10 people'.
@@ -73,3 +100,78 @@ components:
           type: integer
           description: Number of available tours in the category.
           example: 10
+    IntegerRange:
+      type: object
+      properties:
+        min:
+          type: integer
+          description: Minimum value of the range.
+          example: 1
+        max:
+          type: integer
+          description: Maximum value of the range.
+          example: 20
+    ParticipantCategory:
+      type: object
+      required:
+        - ticket_category
+        - name
+      properties:
+        ticket_category:
+          type: string
+          example: adult
+          description: |
+            Possible values:
+            - infant
+            - child
+            - youth
+            - student
+            - eu_citizen_student
+            - adult
+            - eu_citizen
+            - military
+            - senior
+            - group
+        name:
+          type: string
+          example: Adults
+        age_range:
+          $ref: "#/components/schemas/IntegerRange"
+        independently_bookable:
+          description: Only relevant for non-group categories
+          type: boolean
+          example: true
+    AvailableAddon:
+      type: object
+      required:
+        - id
+        - name
+        - max_quantity
+      properties:
+        id:
+          type: integer
+          example: 1934
+        name:
+          type: string
+          example: "Free drinks"
+        max_quantity:
+          type: integer
+          example: 10
+    AvailableDate:
+      type: object
+      required:
+        - date
+      properties:
+        date:
+          type: string
+          format: date
+    OpeningHours:
+      description: The opening hours of a given attraction or venue in local time.
+      type: object
+      properties:
+        opening_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+        closing_time:
+          $ref: "fields.yaml#/components/schemas/Datetime"
+
+
