@@ -239,7 +239,7 @@ components:
             value:
               type: string
               description: Participant dietary restrictions.
-              example: Only vegan food.
+              example: Only vegan food
         traveler_diving_level:
           type: object
           required:
@@ -248,7 +248,7 @@ components:
             value:
               type: string
               description: Participant diving level.
-              example: Advanced diver.
+              example: Advanced diver
         traveler_driver_license:
           type: object
           required:
@@ -257,7 +257,7 @@ components:
             value:
               type: string
               description: Participant driver's license information.
-              example: Class B driver's license 123456789X.
+              example: Class B driver's license 123456789X
         traveler_shoe_size:
           type: object
           required:
@@ -267,11 +267,11 @@ components:
             amount:
               type: string
               description: Participant shoe size amount.
-              example: 43.
+              example: 43
             unit:
               type: string
               description: Participant shoe size unit.
-              example: EUR.
+              example: EUR
         traveler_skill_level:
           type: object
           required:
@@ -280,7 +280,7 @@ components:
             value:
               type: string
               description: Participant skill level.
-              example: Intermediate.
+              example: Intermediate
         traveler_age:
           type: object
           required:
@@ -398,7 +398,7 @@ components:
             value:
               type: string
               description: Booking accommodation / hotel value.
-              example: Hilton Miami Downtown hotel.
+              example: Hilton Miami Downtown hotel
         booking_flight_details:
           type: object
           required:
