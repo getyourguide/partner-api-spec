@@ -306,8 +306,9 @@ components:
           properties:
             value:
               type: string
-              description: Participant's date of birth.
-              example: 13/08/2000
+              format: date
+              description: Participant's date of birth, date format `Y-m-d`.
+              example: 2000-08-13
         traveler_height:
           type: object
           required:
