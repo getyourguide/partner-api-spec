@@ -11,6 +11,12 @@ components:
         descriptor:
           type: string
           example: GetYourGuide AG
+        date:
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+        status:
+          type: string
+          description: Status of the request
+          example: "OK"
         query:
           type: string
           description: URL parameters used for the request sent
