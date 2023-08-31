@@ -35,7 +35,7 @@ components:
                     datetime:
                       $ref: "../commons/fields.yaml#/components/schemas/Datetime"
                     price:
-                      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+                      $ref: "../commons/fields.yaml#/components/schemas/Price"
                     categories:
                       type: array
                       items:
@@ -94,12 +94,6 @@ components:
               $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
             return_code:
               $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
-
-    BookingsGetByHashResponse:
-      type: object
-      properties:
-        booking:
-          $ref: "#/components/schemas/Booking"
 
     BookingDeleteResponse:
       type: object
@@ -162,7 +156,7 @@ components:
               closing_time:
                 $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         price:
-          $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+          $ref: "../commons/fields.yaml#/components/schemas/Price"
         valid_until:
           $ref: "../commons/fields.yaml#/components/schemas/Datetime"
         cancellation_policy_text:

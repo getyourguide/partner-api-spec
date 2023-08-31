@@ -18,6 +18,7 @@ components:
             example: 20
           share:
             type: number
+            format: percent
             description: The percentage of all reviews that have this rating.
             example: 96
 
