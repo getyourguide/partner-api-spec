@@ -41,7 +41,10 @@ components:
         logo_url:
           type: string
           format: uri
-          description: URL to the logo of the supplier. Important, the [format_id] needs to be replaced by a valid format id. You can find the list of all available ids in https://github.com/getyourguide/partner-api-spec/wiki/Image-Formats.
+          description: |
+            URL to the logo of the supplier. 
+            Important, the [format_id] needs to be replaced by a valid format id. 
+            You can find the list of all available ids in https://github.com/getyourguide/partner-api-spec/wiki/Image-Formats.
           example: https://img-getyourguide-com.partner.gygtest.com/img/profile_picture-26045-1860042995-[format_id].jpg
         address:
           $ref: "../commons/objects.yaml#/components/schemas/Address"
