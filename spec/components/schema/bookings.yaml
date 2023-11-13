@@ -202,7 +202,7 @@ components:
             type: object
             required:
               - category_id
-              - participant_questions
+              - participant_answers
             properties:
               category_id:
                 $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
