@@ -12,8 +12,6 @@ paths:
         - Bookings
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
-        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
       requestBody:
         required: true
         content:
@@ -52,6 +50,8 @@ paths:
         - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
         - $ref: "../components/commons/query.yaml#/components/parameters/currency"
         - $ref: "../components/commons/query.yaml#/components/parameters/status"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
+        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
       responses:
         200:
           description: Successful response
