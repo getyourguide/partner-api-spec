@@ -12,6 +12,8 @@ paths:
         - Bookings
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
+        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
       requestBody:
         required: true
         content:
