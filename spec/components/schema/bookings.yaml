@@ -59,6 +59,8 @@ components:
                     - price
                     - categories
     RedeemCoupon:
+      deprecated: true
+      description: DEPRECATED! this value is not longer supported
       type: object
       properties:
         base_data:
