@@ -159,6 +159,7 @@ components:
 
     HealthAdvisory:
       type: array
+      deprecated: true
       items:
         type: object
         properties:
@@ -176,6 +177,7 @@ components:
             example: All areas that customers touch are frequently cleaned
 
     HealthRequirement:
+      deprecated: true
       type: array
       items:
         type: object
