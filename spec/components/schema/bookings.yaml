@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Bookings schema
   version: 1.0.0
-paths: {}
+paths: { }
 
 components:
   schemas:
@@ -21,7 +21,7 @@ components:
           properties:
             booking:
               type: object
-              description: The booking object, you may specify an already existing shopping cart the booking shall be added to. If no `shopping_cart_id` is specified a new cart is automatically created for the booking. 
+              description: The booking object, you may specify an already existing shopping cart the booking shall be added to. If no `shopping_cart_id` is specified a new cart is automatically created for the booking.
               properties:
                 shopping_cart_id:
                   $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
@@ -104,6 +104,12 @@ components:
       properties:
         booking:
           $ref: "#/components/schemas/Booking"
+
+    BookingDeleteResponseEnvelope:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/BookingDeleteResponse"
 
     BookingDeleteResponse:
       type: object
@@ -518,7 +524,7 @@ components:
           name:
             type: string
             description: Name of the property
-            enum: [language, hotel, comment, supplier_requested_question]
+            enum: [ language, hotel, comment, supplier_requested_question ]
             example: language
           value_1:
             type: string
