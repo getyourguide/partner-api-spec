@@ -113,7 +113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponse"
+                $ref: "../components/schema/bookings.yaml#/components/schemas/BookingDeleteResponseEnvelope"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
