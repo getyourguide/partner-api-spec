@@ -83,21 +83,18 @@ components:
     BookingCreateResponse:
       type: object
       properties:
-        bookings:
-          type: object
-          properties:
-            shopping_cart_id:
-              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
-            shopping_cart_hash:
-              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
-            booking_id:
-              $ref: "../commons/fields.yaml#/components/schemas/BookingId"
-            booking_hash:
-              $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
-            status:
-              $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
-            return_code:
-              $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
+        shopping_cart_id:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+        shopping_cart_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
+        booking_id:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingId"
+        booking_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
+        status:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
+        return_code:
+          $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
 
     BookingsGetByHashResponse:
       type: object
