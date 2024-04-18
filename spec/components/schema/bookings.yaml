@@ -58,27 +58,6 @@ components:
                     - datetime
                     - price
                     - categories
-    RedeemCoupon:
-      deprecated: true
-      description: DEPRECATED! this value is not longer supported
-      type: object
-      properties:
-        base_data:
-          type: object
-          properties:
-            cnt_language:
-              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
-            currency:
-              $ref: "../commons/fields.yaml#/components/schemas/Currency"
-        data:
-          type: object
-          properties:
-            coupon:
-              type: object
-              properties:
-                coupon_code:
-                  type: string
-                  example: 123ABC
 
     BookingCreateResponse:
       type: object
