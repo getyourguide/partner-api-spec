@@ -104,16 +104,9 @@ components:
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
       required:
-        - salutation_code
         - first_name
         - last_name
         - email
-        - is_company
-        - invoice
-        - address_line_1
-        - city
-        - postal_code
-        - state
         - country_code
         - phone_number
 
@@ -131,10 +124,10 @@ components:
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
       required:
-        - salutation_code
         - first_name
         - last_name
         - email
+        - country_code
         - phone_number
 
     # Data fields in carts object:
