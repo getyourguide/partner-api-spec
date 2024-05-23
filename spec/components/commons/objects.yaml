@@ -161,10 +161,15 @@ components:
       type: object
       required:
         - date
+        - has_deal
       properties:
         date:
           type: string
           format: date
+        has_deal:
+          description: Flag that indicates whether there is a special offer for this date.
+          type: boolean
+          example: true
     OpeningHours:
       description: The opening hours of a given attraction or venue in local time.
       type: object
