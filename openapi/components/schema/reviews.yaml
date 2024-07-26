@@ -1,0 +1,60 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Reviews Schema
+  version: 1.0.0
+components:
+  schemas:
+    Outline:
+      type: array
+      items:
+        type: object
+        properties:
+          rating:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
+          number_of_reviews:
+            type: integer
+            description: The number of reviews for this rating.
+            example: 20
+          share:
+            type: number
+            description: The percentage of all reviews that have this rating.
+            example: 96
+
+    ReviewItems:
+      type: array
+      items:
+        type: object
+        properties:
+          review_id:
+            type: integer
+            description: The review ID.
+            example: 786101
+          tour_id:
+            $ref: "../commons/fields.yaml#/components/schemas/TourId"
+          supplier_id:
+            $ref: "../commons/fields.yaml#/components/schemas/SupplierId"
+          review_date:
+            $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+          subject:
+            type: string
+            description: The subject of the review.
+            example: Very good
+          comment:
+            type: string
+            description: A comment of the user about the tour.
+            example: Super
+          reviewer_name:
+            type: string
+            description: The name of the person who did the review.
+            example: Reichenbach – France
+          review_rating:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
+          review_rating_service:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
+          review_rating_orga:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
+          review_rating_value:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"
+          review_rating_safety:
+            $ref: "../commons/fields.yaml#/components/schemas/Rating"

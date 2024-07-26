@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>API Reference</title>
+    <!-- needed for adaptive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!--
+    ReDoc uses font options from the parent element
+    So override default browser styles
+    -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .api-content .api-info > p > a {
+        background: #0071eb;
+        border-color: #0071eb;
+        border-radius: 5rem;
+        border-style: solid;
+        border-width: 2px;
+        color: #fff;
+        outline: 0;
+        transition: background-color .2s ease-out;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 0.375em 1.875em;
+        text-decoration: none;
+      }
+    </style>
+    {{{redocHead}}}
+  </head>
+  <body>
+    {{{redocHTML}}}
+  </body>
+</html>

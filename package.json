@@ -1,0 +1,12 @@
+{
+  "name": "acme-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "@redocly/cli": "1.18.1"
+  },
+  "private": true,
+  "scripts": {
+    "start": "redocly preview-docs",
+    "build": "redocly build-docs --output=./docs/index.html"
+  }
+}

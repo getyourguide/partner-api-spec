@@ -1,6 +1,7 @@
 # GetYourGuide Partner API OpenAPI Specifications
-This GetYourGuide Partner API provides access to GetYourGuide’s marketplace for tours and activities. 
+This GetYourGuide Partner API provides access to GetYourGuide’s marketplace for tours and activities.
 It has a RESTful interface and uses the JSON media format. Access is secured via SSL and an API access token.
+
 ### Table of contents
 
 * [API Reference](https://code.getyourguide.com/partner-api-spec/)
@@ -13,7 +14,7 @@ Some generators include (`go`, `typescript-node`, `ruby`)
 
 Clone the repository and then you can run this command to generate a `typescript-node` client
 ```
-npx @openapitools/openapi-generator-cli generate -i api.yaml -g typescript-node -o /tmp/ts/
+npx @openapitools/openapi-generator-cli generate -i ./openapi/openapi.yaml -g typescript-node -o /tmp/ts/
 ```
 ## Security
 
@@ -21,6 +22,6 @@ For sensitive security matters please contact [security@getyourguide.com](mailto
 
 ## Legal
 
-Copyright 2023 GetYourGuide GmbH.
+Copyright 2024 GetYourGuide GmbH.
 
 **partner-api-spec** is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.

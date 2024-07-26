@@ -1,0 +1,571 @@
+openapi: 3.0.2
+info:
+  title: Bookings schema
+  version: 1.0.0
+paths: { }
+
+components:
+  schemas:
+    BookingCreateActivity:
+      type: object
+      properties:
+        base_data:
+          type: object
+          properties:
+            cnt_language:
+              $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
+            currency:
+              $ref: "../commons/fields.yaml#/components/schemas/Currency"
+        data:
+          type: object
+          properties:
+            booking:
+              type: object
+              description: The booking object, you may specify an already existing shopping cart the booking shall be added to. If no `shopping_cart_id` is specified a new cart is automatically created for the booking.
+              properties:
+                shopping_cart_id:
+                  $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+                bookable:
+                  type: object
+                  properties:
+                    external_reference_id:
+                      $ref: "../commons/fields.yaml#/components/schemas/ExternalReferenceId"
+                    option_id:
+                      $ref: "../commons/fields.yaml#/components/schemas/OptionId"
+                    datetime:
+                      $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+                    price:
+                      $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+                    categories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          category_id:
+                            $ref: ../commons/fields.yaml#/components/schemas/CategoryId
+                          number_of_participants:
+                            type: integer
+                            example: 5
+                        required:
+                          - category_id
+                          - number_of_participants
+                    booking_parameters:
+                      $ref: "../schema/bookings.yaml#/components/schemas/BookingParameters"
+                    questions:
+                      $ref: "../schema/bookings.yaml#/components/schemas/Questions"
+                  required:
+                    - option_id
+                    - datetime
+                    - price
+                    - categories
+
+    BookingCreateResponse:
+      type: object
+      properties:
+        shopping_cart_id:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+        shopping_cart_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
+        booking_id:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingId"
+        booking_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
+        status:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
+        return_code:
+          $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
+
+    BookingsGetByHashResponse:
+      type: object
+      properties:
+        booking:
+          $ref: "#/components/schemas/Booking"
+
+    BookingDeleteResponseEnvelope:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/BookingDeleteResponse"
+
+    BookingDeleteResponse:
+      type: object
+      properties:
+        bookings:
+          type: object
+          properties:
+            shopping_cart_id:
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+            shopping_cart_hash:
+              $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
+            booking_id:
+              $ref: "../commons/fields.yaml#/components/schemas/BookingId"
+            booking_hash:
+              $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
+            booking_status:
+              $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
+            return_code:
+              $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
+
+    Booking:
+      type: object
+      properties:
+        booking_id:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingId"
+        booking_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingHash"
+        booking_status:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
+        shopping_cart_id:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+        shopping_cart_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
+        bookable:
+          $ref: "#/components/schemas/Bookable"
+        ticket:
+          description: Only present if the booking is confirmed and active.
+          $ref: "#/components/schemas/Ticket"
+
+    Bookable:
+      type: object
+      properties:
+        tour_id:
+          $ref: "../commons/fields.yaml#/components/schemas/TourId"
+        option_id:
+          $ref: "../commons/fields.yaml#/components/schemas/OptionId"
+        datetime:
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+        datetime_utc:
+          $ref: "../commons/fields.yaml#/components/schemas/DatetimeUTC"
+        datetime_type:
+          $ref: "../commons/fields.yaml#/components/schemas/DatetimeType"
+        opening_hours:
+          type: array
+          items:
+            type: object
+            properties:
+              opening_time:
+                $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+              closing_time:
+                $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+        price:
+          $ref: "../commons/fields.yaml#/components/schemas/PriceField"
+        valid_until:
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+        cancellation_policy_text:
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
+        currently_cancellable_at_no_fee:
+          $ref: "../commons/fields.yaml#/components/schemas/CurrentlyCancellableAtNoFee"
+        categories:
+          type: array
+          description: The price categories used for this booking.
+          items:
+            type: object
+            properties:
+              category_id:
+                $ref: ../commons/fields.yaml#/components/schemas/CategoryId
+              name:
+                type: string
+                example: Adults
+              number_of_participants:
+                type: integer
+                example: 1
+        booking_parameters:
+          $ref: "#/components/schemas/BookingParameters"
+        questions:
+          $ref: "../schema/bookings.yaml#/components/schemas/QuestionsOutput"
+
+    Questions:
+      description: The questions that need to be answered for this booking.
+      type: object
+      properties:
+        booking_questions:
+          $ref: '#/components/schemas/BookingQuestions'
+        participant_questions:
+          type: array
+          items:
+            type: object
+            required:
+              - category_id
+              - participant_answers
+            properties:
+              category_id:
+                $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
+              participant_answers:
+                $ref: '#/components/schemas/ParticipantQuestions'
+        conduction_language:
+          type: object
+          required:
+            - type
+            - value
+          properties:
+            type:
+              type: string
+              description: Conduction language type.
+              example: language_live
+            value:
+              type: string
+              description: Conduction language value.
+              example: en
+        free_text_question:
+          type: string
+          description: answer to the free-text-question.
+          example: Everyone in our group is from Germany.
+
+    ParticipantQuestions:
+      description: The questions at participant level that need to be answered for this booking.
+      type: object
+      properties:
+        traveler_dietary_restrictions:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant dietary restrictions.
+              example: Only vegan food
+        traveler_diving_level:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant diving level.
+              example: Advanced diver
+        traveler_driver_license:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant driver's license information.
+              example: Class B driver's license 123456789X
+        traveler_shoe_size:
+          type: object
+          required:
+            - amount
+            - unit
+          properties:
+            amount:
+              type: string
+              description: Participant shoe size amount.
+              example: 43
+            unit:
+              type: string
+              description: Participant shoe size unit.
+              example: EUR
+        traveler_skill_level:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant skill level.
+              example: Intermediate
+        traveler_age:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant age.
+              example: 30
+        traveler_children_age:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Child/Infant age.
+              example: 2
+        traveler_date_of_birth:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              format: date
+              description: Participant's date of birth, date format `Y-m-d`.
+              example: 2000-08-13
+        traveler_height:
+          type: object
+          required:
+            - amount
+            - unit
+          properties:
+            amount:
+              type: string
+              description: Participant height amount.
+              example: 180
+            unit:
+              type: string
+              description: Participant height unit.
+              example: cm
+        traveler_id_details:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant's ID details.
+              example: ID details
+        traveler_id_number:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant's ID number.
+              example: ABC123XYZ
+        traveler_name:
+          type: object
+          required:
+            - first_name
+            - last_name
+          properties:
+            first_name:
+              type: string
+              description: Participant's first name.
+              example: John
+            last_name:
+              type: string
+              description: Participant's last name.
+              example: Doe
+        traveler_passport_details:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant's passport details.
+              example: Country USA Expiry 2025-05-20
+        traveler_passport_number:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Participant's passport number.
+              example: AB1234567
+        traveler_weight:
+          type: object
+          required:
+            - amount
+            - unit
+          properties:
+            amount:
+              type: string
+              description: Participant weight amount.
+              example: 70
+            unit:
+              type: string
+              description: Participant weight unit.
+              example: kg
+    BookingQuestions:
+      description: The questions at booking level that need to be answered for this booking.
+      type: object
+      properties:
+        booking_customer_accommodation:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking accommodation / hotel value.
+              example: Hilton Miami Downtown hotel
+        booking_flight_details:
+          type: object
+          required:
+            - flight_number
+            - time_of_arrival
+          properties:
+            flight_number:
+              type: string
+              description: Flight number for the booking.
+              example: PT1021
+            time_of_arrival:
+              type: string
+              description: Time of arrival for the flight.
+              example: 12:20am
+        booking_child_safety_seat:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking child safety seat value.
+              example: We would need two safety seats
+        booking_cruise_details:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking cruise details value.
+              example: Arrival of my cruise is at 12:20am
+        booking_drop_off_address:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking drop-off address value.
+              example: Drop off address is at the Hilton Miami Downtown hotel
+        booking_medical_conditions:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking medical conditions value.
+              example: No medical conditions
+        booking_mobility_issues:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking mobility issues value.
+              example: No mobility issues
+        booking_shipping_address:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking shipping address value.
+              example: Shipping address is at the Miami St. 123
+        booking_wheelchair:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              description: Booking wheelchair value.
+              example: We would require a wheelchair
+    QuestionsOutput:
+      description: The questions that need to be answered for this booking.
+      type: object
+      properties:
+        booking_questions:
+          $ref: '#/components/schemas/BookingQuestions'
+        participant_questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParticipantQuestions'
+        conduction_language:
+          type: object
+          required:
+            - type
+            - value
+          properties:
+            type:
+              type: string
+              description: Conduction language type.
+              example: language_live
+            value:
+              type: string
+              description: Conduction language value.
+              example: en
+        free_text_question:
+          type: string
+          description: answer to the free-text-question.
+          example: Everyone in our group is from Germany.
+
+    BookingParameters:
+      deprecated: true
+      description: DEPRECATED! use questions instead
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the property
+            enum: [ language, hotel, comment, supplier_requested_question ]
+            example: language
+          value_1:
+            type: string
+            description: First / Primary value of the property
+            example: language_live
+          value_2:
+            type: string
+            description: The language property requires a second value (e.g. value_1 = language_live, value_2 = en).
+            example: en
+          mandatory:
+            type: boolean
+            description: The mandatory booking parameters can be retrieved from the options endpoint
+            example: true
+
+    Ticket:
+      type: object
+      properties:
+        booking_reference:
+          type: string
+          example: GYG7VMWR9HZ3
+        supplier_booking_codes:
+          $ref: "#/components/schemas/SupplierBookingCodes"
+        emergency_phone_number:
+          $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
+        emergency_email:
+          $ref: "../commons/fields.yaml#/components/schemas/Email"
+        ticket_url:
+          type: string
+          format: uri
+          description: Download link for ticket PDF
+          example: https://www.getyourguide.com/voucher/7H8N87D3QAH16XVABGPCR311U66XELRG
+        ticket_hash:
+          type: string
+          example: 7H8N87D3QAH16XVABGPCR311U66XELRG
+
+    SupplierBookingCodes:
+      type: array
+      items:
+        type: object
+        properties:
+          ticket_hash:
+            type: string
+            example: 7H8N87D3QAH16XVABGPCR311U66XELRG
+          label:
+            type: string
+            example: "Ticket #1 (ADULT)"
+          type:
+            description: The encoding algorithm used for the bar/qr code.
+            type: string
+            example: qr_code
+            enum:
+              - text
+              - barcode_code39
+              - barcode_code128
+              - qr_code
+              - data_matrix
+              - ean13
+              - itf
+              - pdf_file
+              - code25interleaved
+              - aztec
+          code:
+            description: The sting that will be encoded into the barcode.
+            type: string
+            example: JRUFX567YOMTSI7RG5K3UL2XC6RECSGQ-E9VNO
+          pricing_category_id:
+            type: integer
+            example: 2167696

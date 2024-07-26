@@ -1,0 +1,194 @@
+openapi: 3.0.2
+info:
+  title: Paths for tours
+  version: 1.0.0
+paths:
+  /{version}/tours:
+    get:
+      operationId: ToursQuery
+      summary: Get tours by query
+      description: Search for tours by different parameters such as a query or geographical coordinates.
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/preformatted"
+        - $ref: "../components/commons/query.yaml#/components/parameters/q"
+        - $ref: "../components/commons/query.yaml#/components/parameters/coordinates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/condLanguages"
+        - $ref: "../components/commons/query.yaml#/components/parameters/prices"
+        - $ref: "../components/commons/query.yaml#/components/parameters/categories"
+        - $ref: "../components/commons/query.yaml#/components/parameters/ratings"
+        - $ref: "../components/commons/query.yaml#/components/parameters/durations"
+        - $ref: "../components/commons/query.yaml#/components/parameters/flags"
+        - $ref: "../components/commons/query.yaml#/components/parameters/sortfield"
+        - $ref: "../components/commons/query.yaml#/components/parameters/sortdirection"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
+        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      tours:
+                        type: array
+                        items:
+                          $ref: "../components/schema/tour.yaml#/components/schemas/Tour"
+        400:
+          description: Missing Parameters
+        500:
+          description: Server error
+
+  /{version}/tours/{tour_id}:
+    get:
+      operationId: ToursByIdQuery
+      summary: Get tour information
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/preformatted"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      tours:
+                        type: array
+                        items:
+                          $ref: "../components/schema/tour.yaml#/components/schemas/Tour"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/tours/{tour_id}/availabilities:
+    get:
+      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/tours/{tour_id}/availability instead.
+      deprecated: true
+      operationId: ToursByIdAvailabilities
+      summary: Get availability by tour
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      availabilities:
+                        type: array
+                        items:
+                          $ref: "../components/schema/availabilities.yaml#/components/schemas/Availabilities"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/tours/{tour_id}/options:
+    get:
+      operationId: ToursByIdOptions
+      summary: Get tour options by tour
+      tags:
+        - Tours
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+        - $ref: "../components/commons/query.yaml#/components/parameters/limit"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      tour_options:
+                        type: array
+                        items:
+                          $ref: "../components/schema/option.yaml#/components/schemas/TourOption"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/tours/{tour_id}/availability:
+    get:
+      operationId: tours-by-id-availability
+      summary: Get availability by tour (New)
+      tags:
+        - Availabilities
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cnt-language"
+        - $ref: "../components/commons/query.yaml#/components/parameters/tourOptionIds"
+      responses:
+        200:
+          $ref: "../components/schema/tour.yaml#/components/responses/AvailabilityResponse"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/tours/{tour_id}/price-breakdown:
+    post:
+      operationId: Get pricing information by tour (New)
+      description: Find pricing information for a tour by date.
+      tags:
+        - Pricing
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
+      requestBody:
+        $ref: "../components/schema/day_breakdowns.yaml#/components/requestBodies/DayBreakdownRequestBody"
+      responses:
+        200:
+          $ref: "../components/schema/day_breakdowns.yaml#/components/responses/DayBreakdownResponse"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"

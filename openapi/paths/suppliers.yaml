@@ -1,0 +1,38 @@
+openapi: 3.0.2
+info:
+  title: Suppliers
+  version: 1.0.0
+  description: Information about a specific supplier.
+paths:
+  /{version}/suppliers/{supplier_id}:
+    get:
+      operationId: Suppliers
+      summary: Get supplier information
+      tags:
+        - Suppliers
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/supplierId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      supplier:
+                        type: array
+                        items:
+                          $ref: "../components/schema/supplier.yaml#/components/schemas/Supplier"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
