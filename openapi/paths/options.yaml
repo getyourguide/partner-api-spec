@@ -1,0 +1,110 @@
+openapi: 3.0.2
+info:
+  title: Paths for options
+  version: 1.0.0
+paths:
+  /{version}/options/{option_id}:
+    get:
+      operationId: OptionsGetById
+      description: Find a Tour Option by ID. The result will be an array of tour options. But the array will only contain one single tour option.
+      summary: Get tour option information
+      tags:
+        - Tour Options
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      tour_options:
+                        type: array
+                        items:
+                          $ref: "../components/schema/option.yaml#/components/schemas/TourOption"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/options/{option_id}/pricings:
+    get:
+      operationId: OptionsGetPricing
+      deprecated: true
+      description: Deprecated! Please do not use to find pricing for a tour-option, use the new endpoint /{version}/tours/{tour_id}/price-breakdown instead.
+      summary: Get pricing information by tour option
+      tags:
+        - Tour Options
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      pricing:
+                        type: array
+                        items:
+                          $ref: "../components/schema/option.yaml#/components/schemas/TourOptionPricing"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+
+  /{version}/options/{option_id}/availabilities:
+    get:
+      operationId: OptionsGetAvailabilities
+      deprecated: true
+      description: Deprecated! Please do not use to find availabilities for a tour option, use the new endpoint /{version}/tours/{tour_id}/availability instead.
+      summary: Get availability information by tour option
+      tags:
+        - Tour Options
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "../components/commons/path.yaml#/components/parameters/optionId"
+        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
+        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
+        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      availabilities:
+                        type: array
+                        items:
+                          $ref: "../components/schema/availabilities.yaml#/components/schemas/Availabilities"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"

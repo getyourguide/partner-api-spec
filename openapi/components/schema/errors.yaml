@@ -1,0 +1,55 @@
+openapi: 3.0.2
+paths: { }
+info:
+  title: Errors Responses
+  version: 1.0.0
+components:
+  responses:
+    4XX:
+      description: HTTP 400, 401, 404 have the same response format.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Default:
+      description: Other HTTP status codes which do not provide additional information are 403, 405, 429 and 500.
+
+  schemas:
+    # Schema for error response body
+    Error:
+      type: object
+      properties:
+        descriptor:
+          type: string
+          example: GetYourGuide AG
+        apiVersion:
+          type: string
+          example: "1"
+        method:
+          type: string
+          example: getBookingByHashAction
+        date:
+          $ref: "../commons/fields.yaml#/components/schemas/Datetime"
+        status:
+          type: string
+          example: ERROR
+        query:
+          type: string
+          example: cnt_language=en&currency=eur
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                description: GetYourGuide internal error code
+                type: integer
+                format: int32
+                example: 25
+              errorMessage:
+                description: Verbose description of the error.
+                type: string
+                example: Unauthorized. The access token is invalid.
+        helpURL:
+          type: string
+          example: https://api.getyourguide.com/doc
