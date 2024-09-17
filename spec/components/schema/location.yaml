@@ -1,0 +1,39 @@
+openapi: 3.0.2
+paths: {}
+info:
+  title: Location Schema
+  version: 1.0.0
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        location_id:
+          description: Location ID
+          type: integer
+          example: 3850
+        type:
+          description: Location type
+          type: string
+          enum: [area, city, poi, subcontinent, country, neighborhood, continent]
+          example: poi
+        name:
+          type: string
+          description: Name of the location.
+          example: Epcot Theme Park
+        english_name:
+          description: DEPRECATED, always the same as the `name` field
+          type: string
+          example: Epcot Theme Park
+        city:
+          description: The city name if location type is poi or city.
+          type: string
+          nullable: true
+        country:
+          $ref: "../commons/fields.yaml#/components/schemas/Country"
+        coordinates:
+          $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
+        parent_id:
+          description: The location id of the parent location, if there is any.
+          type: integer
+          example: 191

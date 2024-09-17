@@ -24,9 +24,9 @@ jobs:
       - name: Generate Typescript Node Client
         uses: triaxtec/openapitools-generator-action@v1.0.0
         with:
-          openapi-file: openapi/openapi.yaml
+          openapi-file: spec/api.yaml
           generator: typescript-node
-          config-file: openapi/openapi-generator-config.yaml
+          config-file: spec/openapi-generator-config.yaml
 
       # Do something with the generated client (likely publishing it somewhere)
 #       - name: Do something with the client
