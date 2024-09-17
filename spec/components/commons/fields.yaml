@@ -1,0 +1,272 @@
+openapi: 3.0.2
+info:
+  title: Common data fields
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    BookingHash:
+      description: The hash of the booking. This identifies the booking.
+      example: WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M
+      type: string
+    BookingId:
+      description: The id of the booking.
+      example: 13822240
+      type: integer
+    BookingStatus:
+      enum:
+        - temp
+        - unconfirmed
+        - confirmed
+        - deleted
+        - canceled
+        - deleted_by_customer
+        - deleted_by_daemon
+      example: temp
+      type: string
+      description: The status of the booking. >
+        * `temp` the booking is temporary (added to a cart).
+        * `unconfirmed` the booking is awaiting final confirmation by the supplier. This is only the case for non free-sale products.
+        * `confirmed` the booking is confirmed and active.
+        * `deleted` the booking got deleted from a cart before checkout. Only temporary (non confirmed) bookings can be deleted.
+        * `canceled` a formerly confirmed booking got cancelled. Refunds apply here, if it got canceled within the cxl policy.
+        * `deleted_by_customer` same as deleted with the additional information that a customer deleted the booking from the cart.
+        * `deleted_by_daemon` same as deleted with the additional information that it was automatically deleted from the cart after 60 minutes.
+    CancellationPolicyText:
+      description: Cancellation policy
+      example: Your activity is non-refundable
+      type: string
+    CategoryId:
+      description: ID of the category.
+      example: 33
+      type: integer
+    City:
+      description: The name of the city
+      example: Berlin
+      type: string
+    CntLanguage:
+      description: ISO 639, Language of the text content.
+      enum:
+        - da
+        - de
+        - en
+        - es
+        - fr
+        - it
+        - ko
+        - nl
+        - "no"
+        - pl
+        - pt
+        - fi
+        - sv
+        - ru
+        - ja
+      example: en
+      type: string
+    Country:
+      description: ISO code of the country of the location (ISO 3166-1).
+      example: US
+      type: string
+    CountryVerbose:
+      description: The verbose name of the country.
+      example: Germany
+      type: string
+    Currency:
+      description: ISO 4217, The currency with which you would like to pay.
+      enum:
+        - AED
+        - ARS
+        - AUD
+        - BGN
+        - CAD
+        - CHF
+        - CLP
+        - CNY
+        - COP
+        - CZK
+        - DKK
+        - EGP
+        - EUR
+        - GBP
+        - HKD
+        - HRK
+        - HUF
+        - IDR
+        - ILS
+        - INR
+        - JPY
+        - KRW
+        - MAD
+        - MXN
+        - MYR
+        - NOK
+        - NZD
+        - PHP
+        - PLN
+        - RON
+        - RUB
+        - SEK
+        - SGD
+        - THB
+        - TRY
+        - UAH
+        - USD
+        - UYU
+        - VND
+        - ZAR
+      example: USD
+      type: string
+    CurrentlyCancellableAtNoFee:
+      description: Indicates whether this booking is currently cancellable at no fee.
+      example: true
+      type: boolean
+    Datetime:
+      description: The local datetime format `Y-m-d T H:i:s`.
+      example: "2017-09-01T00:00:00"
+      format: date-time
+      type: string
+    Date:
+      description: The local date format `Y-m-d`.
+      example: "2023-09-01"
+      format: date
+      type: string
+    DatetimeType:
+      description: Is the datetime a date or a datetime. This is needed as some activities only have a day on which they take place.
+      enum:
+        - date
+        - datetime
+      example: datetime
+      type: string
+    DatetimeUTC:
+      description: The datetime in UTC of when the activity dates place.
+      example: "2017-09-01T04:00:00Z"
+      format: date-time
+      type: string
+    Duration:
+      type: number
+      description: Duration of the tour (to be used in combination with duration unit).
+      example: 2.5
+    DurationUnit:
+      type: string
+      description: Unit of the duration field
+      enum: [day, hour, minute]
+      example: hour
+    Email:
+      description: Correspondence email.
+      example: address@example.com
+      format: email
+      type: string
+    ExternalReferenceId:
+      description: The external reference ID. The reseller can supply a reference number under which this booking is referenced in his system. This field contains that number.
+      maxLength: 255
+      example: just_any_string
+      type: string
+    Flags:
+      description: Various flags about properties of the tour (multiple selection allowed).
+      type: string
+      enum:
+            - private
+            - wheelchair
+            - skip-line
+            - pick-up
+            - special
+            - free-sale-only
+            - mobile-voucher-only
+    FreeSale:
+      type: boolean
+      description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
+      example: true
+    Language:
+      type: string
+      description: ISO 639 formatted language
+      example: en
+    Latitude:
+      description: The latitude in ISO 6709 standard.
+      type: number
+      format: float
+      minimum: -90.0
+      maximum: 90.0
+      example: 28.3701884
+    Longitude:
+      description: The longitude in ISO 6709 standard.
+      type: number
+      format: float
+      minimum: -90.0
+      maximum: 90.0
+      example: -81.5545306
+    Limit:
+      description: Number of items to retrieve.
+      type: integer
+      minimum: 1
+      maximum: 500
+      default: 10
+      example: 10
+    Offset:
+      description: Offset the list of returned results by this amount.
+      type: integer
+      minimum: 0
+      default: 0
+      example: 0
+    OptionId:
+      description: The ID of the tour option.
+      example: 69232
+      type: integer
+    PhoneNumber:
+      description: International phone number, in the ITU E.123 standard.
+      example: "+49123456789"
+      type: string
+    PriceField:
+      description: The value of the price.
+      example: 15.15
+      type: number
+    Rating:
+      description: The value of the rating.
+      minimum: 0
+      maximum: 5
+      example: 4.5
+      type: number
+      format: float
+    ReturnCode:
+      description: The return code of the booking service.
+      example: 0
+      type: number
+    ShoppingCartHash:
+      description: The hash of the shopping cart.
+      example: 0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K
+      type: string
+    ShoppingCartId:
+      description: The ID of the shopping cart.
+      example: 32724458
+      type: number
+    State:
+      description: The state of the address.
+      example: Berlin
+      type: string
+    Street:
+      description: The street name and house number of the address.
+      example: Sonnenburger Straße 73
+      type: string
+    SupplierId:
+      description: The supplier id
+      type: integer
+      example: 90545
+    TourId:
+      description: The ID of the tour.
+      example: 50872
+      type: integer
+    TourIdLong:
+      description: The ID of the tour.
+      example: 50872
+      type: integer
+      format: int64
+    Version:
+      description: The version of the API, currently only 1 is available.
+      example: "1"
+      type: string
+      format: integer
+    ZipCode:
+      description: The zip code of the address.
+      example: "14050"
+      type: string
+      
