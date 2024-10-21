@@ -55,10 +55,6 @@ paths:
   # Options
   /{version}/options/{option_id}:
     $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}"
-  /{version}/options/{option_id}/pricings:
-    $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}~1pricings"
-  /{version}/options/{option_id}/availabilities:
-    $ref: "./paths/options.yaml#/paths/~1{version}~1options~1{option_id}~1availabilities"
   # Reviews
   /{version}/reviews/tour/{tour_id}:
     $ref: "./paths/reviews.yaml#/paths/~1{version}~1reviews~1tour~1{tour_id}"
@@ -70,8 +66,6 @@ paths:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours"
   /{version}/tours/{tour_id}:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}"
-  /{version}/tours/{tour_id}/availabilities:
-    $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availabilities"
   /{version}/tours/{tour_id}/availability:
     $ref: "./paths/tours.yaml#/paths/~1{version}~1tours~1{tour_id}~1availability"
   /{version}/tours/{tour_id}/options:
