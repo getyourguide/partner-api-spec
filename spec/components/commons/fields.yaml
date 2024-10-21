@@ -10,7 +10,8 @@ components:
       example: WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M
       type: string
     BookingId:
-      description: The id of the booking.
+      deprecated: true
+      description: The id of the booking. (Use booking hash)
       example: 13822240
       type: integer
     BookingStatus:
@@ -236,7 +237,8 @@ components:
       example: 0ESFMXPUANBNSGAOSLR4JWCOD7S4P18K
       type: string
     ShoppingCartId:
-      description: The ID of the shopping cart.
+      deprecated: true
+      description: The ID of the shopping cart. (Use shopping cart hash)
       example: 32724458
       type: number
     State:
