@@ -83,42 +83,6 @@ paths:
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 
-  /{version}/tours/{tour_id}/availabilities:
-    get:
-      description: Deprecated! Please do not use to find availabilities for a tour-id, use the new endpoint /{version}/tours/{tour_id}/availability instead.
-      deprecated: true
-      operationId: ToursByIdAvailabilities
-      summary: Search for tours by id
-      tags:
-        - Tours
-      parameters:
-        - $ref: "../components/commons/path.yaml#/components/parameters/version"
-        - $ref: "../components/commons/path.yaml#/components/parameters/tourId"
-        - $ref: "../components/commons/query.yaml#/components/parameters/cntLanguage"
-        - $ref: "../components/commons/query.yaml#/components/parameters/currency"
-        - $ref: "../components/commons/query.yaml#/components/parameters/dates"
-      responses:
-        200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  _metadata:
-                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
-                  data:
-                    type: object
-                    properties:
-                      availabilities:
-                        type: array
-                        items:
-                          $ref: "../components/schema/availabilities.yaml#/components/schemas/Availabilities"
-        4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
-        default:
-          $ref: "../components/schema/errors.yaml#/components/responses/Default"
-
   /{version}/tours/{tour_id}/options:
     get:
       operationId: ToursByIdOptions
