@@ -48,9 +48,9 @@
 
     <script src="./docs/swagger-ui-bundle.js" charset="UTF-8"> </script>
     <script src="./docs/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-    <script>
+    <script type="text/javascript">
 
-    window.onload = function() {
+    document.addEventListener("DOMContentLoaded", function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
         url: "spec/api.yaml",
@@ -69,9 +69,25 @@
 
       window.ui = ui;
 
-      // Update getyourguide logo
-      document.querySelector('.topbar-wrapper img').src = "https://cdn.getyourguide.com/tf/assets/static/logos/gyg-logo.svg"
-    };
+      // Update GetYourGuide logo
+      function replaceLogo() {
+        const logoContainer = document.querySelector('.topbar-wrapper svg');
+        if (logoContainer) {
+          const newLogo = document.createElement('img');
+          newLogo.src = "https://cdn.getyourguide.com/tf/assets/static/logos/gyg-logo.svg";
+          newLogo.alt = "GetYourGuide Logo";
+
+          // Replace the existing SVG with the new image
+          logoContainer.parentNode.replaceChild(newLogo, logoContainer);
+        } else {
+          // Retry after a short delay if SVG is not found
+          requestAnimationFrame(replaceLogo);
+        }
+      }
+
+      // Do logo replacement
+      replaceLogo();
+    });
   </script>
   </body>
 </html>
