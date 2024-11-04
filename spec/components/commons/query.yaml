@@ -293,6 +293,17 @@ components:
           - confirmed
           - canceled
         type: string
+    tourOptionIds:
+      name: tour_option_ids
+      in: query
+      required: false
+      description: The option IDs
+      explode: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
 
   # Refs to common fields, as direct refs inside the query param schema breaks OpenAPI validation
   schemas:
