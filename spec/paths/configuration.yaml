@@ -58,28 +58,3 @@ paths:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
-
-  /{version}/configuration/privileges:
-    get:
-      operationId: configurationPrivileges
-      tags:
-        - Configuration
-      parameters:
-        - $ref: "../components/commons/path.yaml#/components/parameters/version"
-      responses:
-        200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  _metadata:
-                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
-                  data:
-                    type: object
-                    $ref: "../components/schema/configuration.yaml#/components/schemas/ConfigurationPrivilegeResponse"
-        4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
-        default:
-          $ref: "../components/schema/errors.yaml#/components/responses/Default"
