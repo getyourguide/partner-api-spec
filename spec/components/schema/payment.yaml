@@ -7,7 +7,8 @@ components:
   schemas:
     #Methods
     Paypal:
-      description: Paypal
+      deprecated: true
+      description: This payment method is deprecated. Please redirect the user to the GetYourGuide website to complete a purchase instead. You can find a tracking link, with your prefilled `partner_id` in the response of the `/tours` endpoint.
       type: object
       properties:
         paypal:
@@ -18,7 +19,8 @@ components:
             cancel_url:
               $ref: "#/components/schemas/CancelUrl"
     EncryptedCreditCard:
-      description: EncryptedCreditCard
+      deprecated: true
+      description: This payment method is deprecated. Please redirect the user to the GetYourGuide website to complete a purchase instead. You can find a tracking link, with your prefilled `partner_id` in the response of the `/tours` endpoint.
       type: object
       properties:
         encrypted_credit_card:
