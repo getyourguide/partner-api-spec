@@ -18,7 +18,7 @@ paths:
         - $ref: "#/components/parameters/sortfield"
         - $ref: "../components/commons/query.yaml#/components/parameters/sortdirection"
         - $ref: "../components/commons/query.yaml#/components/parameters/limit"
-        - $ref: "../components/commons/query.yaml#/components/parameters/offset"
+        - $ref: "#/components/parameters/offset"
       responses:
         200:
           description: Successful response
@@ -62,6 +62,20 @@ components:
       required: false
       schema:
         $ref: "#/components/schemas/Datetime"
+    offset:
+      description: Defines the offset of the first review that should be returned. Currently limited to 300.
+      in: query
+      name: offset
+      required: false
+      schema:
+        $ref: "#/components/schemas/Offset"
   schemas:
     Datetime:
       $ref: "../components/commons/fields.yaml#/components/schemas/Datetime"
+    Offset:
+      description: Offset the list of returned results by this amount.
+      type: integer
+      minimum: 0
+      maximum: 300
+      default: 0
+      example: 0
