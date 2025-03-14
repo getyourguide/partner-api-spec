@@ -3,10 +3,13 @@
 name: Openapi
 
 # Controls when the workflow will run
-on:
-  pull_request
+on: pull_request
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+concurrency:
+  group: ${{ github.workflow }}${{ github.ref_name != github.event.repository.default_branch && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.ref_name != github.event.repository.default_branch }}
 jobs:
   generate-openapi-client:
     runs-on: ubuntu-latest
