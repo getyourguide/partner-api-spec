@@ -31,8 +31,6 @@ components:
                   $ref: "#/components/schemas/Traveler"
                 payment:
                   oneOf:
-                    - $ref: "./payment.yaml#/components/schemas/Paypal"
-                    - $ref: "./payment.yaml#/components/schemas/EncryptedCreditCard"
                     - $ref: "./payment.yaml#/components/schemas/MasterBill"
 
     CartsConfirmResponseConfirmed:
