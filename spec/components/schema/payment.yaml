@@ -6,40 +6,6 @@ info:
 components:
   schemas:
     #Methods
-    Paypal:
-      deprecated: true
-      description: This payment method is deprecated. Please redirect the user to the GetYourGuide website to complete a purchase instead. You can find a tracking link, with your prefilled `partner_id` in the response of the `/tours` endpoint.
-      type: object
-      properties:
-        paypal:
-          type: object
-          properties:
-            return_url:
-              $ref: "#/components/schemas/ReturnUrl"
-            cancel_url:
-              $ref: "#/components/schemas/CancelUrl"
-    EncryptedCreditCard:
-      deprecated: true
-      description: This payment method is deprecated. Please redirect the user to the GetYourGuide website to complete a purchase instead. You can find a tracking link, with your prefilled `partner_id` in the response of the `/tours` endpoint.
-      type: object
-      properties:
-        encrypted_credit_card:
-          type: object
-          properties:
-            format:
-              type: string
-              example: adyen
-            return_url:
-              $ref: "#/components/schemas/ReturnUrl"
-            cancel_url:
-              $ref: "#/components/schemas/CancelUrl"
-            user_agent:
-              type: string
-              example: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-            data:
-              type: string
-              description: Encrypted credit card information which is returned from Adyens CSE javascript library. Please see the public github repo `partner-api-spec` wiki for more details.
-              example: "adyenjs_0_1_19$WeyFKtrch70Ce+uN+4S4"
     MasterBill:
       description: MasterBill payment method, requires MasterBill API access.
       type: object
