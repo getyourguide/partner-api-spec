@@ -18,14 +18,14 @@ jobs:
 
       # Checkout your code
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
 
       # Generate your openapi document (if you don't write it manually)
 
       # Use the action to generate a client package
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
       - name: Generate Typescript Node Client
-        uses: triaxtec/openapitools-generator-action@v1.0.0
+        uses: triaxtec/openapitools-generator-action@14848119a73e51bd7fe6c806b0da5af4338e0f6e # v1.0.0
         with:
           openapi-file: spec/api.yaml
           generator: typescript-node
