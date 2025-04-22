@@ -45,6 +45,24 @@ components:
           type: string
           description: Additional information for the customer.
           example: Tickets must be used by the same person on all days...you must present the actual Universal Orlando ticket to receive entry to the parks.
+        items_to_bring:
+          type: array
+          description: Recommended items the customer should bring.
+          items:
+            type: string
+          example: ["Comfortable shoes", "Sunscreen"]
+        not_allowed:
+          type: array
+          description: Things that are not allowed to bring to the activity.
+          items:
+            type: string
+          example: [ "Alcohol", "Pets" ]
+        not_suitable_for:
+          type: array
+          description: Certain demographics for whom this activity is not suitable.
+          items:
+            type: string
+          example: [ "Children under 3 years", "People with impeded movement." ]
         bestseller:
           type: boolean
           description: Flag if the tour is a bestseller.
