@@ -194,8 +194,8 @@ components:
       description: The longitude in ISO 6709 standard.
       type: number
       format: float
-      minimum: -90.0
-      maximum: 90.0
+      minimum: -180.0
+      maximum: 180.0
       example: -81.5545306
     Limit:
       description: Number of items to retrieve.
