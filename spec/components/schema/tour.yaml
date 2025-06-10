@@ -33,6 +33,10 @@ components:
           type: string
           description: Long description of the tour.
           example: At both Universal Studios Florida and Universal's Islands of Adventure ... The ticket must be used by the first use date printed on the ticket. The ticket will expire in full on the expiration date printed on ticket. Unused days shall be forfeited. These tickets are not valid for residents of the UK and Ireland
+        activity_type:
+          type: string
+          description: The main type of the activity.
+          example: entryTicket
         is_auto_translation:
           type: boolean
           description: Flag if the title, abstract, description, … are auto-translated.
