@@ -37,6 +37,10 @@ components:
           type: string
           description: The main type of the activity.
           example: entryTicket
+        partner_business_category:
+          description: The business category of the tour. Currently used for the category commission.
+          example: Shows and Events
+          type: string
         is_auto_translation:
           type: boolean
           description: Flag if the title, abstract, description, … are auto-translated.
@@ -166,6 +170,8 @@ components:
           nullable: true
           items:
             $ref: "../commons/objects.yaml#/components/schemas/OpeningHours"
+        cancellation_policy:
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicy"
         cancellation_policy_text:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
     TourCategoryMinimal:
