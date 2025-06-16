@@ -33,8 +33,38 @@ components:
         * `canceled` a formerly confirmed booking got cancelled. Refunds apply here, if it got canceled within the cxl policy.
         * `deleted_by_customer` same as deleted with the additional information that a customer deleted the booking from the cart.
         * `deleted_by_daemon` same as deleted with the additional information that it was automatically deleted from the cart after 60 minutes.
+    CancellationPolicy:
+      description: The activity cancellation policy
+      type: object
+      properties:
+        cancellable:
+          description: Indicates whether the booking is cancellable.
+          type: boolean
+          example: true
+        cancellation_fee_unit:
+          description: The type of cancellation fee.
+          type: string
+          enum:
+            - fixed
+            - percentage
+          example: standard
+        cancellation_fee_value:
+          description: The cancellation fee percentage if fee_type is percentage or the fixed amount in the requested currency. Null or 0 means no cancellation fee.
+          type: number
+          format: float
+          example: 10.00
+        cancellation_offset_minutes:
+          description: The time in minutes before the start of the activity when the booking can be cancelled. Null or 0 means that the booking can be cancelled at any time.
+          type: integer
+          format: int32
+          example: 2880
+        cancellation_policy_text:
+          description: A textual representation of the cancellation policy in the requested language.
+          type: string
+          example: You can cancel your booking up to 48 hours before the start of the activity for a full refund.
     CancellationPolicyText:
-      description: Cancellation policy
+      deprecated: true
+      description: Deprecated. Use the cancellation policy object instead.
       example: Your activity is non-refundable
       type: string
     CategoryId:
@@ -152,7 +182,7 @@ components:
     DurationUnit:
       type: string
       description: Unit of the duration field
-      enum: [day, hour, minute]
+      enum: [ day, hour, minute ]
       example: hour
     Email:
       description: Correspondence email.
@@ -168,13 +198,13 @@ components:
       description: Various flags about properties of the tour (multiple selection allowed).
       type: string
       enum:
-            - private
-            - wheelchair
-            - skip-line
-            - pick-up
-            - special
-            - free-sale-only
-            - mobile-voucher-only
+        - private
+        - wheelchair
+        - skip-line
+        - pick-up
+        - special
+        - free-sale-only
+        - mobile-voucher-only
     FreeSale:
       type: boolean
       description: Indicates whether if the tour option's booking engine is free-sale (i.e. whether a booking does not require confirmation by the supplier).
