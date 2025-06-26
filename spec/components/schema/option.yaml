@@ -23,6 +23,8 @@ components:
         pick_up:
           type: string
           description: Information about the hotel pickup possibilities.
+        pick_up_location:
+          $ref: "../commons/objects.yaml#/components/schemas/PickUpLocation"
         meeting_point:
           type: string
           description: Information about where to meet.
@@ -89,6 +91,7 @@ components:
                       booking_child_safety_seat,
                       booking_cruise_details,
                       booking_customer_accommodation,
+                      booking_pick_up_location,
                       booking_drop_off_address,
                       booking_flight_details,
                       booking_medical_conditions,

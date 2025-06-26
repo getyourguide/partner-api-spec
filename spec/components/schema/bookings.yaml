@@ -162,7 +162,7 @@ components:
             type: object
             properties:
               category_id:
-                $ref: ../commons/fields.yaml#/components/schemas/CategoryId
+                $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
               name:
                 type: string
                 example: Adults
@@ -384,6 +384,18 @@ components:
               type: string
               description: Booking accommodation / hotel value.
               example: Hilton Miami Downtown hotel
+        booking_pick_up_location:
+          type: object
+          required:
+            - full_address
+            - coordinates
+          properties:
+            full_address:
+              type: string
+              description: Address to be picked up.
+              example: 1601 Biscayne Blvd, Miami, FL 33132, United States
+            coordinates:
+              $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
         booking_flight_details:
           type: object
           required:
