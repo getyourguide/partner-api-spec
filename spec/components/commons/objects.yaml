@@ -21,6 +21,9 @@ components:
           $ref: "fields.yaml#/components/schemas/State"
     Coordinates:
       type: object
+      required:
+        - lat
+        - long
       properties:
         lat:
           $ref: "fields.yaml#/components/schemas/Latitude"
@@ -178,5 +181,153 @@ components:
           $ref: "fields.yaml#/components/schemas/Datetime"
         closing_time:
           $ref: "fields.yaml#/components/schemas/Datetime"
+    PickUpLocation:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          description: |
+            Indicates the source type for pickup. Possible values:
+            - from_areas
+            - from_locations
+        description:
+          description: Description of the pick up location translated to the language of the user.
+          example: "Pick up from your hotel in Manhattan"
+          type: string
+        areas:
+          type: array
+          description: "Provide this if type is 'from_areas'."
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/LogisticsArea"
+        locations:
+          type: array
+          description: "Provide this if type is 'from_locations'."
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/LogisticsLocation"
+        transportation_types:
+          type: array
+          items:
+            $ref: "../commons/objects.yaml#/components/schemas/TransportationType"
+    TransportationType:
+      type: object
+      required: [mode]
+      properties:
+        mode:
+          type: string
+          description: |
+            Possible values:
+            - bicycle
+            - mountain_bike
+            - electric_bicycle
+            - motorcycle
+            - scooter
+            - segway
+            - car
+            - limousine
+            - jeep_suv
+            - van
+            - quad_atv
+            - bus_coach
+            - electric_car
+            - vintage_car
+            - black_cab
+            - sailboat
+            - ferry
+            - gondola
+            - duck_boat
+            - jet_ski
+            - sightseeing_cruise
+            - water_taxi
+            - river_boat
+            - kayak
+            - raft
+            - catamaran
+            - speed_boat
+            - yacht
+            - canoe
+            - stand_up_paddle_board
+            - surfboard
+            - submarine
+            - other_water_transport
+            - train
+            - tram
+            - helicopter
+            - airplane
+            - balloon
+            - glider
+            - cable_car
+            - pedicab_rickshaw
+            - horse_carriage
+            - camel
+            - snowmobile
+            - sled
+            - other_animal
+            - public
+            - glass_bottom_boat
+            - lake_cruise
+            - banana_boat
+            - beer_boat
+            - air_boat
+            - dhow
+            - subway
+            - beer_bike
+            - trike
+            - tuk_tuk
+            - golf_cart
+            - motorized_tuk_tuk
+            - on_foot
+            - horse
+            - trolley
+    LogisticsArea:
+      type: object
+      required:
+        - name
+        - full_address
+        - bounding_box
+        - coordinates
+      properties:
+        name:
+          type: string
+          description: Name of the area. Shorter than full_address e.g. "Manhattan".
+        full_address:
+          type: string
+          description: Representing the area for the pick up location e.g. "Manhattan, New York, USA".
+        bounding_box:
+          $ref: "../commons/objects.yaml#/components/schemas/BoundingBox"
+        coordinates:
+          $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
+    LogisticsLocation:
+      type: object
+      required:
+        - name
+        - full_address
+        - bounding_box
+        - coordinates
+      properties:
+        name:
+          type: string
+          description: Name of the location. Shorter than full_address e.g. Louvre Museum.
+        full_address:
+          type: string
+          description: Representing the location for the pick up location e.g. Louvre Museum, Paris, France.
+        coordinates:
+          $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
+    BoundingBox:
+      type: object
+      properties:
+        sw_lat:
+          type: number
+          format: double
+        sw_long:
+          type: number
+          format: double
+        ne_lat:
+          type: number
+          format: double
+        ne_long:
+          type: number
+          format: double
 
 
