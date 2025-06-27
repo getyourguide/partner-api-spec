@@ -379,6 +379,7 @@ components:
           type: object
           required:
             - value
+          deprecated: true
           properties:
             value:
               type: string
