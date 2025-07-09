@@ -21,6 +21,6 @@ For sensitive security matters please contact [security@getyourguide.com](mailto
 
 ## Legal
 
-Copyright 2024 GetYourGuide GmbH.
+Copyright 2025 GetYourGuide GmbH.
 
 **partner-api-spec** is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.
