@@ -5,6 +5,13 @@ info:
   version: 1.0.0
 components:
   schemas:
+    GooglePlace:
+      type: object
+      properties:
+        google_place_id:
+          type: string
+          description: The Google Place ID of the location.
+          example: ChIJLU7jZClu5kcR4PcOOO6p3I0
     Location:
       type: object
       properties:
@@ -33,6 +40,8 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Country"
         coordinates:
           $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
+        google_place:
+          $ref: "#/components/schemas/GooglePlace"
         parent_id:
           description: The location id of the parent location, if there is any.
           type: integer
