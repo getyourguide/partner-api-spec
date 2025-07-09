@@ -64,6 +64,7 @@ components:
         - ru
         - ja
         - ar
+        - ca
       example: en
       type: string
     Country:
