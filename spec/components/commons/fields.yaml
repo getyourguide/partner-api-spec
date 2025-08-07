@@ -48,23 +48,27 @@ components:
     CntLanguage:
       description: ISO 639, Language of the text content.
       enum:
+        - ar
+        - ca
         - da
         - de
         - en
         - es
+        - et
+        - fi
         - fr
         - it
+        - ja
         - ko
+        - lt
+        - lv
         - nl
         - "no"
         - pl
         - pt
-        - fi
-        - sv
         - ru
-        - ja
-        - ar
-        - ca
+        - sv
+        - zh-hant
       example: en
       type: string
     Country:
