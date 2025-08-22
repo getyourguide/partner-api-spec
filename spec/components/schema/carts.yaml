@@ -20,10 +20,6 @@ components:
           properties:
             shopping_cart:
               type: object
-              required:
-                - billing
-                - traveler
-                - payment
               properties:
                 shopping_cart_id:
                   $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
@@ -36,6 +32,10 @@ components:
                 payment:
                   oneOf:
                     - $ref: "./payment.yaml#/components/schemas/MasterBill"
+                required:
+                - billing
+                - traveler
+                - payment
 
     CartsConfirmResponseConfirmed:
       type: object
@@ -131,7 +131,6 @@ components:
         - first_name
         - last_name
         - email
-        - salutation_code
         - phone_number
 
     # Data fields in carts object:
