@@ -62,7 +62,7 @@ paths:
                     type: object
                     properties:
                       shopping_cart:
-                        $ref: "../components/schema/carts.yaml#/components/schemas/CartsConfirmResponseConfirmed"
+                        $ref: "../components/schema/carts.yaml#/components/schemas/CartsResponseBase"
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
