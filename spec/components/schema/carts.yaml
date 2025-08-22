@@ -32,6 +32,10 @@ components:
                 payment:
                   oneOf:
                     - $ref: "./payment.yaml#/components/schemas/MasterBill"
+                required:
+                - billing
+                - traveler
+                - payment
 
     CartsConfirmResponseConfirmed:
       type: object
@@ -127,7 +131,6 @@ components:
         - first_name
         - last_name
         - email
-        - country_code
         - phone_number
 
     # Data fields in carts object:
