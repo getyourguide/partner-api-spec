@@ -32,10 +32,30 @@ components:
                 payment:
                   oneOf:
                     - $ref: "./payment.yaml#/components/schemas/MasterBill"
-                required:
-                - billing
-                - traveler
-                - payment
+              required:
+              - billing
+              - traveler
+              - payment
+
+    CartsResponseBase:
+      type: object
+      properties:
+        shopping_cart_id:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
+        shopping_cart_hash:
+          $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
+        billing:
+          $ref: "#/components/schemas/BillingBase"
+        traveler:
+          $ref: "#/components/schemas/TravelerBase"
+        status:
+          $ref: "#/components/schemas/Status"
+        bookings:
+          $ref: "../schema/bookings.yaml#/components/schemas/Booking"
+        payment_process:
+          $ref: "./payment.yaml#/components/schemas/PaymentProcess"
+        payment_info:
+          $ref: "./payment.yaml#/components/schemas/PaymentInfoInPayment"
 
     CartsConfirmResponseConfirmed:
       type: object
@@ -77,6 +97,17 @@ components:
 
     # Cart Objects
     Billing:
+      allOf:
+      - $ref: "#/components/schemas/BillingBase"
+      - type: object
+        required:
+        - first_name
+        - last_name
+        - email
+        - country_code
+        - phone_number
+
+    BillingBase:
       type: object
       properties:
         salutation_code:
@@ -107,14 +138,18 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Country"
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
-      required:
+
+    Traveler:
+      allOf:
+      - $ref: "#/components/schemas/TravelerBase"
+      - type: object
+        required:
         - first_name
         - last_name
         - email
-        - country_code
         - phone_number
 
-    Traveler:
+    TravelerBase:
       type: object
       properties:
         salutation_code:
@@ -127,11 +162,6 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Email"
         phone_number:
           $ref: "../commons/fields.yaml#/components/schemas/PhoneNumber"
-      required:
-        - first_name
-        - last_name
-        - email
-        - phone_number
 
     # Data fields in carts object:
     Status:
