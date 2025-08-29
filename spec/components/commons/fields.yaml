@@ -68,6 +68,10 @@ components:
         - pt
         - ru
         - sv
+        - id
+        - ms
+        - th
+        - zh
         - zh-hant
       example: en
       type: string
