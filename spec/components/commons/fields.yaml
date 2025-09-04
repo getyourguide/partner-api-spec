@@ -223,6 +223,21 @@ components:
       description: The ID of the tour option.
       example: 69232
       type: integer
+    PaymentCurrency:
+      description: ISO 4217, The currency that can be used for payment. It is used in the meta data object in the POST @ /bookings and /carts call.
+      enum:
+        - AED
+        - AUD
+        - CAD
+        - CHF
+        - EUR
+        - GBP
+        - NZD
+        - PLN
+        - SEK
+        - USD
+      example: EUR
+      type: string
     PhoneNumber:
       description: International phone number, in the ITU E.123 standard.
       example: "+49123456789"
