@@ -14,7 +14,7 @@ components:
             cnt_language:
               $ref: "../commons/fields.yaml#/components/schemas/CntLanguage"
             currency:
-              $ref: "../commons/fields.yaml#/components/schemas/Currency"
+              $ref: "../commons/fields.yaml#/components/schemas/PaymentCurrency"
         data:
           type: object
           properties:
