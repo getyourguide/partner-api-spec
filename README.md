@@ -5,7 +5,6 @@ It has a RESTful interface and uses the JSON media format. Access is secured via
 
 * [API Reference](https://code.getyourguide.com/partner-api-spec/)
 * [Getting Started - Wiki](https://github.com/getyourguide/partner-api-spec/wiki/Getting-started)
-* [Additional Resources](https://github.com/getyourguide/partner-api-spec/tree/main/resources)
 
 ## [Generating clients](https://openapi-generator.tech/docs/installation/)
 You can use the openapi generator cli to automatically generate different language clients.
