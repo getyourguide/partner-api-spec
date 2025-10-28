@@ -56,13 +56,13 @@ components:
           description: Things that are not allowed to bring to the activity.
           items:
             type: string
-          example: [ "Alcohol", "Pets" ]
+          example: ["Alcohol", "Pets"]
         not_suitable_for:
           type: array
           description: Certain demographics for whom this activity is not suitable.
           items:
             type: string
-          example: [ "Children under 3 years", "People with impeded movement." ]
+          example: ["Children under 3 years", "People with impeded movement."]
         bestseller:
           type: boolean
           description: Flag if the tour is a bestseller.
@@ -123,7 +123,7 @@ components:
           format: uri
           description: URL of the tour on the GetYourGuide website.
           example: https://www-getyourguide-com.partner.gygtest.com/orlando-l191/walt-disney-world-orlando-with-ticket-options-t50872/?partner_id=173E8&psrc=partner_api¤cy=EUR
-        translations:  
+        translations:
           type: array
           nullable: true
           items:
@@ -157,11 +157,13 @@ components:
           items:
             $ref: "../commons/objects.yaml#/components/schemas/Durations"
         opening_hours:
-          description: A list of opening hours for a given attraction or venue in local time. 
+          description: A list of opening hours for a given attraction or venue in local time.
           type: array
           nullable: true
           items:
             $ref: "../commons/objects.yaml#/components/schemas/OpeningHours"
+        cancellation_policy:
+          $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicy"
         cancellation_policy_text:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
     TourCategoryMinimal:
@@ -235,7 +237,7 @@ components:
           description: List of addons available to book within a tour (not necessarily present in all the tour-options within a tour).
           type: array
           items:
-            $ref: '../commons/objects.yaml#/components/schemas/AvailableAddon'
+            $ref: "../commons/objects.yaml#/components/schemas/AvailableAddon"
         available_dates:
           description: List of available dates to book for this tour.
           type: array
@@ -245,11 +247,11 @@ components:
           description: The timestamp of the last update to the available entity (in UTC).
           type: string
           format: date-time
-          example: '2023-01-23T04:56:07'
+          example: "2023-01-23T04:56:07"
   responses:
     AvailabilityResponse:
       description: Successful response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Availability'
+            $ref: "#/components/schemas/Availability"
