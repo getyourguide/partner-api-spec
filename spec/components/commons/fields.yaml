@@ -5,6 +5,11 @@ info:
 paths: {}
 components:
   schemas:
+    BookingExpirationTime:
+      description: The expiration time of the booking in UTC. After this time the temporary booking will be automatically deleted, if the purchase has not yet been completed.
+      example: "2023-09-01T12:00:00Z"
+      format: date-time
+      type: string
     BookingHash:
       description: The hash of the booking. This identifies the booking.
       example: WTLDAJ2S335O539FV3YCGZ0JMOCSTB5M
