@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Bookings schema
   version: 1.0.0
-paths: { }
+paths: {}
 
 components:
   schemas:
@@ -74,6 +74,8 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/BookingStatus"
         return_code:
           $ref: "../commons/fields.yaml#/components/schemas/ReturnCode"
+        reservation_expires_at:
+          $ref: "../commons/fields.yaml#/components/schemas/BookingExpirationTime"
 
     BookingsGetByHashResponse:
       type: object
@@ -179,7 +181,7 @@ components:
       type: object
       properties:
         booking_questions:
-          $ref: '#/components/schemas/BookingQuestions'
+          $ref: "#/components/schemas/BookingQuestions"
         participant_questions:
           type: array
           items:
@@ -191,7 +193,7 @@ components:
               category_id:
                 $ref: "../commons/fields.yaml#/components/schemas/CategoryId"
               participant_answers:
-                $ref: '#/components/schemas/ParticipantQuestions'
+                $ref: "#/components/schemas/ParticipantQuestions"
         conduction_language:
           type: object
           required:
@@ -479,11 +481,11 @@ components:
       type: object
       properties:
         booking_questions:
-          $ref: '#/components/schemas/BookingQuestions'
+          $ref: "#/components/schemas/BookingQuestions"
         participant_questions:
           type: array
           items:
-            $ref: '#/components/schemas/ParticipantQuestions'
+            $ref: "#/components/schemas/ParticipantQuestions"
         conduction_language:
           type: object
           required:
@@ -513,7 +515,7 @@ components:
           name:
             type: string
             description: Name of the property
-            enum: [ language, hotel, comment, supplier_requested_question ]
+            enum: [language, hotel, comment, supplier_requested_question]
             example: language
           value_1:
             type: string
