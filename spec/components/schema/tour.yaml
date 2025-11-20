@@ -12,9 +12,10 @@ components:
         tour_id:
           $ref: "../commons/fields.yaml#/components/schemas/TourId"
         tour_code:
+          deprecated: true
           type: string
-          description: Tour reference code.
-          example: 2-Day
+          description: Deprecated field, does not contain any meaningful information.
+          example: deprecated
         cond_language:
           type: array
           description: Available conduction languages.
