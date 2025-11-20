@@ -15,7 +15,7 @@ components:
           deprecated: true
           type: string
           description: Tour reference code.
-          example: 2-Day
+          example: deprecated
         cond_language:
           type: array
           description: Available conduction languages.
