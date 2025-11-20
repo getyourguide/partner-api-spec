@@ -14,7 +14,7 @@ components:
         tour_code:
           deprecated: true
           type: string
-          description: Tour reference code.
+          description: Deprecated
           example: deprecated
         cond_language:
           type: array
