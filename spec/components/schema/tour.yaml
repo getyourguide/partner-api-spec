@@ -12,6 +12,7 @@ components:
         tour_id:
           $ref: "../commons/fields.yaml#/components/schemas/TourId"
         tour_code:
+          deprecated: true
           type: string
           description: Tour reference code.
           example: 2-Day
