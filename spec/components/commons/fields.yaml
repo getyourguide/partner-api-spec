@@ -85,6 +85,7 @@ components:
       enum:
         - ar
         - ca
+        - cs
         - da
         - de
         - en
@@ -93,19 +94,21 @@ components:
         - fi
         - fr
         - he
+        - hu
+        - id
         - it
         - ja
         - ko
         - lt
         - lv
+        - ms
         - nl
         - "no"
         - pl
         - pt
+        - ro
         - ru
         - sv
-        - id
-        - ms
         - th
         - zh
         - zh-hant
