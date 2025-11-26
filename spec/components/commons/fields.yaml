@@ -32,12 +32,12 @@ components:
       type: string
       description: The status of the booking. >
         * `temp` the booking is temporary (added to a cart).
-        * `unconfirmed` the booking is awaiting final confirmation by the supplier. This is only the case for non free-sale products.
+        * `unconfirmed` the booking is awaiting final confirmation by the supplier. For `free-sale` bookings this happens within a couple of minutes, for non-`free-sale` bookings this can take up to 48 hours.
         * `confirmed` the booking is confirmed and active.
         * `deleted` the booking got deleted from a cart before checkout. Only temporary (non confirmed) bookings can be deleted.
-        * `canceled` a formerly confirmed booking got cancelled. Refunds apply here, if it got canceled within the cxl policy.
-        * `deleted_by_customer` same as deleted with the additional information that a customer deleted the booking from the cart.
-        * `deleted_by_daemon` same as deleted with the additional information that it was automatically deleted from the cart after 60 minutes.
+        * `canceled` a formerly confirmed booking got cancelled. Refunds apply here, if it got canceled within the `CancellationPolicy`.
+        * `deleted_by_customer` same as `deleted`, with the additional information that a customer deleted the booking from the cart.
+        * `deleted_by_daemon` same as `deleted`, with the additional information that it was automatically deleted from the cart after the `BookingExpirationTime` was reached.
     CancellationPolicy:
       description: The activity cancellation policy
       type: object
