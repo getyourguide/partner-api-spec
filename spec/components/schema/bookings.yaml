@@ -21,7 +21,7 @@ components:
           properties:
             booking:
               type: object
-              description: The booking object, you may specify an already existing shopping cart the booking shall be added to. If no `shopping_cart_id` is specified a new cart is automatically created for the booking.
+              description: The booking object, you may specify an already existing shopping cart the booking shall be added to. If no `shopping_cart_hash` is specified a new cart is automatically created for the booking.
               properties:
                 shopping_cart_hash:
                   $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
