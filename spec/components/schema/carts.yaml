@@ -21,8 +21,6 @@ components:
             shopping_cart:
               type: object
               properties:
-                shopping_cart_id:
-                  $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartId"
                 shopping_cart_hash:
                   $ref: "../commons/fields.yaml#/components/schemas/ShoppingCartHash"
                 billing:
