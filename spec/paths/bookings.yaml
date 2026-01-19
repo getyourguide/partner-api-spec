@@ -41,6 +41,10 @@ paths:
     get:
       operationId: BookingsGetAll
       summary: Get all bookings.
+      description: |
+        **Deprecated:** This endpoint is deprecated and will be removed.
+        Please retrieve bookings individually by their hash using `GET /1/bookings/{booking_hash}` instead.
+      deprecated: true
       tags:
         - Bookings
       parameters:
