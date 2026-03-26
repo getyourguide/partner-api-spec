@@ -88,12 +88,14 @@ components:
         - cs
         - da
         - de
+        - el
         - en
         - es
         - et
         - fi
         - fr
         - he
+        - hr
         - hu
         - id
         - it
@@ -108,8 +110,10 @@ components:
         - pt
         - ro
         - ru
+        - sk
         - sv
         - th
+        - tr
         - zh
         - zh-hant
       example: en
