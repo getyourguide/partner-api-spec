@@ -206,6 +206,21 @@ components:
       description: Unit of the duration field
       enum: [day, hour, minute]
       example: hour
+    Validity:
+      type: number
+      format: float
+      description: Validity period of the booking (to be used in combination with validity unit). Represents how long the ticket/voucher remains valid after booking or activation.
+      example: 30.0
+    ValidityUnit:
+      type: string
+      description: Unit of the validity field
+      enum: [day, hour, minute, month, year]
+      example: day
+    ValidityFrom:
+      type: string
+      description: When the validity period starts counting from.
+      enum: [time_booked, time_selected, time_activated]
+      example: time_booked
     Email:
       description: Correspondence email.
       example: address@example.com
