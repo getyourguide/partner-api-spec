@@ -35,6 +35,12 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Duration"
         duration_unit:
           $ref: "../commons/fields.yaml#/components/schemas/DurationUnit"
+        validity:
+          $ref: "../commons/fields.yaml#/components/schemas/Validity"
+        validity_unit:
+          $ref: "../commons/fields.yaml#/components/schemas/ValidityUnit"
+        validity_from:
+          $ref: "../commons/fields.yaml#/components/schemas/ValidityFrom"
         cond_language:
           type: object
           properties:
