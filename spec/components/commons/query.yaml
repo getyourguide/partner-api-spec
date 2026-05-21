@@ -261,7 +261,7 @@ components:
           $ref: "#/components/schemas/Rating"
         type: array
     sortdirection:
-      description: Defines the sort order.
+      description: Defines the sort order. Ignored when `sortfield=popularity`.
       in: query
       name: sortdirection
       required: false
@@ -271,7 +271,12 @@ components:
           - ASC
         type: string
     sortfield:
-      description: Defines the sort field.
+      description: |
+        Defines the sort field. Behavior per value:
+          - `popularity`: returns recommended results (an internal ranking, not raw popularity). `sortdirection` is ignored.
+          - `rating`: ranks using internal signals in addition to `overall_rating`; results are not strictly ordered by the `overall_rating` response field alone.
+          - `price`: sorts by price.
+          - `duration`: sorts by duration.
       in: query
       name: sortfield
       required: false
