@@ -140,6 +140,7 @@ components:
             - instructor
             - driver
             - live_tour_guide
+            - self_guided
           description: >
             Type of guide that is conducting the tour, available are
               * `none`: no guide available for this tour.
@@ -147,6 +148,7 @@ components:
               * `instructor`: an instructor e.g. for diving classes.
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
+              * `self_guided`: tour conducted without a guide; the customer explores on their own.
         mobile_voucher:
           type: boolean
           description: If the tour accepts mobile voucher.
