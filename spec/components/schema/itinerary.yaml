@@ -1,0 +1,124 @@
+openapi: 3.0.2
+info:
+  title: Itinerary Schema
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Itinerary:
+      description: A single day (or the only day) of a tour's itinerary. Single-day tours have one entry; multi-day tours have N entries ordered by day_number.
+      type: object
+      properties:
+        day_number:
+          type: integer
+          nullable: true
+          description: 1-indexed day number. Null for single-day tours.
+          example: 1
+        title:
+          type: string
+          nullable: true
+          description: Display title for this day, e.g. "Day 1: Arrival in Cusco".
+          example: "Day 1: Arrival in Cusco"
+        items:
+          type: array
+          description: Ordered list of stops/activities for this day.
+          items:
+            $ref: "#/components/schemas/ItineraryItem"
+    ItineraryItem:
+      description: A single stop or segment within an itinerary day.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - meeting_point
+            - pick_up
+            - drop_off
+            - transfer
+            - visit
+            - food_stop
+            - photo_stop
+            - break
+            - transfer_stop
+            - activity
+          description: The kind of stop.
+          example: visit
+        title:
+          type: string
+          nullable: true
+          description: Display title for this stop.
+          example: "Colosseum"
+        description:
+          type: string
+          nullable: true
+          description: Detailed description of what happens at this stop.
+          example: "Explore the ancient amphitheatre with skip-the-line access."
+        start_time:
+          type: string
+          nullable: true
+          description: Structured start time in HH:MM:SS (24h) format. Null if not scheduled.
+          example: "09:30:00"
+        duration:
+          $ref: "#/components/schemas/ItineraryItemDuration"
+        location:
+          $ref: "#/components/schemas/ItineraryItemLocation"
+        optional:
+          type: boolean
+          nullable: true
+          description: Whether the traveller can skip this stop.
+          example: false
+        extra_cost:
+          type: boolean
+          nullable: true
+          description: Whether this stop involves cost not included in the tour price.
+          example: false
+        entry_included:
+          type: boolean
+          nullable: true
+          description: Whether admission/entry fee is included in the tour price.
+          example: true
+        meal_type:
+          type: string
+          nullable: true
+          enum:
+            - breakfast
+            - lunch
+            - dinner
+            - snack
+          description: Type of meal (only present for food_stop items).
+          example: lunch
+        transportation_type:
+          type: string
+          nullable: true
+          description: Mode of transport (only present for transfer/transfer_stop items).
+          example: bus
+    ItineraryItemLocation:
+      description: Location of an itinerary stop.
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          description: Display name of the location.
+          example: "Colosseum"
+        coordinates:
+          $ref: "../commons/objects.yaml#/components/schemas/Coordinates"
+    ItineraryItemDuration:
+      description: How long a stop lasts.
+      type: object
+      properties:
+        value:
+          type: number
+          format: float
+          nullable: true
+          description: Numeric duration value.
+          example: 1.5
+        unit:
+          type: string
+          nullable: true
+          enum:
+            - day
+            - hour
+            - minute
+          description: Time unit for the duration value.
+          example: hour

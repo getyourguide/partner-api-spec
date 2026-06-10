@@ -169,6 +169,12 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicy"
         cancellation_policy_text:
           $ref: "../commons/fields.yaml#/components/schemas/CancellationPolicyText"
+        itineraries:
+          type: array
+          nullable: true
+          description: Structured itinerary describing the ordered stops/days of the tour. May be null or empty for tours without structured itinerary data.
+          items:
+            $ref: "./itinerary.yaml#/components/schemas/Itinerary"
     TourCategoryMinimal:
       description: A minimal representation of a tour category. More information about each category can be retrieved from the `/categories` endpoint.
       type: object
