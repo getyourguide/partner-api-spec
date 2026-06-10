@@ -17,7 +17,7 @@ components:
         title:
           type: string
           nullable: true
-          description: Display title for this day, e.g. "Day 1: Arrival in Cusco".
+          description: 'Display title for this day, e.g. "Day 1: Arrival in Cusco".'
           example: "Day 1: Arrival in Cusco"
         items:
           type: array
