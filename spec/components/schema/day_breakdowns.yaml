@@ -54,6 +54,14 @@ components:
         vacancies:
           type: integer
           example: 10
+        min_participants:
+          type: integer
+          description: Minimum number of participants required to book this timeslot.
+          example: 2
+        max_participants:
+          type: integer
+          description: Maximum number of participants that can be booked on this timeslot.
+          example: 50
         unavailability_reason:
           $ref: '#/components/schemas/UnavailabilityReason'
         price_breakdown:
