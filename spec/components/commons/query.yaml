@@ -226,7 +226,7 @@ components:
           $ref: "#/components/schemas/PriceField"
         type: array
     q:
-      description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'"
+      description: "Mutually exclusive with 'coordinates' parameter! Query string, can be location name or IATA code. For IATA the query parameter looks like this: 'q=iata:jfk'. Must contain at least one letter or number and must not exceed 150 characters; special characters are ignored. Queries not meeting these rules are rejected with a 400 response."
       examples:
         search_by_IATA:
           summary: Search by IATA airport codes.

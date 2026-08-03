@@ -45,7 +45,7 @@ paths:
                         items:
                           $ref: "../components/schema/tour.yaml#/components/schemas/Tour"
         400:
-          description: Missing Parameters
+          description: Missing or invalid parameters, e.g. a 'q' value that contains no letters or numbers or exceeds 150 characters.
         500:
           description: Server error
 
