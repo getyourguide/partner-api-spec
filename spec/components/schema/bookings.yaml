@@ -377,16 +377,6 @@ components:
       description: The questions at booking level that need to be answered for this booking.
       type: object
       properties:
-        booking_customer_accommodation:
-          type: object
-          required:
-            - value
-          deprecated: true
-          properties:
-            value:
-              type: string
-              description: Booking accommodation / hotel value.
-              example: Hilton Miami Downtown hotel
         booking_pick_up_location:
           type: object
           required:

@@ -96,7 +96,6 @@ components:
                     enum: [
                       booking_child_safety_seat,
                       booking_cruise_details,
-                      booking_customer_accommodation,
                       booking_pick_up_location,
                       booking_drop_off_address,
                       booking_flight_details,
