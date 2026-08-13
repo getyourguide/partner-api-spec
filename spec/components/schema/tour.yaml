@@ -110,6 +110,26 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/TourCategoryMinimal"
+        activity_type:
+          type: string
+          description: >
+            The main type of the activity. This is a descriptive classification,
+            not a fixed/closed set — new values may be introduced over time, so
+            integrations should tolerate unrecognised values. Common values include:
+              * `entryTicket`: entry ticket / admission.
+              * `hostedTicket`: ticket including a host or greeter.
+              * `ticket`: generic ticket.
+              * `guidedTour`: guided tour.
+              * `privateTour`: private tour.
+              * `multiDayTrip`: multi-day trip.
+              * `dayTrip`: day trip.
+              * `cityCard`: city card or pass.
+              * `waterActivity`: water-based activity.
+              * `workshopOrClass`: workshop or class.
+              * `hopOnHopOff`: hop-on hop-off.
+              * `bundle`: bundled product.
+              * `transfer`: transfer.
+          example: entryTicket
         health_advisory:
           $ref: "#/components/schemas/HealthAdvisory"
         health_requirement:
