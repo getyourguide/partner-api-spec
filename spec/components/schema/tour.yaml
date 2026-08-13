@@ -130,6 +130,30 @@ components:
               * `bundle`: bundled product.
               * `transfer`: transfer.
           example: entryTicket
+        partner_business_category:
+          type: string
+          description: >
+            High-level business category of the tour. Unlike `categories`, which
+            may list several marketing collections, exactly one business category
+            is returned per tour. This is not a fixed/closed set — new categories
+            may be introduced over time, so integrations should tolerate
+            unrecognised values. Current values:
+              * `Adventure Tours`
+              * `Attraction Tours`
+              * `Boat Tours`
+              * `Bus Tours`
+              * `City Cards`
+              * `Day Trips`
+              * `Entrance Tickets`
+              * `Multi-Day Trips`
+              * `Other`: covers both tours classified as such and tours not yet classified.
+              * `Shows and Events`
+              * `Transfers`
+              * `Walking Tours`
+              * `Workshops`
+
+            The field may be absent for some tours.
+          example: Shows and Events
         health_advisory:
           $ref: "#/components/schemas/HealthAdvisory"
         health_requirement:
