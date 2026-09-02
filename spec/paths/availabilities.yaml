@@ -1,0 +1,118 @@
+openapi: 3.0.2
+info:
+  title: Availabilities
+  version: 1.0.0
+  description: Poll sold-out / back-in-stock availability changes with a cursor.
+paths:
+  /{version}/availabilities/status/changes:
+    get:
+      operationId: AvailabilityStatusChanges
+      tags:
+        - Availabilities
+      description: >
+        Returns availability slots whose bookability changed (sold out or came back in stock)
+        since the given cursor, ordered by an opaque feed sequence. Poll until an empty page is
+        returned, then persist `next_cursor` and resume from it on the next poll. The feed only
+        contains slots that transitioned since the daily availability snapshot; absence of a slot
+        means it is unchanged since the snapshot. Slots whose start time has passed are removed
+        from the feed and never returned.
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "#/components/parameters/availabilityChangesCursor"
+        - $ref: "#/components/parameters/availabilityChangesLimit"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/MetaData"
+                  data:
+                    type: object
+                    properties:
+                      changes:
+                        type: array
+                        description: Availability status changes ordered by feed sequence.
+                        items:
+                          $ref: "#/components/schemas/AvailabilityStatusChange"
+                      next_cursor:
+                        type: string
+                        description: >
+                          Opaque cursor pointing at the last returned change. Pass it as `cursor`
+                          on the next request. When `changes` is empty it equals the cursor the
+                          request was made with.
+                        example: djE6MTA0Mg
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+components:
+  parameters:
+    availabilityChangesCursor:
+      description: >
+        Opaque cursor returned as `next_cursor` by a previous call. Omit it to start from the
+        beginning of the feed.
+      in: query
+      name: cursor
+      required: false
+      schema:
+        type: string
+        example: djE6MTA0Mg
+    availabilityChangesLimit:
+      description: Maximum number of changes to return per page.
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+        example: 500
+  schemas:
+    AvailabilityStatusChange:
+      type: object
+      required:
+        - tour_id
+        - option_id
+        - date_time
+        - state
+        - vacancies
+        - update_timestamp
+      properties:
+        tour_id:
+          description: The ID of the tour the slot belongs to.
+          type: integer
+          format: int64
+          example: 50872
+        option_id:
+          description: The ID of the tour option the slot belongs to.
+          type: integer
+          format: int64
+          example: 69232
+        date_time:
+          description: The start of the availability slot, in UTC.
+          type: string
+          format: datetime
+          example: "2026-09-15T14:30:00"
+        state:
+          description: Bookability of the slot after the change, derived from `vacancies`.
+          type: string
+          enum:
+            - sold_out
+            - available
+          example: sold_out
+        vacancies:
+          description: Remaining vacancies of the slot. `0` means sold out.
+          type: integer
+          minimum: 0
+          example: 0
+        update_timestamp:
+          description: >
+            When the slot was last updated at the source, in UTC with microsecond precision.
+            Apply changes last-write-wins by comparing this against your stored state.
+          type: string
+          example: "2026-09-01T12:34:56.123456Z"
