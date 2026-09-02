@@ -11,11 +11,11 @@ paths:
         - Availabilities
       description: >
         Returns availability slots whose bookability changed (sold out or came back in stock)
-        since the given cursor, ordered by an opaque feed sequence. Poll until an empty page is
-        returned, then persist `next_cursor` and resume from it on the next poll. The feed only
-        contains slots that transitioned since the daily availability snapshot; absence of a slot
-        means it is unchanged since the snapshot. Slots whose start time has passed are removed
-        from the feed and never returned.
+        since the given cursor, ordered by cursor ascending. Poll until an empty page is returned,
+        then resume from `last_cursor` on the next poll. The feed only contains slots that
+        transitioned since the daily availability snapshot; absence of a slot means it is
+        unchanged since the snapshot. Slots whose start time has passed are removed from the feed
+        and never returned.
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "#/components/parameters/availabilityChangesCursor"
@@ -33,18 +33,27 @@ paths:
                   data:
                     type: object
                     properties:
-                      changes:
+                      deltas:
                         type: array
-                        description: Availability status changes ordered by feed sequence.
+                        description: Availability deltas ordered by cursor ascending.
                         items:
-                          $ref: "#/components/schemas/AvailabilityStatusChange"
-                      next_cursor:
-                        type: string
+                          $ref: "#/components/schemas/AvailabilityDelta"
+                      first_cursor:
+                        type: integer
+                        format: int64
+                        description: Cursor of the first delta in this page. Absent when `deltas` is empty.
+                        example: 1001
+                      last_cursor:
+                        type: integer
+                        format: int64
                         description: >
-                          Opaque cursor pointing at the last returned change. Pass it as `cursor`
-                          on the next request. When `changes` is empty it equals the cursor the
-                          request was made with.
-                        example: djE6MTA0Mg
+                          Cursor of the last delta in this page. Pass it as `cursor` on the next
+                          request. Absent when `deltas` is empty.
+                        example: 1042
+                      page_size:
+                        type: integer
+                        description: Number of deltas in this response.
+                        example: 2
         4XX:
           $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
         default:
@@ -53,61 +62,55 @@ components:
   parameters:
     availabilityChangesCursor:
       description: >
-        Opaque cursor returned as `next_cursor` by a previous call. Omit it to start from the
-        beginning of the feed.
+        Cursor returned as `last_cursor` by a previous call; only deltas after it are returned.
+        Omit it to start from the beginning of the feed.
       in: query
       name: cursor
       required: false
       schema:
-        type: string
-        example: djE6MTA0Mg
+        type: integer
+        format: int64
+        minimum: 0
+        example: 1042
     availabilityChangesLimit:
-      description: Maximum number of changes to return per page.
+      description: Maximum number of deltas to return per page.
       in: query
       name: limit
       required: false
       schema:
         type: integer
         minimum: 1
-        maximum: 500
-        default: 100
-        example: 500
+        maximum: 5000
+        default: 1000
+        example: 1000
   schemas:
-    AvailabilityStatusChange:
+    AvailabilityDelta:
       type: object
       required:
+        - cursor
         - tour_id
         - option_id
         - date_time
-        - state
         - update_timestamp
       properties:
+        cursor:
+          description: Position of this delta in the feed.
+          type: integer
+          format: int64
+          example: 1042
         tour_id:
-          description: The ID of the tour the slot belongs to.
-          type: integer
-          format: int64
-          example: 50872
+          $ref: "../components/commons/fields.yaml#/components/schemas/TourId"
         option_id:
-          description: The ID of the tour option the slot belongs to.
-          type: integer
-          format: int64
-          example: 69232
+          $ref: "../components/commons/fields.yaml#/components/schemas/OptionId"
         date_time:
           description: The start of the availability slot, in UTC.
           type: string
           format: datetime
           example: "2026-09-15T14:30:00"
-        state:
-          description: Bookability of the slot after the change, derived from `vacancies`.
-          type: string
-          enum:
-            - sold_out
-            - available
-          example: sold_out
         vacancies:
           description: >
             Remaining vacancies of the slot. `0` means sold out. Absent when the slot is in stock
-            but the exact count is unknown — rely on `state`.
+            but the exact count is unknown.
           type: integer
           nullable: true
           minimum: 0
