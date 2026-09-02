@@ -44,3 +44,32 @@ components:
           $ref: "../commons/fields.yaml#/components/schemas/Limit"
         offset:
           $ref: "../commons/fields.yaml#/components/schemas/Offset"
+    CursorPageMetadata:
+      type: object
+      description: Pagination metadata for cursor-based feed endpoints.
+      required:
+        - start_cursor
+        - end_cursor
+        - page_size
+        - has_next_page
+      properties:
+        start_cursor:
+          description: >
+            Cursor of the first element in this page, or the request cursor when the page is
+            empty.
+          type: string
+          example: djE6MTAwMQ
+        end_cursor:
+          description: >
+            Cursor of the last element in this page, or the request cursor when the page is empty.
+            Pass it as `cursor` on the next request.
+          type: string
+          example: djE6MTA0Mg
+        page_size:
+          description: Number of elements in this response.
+          type: integer
+          example: 2
+        has_next_page:
+          description: Whether more elements are available after `end_cursor`.
+          type: boolean
+          example: true

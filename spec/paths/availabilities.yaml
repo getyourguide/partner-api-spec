@@ -29,7 +29,7 @@ paths:
                 type: object
                 properties:
                   _metadata:
-                    $ref: "#/components/schemas/CursorPageMetadata"
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/CursorPageMetadata"
                   data:
                     type: object
                     properties:
@@ -39,7 +39,7 @@ paths:
                         items:
                           $ref: "#/components/schemas/AvailabilityDelta"
         4XX:
-          $ref: "../components/schema/errors.yaml#/components/responses/ErrorResponse"
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
         default:
           $ref: "../components/schema/errors.yaml#/components/responses/Default"
 components:
@@ -66,34 +66,6 @@ components:
         default: 1000
         example: 1000
   schemas:
-    CursorPageMetadata:
-      type: object
-      description: Pagination metadata for cursor-based feed endpoints.
-      required:
-        - start_cursor
-        - end_cursor
-        - page_size
-        - has_next_page
-      properties:
-        start_cursor:
-          description: >
-            Cursor of the first delta in this page, or the request cursor when the page is empty.
-          type: string
-          example: djE6MTAwMQ
-        end_cursor:
-          description: >
-            Cursor of the last delta in this page, or the request cursor when the page is empty.
-            Pass it as `cursor` on the next request.
-          type: string
-          example: djE6MTA0Mg
-        page_size:
-          description: Number of deltas in this response.
-          type: integer
-          example: 2
-        has_next_page:
-          description: Whether more deltas are available after `end_cursor`.
-          type: boolean
-          example: true
     AvailabilityDelta:
       type: object
       required:
