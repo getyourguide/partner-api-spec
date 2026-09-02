@@ -80,7 +80,6 @@ components:
         - option_id
         - date_time
         - state
-        - vacancies
         - update_timestamp
       properties:
         tour_id:
@@ -106,8 +105,11 @@ components:
             - available
           example: sold_out
         vacancies:
-          description: Remaining vacancies of the slot. `0` means sold out.
+          description: >
+            Remaining vacancies of the slot. `0` means sold out. Absent when the slot is in stock
+            but the exact count is unknown — rely on `state`.
           type: integer
+          nullable: true
           minimum: 0
           example: 0
         update_timestamp:
