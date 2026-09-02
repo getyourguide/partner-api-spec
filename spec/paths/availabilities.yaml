@@ -11,7 +11,7 @@ paths:
         - Availabilities
       description: >
         Returns availability slots whose bookability changed (sold out or came back in stock)
-        since the given cursor, ordered by feed position ascending. Page with `last_cursor` while
+        since the given cursor, ordered by feed position ascending. Page with `end_cursor` while
         `has_next_page` is true, and resume from your last stored cursor on the next poll. The
         feed only contains slots that transitioned since the daily availability snapshot; absence
         of a slot means it is unchanged since the snapshot. Slots whose start time has passed are
@@ -70,17 +70,20 @@ components:
       type: object
       description: Pagination metadata for cursor-based feed endpoints.
       required:
+        - start_cursor
+        - end_cursor
         - page_size
         - has_next_page
       properties:
-        first_cursor:
-          description: Cursor of the first delta in this page. Absent when the page is empty.
+        start_cursor:
+          description: >
+            Cursor of the first delta in this page, or the request cursor when the page is empty.
           type: string
           example: djE6MTAwMQ
-        last_cursor:
+        end_cursor:
           description: >
-            Cursor of the last delta in this page. Pass it as `cursor` on the next request.
-            Absent when the page is empty.
+            Cursor of the last delta in this page, or the request cursor when the page is empty.
+            Pass it as `cursor` on the next request.
           type: string
           example: djE6MTA0Mg
         page_size:
@@ -88,7 +91,7 @@ components:
           type: integer
           example: 2
         has_next_page:
-          description: Whether more deltas are available after `last_cursor`.
+          description: Whether more deltas are available after `end_cursor`.
           type: boolean
           example: true
     AvailabilityDelta:
@@ -98,6 +101,7 @@ components:
         - tour_id
         - option_id
         - date_time
+        - vacancies
         - update_timestamp
       properties:
         cursor:
@@ -115,7 +119,7 @@ components:
           example: "2026-09-15T14:30:00"
         vacancies:
           description: >
-            Remaining vacancies of the slot. `0` means sold out. Absent when the slot is in stock
+            Remaining vacancies of the slot. `0` means sold out. `null` when the slot is in stock
             but the exact count is unknown.
           type: integer
           nullable: true
