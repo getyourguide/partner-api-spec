@@ -68,6 +68,12 @@ components:
           type: boolean
           description: Flag if the tour is a bestseller.
           example: false
+        likely_to_sell_out:
+          type: boolean
+          description: >-
+            Flag if the tour is likely to sell out soon, based on GetYourGuide's demand
+            prediction. Best effort: false also covers tours without a prediction.
+          example: false
         certified:
           type: boolean
           description: Flag if the tour is a certified tour.
