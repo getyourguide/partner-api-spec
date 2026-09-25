@@ -56,7 +56,7 @@ components:
       required: false
       schema:
         type: string
-        example: djE6MTA0Mg
+        example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
     availabilityChangesLimit:
       description: Maximum number of deltas to return per page.
       in: query
@@ -82,7 +82,7 @@ components:
         cursor:
           description: Opaque position of this delta in the feed.
           type: string
-          example: djE6MTA0Mg
+          example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
         tour_id:
           $ref: "../components/commons/fields.yaml#/components/schemas/TourId"
         option_id:

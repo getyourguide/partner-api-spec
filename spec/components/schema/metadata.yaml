@@ -58,13 +58,13 @@ components:
             Cursor of the first element in this page, or the request cursor when the page is
             empty.
           type: string
-          example: djE6MTAwMQ
+          example: djE6MjAyNi0wOS0wMVQxMjozNDo1Ni4xMjM0NTYsMQ
         end_cursor:
           description: >
             Cursor of the last element in this page, or the request cursor when the page is empty.
             Pass it as `cursor` on the next request.
           type: string
-          example: djE6MTA0Mg
+          example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
         page_size:
           description: Number of elements in this response.
           type: integer
