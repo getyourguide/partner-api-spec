@@ -14,8 +14,11 @@ paths:
         since the given cursor, ordered by feed position ascending. Page with `end_cursor` while
         `has_next_page` is true, and resume from your last stored cursor on the next poll. The
         feed only contains slots that transitioned since the daily availability snapshot; absence
-        of a slot means it is unchanged since the snapshot. Slots whose start time has passed are
-        removed from the feed and never returned.
+        of a slot means it is unchanged since the snapshot. Once a slot's start time is in the past,
+        it will be removed from the feed.
+
+        This endpoint is limited to master-bill partners. A token without the master-bill
+        privilege gets `403`.
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "#/components/parameters/availabilityChangesCursor"
@@ -74,7 +77,7 @@ components:
         - option_id
         - date_time
         - vacancies
-        - update_timestamp
+        - update_time
       properties:
         cursor:
           description: Opaque position of this delta in the feed.
@@ -97,9 +100,11 @@ components:
           nullable: true
           minimum: 0
           example: 0
-        update_timestamp:
+        update_time:
           description: >
             When the slot was last updated at the source, in UTC with microsecond precision.
-            Apply changes last-write-wins by comparing this against your stored state.
+            Matches the `update_time` of the availability v4 export. Apply changes
+            last-write-wins: for a given time slot, the delta with the latest `update_time`
+            takes precedence over any earlier value you hold.
           type: string
           example: "2026-09-01T12:34:56.123456Z"
