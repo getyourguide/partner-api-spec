@@ -156,7 +156,7 @@ components:
         type: array
     flags:
       allowReserved: true
-      description: Various flags about properties of the tour (multiple selection allowed).
+      description: Various flags about properties of the tour (multiple selection allowed). Only the values listed in the Flags schema are accepted, matched exactly (case-sensitive). Requests containing any other value are rejected with a 400 response.
       examples:
         oneFlag:
           summary: Filter for private tours only.
