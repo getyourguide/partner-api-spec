@@ -1,0 +1,110 @@
+openapi: 3.0.2
+info:
+  title: Availabilities
+  version: 1.0.0
+  description: Poll sold-out / back-in-stock availability changes with a cursor.
+paths:
+  /{version}/availabilities/status/changes:
+    get:
+      operationId: AvailabilityStatusChanges
+      tags:
+        - Availabilities
+      description: >
+        Returns availability slots whose bookability changed (sold out or came back in stock)
+        since the given cursor, ordered by feed position ascending. Page with `end_cursor` while
+        `has_next_page` is true, and resume from your last stored cursor on the next poll. The
+        feed only contains slots that transitioned since the daily availability snapshot; absence
+        of a slot means it is unchanged since the snapshot. Once a slot's start time is in the past,
+        it will be removed from the feed.
+
+        This endpoint is limited to master-bill partners. A token without the master-bill
+        privilege gets `403`.
+      parameters:
+        - $ref: "../components/commons/path.yaml#/components/parameters/version"
+        - $ref: "#/components/parameters/availabilityChangesCursor"
+        - $ref: "#/components/parameters/availabilityChangesLimit"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _metadata:
+                    $ref: "../components/schema/metadata.yaml#/components/schemas/CursorPageMetadata"
+                  data:
+                    type: object
+                    properties:
+                      deltas:
+                        type: array
+                        description: Availability deltas ordered by feed position ascending.
+                        items:
+                          $ref: "#/components/schemas/AvailabilityDelta"
+        4XX:
+          $ref: "../components/schema/errors.yaml#/components/responses/4XX"
+        default:
+          $ref: "../components/schema/errors.yaml#/components/responses/Default"
+components:
+  parameters:
+    availabilityChangesCursor:
+      description: >
+        Opaque cursor returned by a previous call; only deltas after it are returned. Omit it to
+        start from the beginning of the feed.
+      in: query
+      name: cursor
+      required: false
+      schema:
+        type: string
+        example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
+    availabilityChangesLimit:
+      description: Maximum number of deltas to return per page.
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 5000
+        default: 1000
+        example: 1000
+  schemas:
+    AvailabilityDelta:
+      type: object
+      required:
+        - cursor
+        - tour_id
+        - option_id
+        - date_time
+        - vacancies
+        - update_time
+      properties:
+        cursor:
+          description: Opaque position of this delta in the feed.
+          type: string
+          example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
+        tour_id:
+          $ref: "../components/commons/fields.yaml#/components/schemas/TourId"
+        option_id:
+          $ref: "../components/commons/fields.yaml#/components/schemas/OptionId"
+        date_time:
+          description: The start of the availability slot, in UTC.
+          type: string
+          format: datetime
+          example: "2026-09-15T14:30:00"
+        vacancies:
+          description: >
+            Remaining vacancies of the slot. `0` means sold out. `null` when the slot is in stock
+            but the exact count is unknown.
+          type: integer
+          nullable: true
+          minimum: 0
+          example: 0
+        update_time:
+          description: >
+            When the slot was last updated at the source, in UTC with microsecond precision.
+            Matches the `update_time` of the availability v4 export. Apply changes
+            last-write-wins: for a given time slot, the delta with the latest `update_time`
+            takes precedence over any earlier value you hold.
+          type: string
+          example: "2026-09-01T12:34:56.123456Z"

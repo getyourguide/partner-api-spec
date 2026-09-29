@@ -32,6 +32,9 @@ security:
   - ApiKeyAuth: []
 
 paths:
+  # Availabilities
+  /{version}/availabilities/status/changes:
+    $ref: "./paths/availabilities.yaml#/paths/~1{version}~1availabilities~1status~1changes"
   # Configuration
   /configuration/{version}:
     $ref: "./paths/configuration.yaml#/paths/~1configuration~1{version}"
