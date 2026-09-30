@@ -191,6 +191,7 @@ components:
             - driver
             - live_tour_guide
             - self_guided
+            - audio_guide
           description: >
             Type of guide that is conducting the tour, available are
               * `none`: no guide available for this tour.
@@ -199,6 +200,7 @@ components:
               * `driver`: a driver for motorized tours.
               * `live_tour_guide`: a standard live tour guide.
               * `self_guided`: tour conducted without a guide; the customer explores on their own.
+              * `audio_guide`: tour conducted with an audio guide device or app instead of a person.
         mobile_voucher:
           type: boolean
           description: If the tour accepts mobile voucher.
