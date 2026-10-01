@@ -6,7 +6,10 @@ paths:
   /{version}/bookings:
     post:
       operationId: BookingsCreate
-      description: A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable must be sent in the body of the request.
+      description: |
+        A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable must be sent in the body of the request.
+
+        When `bookable` is sent, `option_id`, `datetime`, `price` and `categories` are required. A request that omits `bookable.price` is rejected with a `400` (`errorCode` 12, `Booking price is required.`) before any availability or pricing lookup is made; the `price` value itself is then checked against the current price of the option and a mismatch is rejected with `errorCode` 308.
       summary: Create a new booking.
       tags:
         - Bookings
