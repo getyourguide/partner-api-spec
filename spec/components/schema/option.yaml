@@ -92,10 +92,13 @@ components:
                 properties:
                   question:
                     type: string
-                    description: Name of the question.
+                    description: |
+                      Name of the question. `booking_customer_accommodation` is deprecated: it is always returned
+                      together with `booking_pick_up_location`, which should be answered instead.
                     enum: [
                       booking_child_safety_seat,
                       booking_cruise_details,
+                      booking_customer_accommodation,
                       booking_pick_up_location,
                       booking_drop_off_address,
                       booking_flight_details,
