@@ -84,6 +84,7 @@ components:
       description: ISO 639, Language of the text content.
       enum:
         - ar
+        - bg
         - ca
         - cs
         - da
