@@ -27,7 +27,11 @@ components:
           $ref: "../commons/objects.yaml#/components/schemas/PickUpLocation"
         meeting_point:
           type: string
-          description: Information about where to meet.
+          description: Free-text description of where to meet, written by the supplier in the requested language.
+        meeting_point_address:
+          type: string
+          description: Address of the meeting point.
+          example: "Unter den Linden 77, 10117 Berlin, Germany"
         drop_off:
           type: string
           description: Information about the drop-off (where the tour ends).
