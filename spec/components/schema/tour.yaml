@@ -165,7 +165,7 @@ components:
         health_requirement:
           $ref: "#/components/schemas/HealthRequirement"
         locations:
-          description: List of locations ordered according to importance.
+          description: List of locations associated with the tour. The order of the list is not guaranteed and carries no meaning; do not rely on it.
           type: array
           items:
             $ref: "./location.yaml#/components/schemas/Location"
