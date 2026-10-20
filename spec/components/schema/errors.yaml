@@ -6,13 +6,13 @@ info:
 components:
   responses:
     4XX:
-      description: HTTP 400, 401, 404 have the same response format.
+      description: HTTP 400, 401, 403, 404 and 406 have the same response format. These error responses are always `application/json`, whatever the `Accept` header.
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/Error"
     Default:
-      description: Other HTTP status codes which do not provide additional information are 403, 405, 429 and 500.
+      description: Other HTTP status codes which do not provide additional information are 429 and 500.
 
   schemas:
     # Schema for error response body
