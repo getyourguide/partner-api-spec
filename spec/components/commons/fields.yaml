@@ -112,9 +112,12 @@ components:
         - ro
         - ru
         - sk
+        - sl
+        - sr
         - sv
         - th
         - tr
+        - uk
         - zh
         - zh-hant
       example: en
