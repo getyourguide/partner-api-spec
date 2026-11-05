@@ -90,8 +90,8 @@ components:
         transportation_type:
           type: string
           nullable: true
-          description: Mode of transport (only present for transfer/transfer_stop items).
-          example: bus
+          description: "Mode of transport (only present for transfer/transfer_stop items). Uses the same values as `TransportationType.mode` (e.g. bus_coach, car, van, speed_boat, on_foot); new values may be added, so treat unknown values as a generic transfer."
+          example: bus_coach
     ItineraryItemLocation:
       description: Location of an itinerary stop.
       type: object
