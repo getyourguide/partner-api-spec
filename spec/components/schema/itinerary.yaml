@@ -51,7 +51,7 @@ components:
         description:
           type: string
           nullable: true
-          description: "Description of the stop. Where the supplier wrote none and the stop is at a GetYourGuide location, this is that location's description in the requested language: general information about the place, not specific to this tour. Omitted if neither exists."
+          description: Description of the stop. If the supplier provided none, this is a general description of the place, in the requested language, when available.
           example: "Explore the ancient amphitheatre with skip-the-line access."
         start_time:
           type: string
