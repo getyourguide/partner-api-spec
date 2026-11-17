@@ -51,7 +51,7 @@ components:
         description:
           type: string
           nullable: true
-          description: Detailed description of what happens at this stop.
+          description: Description of the stop. If the supplier provided none, this is a general description of the place, in the requested language, when available.
           example: "Explore the ancient amphitheatre with skip-the-line access."
         start_time:
           type: string
