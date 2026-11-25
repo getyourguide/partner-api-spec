@@ -10,12 +10,22 @@ paths:
       tags:
         - Availabilities
       description: >
-        Returns availability slots whose bookability changed (sold out or came back in stock)
-        since the given cursor, ordered by feed position ascending. Page with `end_cursor` while
-        `has_next_page` is true, and resume from your last stored cursor on the next poll. The
-        feed only contains slots that transitioned since the daily availability snapshot; absence
-        of a slot means it is unchanged since the snapshot. Once a slot's start time is in the past,
-        it will be removed from the feed.
+        Tracks sold-out and back-in-stock changes for individual option time slots, not whole
+        tours. A change from 4 to 0 vacancies or from 0 to 4 produces a delta; a change from 6
+        to 4 does not. Recreating a slot can also update a record the feed already tracks.
+
+        The feed keeps one record per tracked slot, not a history of all changes. A new daily
+        v4 availability export does not clear the feed. Older records can still appear for
+        future slots; past slots are removed.
+
+        Use the daily export as your baseline. When the same slot (`tour_id`, `option_id`,
+        `date_time`) appears in both sources, use the record with the newer `update_time`.
+        For example, if the export shows 4 vacancies and a newer `update_time` than a delta
+        showing 6, keep 4. The export has no shared cutoff timestamp; do not use the file date
+        or upload time as a cutoff. A missing export row has no `update_time` to compare.
+
+        Results are ordered by feed position. Page with `end_cursor` while `has_next_page` is true.
+        Keep using your last `end_cursor` on the next poll, even after a new export is published.
 
         This endpoint is limited to master-bill partners. A token without the master-bill
         privilege gets `403`.
@@ -94,17 +104,15 @@ components:
           example: "2026-09-15T14:30:00"
         vacancies:
           description: >
-            Remaining vacancies of the slot. `0` means sold out. `null` when the slot is in stock
-            but the exact count is unknown.
+            Remaining vacancies recorded by this delta, not a live count. `0` means sold out.
+            `null` means the slot is in stock but the exact count is unknown.
           type: integer
           nullable: true
           minimum: 0
           example: 0
         update_time:
           description: >
-            When the slot was last updated at the source, in UTC with microsecond precision.
-            Matches the `update_time` of the availability v4 export. Apply changes
-            last-write-wins: for a given time slot, the delta with the latest `update_time`
-            takes precedence over any earlier value you hold.
+            Source timestamp of the update recorded by this delta, in UTC with microsecond
+            precision. Comparable to the same slot's `update_time` in the daily v4 export.
           type: string
           example: "2026-09-01T12:34:56.123456Z"
