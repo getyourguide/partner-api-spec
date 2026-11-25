@@ -14,18 +14,19 @@ paths:
         tours. A change from 4 to 0 vacancies or from 0 to 4 produces a delta; a change from 6
         to 4 does not. Recreating a slot can also update a record the feed already tracks.
 
-        The feed keeps one record per tracked slot, not a history of all changes. A new daily
-        v4 availability export does not clear the feed. Older records can still appear for
-        future slots; past slots are removed.
+        The feed keeps one record per tracked slot. It is not a complete list of available slots
+        or a history of every change. Older records can stay in the feed until the slot starts.
 
-        Use the daily export as your baseline. When the same slot (`tour_id`, `option_id`,
-        `date_time`) appears in both sources, use the record with the newer `update_time`.
-        For example, if the export shows 4 vacancies and a newer `update_time` than a delta
-        showing 6, keep 4. The export has no shared cutoff timestamp; do not use the file date
-        or upload time as a cutoff. A missing export row has no `update_time` to compare.
+        Page with `end_cursor` while `has_next_page` is true, then save the last `end_cursor`
+        and use it to resume polling.
 
-        Results are ordered by feed position. Page with `end_cursor` while `has_next_page` is true.
-        Keep using your last `end_cursor` on the next poll, even after a new export is published.
+        If you also receive a daily availability snapshot (a separate file listing bookable
+        slots and their vacancy counts), use it as your baseline. A new snapshot does not clear
+        this feed or reset your cursor. When both sources contain the same slot (`tour_id`,
+        `option_id`, `date_time`), keep the record with the newer `update_time`. For example,
+        if the snapshot shows 4 vacancies and has a newer `update_time` than a delta showing 6,
+        keep 4. There is no file-wide cutoff timestamp; use the slot's `update_time`, not the
+        file date or upload time.
 
         This endpoint is limited to master-bill partners. A token without the master-bill
         privilege gets `403`.
@@ -113,6 +114,6 @@ components:
         update_time:
           description: >
             Source timestamp of the update recorded by this delta, in UTC with microsecond
-            precision. Comparable to the same slot's `update_time` in the daily v4 export.
+            precision. Use this value to compare records for the same slot.
           type: string
           example: "2026-09-01T12:34:56.123456Z"
