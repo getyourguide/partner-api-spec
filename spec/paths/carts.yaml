@@ -7,9 +7,6 @@ paths:
     post:
       operationId: CartsConfirm
       summary: Confirm a shopping cart.
-      description: |
-        Confirmation may return `404` if an item is no longer bookable through the Partner API.
-        Remove the unavailable item before retrying confirmation.
       tags:
         - Carts
       parameters:
