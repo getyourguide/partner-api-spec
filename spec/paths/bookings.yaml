@@ -9,6 +9,7 @@ paths:
       description: |
         A booking request can create a shopping cart or add to an existing shopping cart. Either coupon or bookable must be sent in the body of the request.
         When `bookable` is sent, `option_id`, `datetime`, `price` and `categories` are required. A request that omits `bookable.price` is rejected with a `400`.
+        An option that is no longer bookable through the Partner API may return `404`, even if it was previously available.
       summary: Create a new booking.
       tags:
         - Bookings
