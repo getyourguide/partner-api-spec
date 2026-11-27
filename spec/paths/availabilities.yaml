@@ -20,6 +20,11 @@ paths:
         Page with `end_cursor` while `has_next_page` is true, then save the last `end_cursor`
         and use it to resume polling.
 
+        On your first call, pass `update_since` instead of a cursor to skip everything the
+        daily snapshot already covers. Use the snapshot's export date (not its upload time), for
+        example `update_since=2026-11-26T00:00:00Z`. Once you have a cursor, send only the cursor:
+        when both are given, `update_since` is ignored.
+
         If you also receive a daily availability snapshot (a separate file listing bookable
         slots and their vacancy counts), use it as your baseline. A new snapshot does not clear
         this feed or reset your cursor. When both sources contain the same slot (`tour_id`,
@@ -33,6 +38,7 @@ paths:
       parameters:
         - $ref: "../components/commons/path.yaml#/components/parameters/version"
         - $ref: "#/components/parameters/availabilityChangesCursor"
+        - $ref: "#/components/parameters/availabilityChangesUpdateSince"
         - $ref: "#/components/parameters/availabilityChangesLimit"
       responses:
         200:
@@ -68,6 +74,17 @@ components:
       schema:
         type: string
         example: djE6MjAyNi0wOS0wMVQxMzowMDowMC4wMDAwMDEsMg
+    availabilityChangesUpdateSince:
+      description: >
+        Optional. Only deltas written at or after this UTC timestamp are returned, in the
+        format of the `update_time` field. Ignored when `cursor` is given. Omit both to start
+        from the beginning of the feed. Must not be in the future, otherwise the request fails with 400.
+      in: query
+      name: update_since
+      required: false
+      schema:
+        type: string
+        example: "2026-11-26T04:12:03Z"
     availabilityChangesLimit:
       description: Maximum number of deltas to return per page.
       in: query
